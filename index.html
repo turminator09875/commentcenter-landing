@@ -56,7 +56,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hg-check{color:var(--green)}
 .hero-product{margin-top:64px;width:100%;max-width:900px;position:relative;animation:up .7s .4s ease both}
 .product-glow{position:absolute;top:-10px;left:20%;right:20%;height:50px;background:var(--blue);filter:blur(50px);opacity:.14}
-.product-window{background:var(--bg1);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(37,99,235,0.05),0 24px 80px rgba(0,0,0,.7);animation:floatY 8s ease-in-out infinite}
+.product-window{background:var(--bg1);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(37,99,235,0.05),0 24px 80px rgba(0,0,0,.7);animation:floatY 8s ease-in-out infinite;text-align:left}
 .pw-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;gap:14px}
 .pw-dots{display:flex;gap:6px}
 .pw-dot{width:10px;height:10px;border-radius:50%}
@@ -240,15 +240,23 @@ nav{padding:0 20px}
 }
 @media(max-width:768px){
 .hero-h1{font-size:clamp(1.8rem,5vw,3rem)}
+.hero-tag{font-size:11px;padding:5px 12px}
 .nav-cta{display:none}
 .bc-title{word-break:break-word;overflow:hidden;width:100%}
 
-/* Stats grid — 2 kolommen, €0 gecentreerd op eigen rij */
-.stats-grid{grid-template-columns:1fr 1fr;gap:0;background:var(--border)}
-.stats-grid .stat-cell:last-child{grid-column:1/-1;text-align:center}
-.stat-cell{padding:32px 16px;overflow:hidden}
-.stat-n{font-size:clamp(36px,10vw,52px)}
-.stat-l,.stat-src{overflow-wrap:break-word;word-break:break-word}
+/* Stats grid — altijd 3 naast elkaar */
+.stats-grid{grid-template-columns:repeat(3,1fr);gap:0;background:var(--border)}
+.stats-grid .stat-cell:last-child{grid-column:auto;text-align:center}
+.stat-cell{padding:24px 8px;overflow:hidden;text-align:center}
+.stat-n{font-size:clamp(24px,7vw,40px)}
+.stat-l{font-size:11px;max-width:90px}
+.stat-src{font-size:10px;overflow-wrap:break-word;word-break:break-word}
+
+/* Pain stats — altijd 3 naast elkaar */
+.pain-stats{gap:0;flex-wrap:nowrap;justify-content:space-between}
+.ps-item{flex:1;padding:0 4px}
+.ps-n{font-size:clamp(26px,7vw,40px)}
+.ps-l{font-size:11px;max-width:100%}
 
 /* Bento kernfunctie — inline style override */
 .bc-main{display:block !important}
@@ -260,7 +268,7 @@ nav{padding:0 20px}
 .pw-header{flex-wrap:wrap;gap:6px;padding:10px 12px}
 .pw-stats{gap:6px;flex-wrap:nowrap;overflow-x:auto;max-width:100%}
 .pw-stat{font-size:10px;white-space:nowrap}
-.pw-page{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:90px;font-size:11px}
+.pw-page{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px;font-size:11px}
 .pw-filters{overflow-x:auto}
 .pwc-btn{font-size:11px;padding:5px 8px}
 .pwc-suggest{font-size:11px}
@@ -307,18 +315,18 @@ nav{padding:0 20px}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-tag"><span class="tag-dot"></span>AI commentbeheer voor Facebook adverteerders</div>
-  <h1 class="hero-h1">Jouw volgende klant<br>zit al in je <em>comments.</em></h1>
-  <p class="hero-sub">AI herkent wie koopklaar is. Jij reageert. In 30 seconden.</p>
+  <div class="hero-tag"><span class="tag-dot"></span>AI commentbeheer voor Facebook</div>
+  <h1 class="hero-h1">Je mist 73% van je kopers<br>in je <em>comments.</em></h1>
+  <p class="hero-sub">CommentCenter herkent koopintentie automatisch en laat je reageren binnen 30 seconden — voordat je lead weg is.</p>
   <p class="hero-proof-inline">Gebruikt door <strong>200+ Nederlandse marketing teams</strong> &nbsp;·&nbsp; <span class="hp-stars">★★★★★</span> 4.9/5</p>
   <div class="hero-actions">
-    <a href="https://app.commentcenter.nl" class="btn-primary">14 dagen gratis proberen <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="https://app.commentcenter.nl" class="btn-primary">Start gratis — haal je eerste leads uit je comments <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
   </div>
   <div class="hero-guarantees">
     <span class="hg"><span class="hg-check">✓</span> Geen creditcard</span>
-    <span class="hg"><span class="hg-check">✓</span> Direct actief</span>
-    <span class="hg"><span class="hg-check">✓</span> GDPR-compliant</span>
+    <span class="hg"><span class="hg-check">✓</span> Direct live</span>
+    <span class="hg"><span class="hg-check">✓</span> Werkt met je bestaande Facebook ads</span>
   </div>
   <div class="hero-product">
     <div class="product-glow"></div>
