@@ -250,12 +250,20 @@ nav{padding:0 20px}
 .stat-n{font-size:clamp(36px,10vw,52px)}
 .stat-l,.stat-src{overflow-wrap:break-word;word-break:break-word}
 
+/* Bento kernfunctie — inline style override */
+.bc-main{display:block !important}
+.bc-main .bc-title{font-size:18px;word-break:break-word;hyphens:auto;overflow-wrap:break-word;width:100%}
+.bc-main .iw{margin-top:20px}
+
 /* Product window — geen horizontale overflow */
-.product-window{animation:none}
-.pw-header{flex-wrap:wrap;gap:8px;padding:10px 14px}
-.pw-stats{gap:8px;flex-wrap:wrap}
-.pw-stat{font-size:11px}
-.pw-page{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px}
+.product-window{animation:none;overflow:hidden}
+.pw-header{flex-wrap:wrap;gap:6px;padding:10px 12px}
+.pw-stats{gap:6px;flex-wrap:nowrap;overflow-x:auto;max-width:100%}
+.pw-stat{font-size:10px;white-space:nowrap}
+.pw-page{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:90px;font-size:11px}
+.pw-filters{overflow-x:auto}
+.pwc-btn{font-size:11px;padding:5px 8px}
+.pwc-suggest{font-size:11px}
 
 /* Logo strip — kleiner en gewrapt */
 .logos-r{gap:24px}
