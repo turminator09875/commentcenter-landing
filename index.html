@@ -242,10 +242,28 @@ nav{padding:0 20px}
 .hero-h1{font-size:clamp(1.8rem,5vw,3rem)}
 .nav-cta{display:none}
 .bc-title{word-break:break-word;overflow:hidden;width:100%}
-.stats-grid{grid-template-columns:1fr 1fr;gap:2rem;background:transparent}
+
+/* Stats grid — 2 kolommen, €0 gecentreerd op eigen rij */
+.stats-grid{grid-template-columns:1fr 1fr;gap:0;background:var(--border)}
 .stats-grid .stat-cell:last-child{grid-column:1/-1;text-align:center}
-.pw-page{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
-.how-num{font-size:4rem}
+.stat-cell{padding:32px 16px;overflow:hidden}
+.stat-n{font-size:clamp(36px,10vw,52px)}
+.stat-l,.stat-src{overflow-wrap:break-word;word-break:break-word}
+
+/* Product window — geen horizontale overflow */
+.product-window{animation:none}
+.pw-header{flex-wrap:wrap;gap:8px;padding:10px 14px}
+.pw-stats{gap:8px;flex-wrap:wrap}
+.pw-stat{font-size:11px}
+.pw-page{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px}
+
+/* Logo strip — kleiner en gewrapt */
+.logos-r{gap:24px}
+.logo-i{font-size:13px}
+
+/* How cards — minder padding */
+.how-card{padding:28px 20px}
+.how-num{font-size:3rem}
 }
 </style>
 </head>
