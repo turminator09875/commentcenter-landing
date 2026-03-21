@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CommentCenter classificeert elk comment op jouw Facebook advertenties met AI. Hot leads direct herkennen, spam verbergen, replies versturen. Gebouwd voor Nederlandse performance marketeers.">
+<meta property="og:title" content="CommentCenter — Elke hot lead uit jouw Facebook advertenties">
+<meta property="og:description" content="AI commentbeheer voor Facebook adverteerders. Van ruis naar pipeline in 30 seconden.">
+<meta property="og:url" content="https://commentcenter.nl">
+<meta property="og:type" content="website">
 <title>CommentCenter — Elke hot lead uit jouw Facebook advertenties</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -270,12 +275,109 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
   .cta-box{padding:56px 28px}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center}
 }
+
+@media(max-width:680px){
+  /* Nav */
+  nav{padding:0 16px;height:60px}
+  .nav-right .nav-signin{display:none}
+  .nav-cta{padding:8px 16px;font-size:13px}
+
+  /* Hero */
+  .hero{padding:100px 20px 100px}
+  .hero-tag{font-size:11px;padding:5px 12px}
+  .hero-h1{font-size:clamp(36px,10vw,54px);letter-spacing:-.02em}
+  .hero-setup{font-size:12px;text-align:center;flex-wrap:wrap;justify-content:center}
+  .hero-sub{font-size:16px;margin-bottom:36px}
+  .hero-actions{flex-direction:column;align-items:center;gap:10px;width:100%}
+  .btn-primary,.btn-secondary{width:100%;max-width:320px;justify-content:center}
+  .hero-proof{flex-wrap:wrap;justify-content:center;gap:10px}
+  .hp-sep{display:none}
+
+  /* Product window - simplified on mobile */
+  .hero-product{margin-top:40px}
+  .pw-bar{padding:10px 14px}
+  .pw-url{font-size:10px}
+  .pw-header{padding:12px 14px;flex-wrap:wrap;gap:10px}
+  .pw-stats{gap:10px}
+  .pws-n{font-size:18px}
+  .pw-filters{padding:8px 14px;gap:4px}
+  .pwf{font-size:10px;padding:4px 10px}
+  .pw-body{padding:10px 12px;gap:6px}
+  .pwc{padding:10px 12px}
+  .pwc-top{flex-wrap:wrap;gap:4px}
+  .pwc-name{font-size:11px}
+  .pwc-text{font-size:11px}
+  .pwc-suggest{font-size:10px;display:none}
+  .pwc-btns{gap:4px}
+  .pwc-btn{font-size:10px;padding:3px 9px}
+
+  /* Logos */
+  .logos{padding:36px 20px}
+  .logos-r{gap:28px}
+  .logo-i{font-size:13px}
+
+  /* Sections */
+  section{padding:72px 20px}
+  .wrap{padding:0}
+  .sec-h2{font-size:clamp(28px,8vw,42px)}
+  .sec-sub{font-size:15px}
+
+  /* How grid */
+  .how-grid{gap:0;border-radius:16px}
+  .how-card{padding:28px 24px}
+  .how-num{font-size:44px}
+
+  /* Bento */
+  .bento{gap:12px;margin-top:48px}
+  .bc{padding:24px}
+  .bc-title{font-size:18px}
+
+  /* Roles */
+  .roles-grid{border-radius:16px}
+  .role-card{padding:28px 24px;gap:16px}
+  .role-icon{width:42px;height:42px;font-size:18px}
+
+  /* Stats */
+  .stats-grid{border-radius:16px}
+  .stat-cell{padding:40px 24px}
+  .stat-n{font-size:clamp(44px,12vw,60px)}
+
+  /* Testimonials */
+  .testi-grid{gap:14px;margin-top:48px}
+  .tc{padding:24px}
+
+  /* Pricing */
+  .pricing-grid{gap:14px;margin-top:48px}
+  .pcard{padding:28px 24px}
+  .pcard-price{font-size:44px}
+
+  /* FAQ */
+  .faq-list{border-radius:16px}
+  .faq-item{padding:20px 22px}
+  .faq-question{font-size:14px}
+
+  /* CTA */
+  .cta-box{padding:48px 24px;border-radius:20px}
+  .cta-h2{font-size:clamp(28px,8vw,42px)}
+  .cta-sub{font-size:15px}
+  .cta-btns{flex-direction:column;align-items:center}
+  .cta-btns .btn-primary,.cta-btns .btn-secondary{width:100%;max-width:320px;justify-content:center}
+
+  /* Footer */
+  .footer-inner{grid-template-columns:1fr;gap:32px}
+  .footer-brand{grid-column:span 1}
+  footer{padding:40px 20px 100px}
+
+  /* Mobile CTA bar */
+  .mobile-cta-bar{padding:10px 16px 20px}
+  .mcta-btn{font-size:13px;padding:12px}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-brand">
+  <a href="https://commentcenter.nl" class="nav-brand">
     <div class="nav-logo">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
         <path d="M9 2L16 15H2L9 2Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
@@ -325,9 +427,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
   <div class="hero-proof">
     <div class="hp-avatars">
       <div class="hp-av" style="background:#1877f2;color:#fff">R</div>
-      <div class="hp-av" style="background:#2563eb;color:#fff">L</div>
-      <div class="hp-av" style="background:#3b82f6;color:#fff">T</div>
-      <div class="hp-av" style="background:#1d4ed8;color:#fff">M</div>
+      <div class="hp-av" style="background:#2563eb;color:#fff">M</div>
+      <div class="hp-av" style="background:#3b82f6;color:#fff">J</div>
+      <div class="hp-av" style="background:#1d4ed8;color:#fff">S</div>
     </div>
     <span class="hp-text">Gebruikt door <strong>200+ Nederlandse marketeers</strong></span>
     <div class="hp-sep"></div>
@@ -370,14 +472,14 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
       </div>
       <div class="pw-body">
         <div class="pwc hot">
-          <div class="pwc-av" style="background:rgba(239,68,68,0.15);color:var(--red)">M</div>
+          <div class="pwc-av" style="background:rgba(239,68,68,0.15);color:var(--red)">J</div>
           <div class="pwc-body">
             <div class="pwc-top">
-              <span class="pwc-name">Mohamed Al-Rashid · 3 min</span>
+              <span class="pwc-name">Jan de Vries · 3 min</span>
               <span class="pwc-badge bh">🔥 Hot Lead · 97%</span>
             </div>
-            <div class="pwc-text">Wat kost dit precies? Wil er 3 bestellen voor mijn bedrijf</div>
-            <div class="pwc-suggest">💬 "Stuur ons een DM voor prijsinformatie en persoonlijk advies!" — Bewerken & versturen →</div>
+            <div class="pwc-text">Wat kost dit? Wil er 2 bestellen voor ons kantoor in Utrecht</div>
+            <div class="pwc-suggest">💬 "Stuur ons een DM voor een persoonlijke offerte!" — Bewerken & versturen →</div>
             <div class="pwc-btns">
               <div class="pwc-btn p">↩ Reageer als jouw pagina</div>
               <div class="pwc-btn d">🙈 Verbergen</div>
@@ -385,13 +487,13 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
           </div>
         </div>
         <div class="pwc warm">
-          <div class="pwc-av" style="background:rgba(245,158,11,0.15);color:var(--amber)">S</div>
+          <div class="pwc-av" style="background:rgba(245,158,11,0.15);color:var(--amber)">M</div>
           <div class="pwc-body">
             <div class="pwc-top">
-              <span class="pwc-name">Sarah Vermeersch · 18 min</span>
+              <span class="pwc-name">Marieke Bakker · 18 min</span>
               <span class="pwc-badge bw">👀 Warm · 82%</span>
             </div>
-            <div class="pwc-text">Ziet er interessant uit, benieuwd naar ervaringen van anderen</div>
+            <div class="pwc-text">Hebben jullie ook levering naar Groningen? En wat is de levertijd?</div>
             <div class="pwc-btns">
               <div class="pwc-btn p">↩ Reageer</div>
               <div class="pwc-btn d">🙈 Verbergen</div>
@@ -399,13 +501,13 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
           </div>
         </div>
         <div class="pwc neu">
-          <div class="pwc-av" style="background:rgba(64,77,107,0.3);color:var(--t3)">R</div>
+          <div class="pwc-av" style="background:rgba(64,77,107,0.3);color:var(--t3)">K</div>
           <div class="pwc-body">
             <div class="pwc-top">
-              <span class="pwc-name">Rick de Boer · 42 min</span>
+              <span class="pwc-name">Kevin Janssen · 42 min</span>
               <span class="pwc-badge" style="background:rgba(64,77,107,0.12);color:var(--t3);border-color:rgba(64,77,107,0.18)">🗑️ Spam</span>
             </div>
-            <div class="pwc-text">tag je vriend hieronder 😂👇</div>
+            <div class="pwc-text">tag Sandra hieronder 😂😂 die heeft dit nodig haha</div>
             <div class="pwc-btns"><div class="pwc-btn d">🙈 In bulk verbergen</div></div>
           </div>
         </div>
@@ -514,7 +616,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
           <div class="role-kicker">Performance Marketer</div>
           <div class="role-title">Mis nooit meer een hot lead</div>
           <div class="role-desc">Jij draait campagnes op resultaat. CommentCenter zorgt dat elk comment met koopintentie direct zichtbaar is — niet pas als je er handmatig doorheen scrolt.</div>
-          <a href="#" class="role-link">Meer weten →</a>
+          <a href="https://app.commentcenter.nl" class="role-link">Meer weten →</a>
         </div>
       </div>
       <div class="role-card">
@@ -523,7 +625,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
           <div class="role-kicker">Social Media Manager</div>
           <div class="role-title">Van 2 uur naar 10 minuten</div>
           <div class="role-desc">Commentbeheer kost jou dagelijks uren. Met CommentCenter ben je in 10 minuten klaar — replies verstuurd, spam verborgen, hot leads doorgezet.</div>
-          <a href="#" class="role-link">Meer weten →</a>
+          <a href="https://app.commentcenter.nl" class="role-link">Meer weten →</a>
         </div>
       </div>
       <div class="role-card">
@@ -532,7 +634,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
           <div class="role-kicker">Performance Agency</div>
           <div class="role-title">12 klanten, geen extra mensen</div>
           <div class="role-desc">Meerdere klanten, tientallen actieve advertenties, honderden comments per dag. CommentCenter verwerkt het allemaal in één dashboard.</div>
-          <a href="#" class="role-link">Meer weten →</a>
+          <a href="https://app.commentcenter.nl" class="role-link">Meer weten →</a>
         </div>
       </div>
       <div class="role-card">
@@ -541,7 +643,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
           <div class="role-kicker">Sales Team</div>
           <div class="role-title">Leads direct in de pijplijn</div>
           <div class="role-desc">Hot leads geëxporteerd naar CSV, klaar voor je CRM. Geen handmatig overnemen. Geen leads die tussen wal en schip vallen.</div>
-          <a href="#" class="role-link">Meer weten →</a>
+          <a href="https://app.commentcenter.nl" class="role-link">Meer weten →</a>
         </div>
       </div>
     </div>
@@ -744,7 +846,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
           14 dagen gratis proberen
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="https://app.commentcenter.nl" class="btn-secondary">Demo aanvragen</a>
+        <a href="mailto:info@commentcenter.nl" class="btn-secondary">Demo aanvragen</a>
       </div>
       <p class="cta-guarantee">Geen creditcard nodig · Annuleer wanneer je wilt · GDPR-compliant</p>
     </div>
@@ -756,7 +858,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="footer-logo">
+        <a href="https://commentcenter.nl" class="footer-logo">
           <div class="fl-icon">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M8 2L14 13H2L8 2Z" fill="none" stroke="white" stroke-width="1.6" stroke-linejoin="round"/>
@@ -769,32 +871,32 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
       </div>
       <div class="footer-col">
         <h4>Product</h4>
-        <a href="#">Functies</a>
-        <a href="#">Prijzen</a>
-        <a href="#">Roadmap</a>
-        <a href="#">Changelog</a>
+        <a href="#functies">Functies</a>
+        <a href="#prijzen">Prijzen</a>
+        <a href="mailto:info@commentcenter.nl">Roadmap</a>
+        <a href="mailto:info@commentcenter.nl">Changelog</a>
       </div>
       <div class="footer-col">
         <h4>Bedrijf</h4>
-        <a href="#">Over ons</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
-        <a href="#">Partners</a>
+        <a href="mailto:info@commentcenter.nl">Over ons</a>
+        <a href="mailto:info@commentcenter.nl">Blog</a>
+        <a href="mailto:info@commentcenter.nl">Contact</a>
+        <a href="mailto:info@commentcenter.nl">Partners</a>
       </div>
       <div class="footer-col">
         <h4>Resources</h4>
-        <a href="#">Documentatie</a>
-        <a href="#">API</a>
-        <a href="#">Nieuwsbrief</a>
-        <a href="#">Status</a>
+        <a href="https://app.commentcenter.nl">Documentatie</a>
+        <a href="mailto:info@commentcenter.nl">API</a>
+        <a href="mailto:info@commentcenter.nl">Nieuwsbrief</a>
+        <a href="mailto:info@commentcenter.nl">Status</a>
       </div>
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">© 2026 CommentCenter.nl — Geregistreerd in Nederland</span>
       <div class="footer-legal">
-        <a href="#">Privacy</a>
-        <a href="#">Voorwaarden</a>
-        <a href="#">Cookies</a>
+        <a href="https://commentcenter.nl/privacy">Privacy</a>
+        <a href="https://commentcenter.nl/terms">Voorwaarden</a>
+        <a href="mailto:info@commentcenter.nl">Cookies</a>
       </div>
     </div>
   </div>
