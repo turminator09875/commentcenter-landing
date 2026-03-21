@@ -228,7 +228,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56
 nav{padding:0 20px}
 .nav-links,.nav-in{display:none}
 .nav-ham{display:flex}
-.how-grid,.pricing-grid,.testi-grid,.stats-grid,.roles-grid{grid-template-columns:1fr}
+.how-grid,.pricing-grid,.testi-grid,.roles-grid{grid-template-columns:1fr}
 .bento{grid-template-columns:1fr}.bc-main,.bc-sm,.bc-half{grid-column:span 1}
 .bc{overflow:hidden;max-width:100%}
 .footer-inner{grid-template-columns:1fr 1fr}
@@ -240,6 +240,12 @@ nav{padding:0 20px}
 }
 @media(max-width:768px){
 .hero-h1{font-size:clamp(1.8rem,5vw,3rem)}
+.nav-cta{display:none}
+.bc-title{word-break:break-word;overflow:hidden;width:100%}
+.stats-grid{grid-template-columns:1fr 1fr;gap:2rem;background:transparent}
+.stats-grid .stat-cell:last-child{grid-column:1/-1;text-align:center}
+.pw-page{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
+.how-num{font-size:4rem}
 }
 </style>
 </head>
