@@ -73,11 +73,12 @@ body{
 .nav-logo{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:7px;
   text-decoration:none;
   color:var(--tx);
   font-size:14px;
   font-weight:700;
+  letter-spacing:-0.02em;
   margin-right:8px;
 }
 .nav-links{
@@ -715,11 +716,12 @@ footer{
 .footer-logo{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:7px;
   text-decoration:none;
   color:var(--tx);
-  font-size:15px;
+  font-size:14px;
   font-weight:700;
+  letter-spacing:-0.02em;
   margin-bottom:10px;
 }
 .footer-tagline{font-size:12px;color:var(--dim);line-height:1.6}
@@ -795,7 +797,7 @@ footer{
         </linearGradient></defs>
         <path d="M12 2L2 22h20L12 2z" fill="url(#g)"/>
       </svg>
-      CommentCenter
+      Comment<span style="color:#3b82f6">Center</span>
     </a>
     <div class="nav-links">
       <a href="#probleem">Probleem</a>
@@ -817,7 +819,7 @@ footer{
   <a href="#vergelijk" onclick="closeMobile()">Vergelijk</a>
   <a href="#pricing" onclick="closeMobile()">Prijzen</a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
-  <a href="https://app.commentcenter.nl" style="background:var(--accent);color:#fff;padding:12px 32px;border-radius:12px;font-weight:600;margin-top:8px">Start gratis</a>
+  <a href="https://app.commentcenter.nl" style="background:var(--accent);color:#fff;padding:12px 32px;border-radius:12px;font-weight:600;margin-top:8px;letter-spacing:-0.02em">Start gratis</a>
 </div>
 
 <!-- HERO -->
@@ -1317,12 +1319,9 @@ footer{
     <div class="footer-left">
       <a class="footer-logo" href="/">
         <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-          <defs><linearGradient id="g2" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#60a5fa"/><stop offset="1" stop-color="#3b82f6"/>
-          </linearGradient></defs>
-          <path d="M12 2L2 22h20L12 2z" fill="url(#g2)"/>
+          <path d="M12 2L2 22h20L12 2z" fill="#3b82f6"/>
         </svg>
-        CommentCenter
+        Comment<span style="color:#3b82f6">Center</span>
       </a>
       <p class="footer-tagline">Comment intelligence voor Facebook adverteerders.<br>Gebouwd in Nederland.</p>
     </div>
