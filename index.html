@@ -3,489 +3,1384 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CommentCenter — Jouw volgende klant zit al in je comments</title>
-<meta name="description" content="AI leest je Facebook advertentie-comments en herkent wie klaar is om te kopen. Reageer in één klik. 94% tijdsbesparing voor performance marketeers.">
-<meta property="og:title" content="CommentCenter — Jouw volgende klant zit al in je comments">
-<meta property="og:description" content="AI herkent hot leads in je Facebook comments. Reageer in één klik. Geen handmatig scrollen meer.">
+<title>CommentCenter — Paid Comment Control voor Facebook Adverteerders</title>
+<meta name="description" content="Spot hot leads, klachten en spam in je Facebook ad comments. Reply, hide en export vanuit één dashboard. 14 dagen gratis.">
+<meta property="og:title" content="CommentCenter — Paid Comment Control">
+<meta property="og:description" content="Spot hot leads in je ad comments. Reply, hide, export. Gebouwd voor paid teams.">
+<meta property="og:image" content="https://commentcenter.nl/og-image.png">
 <meta property="og:url" content="https://commentcenter.nl">
-<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><polygon points='16,5 27,24 5,24' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/><polygon points='16,13 21,22 11,22' fill='white' opacity='0.4'/></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2L2 22h20L12 2z' fill='%233b82f6'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#07090f;--bg1:#0b0f1a;--bg2:#111827;--bg3:#1a2340;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--t1:#f0f4ff;--t2:#8896b3;--t3:#404d6b;--blue:#2563eb;--blue2:#3b82f6;--blue3:#93c5fd;--bluedim:rgba(37,99,235,0.1);--blueglow:rgba(37,99,235,0.2);--red:#ef4444;--amber:#f59e0b;--green:#22c55e;--serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t1);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:'';position:fixed;width:900px;height:600px;top:-200px;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(37,99,235,0.11) 0%,transparent 65%);pointer-events:none;z-index:0}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:68px;background:rgba(7,9,15,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:border-color .3s}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px var(--blueglow);flex-shrink:0}
-.nav-name{font-size:16px;font-weight:600;color:var(--t1);letter-spacing:-.02em}
-.nav-links{display:flex;gap:36px}
-.nav-links a{color:var(--t2);text-decoration:none;font-size:14px;transition:color .15s}
-.nav-links a:hover{color:var(--t1)}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-in{color:var(--t2);text-decoration:none;font-size:14px;transition:color .15s}
-.nav-in:hover{color:var(--t1)}
-.nav-cta{background:var(--blue);color:#fff;padding:9px 22px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 0 20px var(--blueglow);transition:all .15s}
-.nav-cta:hover{background:var(--blue2);transform:translateY(-1px)}
-.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-ham span{width:22px;height:2px;background:var(--t2);border-radius:2px}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--bg1);border-bottom:1px solid var(--border);padding:24px;z-index:99;flex-direction:column;gap:16px}
-.mobile-menu a{color:var(--t2);text-decoration:none;font-size:16px;padding:8px 0;border-bottom:1px solid var(--border)}
-.mobile-menu.open{display:flex}
-.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 80px;overflow:hidden}
-.hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 20%,transparent 80%);pointer-events:none}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--bluedim);border:1px solid rgba(37,99,235,0.25);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:500;color:var(--blue3);letter-spacing:.04em;margin-bottom:36px;animation:up .5s ease both}
-.tag-dot{width:6px;height:6px;border-radius:50%;background:var(--blue2);animation:breathe 2s ease-in-out infinite}
-.hero-h1{font-family:var(--serif);font-size:clamp(44px,6.5vw,84px);font-weight:400;line-height:1.05;letter-spacing:-.01em;max-width:820px;margin-bottom:24px;animation:up .5s .08s ease both}
-.hero-h1 em{font-style:italic;color:var(--blue3)}
-.hero-sub{font-size:19px;color:var(--t2);max-width:440px;margin:0 auto 16px;font-weight:300;line-height:1.7;animation:up .5s .16s ease both}
-.hero-proof-inline{font-size:13px;color:var(--t3);margin-bottom:44px;animation:up .5s .2s ease both}
-.hero-proof-inline strong{color:var(--t2);font-weight:500}
-.hp-stars{color:var(--amber);font-size:12px;letter-spacing:1px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:up .5s .24s ease both}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;box-shadow:0 0 36px var(--blueglow);transition:all .15s}
-.btn-primary:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 40px var(--blueglow)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;color:var(--t2);padding:14px 24px;border-radius:10px;font-size:15px;text-decoration:none;border:1px solid var(--border2);transition:all .15s}
-.btn-secondary:hover{color:var(--t1);background:var(--bg1)}
-.hero-guarantees{display:flex;align-items:center;gap:20px;justify-content:center;margin-top:18px;animation:up .5s .32s ease both;flex-wrap:wrap}
-.hg{font-size:12px;color:var(--t3);display:flex;align-items:center;gap:5px}
-.hg-check{color:var(--green)}
-.hero-product{margin-top:64px;width:100%;max-width:900px;position:relative;animation:up .7s .4s ease both}
-.product-glow{position:absolute;top:-10px;left:20%;right:20%;height:50px;background:var(--blue);filter:blur(50px);opacity:.14}
-.product-window{background:var(--bg1);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(37,99,235,0.05),0 24px 80px rgba(0,0,0,.7);animation:floatY 8s ease-in-out infinite;text-align:left}
-.pw-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;gap:14px}
-.pw-dots{display:flex;gap:6px}
-.pw-dot{width:10px;height:10px;border-radius:50%}
-.pw-url{flex:1;background:var(--bg3);border-radius:6px;padding:5px 13px;font-size:11px;color:var(--t3);font-family:'SF Mono',monospace}
-.pw-header{padding:14px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
-.pw-stats{display:flex;align-items:center;gap:14px}
-.pws{text-align:center}
-.pws-n{font-size:22px;font-weight:600;letter-spacing:-.03em;line-height:1}
-.pws-l{font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--t3);margin-top:2px}
-.pw-div{width:1px;height:30px;background:var(--border)}
-.pw-page{display:flex;align-items:center;gap:7px;background:var(--bluedim);border:1px solid rgba(37,99,235,0.2);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:500;color:var(--blue3)}
-.pw-filters{padding:10px 22px;display:flex;gap:6px;border-bottom:1px solid var(--border);overflow-x:auto}
-.pwf{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:500;border:1px solid var(--border);color:var(--t3);white-space:nowrap}
-.pwf.on{background:var(--bluedim);border-color:rgba(37,99,235,0.22);color:var(--blue3)}
-.pw-body{padding:14px 18px;display:flex;flex-direction:column;gap:8px}
-.pwc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:13px 16px;display:flex;gap:11px;position:relative;overflow:hidden}
-.pwc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
-.pwc.hot::before{background:var(--red)}.pwc.warm::before{background:var(--amber)}.pwc.neu::before{background:var(--t3);opacity:.4}
-.pwc-av{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
-.pwc-body{flex:1;min-width:0}
-.pwc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;flex-wrap:wrap;gap:4px}
-.pwc-name{font-size:12px;font-weight:600}
-.pwc-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:2px 9px;border-radius:5px;border:1px solid}
-.bh{background:rgba(239,68,68,0.08);color:var(--red);border-color:rgba(239,68,68,0.15)}
-.bw{background:rgba(245,158,11,0.08);color:var(--amber);border-color:rgba(245,158,11,0.15)}
-.pwc-text{font-size:12px;color:var(--t2);line-height:1.5}
-.pwc-suggest{margin-top:8px;font-size:11px;color:var(--t3);font-style:italic;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;padding:6px 10px}
-.pwc-btns{display:flex;gap:6px;margin-top:8px}
-.pwc-btn{font-size:11px;font-weight:500;padding:4px 11px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--t3)}
-.pwc-btn.p{background:var(--bluedim);border-color:rgba(37,99,235,0.2);color:var(--blue3)}
-.pwc-btn.d{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.14);color:var(--red)}
-section{position:relative;z-index:1;padding:120px 24px}
-.wrap{max-width:1080px;margin:0 auto}
-.tc{text-align:center}.tc .sec-sub{margin:0 auto}
-.pain-section{background:var(--bg1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.pain-inner{max-width:720px;margin:0 auto;text-align:center}
-.pain-h{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.15;letter-spacing:-.01em;margin-bottom:20px}
-.pain-h em{font-style:italic;color:var(--red)}
-.pain-p{font-size:17px;color:var(--t2);font-weight:300;line-height:1.8;max-width:580px;margin:0 auto 36px}
-.pain-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap}
-.ps-item{text-align:center}
-.ps-n{font-family:var(--serif);font-size:52px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--red)}
-.ps-l{font-size:13px;color:var(--t3);margin-top:6px;max-width:140px;margin-left:auto;margin-right:auto;line-height:1.5}
-.logos{position:relative;z-index:1;padding:48px 24px;border-bottom:1px solid var(--border)}
-.logos-inner{max-width:1080px;margin:0 auto;text-align:center}
-.logos-l{font-size:11px;font-weight:500;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:32px}
-.logos-r{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap}
-.logo-i{font-size:15px;font-weight:600;color:var(--t3);letter-spacing:-.02em}
-.sec-tag{display:inline-block;font-size:11px;font-weight:600;color:var(--blue3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:18px}
-.sec-h2{font-family:var(--serif);font-size:clamp(32px,4vw,54px);font-weight:400;line-height:1.1;letter-spacing:-.01em;margin-bottom:18px}
-.sec-h2 em{font-style:italic;color:var(--blue3)}
-.sec-sub{font-size:17px;color:var(--t2);font-weight:300;line-height:1.75;max-width:460px}
-.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:72px}
-.how-card{background:var(--bg1);padding:40px 32px;position:relative;overflow:hidden;transition:background .2s}
-.how-card:hover{background:var(--bg2)}
-.how-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.5),transparent);opacity:0;transition:opacity .3s}
-.how-card:hover::after{opacity:1}
-.how-num{font-family:var(--serif);font-size:60px;font-weight:400;color:rgba(37,99,235,0.08);line-height:1;margin-bottom:20px}
-.how-icon{width:40px;height:40px;border-radius:10px;background:var(--bluedim);border:1px solid rgba(37,99,235,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.how-title{font-size:19px;font-weight:600;margin-bottom:12px;letter-spacing:-.02em}
-.how-text{font-size:14px;color:var(--t2);line-height:1.8;font-weight:300}
-.how-badge{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:5px 12px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.15);border-radius:999px;font-size:12px;color:var(--green);font-weight:500}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
-.stat-cell{background:var(--bg1);padding:64px 40px;text-align:center}
-.stat-n{font-family:var(--serif);font-size:clamp(52px,5vw,72px);font-weight:400;letter-spacing:-.02em;line-height:1}
-.stat-n em{font-style:normal;color:var(--blue3)}
-.stat-l{font-size:14px;color:var(--t2);margin-top:12px;font-weight:300;max-width:190px;margin-left:auto;margin-right:auto;line-height:1.6}
-.stat-src{font-size:11px;color:var(--t3);margin-top:6px;font-style:italic}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:72px}
-.tc-card{background:var(--bg1);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all .2s}
-.tc-card:hover{border-color:rgba(37,99,235,0.2);transform:translateY(-3px)}
-.tc-stars{color:var(--amber);font-size:14px;letter-spacing:3px;margin-bottom:18px}
-.tc-q{font-family:var(--serif);font-size:16px;color:var(--t2);line-height:1.8;font-style:italic;margin-bottom:28px}
-.tc-auth{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:20px}
-.tc-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;flex-shrink:0}
-.tc-name{font-size:14px;font-weight:600;letter-spacing:-.01em}
-.tc-role{font-size:12px;color:var(--t3);margin-top:2px}
-.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:72px}
-.bc{background:var(--bg1);border:1px solid var(--border);border-radius:20px;padding:36px;overflow:hidden;position:relative;transition:border-color .2s,transform .2s}
-.bc:hover{border-color:rgba(37,99,235,0.2);transform:translateY(-2px)}
-.bc-main{grid-column:span 12;min-height:auto}
-.bc-sm{grid-column:span 6;min-height:220px}
-.bc-half{grid-column:span 6;min-height:220px}
-.bc-accent{background:linear-gradient(135deg,rgba(37,99,235,0.07),var(--bg1));border-color:rgba(37,99,235,0.14)}
-.bc-label{font-size:10px;font-weight:700;color:var(--blue3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
-.bc-title{font-size:21px;font-weight:600;letter-spacing:-.025em;margin-bottom:12px}
-.bc-text{font-size:14px;color:var(--t2);line-height:1.8;font-weight:300}
-.bc-icon{width:44px;height:44px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.iw{margin-top:24px;display:flex;flex-direction:column;gap:6px}
-.iw-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border-radius:8px;padding:10px 14px;border-left:2px solid}
-.iw-row.r{border-left-color:var(--red)}.iw-row.a{border-left-color:var(--amber)}.iw-row.b{border-left-color:var(--blue2)}.iw-row.m{border-left-color:var(--t3);opacity:.4}
-.iw-text{font-size:12px;color:var(--t2)}
-.iw-tag{font-size:10px;font-weight:600;padding:2px 9px;border-radius:5px}
-.it-r{background:rgba(239,68,68,0.1);color:var(--red)}.it-a{background:rgba(245,158,11,0.1);color:var(--amber)}.it-b{background:rgba(59,130,246,0.1);color:var(--blue2)}.it-m{background:rgba(64,77,107,0.15);color:var(--t3)}
-.roles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:72px}
-.role-card{background:var(--bg1);padding:48px 44px;display:flex;align-items:flex-start;gap:22px;transition:background .2s}
-.role-card:hover{background:var(--bg2)}
-.role-icon{width:50px;height:50px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bg2);border:1px solid var(--border)}
-.role-body{flex:1}
-.role-kicker{font-size:11px;font-weight:600;color:var(--blue3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}
-.role-title{font-size:19px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px}
-.role-desc{font-size:14px;color:var(--t2);line-height:1.75;font-weight:300}
-.role-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--blue3);text-decoration:none;margin-top:14px;transition:gap .15s}
-.role-link:hover{gap:10px}
-.faq-list{margin-top:72px;display:flex;flex-direction:column;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
-.faq-item{background:var(--bg1);padding:28px 36px;cursor:pointer;transition:background .2s}
-.faq-item:hover,.faq-item.open{background:var(--bg2)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.faq-question{font-size:16px;font-weight:500;letter-spacing:-.01em}
-.faq-icon{width:24px;height:24px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:var(--t3);transition:all .2s}
-.faq-answer{font-size:14px;color:var(--t2);line-height:1.8;font-weight:300;max-height:0;overflow:hidden;transition:max-height .3s ease,margin .3s}
-.faq-item.open .faq-answer{max-height:200px;margin-top:14px}
-.faq-item.open .faq-icon{background:var(--bluedim);border-color:rgba(37,99,235,0.2);color:var(--blue3);transform:rotate(45deg)}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:72px}
-.pcard{background:var(--bg1);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;transition:all .2s}
-.pcard:hover{transform:translateY(-4px);border-color:var(--border2)}
-.pcard.pop{background:linear-gradient(160deg,rgba(37,99,235,0.08),var(--bg1));border-color:rgba(37,99,235,0.3);box-shadow:0 0 60px rgba(37,99,235,0.08)}
-.pop-chip{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:4px 18px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
-.pcard-tier{font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:18px}
-.pcard-price{font-family:var(--serif);font-size:54px;font-weight:400;letter-spacing:-.02em;line-height:1}
-.pcard-price sup{font-size:22px;font-weight:300;color:var(--t2);vertical-align:top;padding-top:12px;display:inline-block;font-family:var(--sans)}
-.pcard-trial{font-size:12px;color:var(--green);font-weight:500;margin-top:4px}
-.pcard-period{font-size:13px;color:var(--t3);margin-bottom:8px;margin-top:2px}
-.pcard-desc{font-size:14px;color:var(--t2);margin-bottom:26px;line-height:1.65;font-weight:300}
-.pcard-note{font-size:12px;color:var(--t3);background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;padding:8px 12px;margin-bottom:20px}
-.pcard-line{height:1px;background:var(--border);margin-bottom:22px}
-.pcard-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:30px}
-.pcard-list li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--t2);font-weight:300}
-.pcard-list li::before{content:'✓';color:var(--blue2);font-weight:600;font-size:13px;flex-shrink:0;margin-top:1px}
-.pcard-list li.no{color:var(--t3)}.pcard-list li.no::before{content:'—';color:var(--t3)}
-.pcard-btn{display:block;text-align:center;padding:14px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all .15s}
-.pb-solid{background:var(--blue);color:#fff;box-shadow:0 0 22px var(--blueglow)}.pb-solid:hover{background:var(--blue2);transform:translateY(-1px)}
-.pb-outline{background:transparent;color:var(--t2);border:1px solid var(--border2)}.pb-outline:hover{background:var(--bg2);color:var(--t1)}
-.cta-box{max-width:680px;margin:0 auto;text-align:center;background:var(--bg1);border:1px solid rgba(37,99,235,0.2);border-radius:28px;padding:88px 52px;position:relative;overflow:hidden}
-.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.5),transparent)}
-.cta-box::after{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(37,99,235,0.1) 0%,transparent 70%);pointer-events:none}
-.cta-h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.1;letter-spacing:-.01em;margin-bottom:16px}
-.cta-h2 em{font-style:italic;color:var(--blue3)}
-.cta-sub{font-size:17px;color:var(--t2);margin-bottom:12px;font-weight:300;line-height:1.75}
-.cta-social{font-size:13px;color:var(--t3);margin-bottom:40px}
-.cta-social strong{color:var(--t2);font-weight:500}
-.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.cta-guarantee{font-size:12px;color:var(--t3);margin-top:16px}
-footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:56px 24px}
-.footer-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
-.footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:16px}
-.fl-icon{width:30px;height:30px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.fl-name{font-size:16px;font-weight:600;color:var(--t1);letter-spacing:-.02em}
-.footer-desc{font-size:14px;color:var(--t3);line-height:1.7;max-width:280px;font-weight:300}
-.footer-col h4{font-size:12px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
-.footer-col a{display:block;font-size:14px;color:var(--t3);text-decoration:none;margin-bottom:10px;transition:color .15s;font-weight:300}
-.footer-col a:hover{color:var(--t2)}
-.footer-bottom{max-width:1080px;margin:36px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.footer-copy{font-size:13px;color:var(--t3)}
-.footer-legal{display:flex;gap:20px}
-.footer-legal a{font-size:13px;color:var(--t3);text-decoration:none;transition:color .15s}
-.footer-legal a:hover{color:var(--t2)}
-.mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;padding:12px 20px;background:rgba(7,9,15,0.95);backdrop-filter:blur(20px);border-top:1px solid var(--border)}
-.mcta-inner{display:flex;gap:10px}
-.mcta-btn{flex:1;text-align:center;padding:13px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all .15s}
-.mcta-p{background:var(--blue);color:#fff;box-shadow:0 0 20px var(--blueglow)}
-.mcta-g{background:var(--bg1);color:var(--t2);border:1px solid var(--border2)}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes breathe{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@media(max-width:960px){
-nav{padding:0 20px}
-.nav-links,.nav-in{display:none}
-.nav-ham{display:flex}
-.how-grid,.pricing-grid,.testi-grid,.roles-grid{grid-template-columns:1fr}
-.bento{grid-template-columns:1fr}.bc-main,.bc-sm,.bc-half{grid-column:span 1}
-.bc{overflow:hidden;max-width:100%}
-.footer-inner{grid-template-columns:1fr 1fr}
-.cta-box{padding:56px 28px}
-.footer-bottom{flex-direction:column;gap:12px;text-align:center}
-.mobile-cta-bar{display:block}
-.pain-stats{gap:24px}
-.hero-guarantees{gap:12px}
+:root{
+  --bg:#09090b;
+  --s1:#111113;
+  --s2:#18181b;
+  --s3:#1f1f23;
+  --s4:#27272a;
+  --tx:#fafafa;
+  --soft:#a1a1aa;
+  --muted:#71717a;
+  --dim:#3f3f46;
+  --accent:#3b82f6;
+  --hot:#4ade80;
+  --interested:#facc15;
+  --quest:#60a5fa;
+  --comp:#fb7185;
+  --spam:#52525b;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  --shadow-md:0 4px 16px rgba(0,0,0,.25);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.35);
 }
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--tx);
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+@keyframes up{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.fade-up{opacity:0}
+.fade-up.visible{animation:up .6s ease both}
+
+/* ── NAV ── */
+.nav-wrap{
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  justify-content:center;
+  padding:16px 24px;
+}
+.nav-pill{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(17,17,19,.87);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:100px;
+  padding:8px 8px 8px 20px;
+  box-shadow:0 4px 24px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.nav-logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:var(--tx);
+  font-size:14px;
+  font-weight:700;
+  margin-right:8px;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:2px;
+}
+.nav-links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 10px;
+  border-radius:100px;
+  transition:color .15s;
+}
+.nav-links a:hover{color:var(--tx)}
+.nav-cta{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  padding:8px 18px;
+  border-radius:100px;
+  margin-left:8px;
+  transition:opacity .15s;
+}
+.nav-cta:hover{opacity:.85}
+.nav-hamburger{
+  display:none;
+  background:none;
+  border:none;
+  color:var(--soft);
+  cursor:pointer;
+  padding:6px 10px;
+  font-size:18px;
+}
+.nav-mobile-menu{
+  display:none;
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(9,9,11,.95);
+  z-index:200;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{
+  color:var(--tx);
+  text-decoration:none;
+  font-size:20px;
+}
+.nav-mobile-close{
+  position:absolute;
+  top:20px;right:24px;
+  background:none;
+  border:none;
+  color:var(--soft);
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* ── SECTION BASE ── */
+section{padding:100px 24px}
+.inner{max-width:960px;margin:0 auto}
+.inner-sm{max-width:680px;margin:0 auto}
+.label{
+  display:inline-block;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:16px;
+}
+.label.hot{color:var(--hot)}
+.section-head{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(28px,4vw,40px);
+  font-weight:400;
+  line-height:1.2;
+  margin-bottom:12px;
+}
+.section-head em{font-style:italic;color:var(--accent)}
+.section-sub{
+  font-size:16px;
+  color:var(--soft);
+  line-height:1.7;
+}
+
+/* ── HERO ── */
+#hero{
+  padding-top:100px;
+  padding-bottom:60px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute;
+  top:0;left:50%;
+  transform:translateX(-50%);
+  width:700px;height:500px;
+  background:radial-gradient(ellipse,rgba(59,130,246,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:700px;
+  margin:0 auto;
+  position:relative;
+  animation:up .6s ease both;
+}
+.hero-h1{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(38px,6.5vw,62px);
+  font-weight:400;
+  line-height:1.15;
+  margin-bottom:24px;
+}
+.hero-h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{
+  font-size:18px;
+  color:var(--soft);
+  max-width:520px;
+  margin:0 auto 36px;
+  line-height:1.7;
+}
+.hero-ctas{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.btn-primary{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  font-size:15px;
+  padding:14px 32px;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(59,130,246,.4);
+  transition:transform .15s,box-shadow .15s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,130,246,.5)}
+.btn-secondary{
+  display:inline-block;
+  background:var(--s1);
+  color:var(--soft);
+  text-decoration:none;
+  font-size:15px;
+  padding:14px 28px;
+  border-radius:12px;
+  transition:color .15s;
+}
+.btn-secondary:hover{color:var(--tx)}
+.hero-note{
+  font-size:12px;
+  color:var(--dim);
+  margin-top:16px;
+}
+
+/* ── HERO MOCK ── */
+.mock-wrap{
+  max-width:780px;
+  margin:64px auto 0;
+  background:var(--s1);
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.03);
+  animation:up .6s .2s ease both;
+}
+.stat-bar{
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.stat-bar::-webkit-scrollbar{display:none}
+.stat-block{
+  flex:1;
+  min-width:120px;
+  background:var(--bg);
+  border-radius:10px;
+  padding:10px 12px;
+}
+.stat-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:20px;
+  font-weight:700;
+  line-height:1;
+  margin-bottom:4px;
+}
+.stat-label{
+  font-size:10px;
+  color:var(--dim);
+  line-height:1.3;
+}
+.comment-rows{}
+.c-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 16px;
+  border-bottom:1px solid var(--bg);
+}
+.c-row:last-child{border-bottom:none}
+.c-row.spam-row{opacity:.45}
+.c-bar{
+  width:3px;
+  align-self:stretch;
+  min-height:32px;
+  border-radius:2px;
+  flex-shrink:0;
+}
+.c-avatar{
+  width:26px;height:26px;
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9.5px;
+  font-weight:700;
+  flex-shrink:0;
+}
+.c-chip{
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.12em;
+  padding:3px 7px;
+  border-radius:5px;
+  flex-shrink:0;
+  color:var(--bg);
+}
+.c-conf{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  flex-shrink:0;
+}
+.c-text{
+  font-size:12.5px;
+  color:var(--soft);
+  flex:1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  min-width:0;
+}
+.c-name{
+  font-size:10.5px;
+  color:var(--dim);
+  flex-shrink:0;
+}
+.c-btn{
+  font-size:10px;
+  background:var(--s2);
+  color:var(--muted);
+  border:none;
+  border-radius:6px;
+  padding:3px 9px;
+  cursor:pointer;
+  flex-shrink:0;
+  font-family:'DM Sans',sans-serif;
+}
+
+/* ── PROBLEEM ── */
+#probleem{background:var(--s1)}
+.pain-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+  margin-top:48px;
+}
+.pain-list{display:flex;flex-direction:column;gap:24px}
+.pain-item{display:flex;gap:16px;align-items:flex-start}
+.pain-bar{
+  width:3px;height:40px;
+  border-radius:2px;
+  flex-shrink:0;
+  margin-top:3px;
+}
+.pain-title{font-size:16px;font-weight:600;margin-bottom:6px}
+.pain-desc{font-size:14px;color:var(--soft);line-height:1.7}
+.chaos-box{
+  background:var(--bg);
+  border-radius:16px;
+  padding:28px;
+  box-shadow:var(--shadow-md);
+}
+.chaos-header{font-size:12px;color:var(--dim);margin-bottom:20px}
+.chaos-lines{display:flex;flex-direction:column;gap:10px}
+.chaos-line{display:flex;align-items:center;gap:10px}
+.chaos-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+.chaos-text{font-size:13px;color:var(--soft)}
+.chaos-footer{font-size:12px;color:var(--comp);font-weight:500;margin-top:20px}
+
+/* ── HOE HET WERKT ── */
+#hoe{background:var(--bg)}
+#hoe .section-head,#hoe .label{text-align:center}
+#hoe .section-head{margin-bottom:56px}
+.steps-list{display:flex;flex-direction:column}
+.step-item{
+  display:flex;
+  gap:24px;
+  padding:32px 0;
+  border-bottom:1px solid var(--s2);
+}
+.step-item:last-child{border-bottom:none}
+.step-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:32px;
+  font-weight:700;
+  width:48px;
+  flex-shrink:0;
+  line-height:1;
+  padding-top:2px;
+}
+.step-title{font-size:19px;font-weight:600;line-height:1.3;margin-bottom:8px}
+.step-desc{font-size:15px;color:var(--soft);line-height:1.7}
+
+/* ── KERNFUNCTIE ── */
+.feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:0;
+}
+.classif-box{
+  background:var(--bg);
+  border-radius:16px;
+  padding:28px 24px;
+  box-shadow:var(--shadow-md);
+}
+.classif-header{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:20px}
+.classif-rows{display:flex;flex-direction:column}
+.classif-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid var(--s2);
+}
+.classif-row:last-child{border-bottom:none}
+.classif-comment{font-size:14px;color:var(--soft);flex:1}
+.classif-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.classif-chip{
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.12em;
+  padding:3px 8px;
+  border-radius:5px;
+  color:var(--bg);
+}
+.classif-conf{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+}
+.feature-cards{display:flex;flex-direction:column;gap:12px}
+.feature-card{
+  background:var(--bg);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:var(--shadow-sm);
+}
+.feature-card-title{font-size:15px;font-weight:600;margin-bottom:6px}
+.feature-card-desc{font-size:13px;color:var(--soft);line-height:1.6}
+
+/* ── VERGELIJKING ── */
+#vergelijk{background:var(--bg)}
+.table-wrap{
+  background:var(--s1);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  overflow-x:auto;
+  margin-top:40px;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:600px;
+}
+th,td{padding:14px 18px;text-align:left;font-size:13px}
+thead tr{border-bottom:1px solid var(--s3)}
+th{font-weight:600;color:var(--dim)}
+th.cc{color:var(--accent)}
+tbody tr{border-bottom:1px solid var(--s2)}
+tbody tr:last-child{border-bottom:none}
+td.label-cell{color:var(--soft);font-weight:500}
+td.cc-cell{color:var(--hot);font-weight:600}
+td.mod-cell{color:var(--muted)}
+td.meta-cell{color:var(--dim)}
+
+/* ── VOOR WIE ── */
+#voorwie{background:var(--s1)}
+.for-list{display:flex;flex-direction:column;margin-top:48px}
+.for-item{
+  display:flex;
+  gap:24px;
+  padding:28px 0;
+  border-bottom:1px solid var(--s3);
+}
+.for-item:last-child{border-bottom:none}
+.for-bar{
+  width:3px;height:36px;
+  border-radius:2px;
+  flex-shrink:0;
+  margin-top:4px;
+}
+.for-title{font-size:17px;font-weight:600;margin-bottom:8px}
+.for-desc{font-size:14px;color:var(--soft);max-width:600px;line-height:1.7}
+
+/* ── TRUST ── */
+#trust{background:var(--bg)}
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:0;
+}
+.trust-card{
+  background:var(--s1);
+  border-radius:16px;
+  padding:28px 24px;
+  box-shadow:var(--shadow-md);
+}
+.trust-title{font-size:16px;font-weight:600;margin-bottom:10px}
+.trust-desc{font-size:14px;color:var(--soft);line-height:1.7}
+
+/* ── FAQ ── */
+#faq{background:var(--s1)}
+#faq .label,#faq .section-head{text-align:center}
+#faq .section-head{margin-bottom:48px}
+.faq-list{display:flex;flex-direction:column;gap:0;margin-top:0}
+.faq-item{border-bottom:1px solid var(--s3)}
+.faq-item:first-child{border-top:1px solid var(--s3)}
+.faq-q{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:20px 0;
+  cursor:pointer;
+  background:none;
+  border:none;
+  width:100%;
+  text-align:left;
+  color:var(--tx);
+  font-family:'DM Sans',sans-serif;
+  font-size:15px;
+  font-weight:500;
+  line-height:1.4;
+}
+.faq-icon{
+  font-size:20px;
+  font-weight:300;
+  color:var(--muted);
+  flex-shrink:0;
+  transition:transform .2s;
+  line-height:1;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{
+  display:none;
+  font-size:14px;
+  color:var(--soft);
+  line-height:1.8;
+  padding-bottom:20px;
+}
+.faq-item.open .faq-a{display:block}
+
+/* ── PRICING ── */
+#pricing{background:var(--bg);text-align:center}
+#pricing .label,#pricing .section-head{text-align:center}
+.pricing-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  max-width:720px;
+  margin:48px auto 0;
+}
+.pricing-card{
+  background:var(--s1);
+  border-radius:20px;
+  padding:36px 32px;
+  box-shadow:var(--shadow-lg),inset 0 0 0 1px rgba(255,255,255,.04);
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  text-align:left;
+}
+.pricing-badge{
+  position:absolute;
+  top:16px;right:16px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.1em;
+  color:var(--accent);
+  background:rgba(59,130,246,.15);
+  padding:4px 10px;
+  border-radius:100px;
+}
+.pricing-name{font-size:18px;font-weight:700;margin-bottom:16px}
+.pricing-price{
+  display:flex;
+  align-items:baseline;
+  gap:6px;
+  margin-bottom:6px;
+}
+.pricing-amount{
+  font-family:'JetBrains Mono',monospace;
+  font-size:44px;
+  font-weight:700;
+  line-height:1;
+}
+.pricing-per{font-size:14px;color:var(--muted)}
+.pricing-trial{font-size:12px;color:var(--accent);margin-bottom:8px}
+.pricing-trial.alt{color:var(--muted)}
+.pricing-tagline{font-size:13px;color:var(--muted);margin-bottom:24px}
+.pricing-features{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex:1;
+  margin-bottom:28px;
+}
+.pricing-features li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  color:var(--soft);
+}
+.pricing-features li::before{
+  content:'✓';
+  color:var(--hot);
+  font-weight:700;
+  flex-shrink:0;
+}
+.pricing-cta-primary{
+  display:block;
+  text-align:center;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  font-size:15px;
+  padding:14px;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(59,130,246,.3);
+  margin-top:auto;
+  transition:opacity .15s;
+}
+.pricing-cta-primary:hover{opacity:.85}
+.pricing-cta-secondary{
+  display:block;
+  text-align:center;
+  background:var(--s2);
+  color:var(--tx);
+  text-decoration:none;
+  font-size:15px;
+  padding:14px;
+  border-radius:12px;
+  margin-top:auto;
+  transition:background .15s;
+}
+.pricing-cta-secondary:hover{background:var(--s3)}
+.pricing-footnote{font-size:13px;color:var(--dim);margin-top:24px;text-align:center}
+
+/* ── FINAL CTA ── */
+#cta{
+  padding:100px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-glow{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(59,130,246,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-inner{position:relative}
+#cta .section-head{
+  font-size:clamp(28px,4vw,40px);
+  margin-bottom:16px;
+}
+#cta .section-sub{
+  font-size:16px;
+  max-width:480px;
+  margin:0 auto 36px;
+}
+.cta-note{font-size:12px;color:var(--dim);margin-top:16px}
+.btn-cta{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  font-size:16px;
+  padding:16px 36px;
+  border-radius:14px;
+  box-shadow:0 4px 24px rgba(59,130,246,.4);
+  transition:transform .15s,box-shadow .15s;
+}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.5)}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--s2);
+  padding:48px 24px;
+}
+.footer-inner{
+  max-width:960px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  gap:48px;
+  flex-wrap:wrap;
+}
+.footer-left{}
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:var(--tx);
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.footer-tagline{font-size:12px;color:var(--dim);line-height:1.6}
+.footer-cols{
+  display:flex;
+  gap:48px;
+}
+.footer-col{}
+.footer-col-title{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--dim);
+  margin-bottom:14px;
+}
+.footer-col a{
+  display:block;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+  margin-bottom:8px;
+  transition:color .15s;
+}
+.footer-col a:hover{color:var(--tx)}
+.footer-bottom{
+  max-width:960px;
+  margin:32px auto 0;
+  font-size:11px;
+  color:var(--dim);
+  border-top:1px solid var(--s2);
+  padding-top:20px;
+}
+
+/* ── RESPONSIVE ── */
 @media(max-width:768px){
-.hero-h1{font-size:clamp(1.8rem,5vw,3rem)}
-.hero-tag{font-size:11px;padding:5px 12px}
-.nav-cta{display:none}
-.bc-title{word-break:break-word;overflow:hidden;width:100%}
-
-/* Stats grid — altijd 3 naast elkaar */
-.stats-grid{grid-template-columns:repeat(3,1fr);gap:0;background:var(--border)}
-.stats-grid .stat-cell:last-child{grid-column:auto;text-align:center}
-.stat-cell{padding:24px 8px;overflow:hidden;text-align:center}
-.stat-n{font-size:clamp(24px,7vw,40px)}
-.stat-l{font-size:11px;max-width:90px}
-.stat-src{font-size:10px;overflow-wrap:break-word;word-break:break-word}
-
-/* Pain stats — altijd 3 naast elkaar */
-.pain-stats{gap:0;flex-wrap:nowrap;justify-content:space-between}
-.ps-item{flex:1;padding:0 4px}
-.ps-n{font-size:clamp(26px,7vw,40px)}
-.ps-l{font-size:11px;max-width:100%}
-
-/* Bento kernfunctie — inline style override */
-.bc-main{display:block !important}
-.bc-main .bc-title{font-size:18px;word-break:break-word;hyphens:auto;overflow-wrap:break-word;width:100%}
-.bc-main .iw{margin-top:20px}
-
-/* Product window — geen horizontale overflow */
-.product-window{animation:none;overflow:hidden}
-.pw-header{flex-wrap:wrap;gap:6px;padding:10px 12px}
-.pw-stats{gap:6px;flex-wrap:nowrap;overflow-x:auto;max-width:100%}
-.pw-stat{font-size:10px;white-space:nowrap}
-.pw-page{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px;font-size:11px}
-.pw-filters{overflow-x:auto}
-.pwc-btn{font-size:11px;padding:5px 8px}
-.pwc-suggest{font-size:11px}
-
-/* Logo strip — kleiner en gewrapt */
-.logos-r{gap:24px}
-.logo-i{font-size:13px}
-
-/* How cards — minder padding */
-.how-card{padding:28px 20px}
-.how-num{font-size:3rem}
+  section{padding:72px 20px}
+  .pain-grid{grid-template-columns:1fr;gap:40px}
+  .feature-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px}
+  .table-wrap{margin-top:32px}
+  .footer-inner{flex-direction:column;gap:32px}
+  .footer-cols{gap:32px}
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:block}
+  .nav-pill{padding:8px 8px 8px 16px}
+}
+@media(max-width:480px){
+  .nav-wrap{padding:12px 16px}
+  .hero-h1{font-size:clamp(32px,9vw,48px)}
+  .hero-sub{font-size:16px}
+  .stat-bar{gap:6px}
+  .stat-block{min-width:100px;padding:8px 10px}
+  .stat-num{font-size:16px}
+  .c-row{padding:8px 10px;gap:6px}
+  .c-name,.c-btn{display:none}
+  .pricing-card{padding:28px 24px}
+  .pricing-amount{font-size:36px}
+  .footer-cols{flex-direction:column;gap:24px}
 }
 </style>
 </head>
 <body>
 
-<nav id="mainNav">
-  <a href="https://commentcenter.nl" class="nav-brand">
-    <div class="nav-logo"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 13H2L8 2Z" fill="none" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6L11 11H5L8 6Z" fill="white" opacity="0.38"/></svg></div>
-    <span class="nav-name">CommentCenter</span>
-  </a>
-  <div class="nav-links">
-    <a href="#pijn">Probleem</a>
-    <a href="#hoe">Hoe het werkt</a>
-    <a href="#functies">Functies</a>
-    <a href="#faq">FAQ</a>
-    <a href="#prijzen">Prijzen</a>
+<!-- NAV -->
+<nav class="nav-wrap" aria-label="Navigatie">
+  <div class="nav-pill">
+    <a class="nav-logo" href="/">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+        <defs><linearGradient id="g" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#60a5fa"/><stop offset="1" stop-color="#3b82f6"/>
+        </linearGradient></defs>
+        <path d="M12 2L2 22h20L12 2z" fill="url(#g)"/>
+      </svg>
+      CommentCenter
+    </a>
+    <div class="nav-links">
+      <a href="#probleem">Probleem</a>
+      <a href="#hoe">Hoe het werkt</a>
+      <a href="#vergelijk">Vergelijk</a>
+      <a href="#pricing">Prijzen</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="https://app.commentcenter.nl" class="nav-cta">Start gratis</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu openen">&#9776;</button>
   </div>
-  <div class="nav-right">
-    <a href="https://app.commentcenter.nl" class="nav-in">Inloggen</a>
-    <a href="https://app.commentcenter.nl" class="nav-cta">Gratis starten →</a>
-  </div>
-  <div class="nav-ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#pijn" onclick="toggleMenu()">Probleem</a>
-  <a href="#hoe" onclick="toggleMenu()">Hoe het werkt</a>
-  <a href="#functies" onclick="toggleMenu()">Functies</a>
-  <a href="#faq" onclick="toggleMenu()">FAQ</a>
-  <a href="#prijzen" onclick="toggleMenu()">Prijzen</a>
-  <a href="https://app.commentcenter.nl" style="color:var(--blue3);font-weight:600;border-bottom:none">Gratis starten →</a>
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+  <button class="nav-mobile-close" id="mobileClose" aria-label="Menu sluiten">&times;</button>
+  <a href="#probleem" onclick="closeMobile()">Probleem</a>
+  <a href="#hoe" onclick="closeMobile()">Hoe het werkt</a>
+  <a href="#vergelijk" onclick="closeMobile()">Vergelijk</a>
+  <a href="#pricing" onclick="closeMobile()">Prijzen</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="https://app.commentcenter.nl" style="background:var(--accent);color:#fff;padding:12px 32px;border-radius:12px;font-weight:600;margin-top:8px">Start gratis</a>
 </div>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-tag"><span class="tag-dot"></span>AI commentbeheer voor Facebook</div>
-  <h1 class="hero-h1">Je mist 73% van je kopers<br>in je <em>comments.</em></h1>
-  <p class="hero-sub">CommentCenter herkent koopintentie automatisch en laat je reageren binnen 30 seconden — voordat je lead weg is.</p>
-  <p class="hero-proof-inline">Gebruikt door <strong>200+ Nederlandse marketing teams</strong> &nbsp;·&nbsp; <span class="hp-stars">★★★★★</span> 4.9/5</p>
-  <div class="hero-actions">
-    <a href="https://app.commentcenter.nl" class="btn-primary">Start gratis — haal je eerste leads uit je comments <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
+<section id="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <h1 class="hero-h1">Je betaalt voor elke klik.<br><em>Maar niemand leest de comments.</em></h1>
+    <p class="hero-sub">Spot hot leads, klachten en spam in seconden — en handel direct vanuit één overzicht gebouwd voor paid teams.</p>
+    <div class="hero-ctas">
+      <a href="https://app.commentcenter.nl" class="btn-primary">Scan je eerste advertentie &rarr;</a>
+      <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
+    </div>
+    <p class="hero-note">Geen creditcard &middot; Direct live &middot; 14 dagen gratis</p>
   </div>
-  <div class="hero-guarantees">
-    <span class="hg"><span class="hg-check">✓</span> Geen creditcard</span>
-    <span class="hg"><span class="hg-check">✓</span> Direct live</span>
-    <span class="hg"><span class="hg-check">✓</span> Werkt met je bestaande Facebook ads</span>
+
+  <!-- HERO MOCK -->
+  <div class="mock-wrap fade-up" style="animation-delay:.2s">
+    <div class="stat-bar">
+      <div class="stat-block">
+        <div class="stat-num" style="color:var(--hot)">5</div>
+        <div class="stat-label">Hot Leads waiting</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num" style="color:var(--interested)">3</div>
+        <div class="stat-label">Interested</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num" style="color:var(--quest)">4</div>
+        <div class="stat-label">Vragen open</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num" style="color:var(--comp)">6</div>
+        <div class="stat-label">Klachten &middot; actie nodig</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num" style="color:var(--spam)">12</div>
+        <div class="stat-label">Spam &middot; klaar om te hiden</div>
+      </div>
+    </div>
+    <div class="comment-rows">
+      <div class="c-row">
+        <div class="c-bar" style="background:var(--hot)"></div>
+        <div class="c-avatar" style="background:rgba(74,222,128,.1);color:var(--hot)">MV</div>
+        <span class="c-chip" style="background:var(--hot)">HOT LEAD</span>
+        <span class="c-conf" style="color:var(--hot)">97%</span>
+        <span class="c-text">Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?</span>
+        <span class="c-name">Mark Visser</span>
+        <button class="c-btn">Reply</button>
+        <button class="c-btn">Hide</button>
+      </div>
+      <div class="c-row">
+        <div class="c-bar" style="background:var(--interested)"></div>
+        <div class="c-avatar" style="background:rgba(250,204,21,.1);color:var(--interested)">SB</div>
+        <span class="c-chip" style="background:var(--interested)">INTERESTED</span>
+        <span class="c-conf" style="color:var(--interested)">82%</span>
+        <span class="c-text">Interessant, ga dit bespreken met mijn partner</span>
+        <span class="c-name">Sandra de Boer</span>
+        <button class="c-btn">Reply</button>
+        <button class="c-btn">Hide</button>
+      </div>
+      <div class="c-row">
+        <div class="c-bar" style="background:var(--quest)"></div>
+        <div class="c-avatar" style="background:rgba(96,165,250,.1);color:var(--quest)">RJ</div>
+        <span class="c-chip" style="background:var(--quest)">VRAAG</span>
+        <span class="c-conf" style="color:var(--quest)">88%</span>
+        <span class="c-text">Is er ook een showroom waar ik dit kan bekijken?</span>
+        <span class="c-name">Roel Janssen</span>
+        <button class="c-btn">Reply</button>
+        <button class="c-btn">Hide</button>
+      </div>
+      <div class="c-row">
+        <div class="c-bar" style="background:var(--comp)"></div>
+        <div class="c-avatar" style="background:rgba(251,113,133,.1);color:var(--comp)">TD</div>
+        <span class="c-chip" style="background:var(--comp)">KLACHT</span>
+        <span class="c-conf" style="color:var(--comp)">91%</span>
+        <span class="c-text">Bij de buren na 2 jaar al kapot, bespaar je geld</span>
+        <span class="c-name">Tom D.</span>
+        <button class="c-btn">Reply</button>
+        <button class="c-btn">Hide</button>
+      </div>
+      <div class="c-row spam-row">
+        <div class="c-bar" style="background:var(--spam)"></div>
+        <div class="c-avatar" style="background:rgba(82,82,91,.2);color:var(--spam)">JK</div>
+        <span class="c-chip" style="background:var(--spam);color:var(--soft)">SPAM</span>
+        <span class="c-conf" style="color:var(--spam)">94%</span>
+        <span class="c-text">Petra van Dam moet je dit zien &#x1F602;&#x1F447;</span>
+        <span class="c-name">Jan K.</span>
+        <button class="c-btn">Reply</button>
+        <button class="c-btn">Hide</button>
+      </div>
+    </div>
   </div>
-  <div class="hero-product">
-    <div class="product-glow"></div>
-    <div class="product-window">
-      <div class="pw-bar"><div class="pw-dots"><div class="pw-dot" style="background:#ff5f57"></div><div class="pw-dot" style="background:#ffbd2e"></div><div class="pw-dot" style="background:#28ca41"></div></div><div class="pw-url">app.commentcenter.nl/dashboard</div></div>
-      <div class="pw-header">
-        <div class="pw-stats">
-          <div class="pws"><div class="pws-n" style="color:var(--t1)">312</div><div class="pws-l">Totaal</div></div>
-          <div class="pw-div"></div>
-          <div class="pws"><div class="pws-n" style="color:var(--red)">47</div><div class="pws-l">Hot leads</div></div>
-          <div class="pw-div"></div>
-          <div class="pws"><div class="pws-n" style="color:var(--amber)">68</div><div class="pws-l">Warm</div></div>
-          <div class="pw-div"></div>
-          <div class="pws"><div class="pws-n" style="color:var(--t3)">182</div><div class="pws-l">Spam</div></div>
+</section>
+
+<!-- PROBLEEM -->
+<section id="probleem">
+  <div class="inner">
+    <span class="label">Het Probleem</span>
+    <h2 class="section-head">Elke dag lopen er leads weg die je al hebt betaald.</h2>
+    <div class="pain-grid">
+      <div class="pain-list">
+        <div class="pain-item">
+          <div class="pain-bar" style="background:var(--hot)"></div>
+          <div>
+            <div class="pain-title">Hot leads verdwijnen in de ruis</div>
+            <p class="pain-desc">Iemand vraagt 'wat kost dit?' onder je ad. Tussen 40 spam-tags en emoji's ziet niemand het.</p>
+          </div>
         </div>
-        <div class="pw-page"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect width="13" height="13" rx="3.5" fill="#1877f2"/><path d="M8 6.5H7V10H6V6.5H5.5V5.5H6V5C6 4.2 6.4 3.5 7.5 3.5L8.5 3.6V4.5H7.8C7.5 4.5 7.5 4.6 7.5 4.8V5.5H8.5L8 6.5Z" fill="white"/></svg>Mijn Campagne NL</div>
+        <div class="pain-item">
+          <div class="pain-bar" style="background:var(--comp)"></div>
+          <div>
+            <div class="pain-title">Teams reageren te laat — of niet</div>
+            <p class="pain-desc">Comments op ads krijgen geen notificaties in Meta. Tegen de tijd dat iemand kijkt, is de koper verder.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-bar" style="background:var(--spam)"></div>
+          <div>
+            <div class="pain-title">Native Meta geeft je nul workflow</div>
+            <p class="pain-desc">Geen prioriteit, geen classificatie, geen bulk acties. Alles handmatig. Per comment. Per post.</p>
+          </div>
+        </div>
       </div>
-      <div class="pw-filters"><div class="pwf on">Alles 312</div><div class="pwf">🔥 Hot lead 47</div><div class="pwf">👀 Warm 68</div><div class="pwf">❓ Vraag 15</div><div class="pwf">🗑️ Spam 182</div></div>
-      <div class="pw-body">
-        <div class="pwc hot"><div class="pwc-av" style="background:rgba(239,68,68,0.15);color:var(--red)">M</div><div class="pwc-body"><div class="pwc-top"><span class="pwc-name">Jan van der Berg · 3 min</span><span class="pwc-badge bh">🔥 Hot Lead · 97%</span></div><div class="pwc-text">Wat kost dit precies? Wil er 3 bestellen voor mijn bedrijf</div><div class="pwc-suggest">💬 "Stuur ons een DM voor prijsinformatie en persoonlijk advies!" — Bewerken & versturen →</div><div class="pwc-btns"><div class="pwc-btn p">↩ Reageer als jouw pagina</div><div class="pwc-btn d">🙈 Verbergen</div></div></div></div>
-        <div class="pwc warm"><div class="pwc-av" style="background:rgba(245,158,11,0.15);color:var(--amber)">S</div><div class="pwc-body"><div class="pwc-top"><span class="pwc-name">Sarah Vermeersch · 18 min</span><span class="pwc-badge bw">👀 Warm · 82%</span></div><div class="pwc-text">Ziet er interessant uit, benieuwd naar ervaringen</div><div class="pwc-btns"><div class="pwc-btn p">↩ Reageer</div><div class="pwc-btn d">🙈 Verbergen</div></div></div></div>
-        <div class="pwc neu"><div class="pwc-av" style="background:rgba(64,77,107,0.3);color:var(--t3)">R</div><div class="pwc-body"><div class="pwc-top"><span class="pwc-name">Rick de Boer · 42 min</span><span class="pwc-badge" style="background:rgba(64,77,107,0.12);color:var(--t3);border-color:rgba(64,77,107,0.18)">🗑️ Spam</span></div><div class="pwc-text">tag je vriend hieronder 😂👇</div><div class="pwc-btns"><div class="pwc-btn d">🙈 In bulk verbergen</div></div></div></div>
+      <div class="chaos-box">
+        <div class="chaos-header">Typische ad comment sectie — onbeheerd</div>
+        <div class="chaos-lines">
+          <div class="chaos-line" style="opacity:.35">
+            <div class="chaos-dot" style="background:var(--spam)"></div>
+            <span class="chaos-text">Petra kijk dit &#x1F602;&#x1F447;</span>
+          </div>
+          <div class="chaos-line">
+            <div class="chaos-dot" style="background:var(--hot)"></div>
+            <span class="chaos-text">Wat kost dit all-in?</span>
+          </div>
+          <div class="chaos-line" style="opacity:.6">
+            <div class="chaos-dot" style="background:var(--comp)"></div>
+            <span class="chaos-text">SCAM!! Trap er niet in</span>
+          </div>
+          <div class="chaos-line" style="opacity:.3">
+            <div class="chaos-dot" style="background:var(--spam)"></div>
+            <span class="chaos-text">Jan Bakker</span>
+          </div>
+          <div class="chaos-line">
+            <div class="chaos-dot" style="background:var(--hot)"></div>
+            <span class="chaos-text">Ik wil graag meer info, kan ik bellen?</span>
+          </div>
+          <div class="chaos-line" style="opacity:.3">
+            <div class="chaos-dot" style="background:var(--spam)"></div>
+            <span class="chaos-text">&#x1F3E0;&#x1F525;&#x1F4B0; DM mij voor geld verdienen</span>
+          </div>
+          <div class="chaos-line" style="opacity:.8">
+            <div class="chaos-dot" style="background:var(--quest)"></div>
+            <span class="chaos-text">Is er subsidie mogelijk?</span>
+          </div>
+          <div class="chaos-line" style="opacity:.5">
+            <div class="chaos-dot" style="background:var(--comp)"></div>
+            <span class="chaos-text">Nep rotzooi dit</span>
+          </div>
+        </div>
+        <div class="chaos-footer">2 hot leads. Verloren in de ruis.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LOGOS -->
-<div class="logos reveal">
-  <div class="logos-inner">
-    <div class="logos-l">Vertrouwd door marketing teams bij</div>
-    <div class="logos-r"><span class="logo-i">Adwise</span><span class="logo-i">Dept Agency</span><span class="logo-i">MediaMonks</span><span class="logo-i">Greenhouse</span><span class="logo-i">Fonkel Media</span></div>
-  </div>
-</div>
-
-<!-- PAIN -->
-<div class="pain-section" id="pijn">
-  <div style="padding:100px 24px">
-    <div class="pain-inner reveal">
-      <h2 class="pain-h">Elke dag laat je <em>kopers</em><br>onbeantwoord staan.</h2>
-      <p class="pain-p">Je post een advertentie. Honderden comments stromen binnen. Maar wie vraagt nu écht naar de prijs? Wie is klaar om vandaag te kopen? Die naald zoeken in de hooiberg kost jou dagelijks uren — en leads die nooit terugkomen.</p>
-      <div class="pain-stats">
-        <div class="ps-item"><div class="ps-n">73%</div><div class="ps-l">Van hot leads krijgt nooit een reactie</div></div>
-        <div class="ps-item"><div class="ps-n">2u</div><div class="ps-l">Per dag kwijt aan handmatig modereren</div></div>
-        <div class="ps-item"><div class="ps-n">€0</div><div class="ps-l">Opbrengst van een comment zonder reply</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- HOW IT WORKS -->
+<!-- HOE HET WERKT -->
 <section id="hoe">
-  <div class="wrap">
-    <div class="reveal"><div class="sec-tag">Hoe het werkt</div><h2 class="sec-h2">Van advertentie naar<br><em>pipeline</em> in 30 seconden</h2><p class="sec-sub">Geen installatie, geen developer, geen gedoe. Verbind je Facebook pagina en begin.</p></div>
-    <div class="how-grid reveal">
-      <div class="how-card"><div class="how-num">01</div><div class="how-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3L17 17H3L10 3Z" fill="none" stroke="var(--blue3)" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8L13 13H7L10 8Z" fill="var(--blue3)" opacity="0.4"/></svg></div><div class="how-title">Verbind je pagina</div><div class="how-text">Login met Facebook. Kies je pagina. Plak de URL van je advertentie. Geen developer, geen API keys, geen handleiding.</div><div class="how-badge">✓ Werkt met elke Facebook-pagina</div></div>
-      <div class="how-card"><div class="how-num">02</div><div class="how-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--blue3)" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="var(--blue3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="how-title">AI leest de intentie</div><div class="how-text">Claude AI classificeert elk comment: Hot Lead, Warm, Vraag, Klacht of Spam. Met zekerheidscore en een kant-en-klare reply in de juiste taal.</div><div class="how-badge">✓ Nederlands, Engels, Frans, Duits</div></div>
-      <div class="how-card"><div class="how-num">03</div><div class="how-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M13 6l4 4-4 4" stroke="var(--blue3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="how-title">Reageer in één klik</div><div class="how-text">Verstuur de AI-reply namens jouw pagina, verberg spam in bulk, of exporteer hot leads naar je CRM. Alles vanuit één dashboard.</div><div class="how-badge">✓ Officiële Facebook Graph API</div></div>
+  <div class="inner-sm">
+    <span class="label">Hoe het werkt</span>
+    <h2 class="section-head">Van advertentie naar <em>actie</em> in 30 seconden.</h2>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num" style="color:var(--accent)">01</div>
+        <div>
+          <div class="step-title">Verbind je pagina</div>
+          <p class="step-desc">Login met Facebook. Kies je pagina. Plak de URL — of meerdere tegelijk uit Meta Business Manager.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num" style="color:var(--hot)">02</div>
+        <div>
+          <div class="step-title">AI classificeert elk comment</div>
+          <p class="step-desc">Hot Lead, Interested, Vraag, Klacht of Spam. Met confidence score en een reply in de juiste taal.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num" style="color:var(--interested)">03</div>
+        <div>
+          <div class="step-title">Pak hot leads eerst. Hide spam in bulk. Export naar je team.</div>
+          <p class="step-desc">Reply direct als je pagina, hide spam in één klik, export buyer intent als CSV naar je CRM of Slack.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section style="padding-top:0"><div class="wrap reveal"><div class="stats-grid"><div class="stat-cell"><div class="stat-n"><em>94</em>%</div><div class="stat-l">Minder tijd kwijt aan handmatig commentbeheer</div><div class="stat-src">Gemiddeld over 50 klanten, Q1 2026</div></div><div class="stat-cell"><div class="stat-n"><em>3.2</em>×</div><div class="stat-l">Meer hot leads herkend dan bij handmatig beheer</div><div class="stat-src">30-daagse test, Dept Agency</div></div><div class="stat-cell"><div class="stat-n"><em>30</em>s</div><div class="stat-l">Van URL naar volledig geclassificeerd dashboard</div><div class="stat-src">Gemeten bij 500+ comment-posts</div></div></div></div></section>
-
-<!-- TESTIMONIALS -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="reveal"><div class="sec-tag">Wat teams zeggen</div><h2 class="sec-h2">Vertrouwd door teams die<br><em>resultaat</em> leveren</h2></div>
-    <div class="testi-grid reveal">
-      <div class="tc-card"><div class="tc-stars">★★★★★</div><div class="tc-q">"We waren 2 uur per dag handmatig comments doorspitten. CommentCenter heeft dat teruggebracht naar 10 minuten. De hot lead-detectie verdient zichzelf elke week terug."</div><div class="tc-auth"><div class="tc-av" style="background:var(--blue);color:#fff">R</div><div><div class="tc-name">Roel van den Berg</div><div class="tc-role">Head of Paid Social · Dept Agency</div></div></div></div>
-      <div class="tc-card"><div class="tc-stars">★★★★★</div><div class="tc-q">"Eindelijk iets dat Nederlandse comments echt begrijpt. We beheren 12 klanten — CommentCenter verwerkt het volledige volume over alles heen, moeiteloos."</div><div class="tc-auth"><div class="tc-av" style="background:#1877f2;color:#fff">L</div><div><div class="tc-name">Lisa Hoffmann</div><div class="tc-role">Performance Lead · MediaMonks</div></div></div></div>
-      <div class="tc-card"><div class="tc-stars">★★★★★</div><div class="tc-q">"De voorgestelde replies zijn angstaanjagend goed. 80% van de tijd klik ik gewoon op versturen. Het kent onze tone of voice beter dan ik durfde te hopen."</div><div class="tc-auth"><div class="tc-av" style="background:#2563eb;color:#fff">T</div><div><div class="tc-name">Thomas Claes</div><div class="tc-role">Social Media Manager · Fonkel</div></div></div></div>
+<!-- KERNFUNCTIE -->
+<section id="kernfunctie" style="background:var(--s1)">
+  <div class="inner">
+    <span class="label hot">Kernfunctie</span>
+    <h2 class="section-head">Intentclassificatie die <em>echt</em> werkt.</h2>
+    <p class="section-sub" style="max-width:600px;margin-bottom:48px">Geen trefwoordmatching. Echte AI-redenering. Begrijpt context, toon en taal — en geeft je direct de acties die er toe doen.</p>
+    <div class="feature-grid">
+      <div class="classif-box">
+        <div class="classif-header">Live classificatie: zonnepanelen campagne</div>
+        <div class="classif-rows">
+          <div class="classif-row">
+            <span class="classif-comment">Kan ik dit ook laten plaatsen in Zeeland?</span>
+            <div class="classif-right">
+              <span class="classif-chip" style="background:var(--hot)">HOT LEAD</span>
+              <span class="classif-conf" style="color:var(--hot)">97%</span>
+            </div>
+          </div>
+          <div class="classif-row">
+            <span class="classif-comment">Interessant, ga dit bespreken met mijn partner</span>
+            <div class="classif-right">
+              <span class="classif-chip" style="background:var(--interested)">INTERESTED</span>
+              <span class="classif-conf" style="color:var(--interested)">82%</span>
+            </div>
+          </div>
+          <div class="classif-row">
+            <span class="classif-comment">Is er subsidie mogelijk?</span>
+            <div class="classif-right">
+              <span class="classif-chip" style="background:var(--quest)">VRAAG</span>
+              <span class="classif-conf" style="color:var(--quest)">88%</span>
+            </div>
+          </div>
+          <div class="classif-row">
+            <span class="classif-comment">Bij de buren kapot na 2 jaar</span>
+            <div class="classif-right">
+              <span class="classif-chip" style="background:var(--comp)">KLACHT</span>
+              <span class="classif-conf" style="color:var(--comp)">91%</span>
+            </div>
+          </div>
+          <div class="classif-row">
+            <span class="classif-comment">Petra moet je dit zien &#x1F602;&#x1F447;</span>
+            <div class="classif-right">
+              <span class="classif-chip" style="background:var(--spam);color:var(--soft)">SPAM</span>
+              <span class="classif-conf" style="color:var(--spam)">94%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-card-title">Reply als je pagina</div>
+          <div class="feature-card-desc">Stuur een reply direct als je Facebook-pagina, met een AI-gegenereerde suggestie in de juiste taal en toon.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-title">Bulk hide in één klik</div>
+          <div class="feature-card-desc">Selecteer alle spam-comments en hide ze tegelijk. Met bevestiging zodat je nooit per ongeluk een vraag verwijdert.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-title">Export hot leads als CSV</div>
+          <div class="feature-card-desc">Download buyer intent data rechtstreeks naar je CRM, Slack of rapportage. Klaar voor follow-up.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-title">Meerdere posts tegelijk</div>
+          <div class="feature-card-desc">Plak meerdere ad-URLs en scan ze tegelijk. Geen handmatig post voor post door Meta klikken.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section id="functies" style="padding-top:0">
-  <div class="wrap">
-    <div class="reveal"><div class="sec-tag">Functies</div><h2 class="sec-h2">Alles wat je nodig hebt.<br><em>Niks wat je niet nodig hebt.</em></h2><p class="sec-sub">Gebouwd voor performance marketeers die geen tijd hebben voor gedoe.</p></div>
-    <div class="bento reveal">
-      <div class="bc bc-main bc-accent" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start"><div class="bc-label">Kernfunctie</div><div class="bc-title">Intentclassificatie die echt werkt</div><div class="bc-text">Geen trefwoordmatching. Echte AI-redenering. CommentCenter begrijpt context, toon en taal — niet alleen wat iemand zegt, maar wat ze bedoelen.<br><br>"Wat kost dit?" → Hot Lead. "Vrijmibo gehad denk" → Spam. Het verschil is omzet.</div><div class="iw"><div class="iw-row r"><span class="iw-text">Wat kost dit? Ik wil er 3 bestellen voor mijn zaak</span><span class="iw-tag it-r">🔥 Hot · 97%</span></div><div class="iw-row a"><span class="iw-text">Interessant, ga dit eens bekijken</span><span class="iw-tag it-a">👀 Warm · 78%</span></div><div class="iw-row b"><span class="iw-text">Werkt dit ook voor ZZP'ers?</span><span class="iw-tag it-b">❓ Vraag · 88%</span></div><div class="iw-row m"><span class="iw-text">tag je vriend 😂😂</span><span class="iw-tag it-m">🗑️ Spam</span></div></div></div>
-      <div class="bc bc-sm"><div class="bc-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 17l4-4 3 3 4-5 3 3" stroke="var(--blue3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="bc-title">Reageer als jouw pagina</div><div class="bc-text">AI stelt per comment een reply voor in de taal van de gebruiker. Pas aan en verstuur direct namens jouw Facebook-pagina.</div></div>
-      <div class="bc bc-sm"><div class="bc-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10l3 3 5-6" stroke="var(--blue3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="10" r="7" fill="none" stroke="var(--blue3)" stroke-width="1.5"/></svg></div><div class="bc-title">Slim bulk verbergen</div><div class="bc-text">Eén klik verbergt alle spam. Klachten boven 85% zekerheid vragen bevestiging — zodat je nooit echte feedback per ongeluk verstopt.</div></div>
-      <div class="bc bc-half"><div class="bc-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="12" rx="2" fill="none" stroke="var(--blue3)" stroke-width="1.5"/><path d="M7 3v4M13 3v4M3 10h14" stroke="var(--blue3)" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="bc-title">CSV-export voor je CRM</div><div class="bc-text">Intentie, zekerheid, reply, status — alles exporteerbaar. Klaar voor je CRM, VA of weekrapport aan de klant.</div></div>
-      <div class="bc bc-half"><div class="bc-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="10" r="2.5" fill="none" stroke="var(--blue3)" stroke-width="1.5"/><circle cx="14" cy="6" r="2.5" fill="none" stroke="var(--blue3)" stroke-width="1.5"/><circle cx="14" cy="14" r="2.5" fill="none" stroke="var(--blue3)" stroke-width="1.5"/><path d="M8.5 9L11.5 7M8.5 11L11.5 13" stroke="var(--blue3)" stroke-width="1.5"/></svg></div><div class="bc-title">Meerdere posts tegelijk</div><div class="bc-text">Scan 10 posts in één run. Alles samen geclassificeerd. Gebouwd voor agencies die meerdere klanten beheren.</div></div>
+<!-- VERGELIJKING -->
+<section id="vergelijk">
+  <div class="inner">
+    <span class="label">Waarom CommentCenter</span>
+    <h2 class="section-head">Niet nog een social inbox. <em>Paid comment control.</em></h2>
+    <p class="section-sub" style="max-width:580px;margin-bottom:0">Moderation tools zijn sterk in spam hiden. Native Meta heeft basale filters. CommentCenter is gebouwd voor één ding: buyer intent vinden in ad comments.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30%"></th>
+            <th class="cc">CommentCenter</th>
+            <th style="color:var(--dim)">Moderation tools</th>
+            <th style="color:var(--dim)">Native Meta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">Koopintentie detectie</td>
+            <td class="cc-cell">AI + confidence</td>
+            <td class="mod-cell">Basic</td>
+            <td class="meta-cell">—</td>
+          </tr>
+          <tr>
+            <td class="label-cell">Prioriteit triage</td>
+            <td class="cc-cell">Hot leads first</td>
+            <td class="mod-cell">—</td>
+            <td class="meta-cell">—</td>
+          </tr>
+          <tr>
+            <td class="label-cell">Dutch-language AI</td>
+            <td class="cc-cell">Native NL</td>
+            <td class="mod-cell">—</td>
+            <td class="meta-cell">—</td>
+          </tr>
+          <tr>
+            <td class="label-cell">Bulk hide spam</td>
+            <td class="cc-cell">&#10003; + bevestiging</td>
+            <td class="mod-cell">&#10003;</td>
+            <td class="meta-cell">Per stuk</td>
+          </tr>
+          <tr>
+            <td class="label-cell">Export naar CRM</td>
+            <td class="cc-cell">CSV + pipeline</td>
+            <td class="mod-cell">—</td>
+            <td class="meta-cell">—</td>
+          </tr>
+          <tr>
+            <td class="label-cell">Multi-post scan</td>
+            <td class="cc-cell">Bulk URL import</td>
+            <td class="mod-cell">Via inbox</td>
+            <td class="meta-cell">Per post</td>
+          </tr>
+          <tr>
+            <td class="label-cell">Startprijs</td>
+            <td class="cc-cell">&euro;29/mo</td>
+            <td class="mod-cell">$29&ndash;79/mo</td>
+            <td class="meta-cell">Gratis</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<!-- ROLES -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="reveal"><div class="sec-tag">Voor elk team</div><h2 class="sec-h2">Gebouwd voor de mensen<br>die <em>resultaat</em> leveren</h2></div>
-    <div class="roles-grid reveal">
-      <div class="role-card"><div class="role-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3L19 17H3L11 3Z" fill="none" stroke="var(--blue3)" stroke-width="1.5" stroke-linejoin="round"/><path d="M11 9L14 14H8L11 9Z" fill="var(--blue3)" opacity="0.35"/></svg></div><div class="role-body"><div class="role-kicker">Performance Marketer</div><div class="role-title">Mis nooit meer een hot lead</div><div class="role-desc">Jij draait campagnes op resultaat. CommentCenter zorgt dat elk comment met koopintentie direct zichtbaar is — niet pas als je er handmatig doorheen scrolt.</div><a href="#functies" class="role-link">Meer weten →</a></div></div>
-      <div class="role-card"><div class="role-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 16l4-4 3 3 4-5 3 3" stroke="var(--blue3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="role-body"><div class="role-kicker">Social Media Manager</div><div class="role-title">Van 2 uur naar 10 minuten</div><div class="role-desc">Commentbeheer kost jou dagelijks uren. Met CommentCenter ben je in 10 minuten klaar — replies verstuurd, spam verborgen, hot leads doorgezet.</div><a href="#functies" class="role-link">Meer weten →</a></div></div>
-      <div class="role-card"><div class="role-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="var(--blue3)" stroke-width="1.5"/><rect x="12" y="3" width="7" height="7" rx="2" fill="none" stroke="var(--blue3)" stroke-width="1.5"/><rect x="3" y="12" width="7" height="7" rx="2" fill="none" stroke="var(--blue3)" stroke-width="1.5"/><rect x="12" y="12" width="7" height="7" rx="2" fill="none" stroke="var(--blue3)" stroke-width="1.5"/></svg></div><div class="role-body"><div class="role-kicker">Performance Agency</div><div class="role-title">12 klanten, geen extra mensen</div><div class="role-desc">Meerdere klanten, tientallen actieve advertenties, honderden comments per dag. CommentCenter verwerkt het allemaal in één dashboard.</div><a href="#functies" class="role-link">Meer weten →</a></div></div>
-      <div class="role-card"><div class="role-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 10h14M13 5l5 5-5 5" stroke="var(--blue3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="role-body"><div class="role-kicker">Sales Team</div><div class="role-title">Leads direct in de pijplijn</div><div class="role-desc">Hot leads geëxporteerd naar CSV, klaar voor je CRM. Geen handmatig overnemen. Geen leads die tussen wal en schip vallen.</div><a href="#functies" class="role-link">Meer weten →</a></div></div>
+<!-- VOOR WIE -->
+<section id="voorwie" style="background:var(--s1)">
+  <div class="inner">
+    <span class="label">Voor wie</span>
+    <h2 class="section-head">Gebouwd voor teams die op <em>resultaat</em> sturen.</h2>
+    <div class="for-list">
+      <div class="for-item">
+        <div class="for-bar" style="background:var(--accent)"></div>
+        <div>
+          <div class="for-title">Agency teams</div>
+          <p class="for-desc">Beheer meerdere klantpagina's vanuit één dashboard. Bulk acties, CSV export per klant, en bewijs in je rapportage.</p>
+        </div>
+      </div>
+      <div class="for-item">
+        <div class="for-bar" style="background:var(--hot)"></div>
+        <div>
+          <div class="for-title">Lead gen operators</div>
+          <p class="for-desc">Vind buyer intent sneller dan handmatig. Exporteer hot leads naar je CRM of stuur een screenshot naar sales.</p>
+        </div>
+      </div>
+      <div class="for-item">
+        <div class="for-bar" style="background:var(--interested)"></div>
+        <div>
+          <div class="for-title">Solo performance marketeers</div>
+          <p class="for-desc">Minder handwerk, sneller klantbewijs. Scan in 30 seconden, deel de resultaten, laat zien dat je alles onder controle hebt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="inner">
+    <div class="trust-grid">
+      <div class="trust-card fade-up">
+        <div class="trust-title">Built for paid comment ops</div>
+        <p class="trust-desc">Niet een generieke social inbox. CommentCenter is gebouwd voor één ding: buyer intent vinden in ad comments.</p>
+      </div>
+      <div class="trust-card fade-up" style="animation-delay:.1s">
+        <div class="trust-title">Dutch-first AI</div>
+        <p class="trust-desc">Geoptimaliseerd voor Nederlandse comments — inclusief informeel taalgebruik, sarcasme en dialecten. Geen vertaalde Engelse AI.</p>
+      </div>
+      <div class="trust-card fade-up" style="animation-delay:.2s">
+        <div class="trust-title">Veilig en transparant</div>
+        <p class="trust-desc">Geen creditcard voor trial. Privacy en dataverwerking helder uitgelegd. Gevestigd in Nederland. Je houdt controle over je data.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" style="padding-top:0">
-  <div class="wrap">
-    <div class="tc reveal"><div class="sec-tag">FAQ</div><h2 class="sec-h2">Alles wat je wil<br><em>weten</em></h2></div>
-    <div class="faq-list reveal">
-      <div class="faq-item open"><div class="faq-q"><span class="faq-question">Werkt CommentCenter met mijn Facebook-pagina?</span><span class="faq-icon">+</span></div><div class="faq-answer">Ja. CommentCenter werkt met elke Facebook-pagina waar jij beheerder of adverteerder van bent. Je verbindt via één klik met je Facebook account — geen developer, geen token, geen ingewikkelde setup.</div></div>
-      <div class="faq-item"><div class="faq-q"><span class="faq-question">Is mijn data veilig? Wat gebeurt er met mijn comments?</span><span class="faq-icon">+</span></div><div class="faq-answer">Wij slaan jouw comments niet permanent op. Ze worden verwerkt voor classificatie en daarna verwijderd. Jouw Facebook-verbinding wordt versleuteld opgeslagen en nooit gedeeld. Wij zijn GDPR-compliant en gevestigd in Nederland.</div></div>
-      <div class="faq-item"><div class="faq-q"><span class="faq-question">Hoe werkt de 14 dagen gratis proefperiode?</span><span class="faq-icon">+</span></div><div class="faq-answer">Je start direct met alle Pro of Agency functies zonder betaling. Na 14 dagen word je automatisch uitgeschreven — nooit automatisch afgeschreven. Geen creditcard vereist om te starten.</div></div>
-      <div class="faq-item"><div class="faq-q"><span class="faq-question">Kan ik als bureau meerdere klanten beheren?</span><span class="faq-icon">+</span></div><div class="faq-answer">Ja, het Agency-plan is hier speciaal voor gebouwd. Onbeperkt Facebook-pagina's, één dashboard, één factuur. Je team werkt samen vanuit hetzelfde account.</div></div>
-      <div class="faq-item"><div class="faq-q"><span class="faq-question">In welke talen werkt de AI-classificatie?</span><span class="faq-icon">+</span></div><div class="faq-answer">CommentCenter werkt in alle talen — Nederlands, Engels, Frans, Duits, Spaans en meer. De AI herkent automatisch de taal van een comment en stelt een reply voor in diezelfde taal.</div></div>
-      <div class="faq-item"><div class="faq-q"><span class="faq-question">Werkt CommentCenter ook met Instagram of TikTok?</span><span class="faq-icon">+</span></div><div class="faq-answer">Op dit moment ondersteunt CommentCenter alleen Facebook. Instagram- en TikTok-integratie staat op onze roadmap voor Q3 2026.</div></div>
+<section id="faq">
+  <div class="inner-sm">
+    <span class="label">FAQ</span>
+    <h2 class="section-head">Alles wat je wil <em>weten.</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Hoe verschilt CommentCenter van CommentGuard, NapoleonCat of native Meta?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">CommentGuard en NapoleonCat zijn moderation tools — sterk in spam hiden en auto-replies. Native Meta heeft basale filters maar geen workflow. CommentCenter doet iets anders: het classificeert elk comment op koopintentie met een confidence score. Moderation is een feature. Buyer intent detectie is de kern. Daarnaast gebouwd voor Nederlandse comments en paid social workflows.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Werkt CommentCenter met mijn Facebook-pagina?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ja. Elke pagina waar jij beheerder van bent. Verbind via één klik — geen developer, geen API keys.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          In welke talen werkt de AI?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Alle talen. Nederlands, Engels, Frans, Duits en meer. De AI herkent automatisch de taal en stelt een reply voor in diezelfde taal.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Kan ik meerdere posts tegelijk scannen?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ja. Plak meerdere permalinks uit Meta Business Manager of voeg ze één voor één toe. Alles wordt samen geclassificeerd.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Hoe werkt de 14 dagen trial?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Start direct met alle functies zonder betaling. Na 14 dagen wordt er niets afgeschreven. Geen creditcard nodig.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Is mijn data veilig?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Comments worden verwerkt en niet permanent opgeslagen. Je Facebook-verbinding wordt versleuteld. Gevestigd in Nederland.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section id="prijzen" style="padding-top:0">
-  <div class="wrap">
-    <div class="tc reveal" style="max-width:560px;margin:0 auto 0"><div class="sec-tag">Prijzen</div><h2 class="sec-h2">Simpel, <em>transparant</em></h2><p class="sec-sub">Alle plannen gelden voor al jouw Facebook-pagina's samen — niet per pagina. Geen verborgen kosten.</p></div>
-    <div class="pricing-grid reveal">
-      <div class="pcard"><div class="pcard-tier">Starter</div><div class="pcard-price"><sup>€</sup>0</div><div class="pcard-period">Altijd gratis</div><div class="pcard-desc">Voor marketeers die willen ontdekken hoe comment intelligence werkt.</div><div class="pcard-line"></div><ul class="pcard-list"><li>500 comments per maand</li><li>AI-classificatie</li><li>Voorgestelde replies</li><li>1 Facebook-pagina</li><li class="no">Bulk verbergen</li><li class="no">Meerdere posts tegelijk</li><li class="no">CSV-export</li></ul><a href="https://app.commentcenter.nl" class="pcard-btn pb-outline">Gratis beginnen</a></div>
-      <div class="pcard pop"><div class="pop-chip">Meest gekozen</div><div class="pcard-tier">Pro</div><div class="pcard-price"><sup>€</sup>49</div><div class="pcard-trial">✓ 14 dagen gratis proberen</div><div class="pcard-period">daarna per maand</div><div class="pcard-desc">Voor performance teams die dagelijks live campagnes beheren.</div><div class="pcard-note">Geldt voor al jouw pagina's samen. Geen extra kosten per pagina.</div><div class="pcard-line"></div><ul class="pcard-list"><li>10.000 comments per maand</li><li>AI-classificatie</li><li>Voorgestelde replies</li><li>Tot 5 Facebook-pagina's</li><li>Bulk verbergen spam & klachten</li><li>Meerdere posts tegelijk</li><li>CSV-export</li></ul><a href="https://app.commentcenter.nl" class="pcard-btn pb-solid">Start 14 dagen gratis →</a></div>
-      <div class="pcard"><div class="pcard-tier">Agency</div><div class="pcard-price"><sup>€</sup>149</div><div class="pcard-trial">✓ 14 dagen gratis proberen</div><div class="pcard-period">daarna per maand</div><div class="pcard-desc">Voor bureaus die meerdere klanten beheren zonder limieten.</div><div class="pcard-note">Onbeperkt pagina's. Ideaal voor bureaus met 5+ klanten.</div><div class="pcard-line"></div><ul class="pcard-list"><li>Onbeperkt comments</li><li>AI-classificatie</li><li>Voorgestelde replies</li><li>Onbeperkt pagina's</li><li>Bulk verbergen spam & klachten</li><li>Meerdere posts tegelijk</li><li>CSV-export + API-toegang</li></ul><a href="mailto:info@commentcenter.nl" class="pcard-btn pb-outline">Neem contact op →</a></div>
+<section id="pricing">
+  <div class="inner">
+    <span class="label">Pricing</span>
+    <h2 class="section-head">Simpel. <em>Transparant.</em></h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <span class="pricing-badge">MEEST GEKOZEN</span>
+        <div class="pricing-name">Pro</div>
+        <div class="pricing-price">
+          <span class="pricing-amount">&euro;29</span>
+          <span class="pricing-per">/maand</span>
+        </div>
+        <div class="pricing-trial">14 dagen gratis &middot; geen creditcard</div>
+        <div class="pricing-tagline">Voor solo operators en kleine paid teams.</div>
+        <ul class="pricing-features">
+          <li>5.000 comments/maand</li>
+          <li>Tot 5 Facebook-pagina's</li>
+          <li>AI classificatie + confidence</li>
+          <li>Reply, hide, dismiss</li>
+          <li>Bulk acties</li>
+          <li>CSV export</li>
+          <li>Multi-post scan</li>
+        </ul>
+        <a href="https://app.commentcenter.nl" class="pricing-cta-primary">Start 14 dagen gratis &rarr;</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-name">Agency</div>
+        <div class="pricing-price">
+          <span class="pricing-amount">&euro;99</span>
+          <span class="pricing-per">/maand</span>
+        </div>
+        <div class="pricing-trial alt">14 dagen gratis &middot; geen creditcard</div>
+        <div class="pricing-tagline">Voor bureaus met meerdere klantaccounts.</div>
+        <ul class="pricing-features">
+          <li>Onbeperkt comments</li>
+          <li>Onbeperkt Facebook-pagina's</li>
+          <li>Alles in Pro</li>
+          <li>Priority support</li>
+          <li>Bulk URL import</li>
+          <li>Team-ready</li>
+        </ul>
+        <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Start 14 dagen gratis &rarr;</a>
+      </div>
     </div>
+    <p class="pricing-footnote">Eén gemiste koper kost vaak al meer dan Pro.</p>
   </div>
 </section>
 
-<!-- CTA -->
-<section><div class="wrap reveal"><div class="cta-box"><h2 class="cta-h2">Klaar om te stoppen<br>met leads <em>missen?</em></h2><p class="cta-sub">Sluit je aan bij 200+ Nederlandse marketing teams die CommentCenter gebruiken om elke advertentie om te zetten in omzet.</p><p class="cta-social"><strong>Roel, Lisa en Thomas</strong> begonnen ook met 14 dagen gratis.</p><div class="cta-btns"><a href="https://app.commentcenter.nl" class="btn-primary">14 dagen gratis proberen <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="mailto:info@commentcenter.nl" class="btn-secondary">Demo aanvragen</a></div><p class="cta-guarantee">Geen creditcard nodig · Annuleer wanneer je wilt · GDPR-compliant</p></div></div></section>
+<!-- FINAL CTA -->
+<section id="cta">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="cta-inner inner" style="text-align:center">
+    <h2 class="section-head" style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Klaar om te stoppen met leads <em>missen?</em></h2>
+    <p class="section-sub" style="max-width:480px;margin:0 auto 36px">Scan je eerste advertentie in 30 seconden. Geen creditcard. Geen commitment.</p>
+    <a href="https://app.commentcenter.nl" class="btn-cta">Scan je eerste advertentie &rarr;</a>
+    <p class="cta-note">14 dagen gratis &middot; Annuleer wanneer je wilt</p>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div><a href="https://commentcenter.nl" class="footer-logo"><div class="fl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 13H2L8 2Z" fill="none" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6L11 11H5L8 6Z" fill="white" opacity="0.35"/></svg></div><span class="fl-name">CommentCenter</span></a><p class="footer-desc">AI commentbeheer voor Facebook adverteerders. Van ruis naar pipeline in 30 seconden. Gebouwd in Nederland.</p></div>
-      <div class="footer-col"><h4>Product</h4><a href="#functies">Functies</a><a href="#prijzen">Prijzen</a><a href="#hoe">Hoe het werkt</a><a href="#faq">FAQ</a></div>
-      <div class="footer-col"><h4>Bedrijf</h4><a href="mailto:info@commentcenter.nl">Over ons</a><a href="mailto:info@commentcenter.nl">Contact</a></div>
-      <div class="footer-col"><h4>Resources</h4><a href="https://app.commentcenter.nl">App</a><a href="https://commentcenter.nl/privacy">Privacy</a><a href="https://commentcenter.nl/terms">Voorwaarden</a></div>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <a class="footer-logo" href="/">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+          <defs><linearGradient id="g2" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#60a5fa"/><stop offset="1" stop-color="#3b82f6"/>
+          </linearGradient></defs>
+          <path d="M12 2L2 22h20L12 2z" fill="url(#g2)"/>
+        </svg>
+        CommentCenter
+      </a>
+      <p class="footer-tagline">Comment intelligence voor Facebook adverteerders.<br>Gebouwd in Nederland.</p>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 CommentCenter.nl — Geregistreerd in Nederland</span>
-      <div class="footer-legal"><a href="https://commentcenter.nl/privacy">Privacy</a><a href="https://commentcenter.nl/terms">Voorwaarden</a><a href="mailto:info@commentcenter.nl">Cookies</a></div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="#hoe">Hoe het werkt</a>
+        <a href="#vergelijk">Vergelijk</a>
+        <a href="#pricing">Prijzen</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Voorwaarden</a>
+        <a href="mailto:info@commentcenter.nl">Contact</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">&copy; 2026 CommentCenter.nl &mdash; Geregistreerd in Nederland</div>
 </footer>
 
-<div class="mobile-cta-bar"><div class="mcta-inner"><a href="mailto:info@commentcenter.nl" class="mcta-btn mcta-g">Demo aanvragen</a><a href="https://app.commentcenter.nl" class="mcta-btn mcta-p">Gratis starten →</a></div></div>
-
 <script>
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
-const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*80);obs.unobserve(el.target)}})},{threshold:0.1})
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
-document.querySelectorAll('.faq-item').forEach(item=>{item.addEventListener('click',()=>{const o=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!o)item.classList.add('open')})})
-window.addEventListener('scroll',()=>{document.getElementById('mainNav').style.borderBottomColor=window.scrollY>20?'rgba(255,255,255,0.1)':'rgba(255,255,255,0.07)'})
-document.addEventListener('click',(e)=>{if(!e.target.closest('nav')&&!e.target.closest('#mobileMenu'))document.getElementById('mobileMenu').classList.remove('open')})
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+function closeMobile(){mobileMenu.classList.remove('open')}
+hamburger.addEventListener('click',()=>mobileMenu.classList.add('open'));
+mobileClose.addEventListener('click',closeMobile);
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    const item=this.closest('.faq-item');
+    const isOpen=item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item').forEach(i=>{
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if(!isOpen){
+      item.classList.add('open');
+      this.setAttribute('aria-expanded','true');
+    }
+  });
+});
+
+// Scroll animations
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
