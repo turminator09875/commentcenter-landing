@@ -524,7 +524,6 @@ td.meta-cell{color:var(--dim)}
 
 /* ── FAQ ── */
 #faq{background:var(--s1)}
-#faq .label,#faq .section-head{text-align:center}
 #faq .section-head{margin-bottom:48px}
 .faq-list{display:flex;flex-direction:column;gap:0;margin-top:0}
 .faq-item{border-bottom:1px solid var(--s3)}
@@ -663,9 +662,8 @@ td.meta-cell{color:var(--dim)}
   transition:background .15s;
 }
 .pricing-cta-secondary:hover{background:var(--s3)}
-.trust-strip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:24px;opacity:.45}
-.trust-sep{width:1px;height:14px;background:var(--dim);opacity:.35}
-.trust-ai{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--dim);letter-spacing:.02em}
+.trust-strip{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px;opacity:.5}
+.trust-sep{width:1px;height:16px;background:#27272a;flex-shrink:0}
 .pricing-footnote{font-size:13px;color:var(--dim);margin-top:16px;text-align:center}
 
 /* ── FINAL CTA ── */
@@ -1316,34 +1314,31 @@ footer{
       </div>
     </div>
     <div class="trust-strip" aria-label="Betaalmethoden en technologie">
-      <!-- iDEAL + Wero (samen) -->
-      <svg width="38" height="18" viewBox="0 0 38 18" fill="none" aria-label="iDEAL en Wero" xmlns="http://www.w3.org/2000/svg">
-        <rect width="16" height="12" x="0" y="3" rx="2" fill="#CC0066" opacity=".7"/>
-        <text x="8" y="11.5" font-size="5.5" font-weight="800" fill="white" text-anchor="middle" font-family="sans-serif">iD</text>
-        <rect width="16" height="12" x="22" y="3" rx="2" fill="#CC0066" opacity=".7"/>
-        <text x="30" y="11.5" font-size="6" font-weight="800" fill="white" text-anchor="middle" font-family="sans-serif">W</text>
+      <!-- iDEAL|Wero badge -->
+      <svg width="52" height="18" viewBox="0 0 52 18" aria-label="iDEAL en Wero">
+        <rect width="52" height="18" rx="3" fill="#CC0066"/>
+        <text x="26" y="13" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" font-weight="700" fill="white">iDEAL|Wero</text>
       </svg>
-      <!-- Visa -->
-      <svg width="28" height="18" viewBox="0 0 28 18" fill="none" aria-label="Visa" xmlns="http://www.w3.org/2000/svg">
-        <rect width="28" height="18" rx="3" fill="#1a1f71" opacity=".75"/>
-        <text x="14" y="12.5" font-size="7" font-weight="900" fill="white" text-anchor="middle" font-family="sans-serif" letter-spacing="0.5">VISA</text>
+      <!-- Visa badge -->
+      <svg width="34" height="18" viewBox="0 0 34 18" aria-label="Visa">
+        <rect width="34" height="18" rx="3" fill="#1A1F71"/>
+        <text x="17" y="13" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" font-weight="800" fill="white" letter-spacing="1">VISA</text>
       </svg>
-      <!-- Mastercard -->
-      <svg width="28" height="18" viewBox="0 0 28 18" fill="none" aria-label="Mastercard" xmlns="http://www.w3.org/2000/svg">
-        <rect width="28" height="18" rx="3" fill="#252525" opacity=".6"/>
-        <circle cx="11" cy="9" r="5.5" fill="#eb001b" opacity=".9"/>
-        <circle cx="17" cy="9" r="5.5" fill="#f79e1b" opacity=".9"/>
+      <!-- Mastercard circles -->
+      <svg width="30" height="18" viewBox="0 0 30 18" aria-label="Mastercard">
+        <circle cx="11" cy="9" r="9" fill="#EB001B"/>
+        <circle cx="19" cy="9" r="9" fill="#F79E1B" opacity="0.9"/>
+        <circle cx="11" cy="9" r="9" fill="#EB001B" clip-path="url(#mc-clip)"/>
+        <clipPath id="mc-clip"><rect x="0" y="0" width="15" height="18"/></clipPath>
       </svg>
-      <!-- separator -->
-      <span class="trust-sep" aria-hidden="true"></span>
+      <!-- Separator -->
+      <div class="trust-sep"></div>
       <!-- Anthropic -->
-      <span class="trust-ai">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <rect width="14" height="14" rx="3" fill="#1a1008"/>
-          <text x="7" y="10.5" font-size="8.5" font-weight="700" fill="#c9a96e" text-anchor="middle" font-family="Georgia,serif">A</text>
-        </svg>
-        AI by Anthropic
-      </span>
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-label="Anthropic">
+        <rect width="16" height="16" rx="3" fill="#1a1a1a"/>
+        <text x="8" y="12" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#D4A574">A</text>
+      </svg>
+      <span style="font-size:12px;color:#71717a;white-space:nowrap">AI by Anthropic</span>
     </div>
     <p class="pricing-footnote">Start gratis met 100 comments. Upgrade wanneer je wilt.</p>
   </div>
