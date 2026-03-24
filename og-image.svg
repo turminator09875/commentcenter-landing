@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#09090b"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="315" x2="1200" y2="315" stroke="#18181b" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="#18181b" stroke-width="1"/>
+
+  <!-- C3 icon centered above text -->
+  <g transform="translate(560, 165)">
+    <rect x="0" y="0" width="80" height="63" rx="16" fill="#3b82f6"/>
+    <polygon points="16,63 28,78 36,63" fill="#3b82f6"/>
+    <rect x="16" y="14" width="48" height="6" rx="3" fill="white" opacity="0.3"/>
+    <rect x="16" y="28" width="34" height="10" rx="5" fill="white"/>
+    <rect x="16" y="45" width="42" height="6" rx="3" fill="white" opacity="0.3"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="600" y="320" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="52" font-weight="700" fill="white" text-anchor="middle" letter-spacing="-1">Comment<tspan fill="#3b82f6">Center</tspan></text>
+
+  <!-- Tagline -->
+  <text x="600" y="372" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="22" fill="#71717a" text-anchor="middle">Paid comment control voor Facebook adverteerders</text>
+
+  <!-- Classification chips -->
+  <g transform="translate(600, 430)">
+    <!-- HOT LEAD -->
+    <rect x="-355" y="0" width="116" height="34" rx="8" fill="#4ade8018"/>
+    <text x="-297" y="22" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="12" font-weight="700" fill="#4ade80" text-anchor="middle" letter-spacing="0.5">HOT LEAD</text>
+    <!-- INTERESTED -->
+    <rect x="-220" y="0" width="126" height="34" rx="8" fill="#facc1518"/>
+    <text x="-157" y="22" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="12" font-weight="700" fill="#facc15" text-anchor="middle" letter-spacing="0.5">INTERESTED</text>
+    <!-- VRAAG -->
+    <rect x="-74" y="0" width="88" height="34" rx="8" fill="#60a5fa18"/>
+    <text x="-30" y="22" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="12" font-weight="700" fill="#60a5fa" text-anchor="middle" letter-spacing="0.5">VRAAG</text>
+    <!-- KLACHT -->
+    <rect x="34" y="0" width="98" height="34" rx="8" fill="#fb718518"/>
+    <text x="83" y="22" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="12" font-weight="700" fill="#fb7185" text-anchor="middle" letter-spacing="0.5">KLACHT</text>
+    <!-- SPAM -->
+    <rect x="152" y="0" width="82" height="34" rx="8" fill="#52525b30"/>
+    <text x="193" y="22" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="12" font-weight="700" fill="#71717a" text-anchor="middle" letter-spacing="0.5">SPAM</text>
+  </g>
+
+  <!-- Bottom accent line -->
+  <rect x="480" y="560" width="240" height="3" rx="1.5" fill="#3b82f6" opacity="0.4"/>
+  <text x="600" y="598" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" fill="#3f3f46" text-anchor="middle">commentcenter.nl</text>
+</svg>
