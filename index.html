@@ -206,7 +206,8 @@ section{padding:100px 24px}
   line-height:1.15;
   margin-bottom:24px;
 }
-.hero-h1 em{font-style:italic;color:var(--accent)}
+.hero-h1 em{font-style:italic;color:var(--accent);white-space:nowrap}
+@media(max-width:480px){.hero-h1 em{white-space:normal}}
 .hero-sub{
   font-size:18px;
   color:var(--soft);
@@ -662,7 +663,7 @@ td.meta-cell{color:var(--dim)}
   transition:background .15s;
 }
 .pricing-cta-secondary:hover{background:var(--s3)}
-.trust-strip{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px;opacity:.5}
+.trust-strip{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;opacity:.35}
 .trust-sep{width:1px;height:16px;background:#27272a;flex-shrink:0}
 .pricing-footnote{font-size:13px;color:var(--dim);margin-top:16px;text-align:center}
 
@@ -1315,21 +1316,21 @@ footer{
     </div>
     <div class="trust-strip" aria-label="Betaalmethoden en technologie">
       <!-- iDEAL|Wero badge -->
-      <svg width="52" height="18" viewBox="0 0 52 18" aria-label="iDEAL en Wero">
-        <rect width="52" height="18" rx="3" fill="#CC0066"/>
-        <text x="26" y="13" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" font-weight="700" fill="white">iDEAL|Wero</text>
+      <svg width="44" height="14" viewBox="0 0 44 14" aria-label="iDEAL en Wero">
+        <rect width="44" height="14" rx="2" fill="#CC0066"/>
+        <text x="22" y="10" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="7" font-weight="700" fill="white">iDEAL|Wero</text>
       </svg>
       <!-- Visa badge -->
-      <svg width="34" height="18" viewBox="0 0 34 18" aria-label="Visa">
-        <rect width="34" height="18" rx="3" fill="#1A1F71"/>
-        <text x="17" y="13" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" font-weight="800" fill="white" letter-spacing="1">VISA</text>
+      <svg width="28" height="14" viewBox="0 0 28 14" aria-label="Visa">
+        <rect width="28" height="14" rx="2" fill="#1A1F71"/>
+        <text x="14" y="10" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="8" font-weight="800" fill="white" letter-spacing="0.5">VISA</text>
       </svg>
       <!-- Mastercard circles -->
-      <svg width="30" height="18" viewBox="0 0 30 18" aria-label="Mastercard">
-        <circle cx="11" cy="9" r="9" fill="#EB001B"/>
-        <circle cx="19" cy="9" r="9" fill="#F79E1B" opacity="0.9"/>
-        <circle cx="11" cy="9" r="9" fill="#EB001B" clip-path="url(#mc-clip)"/>
-        <clipPath id="mc-clip"><rect x="0" y="0" width="15" height="18"/></clipPath>
+      <svg width="24" height="14" viewBox="0 0 24 14" aria-label="Mastercard">
+        <circle cx="9" cy="7" r="7" fill="#EB001B"/>
+        <circle cx="15" cy="7" r="7" fill="#F79E1B" opacity="0.9"/>
+        <circle cx="9" cy="7" r="7" fill="#EB001B" clip-path="url(#mc2)"/>
+        <clipPath id="mc2"><rect x="0" y="0" width="12" height="14"/></clipPath>
       </svg>
       <!-- Separator -->
       <div class="trust-sep"></div>
