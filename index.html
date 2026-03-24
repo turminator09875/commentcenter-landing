@@ -567,11 +567,13 @@ td.meta-cell{color:var(--dim)}
 #pricing .label,#pricing .section-head{text-align:center}
 .pricing-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(3,1fr);
   gap:16px;
-  max-width:720px;
+  max-width:1000px;
   margin:48px auto 0;
 }
+.pricing-plan{font-size:18px;font-weight:700;margin-bottom:16px}
+.pricing-desc{font-size:13px;color:var(--muted);margin-bottom:24px}
 .pricing-card{
   background:var(--s1);
   border-radius:20px;
@@ -766,6 +768,7 @@ footer{
   .feature-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:1fr}
   .pricing-grid{grid-template-columns:1fr;max-width:400px}
+  .pricing-plan{font-size:16px}
   .table-wrap{margin-top:32px}
   .footer-inner{flex-direction:column;gap:32px}
   .footer-cols{gap:32px}
@@ -1255,6 +1258,21 @@ footer{
     <h2 class="section-head">Simpel. <em>Transparant.</em></h2>
     <div class="pricing-grid">
       <div class="pricing-card">
+        <div class="pricing-plan">Free</div>
+        <div class="pricing-price">
+          <span class="pricing-amount">&euro;0</span>
+        </div>
+        <div class="pricing-trial" style="color: var(--muted, #71717a);">Altijd gratis</div>
+        <p class="pricing-desc">Voor solo marketeers die het willen proberen.</p>
+        <ul class="pricing-features">
+          <li>100 comments/maand</li>
+          <li>5 replies</li>
+          <li>5 hides</li>
+          <li>AI classificatie</li>
+        </ul>
+        <a href="https://app.commentcenter.nl" class="pricing-cta pricing-cta-secondary">Start gratis &rarr;</a>
+      </div>
+      <div class="pricing-card">
         <span class="pricing-badge">MEEST GEKOZEN</span>
         <div class="pricing-name">Pro</div>
         <div class="pricing-price">
@@ -1293,7 +1311,7 @@ footer{
         <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Start gratis &rarr;</a>
       </div>
     </div>
-    <p class="pricing-footnote">Eén gemiste koper kost vaak al meer dan Pro.</p>
+    <p class="pricing-footnote">Start gratis met 100 comments. Upgrade wanneer je wilt.</p>
   </div>
 </section>
 
