@@ -663,9 +663,9 @@ td.meta-cell{color:var(--dim)}
   transition:background .15s;
 }
 .pricing-cta-secondary:hover{background:var(--s3)}
-.trust-strip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 20px;margin-top:28px;opacity:.55}
-.trust-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 8px;border-radius:6px;border:1px solid transparent;letter-spacing:.01em;white-space:nowrap}
-.trust-sep{color:var(--dim);font-size:14px;opacity:.4;margin:0 2px}
+.trust-strip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:24px;opacity:.45}
+.trust-sep{width:1px;height:14px;background:var(--dim);opacity:.35}
+.trust-ai{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--dim);letter-spacing:.02em}
 .pricing-footnote{font-size:13px;color:var(--dim);margin-top:16px;text-align:center}
 
 /* ── FINAL CTA ── */
@@ -1315,32 +1315,33 @@ footer{
         <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Kies Agency &rarr;</a>
       </div>
     </div>
-    <div class="trust-strip">
-      <!-- iDEAL -->
-      <span class="trust-badge" style="color:#CC0066;border-color:#CC006640">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect width="14" height="14" rx="3" fill="#CC0066" opacity=".15"/><text x="7" y="10" font-size="7" font-weight="700" fill="#CC0066" text-anchor="middle" font-family="sans-serif">iD</text></svg>
-        iDEAL
-      </span>
-      <!-- Wero -->
-      <span class="trust-badge" style="color:#CC0066;border-color:#CC006640">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect width="14" height="14" rx="3" fill="#CC0066" opacity=".15"/><text x="7" y="10" font-size="6" font-weight="700" fill="#CC0066" text-anchor="middle" font-family="sans-serif">W</text></svg>
-        Wero
-      </span>
+    <div class="trust-strip" aria-label="Betaalmethoden en technologie">
+      <!-- iDEAL + Wero (samen) -->
+      <svg width="38" height="18" viewBox="0 0 38 18" fill="none" aria-label="iDEAL en Wero" xmlns="http://www.w3.org/2000/svg">
+        <rect width="16" height="12" x="0" y="3" rx="2" fill="#CC0066" opacity=".7"/>
+        <text x="8" y="11.5" font-size="5.5" font-weight="800" fill="white" text-anchor="middle" font-family="sans-serif">iD</text>
+        <rect width="16" height="12" x="22" y="3" rx="2" fill="#CC0066" opacity=".7"/>
+        <text x="30" y="11.5" font-size="6" font-weight="800" fill="white" text-anchor="middle" font-family="sans-serif">W</text>
+      </svg>
       <!-- Visa -->
-      <span class="trust-badge" style="color:#1a1f71;border-color:#1a1f7140">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect width="14" height="14" rx="3" fill="#1a1f71" opacity=".12"/><text x="7" y="10" font-size="6" font-weight="800" fill="#1a1f71" text-anchor="middle" font-family="sans-serif">VISA</text></svg>
-        Visa
-      </span>
+      <svg width="28" height="18" viewBox="0 0 28 18" fill="none" aria-label="Visa" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="18" rx="3" fill="#1a1f71" opacity=".75"/>
+        <text x="14" y="12.5" font-size="7" font-weight="900" fill="white" text-anchor="middle" font-family="sans-serif" letter-spacing="0.5">VISA</text>
+      </svg>
       <!-- Mastercard -->
-      <span class="trust-badge" style="color:#eb001b;border-color:#eb001b30">
-        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#eb001b" opacity=".85"/><circle cx="12" cy="6" r="6" fill="#f79e1b" opacity=".85"/></svg>
-        Mastercard
-      </span>
+      <svg width="28" height="18" viewBox="0 0 28 18" fill="none" aria-label="Mastercard" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="18" rx="3" fill="#252525" opacity=".6"/>
+        <circle cx="11" cy="9" r="5.5" fill="#eb001b" opacity=".9"/>
+        <circle cx="17" cy="9" r="5.5" fill="#f79e1b" opacity=".9"/>
+      </svg>
       <!-- separator -->
-      <span class="trust-sep">|</span>
+      <span class="trust-sep" aria-hidden="true"></span>
       <!-- Anthropic -->
-      <span class="trust-badge" style="color:#c9a96e;border-color:#c9a96e30">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect width="14" height="14" rx="3" fill="#1a1008" opacity=".8"/><text x="7" y="10" font-size="8" font-weight="700" fill="#c9a96e" text-anchor="middle" font-family="serif">A</text></svg>
+      <span class="trust-ai">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <rect width="14" height="14" rx="3" fill="#1a1008"/>
+          <text x="7" y="10.5" font-size="8.5" font-weight="700" fill="#c9a96e" text-anchor="middle" font-family="Georgia,serif">A</text>
+        </svg>
         AI by Anthropic
       </span>
     </div>
