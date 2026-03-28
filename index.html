@@ -291,7 +291,7 @@ section{padding:100px 24px}
   color:var(--dim);
   line-height:1.3;
 }
-.comment-rows{}
+.comment-rows{overflow:hidden}
 .c-row{
   display:grid;
   grid-template-columns:3px 48px 130px 64px 1fr auto;
@@ -383,7 +383,10 @@ section{padding:100px 24px}
   animation:demo-slide .25s ease;
 }
 @keyframes demo-slide{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-@keyframes demo-pulse{0%{background:transparent}30%{background:rgba(255,255,255,.03)}100%{background:transparent}}
+@keyframes demo-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes demo-out{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-6px)}}
+@keyframes num-pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
+.stat-num.pop{animation:num-pop .25s ease}
 
 /* ── PROBLEEM ── */
 #probleem{background:var(--s1)}
@@ -898,62 +901,7 @@ footer{
         <div class="stat-label">SPAM</div>
       </div>
     </div>
-    <div class="comment-rows" id="demoRows">
-      <div class="c-row" data-demo="hot" data-reply="Ja, we installeren door heel Zeeland. All-in vanaf €7.900. Zal ik je een offerte sturen?">
-        <div class="c-bar" style="background:var(--hot)"></div>
-        <div class="c-avatar" style="background:rgba(74,222,128,.1);color:var(--hot)">MV</div>
-        <span class="c-chip" style="background:var(--hot)">HOT LEAD</span>
-        <span class="c-conf" style="color:var(--hot)">97%</span>
-        <span class="c-text">Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?</span>
-        <div class="c-actions">
-          <button class="c-btn demo-reply-btn">Reageren</button>
-          <button class="c-btn demo-hide-btn">Verbergen</button>
-        </div>
-      </div>
-      <div class="c-row" data-demo="interested" data-reply="Goed idee! Ik stuur jullie even een DM met meer info.">
-        <div class="c-bar" style="background:var(--interested)"></div>
-        <div class="c-avatar" style="background:rgba(250,204,21,.1);color:var(--interested)">SB</div>
-        <span class="c-chip" style="background:var(--interested)">INTERESSE</span>
-        <span class="c-conf" style="color:var(--interested)">82%</span>
-        <span class="c-text">Interessant, ga dit bespreken met mijn partner</span>
-        <div class="c-actions">
-          <button class="c-btn demo-reply-btn">Reageren</button>
-          <button class="c-btn demo-hide-btn">Verbergen</button>
-        </div>
-      </div>
-      <div class="c-row" data-demo="question" data-reply="Jazeker! Onze showroom in Breda is ma-vr open van 9-17u.">
-        <div class="c-bar" style="background:var(--quest)"></div>
-        <div class="c-avatar" style="background:rgba(96,165,250,.1);color:var(--quest)">RJ</div>
-        <span class="c-chip" style="background:var(--quest)">VRAAG</span>
-        <span class="c-conf" style="color:var(--quest)">88%</span>
-        <span class="c-text">Is er ook een showroom waar ik dit kan bekijken?</span>
-        <div class="c-actions">
-          <button class="c-btn demo-reply-btn">Reageren</button>
-          <button class="c-btn demo-hide-btn">Verbergen</button>
-        </div>
-      </div>
-      <div class="c-row" data-demo="complaint" data-reply="Vervelend om te horen. We gebruiken inmiddels een nieuw type paneel met 25 jaar garantie.">
-        <div class="c-bar" style="background:var(--comp)"></div>
-        <div class="c-avatar" style="background:rgba(251,113,133,.1);color:var(--comp)">TD</div>
-        <span class="c-chip" style="background:var(--comp)">KLACHT</span>
-        <span class="c-conf" style="color:var(--comp)">91%</span>
-        <span class="c-text">Bij de buren na 2 jaar al kapot, bespaar je geld</span>
-        <div class="c-actions">
-          <button class="c-btn demo-reply-btn">Reageren</button>
-          <button class="c-btn demo-hide-btn">Verbergen</button>
-        </div>
-      </div>
-      <div class="c-row spam-row" data-demo="spam">
-        <div class="c-bar" style="background:var(--spam)"></div>
-        <div class="c-avatar" style="background:rgba(82,82,91,.2);color:var(--spam)">JK</div>
-        <span class="c-chip" style="background:var(--spam);color:var(--soft)">SPAM</span>
-        <span class="c-conf" style="color:var(--spam)">94%</span>
-        <span class="c-text">Petra van Dam moet je dit zien &#x1F602;&#x1F447;</span>
-        <div class="c-actions">
-          <button class="c-btn demo-hide-btn">Verbergen</button>
-        </div>
-      </div>
-    </div>
+    <div class="comment-rows" id="demoRows"></div>
   </div>
 </section>
 
@@ -1467,150 +1415,118 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-// Demo card interactivity
+// ── Live comment feed loop ──
 (function(){
-  const rows=document.querySelectorAll('#demoRows .c-row');
-  let activeRow=null;
+  var container=document.getElementById('demoRows');
+  var nums=document.querySelectorAll('.stat-num');
+  if(!container||!nums.length)return;
 
-  function resetRow(row){
-    row.classList.remove('demo-hidden','demo-replied');
-    if(row.dataset.demo==='spam')row.classList.add('spam-row');
-    // Remove composer/preview
-    row.querySelectorAll('.demo-composer,.demo-reply-preview').forEach(el=>el.remove());
-    // Restore chip text
-    const chip=row.querySelector('.c-chip');
-    if(chip&&chip.dataset.orig){chip.textContent=chip.dataset.orig;chip.style.background=chip.dataset.origBg;chip.style.color=chip.dataset.origColor||''}
-    // Restore buttons
-    const actions=row.querySelector('.c-actions');
-    if(actions)actions.style.display='';
+  // Hardcoded demo comments: [initials, cls, chipLabel, chipColor, avatarBg, conf, text, counterIdx]
+  // counterIdx: 0=hot, 1=interesse, 2=vraag, 3=klacht, 4=spam
+  var pool=[
+    ['MV','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','97%','Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?',0],
+    ['RJ','question','VRAAG','var(--quest)','rgba(96,165,250,.1)','88%','Is er ook een showroom waar ik dit kan bekijken?',2],
+    ['SB','interested','INTERESSE','var(--interested)','rgba(250,204,21,.1)','82%','Interessant, ga dit bespreken met mijn partner',1],
+    ['AK','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','94%','Wat is de levertijd als ik nu bestel?',0],
+    ['LP','question','VRAAG','var(--quest)','rgba(96,165,250,.1)','91%','Doen jullie ook installaties in Noord-Holland?',2],
+    ['TD','complaint','KLACHT','var(--comp)','rgba(251,113,133,.1)','91%','Bij de buren na 2 jaar al kapot, bespaar je geld',3],
+    ['NB','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','96%','Prijs voor 12 panelen op een plat dak?',0],
+    ['JK','spam','SPAM','var(--spam)','rgba(82,82,91,.2)','94%','Petra van Dam moet je dit zien \uD83D\uDE02\uD83D\uDC47',4],
+  ];
+
+  var MAX_VISIBLE=5;
+  var baseCounters=[5,3,4,6,12];
+  var counters=baseCounters.slice();
+  var cursor=0; // next item from pool to add
+  var visible=[]; // indices currently shown
+
+  function makeRow(d){
+    var isSpam=d[1]==='spam';
+    var el=document.createElement('div');
+    el.className='c-row'+(isSpam?' spam-row':'');
+    el.style.animation='demo-in .3s ease-out both';
+    el.innerHTML=
+      '<div class="c-bar" style="background:'+d[3]+'"></div>'+
+      '<div class="c-avatar" style="background:'+d[4]+';color:'+d[3]+'">'+d[0]+'</div>'+
+      '<span class="c-chip" style="background:'+d[3]+(isSpam?';color:var(--soft)':'')+'">'+ d[2]+'</span>'+
+      '<span class="c-conf" style="color:'+d[3]+'">'+d[5]+'</span>'+
+      '<span class="c-text">'+d[6]+'</span>'+
+      '<div class="c-actions">'+(isSpam?'':'<button class="c-btn">Reageren</button>')+'<button class="c-btn">Verbergen</button></div>';
+    return el;
   }
 
-  function resetAll(){
-    rows.forEach(r=>resetRow(r));
-    activeRow=null;
+  function popCounter(idx){
+    counters[idx]++;
+    nums[idx].textContent=counters[idx];
+    nums[idx].classList.remove('pop');
+    void nums[idx].offsetWidth; // force reflow
+    nums[idx].classList.add('pop');
   }
 
-  rows.forEach(row=>{
-    const chip=row.querySelector('.c-chip');
-    // Store original chip state
-    chip.dataset.orig=chip.textContent;
-    chip.dataset.origBg=chip.style.background;
-    chip.dataset.origColor=chip.style.color||'';
+  function resetCounters(){
+    counters=baseCounters.slice();
+    for(var i=0;i<nums.length;i++) nums[i].textContent=counters[i];
+  }
 
-    // Reply button
-    const replyBtn=row.querySelector('.demo-reply-btn');
-    if(replyBtn){
-      replyBtn.addEventListener('click',function(e){
-        e.stopPropagation();
-        if(row.classList.contains('demo-replied'))return;
-
-        // If another row is active, reset it
-        if(activeRow&&activeRow!==row)resetRow(activeRow);
-
-        // If composer is already open, complete the reply
-        if(row.querySelector('.demo-composer')){
-          row.querySelector('.demo-composer').remove();
-          row.classList.add('demo-replied');
-          row.classList.remove('spam-row');
-          chip.textContent='\u2713 BEANTWOORD';
-          chip.style.background='#16a34a';
-          chip.style.color='';
-          // Show reply preview
-          const preview=document.createElement('div');
-          preview.className='demo-reply-preview';
-          preview.innerHTML='\u21A9 Jij: \u201C'+(row.dataset.reply||'Bedankt voor je reactie!')+'\u201D';
-          row.appendChild(preview);
-          activeRow=row;
-          return;
-        }
-
-        // Open composer
-        const composer=document.createElement('div');
-        composer.className='demo-composer';
-        composer.innerHTML='<span class="demo-composer-text">\u270E '+(row.dataset.reply||'Typ je reactie...')+'</span>';
-        row.appendChild(composer);
-        activeRow=row;
-
-        // Auto-complete after 800ms
-        setTimeout(function(){
-          if(!row.querySelector('.demo-composer'))return;
-          row.querySelector('.demo-composer').remove();
-          row.classList.add('demo-replied');
-          row.classList.remove('spam-row');
-          chip.textContent='\u2713 BEANTWOORD';
-          chip.style.background='#16a34a';
-          chip.style.color='';
-          const preview=document.createElement('div');
-          preview.className='demo-reply-preview';
-          preview.innerHTML='\u21A9 Jij: \u201C'+(row.dataset.reply||'Bedankt voor je reactie!')+'\u201D';
-          row.appendChild(preview);
-        },800);
-      });
-    }
-
-    // Hide button
-    const hideBtn=row.querySelector('.demo-hide-btn');
-    if(hideBtn){
-      hideBtn.addEventListener('click',function(e){
-        e.stopPropagation();
-        if(row.classList.contains('demo-hidden'))return;
-        if(activeRow&&activeRow!==row)resetRow(activeRow);
-        row.classList.add('demo-hidden');
-        row.classList.remove('spam-row');
-        chip.textContent='VERBORGEN';
-        chip.style.background='var(--s3)';
-        chip.style.color='var(--muted)';
-        activeRow=row;
-      });
-    }
-  });
-
-  // Reset on clicking outside the demo
-  document.addEventListener('click',function(e){
-    if(!e.target.closest('#demoRows')&&activeRow){
-      resetAll();
-    }
-  });
-})();
-
-// Live pulse loop — subtle dashboard feel
-(function(){
-  const rows=document.querySelectorAll('#demoRows .c-row');
-  const nums=document.querySelectorAll('.stat-num');
-  // Base values for bounded loop
-  const base=[5,3,4,6,12]; // hot,interesse,vraag,klacht,spam
-  // Events: [rowIndex, counterIndex] — biased toward hot(0) and vraag(2)
-  const events=[[0,0],[2,2],[1,0]]; // hot row→hot counter, vraag row→vraag counter, interested row→hot counter
-  let step=0;
-  let timer=null;
-
-  function pulse(){
-    if(!rows.length||!nums.length)return;
-    const[ri,ci]=events[step%events.length];
-    const row=rows[ri];
-    if(!row||row.classList.contains('demo-replied')||row.classList.contains('demo-hidden'))return tick();
-    // Pulse the row
-    row.style.animation='demo-pulse 1.5s ease';
-    setTimeout(()=>{row.style.animation=''},1600);
-    // Increment counter
-    const num=nums[ci];
-    if(num){
-      const cur=parseInt(num.textContent)||0;
-      num.textContent=cur+1;
-    }
-    step++;
-    // After 3 events (one cycle), reset counters after a pause
-    if(step%3===0){
-      setTimeout(()=>{
-        nums.forEach((n,i)=>{n.textContent=base[i]});
-      },2000);
+  // Seed initial rows (first 3)
+  function seed(){
+    container.innerHTML='';
+    visible=[];
+    cursor=0;
+    resetCounters();
+    for(var i=0;i<3;i++){
+      var d=pool[cursor%pool.length];
+      var row=makeRow(d);
+      row.style.animation='none'; // no entrance anim for seed
+      container.appendChild(row);
+      visible.push(cursor%pool.length);
+      cursor++;
     }
   }
+
+  function addOne(){
+    var d=pool[cursor%pool.length];
+    // If full, fade out the top row first
+    if(container.children.length>=MAX_VISIBLE){
+      var top=container.children[0];
+      top.style.animation='demo-out .2s ease forwards';
+      setTimeout(function(){if(top.parentNode)top.remove()},220);
+    }
+    // Slight delay so removal and addition don't collide visually
+    setTimeout(function(){
+      var row=makeRow(d);
+      container.appendChild(row);
+      popCounter(d[7]);
+      visible.push(cursor%pool.length);
+      cursor++;
+    }, container.children.length>=MAX_VISIBLE?250:0);
+  }
+
+  // Run one cycle: add rows until we've shown all 8, then reset
+  var cycleStep=0;
+  var totalAdds=pool.length-3; // 3 are seeded, add the remaining 5
 
   function tick(){
-    timer=setTimeout(()=>{pulse();tick()},3300);
+    if(cycleStep<totalAdds){
+      addOne();
+      cycleStep++;
+      setTimeout(tick,2500);
+    } else {
+      // End of cycle — pause, then gracefully fade all and restart
+      setTimeout(function(){
+        var rows=container.children;
+        for(var i=0;i<rows.length;i++) rows[i].style.animation='demo-out .3s ease forwards';
+        setTimeout(function(){
+          seed();
+          cycleStep=0;
+          setTimeout(tick,2500);
+        },400);
+      },3000);
+    }
   }
-  // Start after 2s delay
+
+  // Start
+  seed();
   setTimeout(tick,2000);
 })();
 </script>
