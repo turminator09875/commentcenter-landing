@@ -574,7 +574,7 @@ td.meta-cell{color:var(--dim)}
 
 /* ── PRICING ── */
 #pricing{background:var(--bg);text-align:center}
-#pricing .label,#pricing .section-head{text-align:center}
+#pricing .label,#pricing .section-head,#pricing .section-sub{text-align:center;margin-left:auto;margin-right:auto}
 .pricing-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -816,7 +816,7 @@ footer{
       <a href="#faq">FAQ</a>
       <a href="#pricing">Prijzen</a>
     </div>
-    <a href="https://app.commentcenter.nl/login" class="nav-cta" style="background:none;color:var(--muted);margin-left:0;padding:8px 12px;">Log in</a>
+    <a href="https://app.commentcenter.nl" class="nav-cta" style="background:none;color:var(--muted);margin-left:0;padding:8px 12px;">Log in</a>
     <a href="https://app.commentcenter.nl" class="nav-cta">Scan gratis je eerste post</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu openen">&#9776;</button>
   </div>
@@ -830,7 +830,7 @@ footer{
   <a href="#voorwie" onclick="closeMobile()">Voor wie</a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="#pricing" onclick="closeMobile()">Prijzen</a>
-  <a href="https://app.commentcenter.nl/login" onclick="closeMobile()" style="color:var(--muted);margin-top:8px">Log in</a>
+  <a href="https://app.commentcenter.nl" onclick="closeMobile()" style="color:var(--muted);margin-top:8px">Log in</a>
   <a href="https://app.commentcenter.nl" style="background:var(--accent);color:#fff;padding:12px 32px;border-radius:12px;font-weight:600;margin-top:8px;letter-spacing:-0.02em">Scan gratis je eerste post</a>
 </div>
 
@@ -1095,9 +1095,9 @@ footer{
 </section>
 
 <!-- SIGNAAL UIT RUIS -->
-<section id="signaal" style="background:var(--bg)">
+<section id="signaal" style="background:var(--bg);padding-top:120px;padding-bottom:120px">
   <div class="inner">
-    <span class="label hot">ZIEN WAT AANDACHT VRAAGT</span>
+    <span class="label">ZIEN WAT AANDACHT VRAAGT</span>
     <h2 class="section-head">Niet alle comments zijn even <em style="color:#fafafa">belangrijk.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">CommentCenter laat direct zien welke reacties aandacht vragen en welke je kunt negeren, verbergen of later oppakken.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
@@ -1224,7 +1224,7 @@ footer{
 </section>
 
 <!-- DIRECTE OPBRENGST -->
-<section id="proof" style="background:var(--s1)">
+<section id="proof" style="background:var(--s1);padding-top:120px;padding-bottom:120px">
   <div class="inner">
     <span class="label">DIRECTE OPBRENGST</span>
     <h2 class="section-head">Wat teams er direct uit <em style="color:#fafafa">halen.</em></h2>
@@ -1415,7 +1415,7 @@ footer{
       <div class="footer-col">
         <a href="#pricing">Prijzen</a>
         <a href="#faq">FAQ</a>
-        <a href="https://app.commentcenter.nl/login">Inloggen</a>
+        <a href="https://app.commentcenter.nl">Inloggen</a>
       </div>
       <div class="footer-col">
         <a href="/privacy">Privacy</a>
