@@ -213,7 +213,7 @@ section{padding:100px 24px}
   font-size:18px;
   color:var(--soft);
   max-width:520px;
-  margin:0 auto 36px;
+  margin:0 auto 24px;
   line-height:1.7;
 }
 .hero-ctas{
@@ -249,14 +249,14 @@ section{padding:100px 24px}
 .btn-secondary:hover{color:var(--tx)}
 .hero-note{
   font-size:12px;
-  color:var(--dim);
-  margin-top:16px;
+  color:var(--muted);
+  margin-top:10px;
 }
 
 /* ── HERO MOCK ── */
 .mock-wrap{
   max-width:780px;
-  margin:64px auto 0;
+  margin:40px auto 0;
   background:var(--s1);
   border-radius:20px;
   padding:24px;
@@ -293,9 +293,9 @@ section{padding:100px 24px}
 .comment-rows{}
 .c-row{
   display:grid;
-  grid-template-columns:3px 32px 130px 1fr auto;
+  grid-template-columns:3px 48px 130px 64px 1fr auto;
   align-items:center;
-  gap:10px;
+  gap:8px;
   padding:9px 16px;
   border-bottom:1px solid var(--bg);
   transition:opacity .3s ease;
@@ -313,10 +313,10 @@ section{padding:100px 24px}
   border-radius:2px;
 }
 .c-avatar{
-  width:32px;height:32px;
+  width:36px;height:36px;
   border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  font-size:10px;
+  font-size:11px;
   font-weight:700;
 }
 .c-chip{
@@ -334,13 +334,8 @@ section{padding:100px 24px}
   font-size:10px;
   flex-shrink:0;
 }
-.c-meta{
-  width:130px;
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
+.c-chip{align-self:center}
+.c-conf{align-self:center}
 .c-text{
   font-size:12.5px;
   color:var(--soft);
@@ -381,7 +376,7 @@ section{padding:100px 24px}
   font-size:11.5px;color:var(--muted);font-style:italic;
 }
 .demo-reply-preview{
-  grid-column:3/-1;
+  grid-column:4/-1;
   font-size:11px;color:var(--dim);
   margin-top:2px;
   animation:demo-slide .25s ease;
@@ -503,14 +498,14 @@ section{padding:100px 24px}
   overflow:hidden;
   box-shadow:var(--shadow-lg);
   overflow-x:auto;
-  margin-top:40px;
+  margin-top:28px;
 }
 table{
   width:100%;
   border-collapse:collapse;
   min-width:600px;
 }
-th,td{padding:14px 18px;text-align:left;font-size:13px}
+th,td{padding:11px 18px;text-align:left;font-size:13px}
 thead tr{border-bottom:1px solid var(--s3)}
 th{font-weight:600;color:var(--dim)}
 th.cc{color:var(--accent)}
@@ -821,10 +816,12 @@ footer{
   .stat-bar{gap:6px}
   .stat-block{min-width:100px;padding:8px 10px}
   .stat-num{font-size:16px}
-  .c-row{padding:8px 10px;gap:6px;grid-template-columns:3px 28px 100px 1fr auto}
+  .c-row{padding:8px 10px;gap:4px;grid-template-columns:3px 28px 80px 40px 1fr auto}
   .c-name{display:none}
   .c-actions{gap:4px}
   .c-btn{font-size:9px;padding:3px 7px}
+  .c-chip{font-size:8px;padding:2px 5px}
+  .c-conf{font-size:9px}
   .pricing-card{padding:28px 24px}
   .pricing-amount{font-size:36px}
   .footer-cols{flex-direction:column;gap:24px}
@@ -901,7 +898,8 @@ footer{
       <div class="c-row" data-demo="hot" data-reply="Ja, we installeren door heel Zeeland. All-in vanaf €7.900. Zal ik je een offerte sturen?">
         <div class="c-bar" style="background:var(--hot)"></div>
         <div class="c-avatar" style="background:rgba(74,222,128,.1);color:var(--hot)">MV</div>
-        <div class="c-meta"><span class="c-chip" style="background:var(--hot)">HOT LEAD</span><span class="c-conf" style="color:var(--hot)">97%</span></div>
+        <span class="c-chip" style="background:var(--hot)">HOT LEAD</span>
+        <span class="c-conf" style="color:var(--hot)">97%</span>
         <span class="c-text">Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?</span>
         <div class="c-actions">
           <button class="c-btn demo-reply-btn">Reageren</button>
@@ -911,7 +909,8 @@ footer{
       <div class="c-row" data-demo="interested" data-reply="Goed idee! Ik stuur jullie even een DM met meer info.">
         <div class="c-bar" style="background:var(--interested)"></div>
         <div class="c-avatar" style="background:rgba(250,204,21,.1);color:var(--interested)">SB</div>
-        <div class="c-meta"><span class="c-chip" style="background:var(--interested)">INTERESSE</span><span class="c-conf" style="color:var(--interested)">82%</span></div>
+        <span class="c-chip" style="background:var(--interested)">INTERESSE</span>
+        <span class="c-conf" style="color:var(--interested)">82%</span>
         <span class="c-text">Interessant, ga dit bespreken met mijn partner</span>
         <div class="c-actions">
           <button class="c-btn demo-reply-btn">Reageren</button>
@@ -921,7 +920,8 @@ footer{
       <div class="c-row" data-demo="question" data-reply="Jazeker! Onze showroom in Breda is ma-vr open van 9-17u.">
         <div class="c-bar" style="background:var(--quest)"></div>
         <div class="c-avatar" style="background:rgba(96,165,250,.1);color:var(--quest)">RJ</div>
-        <div class="c-meta"><span class="c-chip" style="background:var(--quest)">VRAAG</span><span class="c-conf" style="color:var(--quest)">88%</span></div>
+        <span class="c-chip" style="background:var(--quest)">VRAAG</span>
+        <span class="c-conf" style="color:var(--quest)">88%</span>
         <span class="c-text">Is er ook een showroom waar ik dit kan bekijken?</span>
         <div class="c-actions">
           <button class="c-btn demo-reply-btn">Reageren</button>
@@ -931,7 +931,8 @@ footer{
       <div class="c-row" data-demo="complaint" data-reply="Vervelend om te horen. We gebruiken inmiddels een nieuw type paneel met 25 jaar garantie.">
         <div class="c-bar" style="background:var(--comp)"></div>
         <div class="c-avatar" style="background:rgba(251,113,133,.1);color:var(--comp)">TD</div>
-        <div class="c-meta"><span class="c-chip" style="background:var(--comp)">KLACHT</span><span class="c-conf" style="color:var(--comp)">91%</span></div>
+        <span class="c-chip" style="background:var(--comp)">KLACHT</span>
+        <span class="c-conf" style="color:var(--comp)">91%</span>
         <span class="c-text">Bij de buren na 2 jaar al kapot, bespaar je geld</span>
         <div class="c-actions">
           <button class="c-btn demo-reply-btn">Reageren</button>
@@ -941,7 +942,8 @@ footer{
       <div class="c-row spam-row" data-demo="spam">
         <div class="c-bar" style="background:var(--spam)"></div>
         <div class="c-avatar" style="background:rgba(82,82,91,.2);color:var(--spam)">JK</div>
-        <div class="c-meta"><span class="c-chip" style="background:var(--spam);color:var(--soft)">SPAM</span><span class="c-conf" style="color:var(--spam)">94%</span></div>
+        <span class="c-chip" style="background:var(--spam);color:var(--soft)">SPAM</span>
+        <span class="c-conf" style="color:var(--spam)">94%</span>
         <span class="c-text">Petra van Dam moet je dit zien &#x1F602;&#x1F447;</span>
         <div class="c-actions">
           <button class="c-btn demo-hide-btn">Verbergen</button>
@@ -1125,24 +1127,24 @@ footer{
 </section>
 
 <!-- SIGNAAL UIT RUIS -->
-<section id="signaal" style="background:var(--bg);padding-top:120px;padding-bottom:120px">
+<section id="signaal" style="background:var(--bg);padding-top:80px;padding-bottom:80px">
   <div class="inner">
-    <h2 class="section-head">Niet alle comments zijn even <em style="color:#fafafa">belangrijk.</em></h2>
-    <p class="section-sub" style="max-width:600px;margin-bottom:48px">CommentCenter laat direct zien welke reacties aandacht vragen en welke je kunt negeren, verbergen of later oppakken.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-      <div class="feature-card">
+    <h2 class="section-head" style="margin-bottom:8px">Niet alle comments zijn even <em style="color:#fafafa">belangrijk.</em></h2>
+    <p class="section-sub" style="max-width:500px;margin-bottom:32px">CommentCenter laat direct zien welke reacties aandacht vragen en welke je kunt negeren, verbergen of later oppakken.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="feature-card" style="padding:16px">
         <div class="feature-card-title">Hot Leads</div>
         <div class="feature-card-desc">Mensen met duidelijke koopintentie die je snel wilt opvolgen.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" style="padding:16px">
         <div class="feature-card-title">Vragen</div>
         <div class="feature-card-desc">Reacties waar interesse zit, maar nog net een antwoord nodig is.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" style="padding:16px">
         <div class="feature-card-title">Klachten</div>
         <div class="feature-card-desc">Publieke frictie die vertrouwen kost als je die laat staan.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" style="padding:16px">
         <div class="feature-card-title">Spam</div>
         <div class="feature-card-desc">Troep die niets oplevert en je commentsectie vervuilt.</div>
       </div>
@@ -1153,9 +1155,8 @@ footer{
 <!-- VERGELIJKING -->
 <section id="vergelijk">
   <div class="inner">
-    <span class="label">POSITIONERING</span>
     <h2 class="section-head">Geen social inbox. Wel grip op je <em style="color:#fafafa">advertentiecomments.</em></h2>
-    <p class="section-sub" style="max-width:600px;margin-bottom:0">CommentCenter is gebouwd voor paid comments onder Facebook-advertenties. Niet om je hele social workflow te vervangen, maar om direct te zien waar leads, risico en ruis zitten.</p>
+    <p class="section-sub" style="max-width:540px;margin-bottom:0">CommentCenter is gebouwd voor paid comments onder Facebook-advertenties. Niet om je hele social workflow te vervangen, maar om direct te zien waar leads, risico en ruis zitten.</p>
     <div class="table-wrap">
       <table>
         <thead>
