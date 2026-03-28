@@ -232,21 +232,22 @@ section{padding:100px 24px}
   font-size:15px;
   padding:14px 32px;
   border-radius:12px;
-  box-shadow:0 4px 20px rgba(59,130,246,.4);
+  box-shadow:0 2px 10px rgba(59,130,246,.25);
   transition:transform .15s,box-shadow .15s;
 }
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,130,246,.5)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(59,130,246,.35)}
 .btn-secondary{
   display:inline-block;
-  background:var(--s1);
-  color:var(--soft);
+  background:transparent;
+  color:var(--muted);
   text-decoration:none;
-  font-size:15px;
-  padding:14px 28px;
-  border-radius:12px;
-  transition:color .15s;
+  font-size:13px;
+  padding:10px 20px;
+  border-radius:10px;
+  border:1px solid var(--s4);
+  transition:color .15s,border-color .15s;
 }
-.btn-secondary:hover{color:var(--tx)}
+.btn-secondary:hover{color:var(--soft);border-color:var(--muted)}
 .hero-note{
   font-size:12px;
   color:var(--muted);
@@ -255,8 +256,8 @@ section{padding:100px 24px}
 
 /* ── HERO MOCK ── */
 .mock-wrap{
-  max-width:780px;
-  margin:40px auto 0;
+  max-width:840px;
+  margin:32px auto 0;
   background:var(--s1);
   border-radius:20px;
   padding:24px;
@@ -382,6 +383,7 @@ section{padding:100px 24px}
   animation:demo-slide .25s ease;
 }
 @keyframes demo-slide{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes demo-pulse{0%{background:transparent}30%{background:rgba(255,255,255,.03)}100%{background:transparent}}
 
 /* ── PROBLEEM ── */
 #probleem{background:var(--s1)}
@@ -405,10 +407,12 @@ section{padding:100px 24px}
 .chaos-box{
   background:var(--bg);
   border-radius:16px;
-  padding:28px;
+  padding:32px;
   box-shadow:var(--shadow-md);
+  transform:scale(1.08);
+  transform-origin:center;
 }
-.chaos-header{font-size:12px;color:var(--dim);margin-bottom:20px}
+.chaos-header{font-size:12px;color:var(--muted);margin-bottom:20px}
 .chaos-lines{display:flex;flex-direction:column;gap:10px}
 .chaos-line{display:flex;align-items:center;gap:10px}
 .chaos-dot{
@@ -416,8 +420,8 @@ section{padding:100px 24px}
   border-radius:50%;
   flex-shrink:0;
 }
-.chaos-text{font-size:13px;color:var(--soft)}
-.chaos-footer{font-size:12px;color:var(--comp);font-weight:500;margin-top:20px}
+.chaos-text{font-size:13px;color:var(--tx)}
+.chaos-footer{font-size:14px;color:var(--comp);font-weight:600;margin-top:20px}
 
 /* ── HOE HET WERKT ── */
 #hoe{background:var(--bg)}
@@ -511,8 +515,8 @@ th{font-weight:600;color:var(--dim)}
 th.cc{color:var(--accent)}
 tbody tr{border-bottom:1px solid var(--s2)}
 tbody tr:last-child{border-bottom:none}
-td.label-cell{color:var(--soft);font-weight:500}
-td.cc-cell{color:var(--hot);font-weight:600}
+td.label-cell{color:var(--tx);font-weight:500}
+td.cc-cell{color:var(--hot);font-weight:700;font-size:14px}
 td.mod-cell{color:var(--muted)}
 td.meta-cell{color:var(--dim)}
 
@@ -553,8 +557,8 @@ td.meta-cell{color:var(--dim)}
 .trust-desc{font-size:14px;color:var(--soft);line-height:1.7}
 
 /* ── FAQ ── */
-#faq{background:var(--s1)}
-#faq .section-head{margin-bottom:48px}
+#faq{background:var(--s1);padding-top:72px;padding-bottom:72px}
+#faq .section-head{margin-bottom:36px}
 .faq-list{display:flex;flex-direction:column;gap:0;margin-top:0}
 .faq-item{border-bottom:1px solid var(--s3)}
 .faq-item:first-child{border-top:1px solid var(--s3)}
@@ -594,7 +598,7 @@ td.meta-cell{color:var(--dim)}
 .faq-item.open .faq-a{display:block}
 
 /* ── PRICING ── */
-#pricing{background:var(--bg);text-align:center}
+#pricing{background:var(--bg);text-align:center;padding-top:72px;padding-bottom:72px}
 #pricing .label,#pricing .section-head,#pricing .section-sub{text-align:center;margin-left:auto;margin-right:auto}
 .pricing-grid{
   display:grid;
@@ -608,7 +612,7 @@ td.meta-cell{color:var(--dim)}
 .pricing-card{
   background:var(--s1);
   border-radius:20px;
-  padding:36px 32px;
+  padding:28px 24px;
   box-shadow:var(--shadow-lg),inset 0 0 0 1px rgba(255,255,255,.04);
   display:flex;
   flex-direction:column;
@@ -616,17 +620,17 @@ td.meta-cell{color:var(--dim)}
   text-align:left;
 }
 .pricing-badge{
-  position:absolute;
-  top:16px;right:16px;
+  display:inline-block;
   font-size:10px;
   font-weight:700;
   letter-spacing:.1em;
   color:var(--accent);
-  background:rgba(59,130,246,.15);
-  padding:4px 10px;
-  border-radius:100px;
+  background:rgba(59,130,246,.12);
+  padding:3px 8px;
+  border-radius:6px;
+  margin-bottom:12px;
 }
-.pricing-name{font-size:18px;font-weight:700;margin-bottom:16px}
+.pricing-name{font-size:18px;font-weight:700;margin-bottom:12px}
 .pricing-price{
   display:flex;
   align-items:baseline;
@@ -642,20 +646,20 @@ td.meta-cell{color:var(--dim)}
 .pricing-per{font-size:14px;color:var(--muted)}
 .pricing-trial{font-size:12px;color:var(--accent);margin-bottom:8px}
 .pricing-trial.alt{color:var(--muted)}
-.pricing-tagline{font-size:13px;color:var(--muted);margin-bottom:24px}
+.pricing-tagline{font-size:13px;color:var(--muted);margin-bottom:16px}
 .pricing-features{
   list-style:none;
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:6px;
   flex:1;
-  margin-bottom:28px;
+  margin-bottom:20px;
 }
 .pricing-features li{
   display:flex;
   align-items:center;
-  gap:10px;
-  font-size:14px;
+  gap:8px;
+  font-size:13px;
   color:var(--soft);
 }
 .pricing-features li::before{
@@ -698,7 +702,7 @@ td.meta-cell{color:var(--dim)}
 
 /* ── FINAL CTA ── */
 #cta{
-  padding:100px 24px;
+  padding:72px 24px;
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -762,7 +766,7 @@ footer{
   white-space:nowrap;
   margin-bottom:10px;
 }
-.footer-tagline{font-size:12px;color:var(--dim);line-height:1.6}
+.footer-tagline{font-size:12px;color:var(--muted);line-height:1.6}
 .footer-cols{
   display:flex;
   gap:48px;
@@ -789,7 +793,7 @@ footer{
   max-width:960px;
   margin:32px auto 0;
   font-size:11px;
-  color:var(--dim);
+  color:var(--muted);
   border-top:1px solid var(--s2);
   padding-top:20px;
 }
@@ -1060,7 +1064,6 @@ footer{
 <!-- KERNFUNCTIE -->
 <section id="kernfunctie" style="background:var(--s1)">
   <div class="inner">
-    <span class="label hot">KERNFUNCTIE</span>
     <h2 class="section-head">Zie direct wat <em style="color:#fafafa">aandacht</em> vraagt.</h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Geen trefwoordmatching. Echte AI-redenering. Begrijpt context, toon en taal — en geeft je direct de acties die er toe doen.</p>
     <div class="feature-grid">
@@ -1391,33 +1394,6 @@ footer{
         <a href="https://app.commentcenter.nl?plan=agency" class="pricing-cta-secondary">Kies Agency &rarr;</a>
       </div>
     </div>
-    <div class="trust-strip" aria-label="Betaalmethoden en technologie">
-      <!-- iDEAL|Wero badge -->
-      <svg width="44" height="14" viewBox="0 0 44 14" aria-label="iDEAL en Wero">
-        <rect width="44" height="14" rx="2" fill="#CC0066"/>
-        <text x="22" y="10" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="7" font-weight="700" fill="white">iDEAL|Wero</text>
-      </svg>
-      <!-- Visa badge -->
-      <svg width="28" height="14" viewBox="0 0 28 14" aria-label="Visa">
-        <rect width="28" height="14" rx="2" fill="#1A1F71"/>
-        <text x="14" y="10" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="8" font-weight="800" fill="white" letter-spacing="0.5">VISA</text>
-      </svg>
-      <!-- Mastercard circles -->
-      <svg width="24" height="14" viewBox="0 0 24 14" aria-label="Mastercard">
-        <circle cx="9" cy="7" r="7" fill="#EB001B"/>
-        <circle cx="15" cy="7" r="7" fill="#F79E1B" opacity="0.9"/>
-        <circle cx="9" cy="7" r="7" fill="#EB001B" clip-path="url(#mc2)"/>
-        <clipPath id="mc2"><rect x="0" y="0" width="12" height="14"/></clipPath>
-      </svg>
-      <!-- Separator -->
-      <div class="trust-sep"></div>
-      <!-- Anthropic -->
-      <svg width="16" height="16" viewBox="0 0 16 16" aria-label="Anthropic">
-        <rect width="16" height="16" rx="3" fill="#1a1a1a"/>
-        <text x="8" y="12" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#D4A574">A</text>
-      </svg>
-      <span style="font-size:12px;color:#71717a;white-space:nowrap">AI by Anthropic</span>
-    </div>
     <p class="pricing-footnote">Maandelijks opzegbaar</p>
   </div>
 </section>
@@ -1595,6 +1571,47 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
       resetAll();
     }
   });
+})();
+
+// Live pulse loop — subtle dashboard feel
+(function(){
+  const rows=document.querySelectorAll('#demoRows .c-row');
+  const nums=document.querySelectorAll('.stat-num');
+  // Base values for bounded loop
+  const base=[5,3,4,6,12]; // hot,interesse,vraag,klacht,spam
+  // Events: [rowIndex, counterIndex] — biased toward hot(0) and vraag(2)
+  const events=[[0,0],[2,2],[1,0]]; // hot row→hot counter, vraag row→vraag counter, interested row→hot counter
+  let step=0;
+  let timer=null;
+
+  function pulse(){
+    if(!rows.length||!nums.length)return;
+    const[ri,ci]=events[step%events.length];
+    const row=rows[ri];
+    if(!row||row.classList.contains('demo-replied')||row.classList.contains('demo-hidden'))return tick();
+    // Pulse the row
+    row.style.animation='demo-pulse 1.5s ease';
+    setTimeout(()=>{row.style.animation=''},1600);
+    // Increment counter
+    const num=nums[ci];
+    if(num){
+      const cur=parseInt(num.textContent)||0;
+      num.textContent=cur+1;
+    }
+    step++;
+    // After 3 events (one cycle), reset counters after a pause
+    if(step%3===0){
+      setTimeout(()=>{
+        nums.forEach((n,i)=>{n.textContent=base[i]});
+      },2000);
+    }
+  }
+
+  function tick(){
+    timer=setTimeout(()=>{pulse();tick()},3300);
+  }
+  // Start after 2s delay
+  setTimeout(tick,2000);
 })();
 </script>
 </body>
