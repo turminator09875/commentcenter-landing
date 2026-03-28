@@ -292,28 +292,32 @@ section{padding:100px 24px}
 }
 .comment-rows{}
 .c-row{
-  display:flex;
+  display:grid;
+  grid-template-columns:3px 32px 130px 1fr auto;
   align-items:center;
   gap:10px;
   padding:9px 16px;
   border-bottom:1px solid var(--bg);
+  transition:opacity .3s ease;
+  position:relative;
 }
 .c-row:last-child{border-bottom:none}
 .c-row.spam-row{opacity:.45}
+.c-row.demo-hidden{opacity:.4}
+.c-row.demo-hidden .c-chip{background:var(--s3)!important;color:var(--muted)!important}
+.c-row.demo-replied .c-chip{background:#16a34a!important}
 .c-bar{
   width:3px;
   align-self:stretch;
   min-height:32px;
   border-radius:2px;
-  flex-shrink:0;
 }
 .c-avatar{
-  width:26px;height:26px;
-  border-radius:6px;
+  width:32px;height:32px;
+  border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  font-size:9.5px;
+  font-size:10px;
   font-weight:700;
-  flex-shrink:0;
 }
 .c-chip{
   font-size:9px;
@@ -323,6 +327,7 @@ section{padding:100px 24px}
   border-radius:5px;
   flex-shrink:0;
   color:var(--bg);
+  transition:background .3s ease, color .3s ease;
 }
 .c-conf{
   font-family:'JetBrains Mono',monospace;
@@ -330,7 +335,7 @@ section{padding:100px 24px}
   flex-shrink:0;
 }
 .c-meta{
-  width:132px;
+  width:130px;
   flex-shrink:0;
   display:flex;
   align-items:center;
@@ -339,7 +344,6 @@ section{padding:100px 24px}
 .c-text{
   font-size:12.5px;
   color:var(--soft);
-  flex:1;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -356,11 +360,33 @@ section{padding:100px 24px}
   color:var(--muted);
   border:none;
   border-radius:6px;
-  padding:3px 9px;
+  padding:4px 10px;
   cursor:pointer;
   flex-shrink:0;
   font-family:'DM Sans',sans-serif;
+  transition:background .15s,color .15s,opacity .15s;
 }
+.c-btn:hover{background:var(--s3);color:var(--soft)}
+.c-actions{display:flex;gap:6px;align-items:center}
+/* Reply composer (inline demo) */
+.demo-composer{
+  grid-column:1/-1;
+  background:var(--s2);
+  border-radius:10px;
+  padding:10px 14px;
+  margin-top:4px;
+  animation:demo-slide .2s ease;
+}
+.demo-composer-text{
+  font-size:11.5px;color:var(--muted);font-style:italic;
+}
+.demo-reply-preview{
+  grid-column:3/-1;
+  font-size:11px;color:var(--dim);
+  margin-top:2px;
+  animation:demo-slide .25s ease;
+}
+@keyframes demo-slide{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── PROBLEEM ── */
 #probleem{background:var(--s1)}
@@ -795,8 +821,10 @@ footer{
   .stat-bar{gap:6px}
   .stat-block{min-width:100px;padding:8px 10px}
   .stat-num{font-size:16px}
-  .c-row{padding:8px 10px;gap:6px}
-  .c-name,.c-btn{display:none}
+  .c-row{padding:8px 10px;gap:6px;grid-template-columns:3px 28px 100px 1fr auto}
+  .c-name{display:none}
+  .c-actions{gap:4px}
+  .c-btn{font-size:9px;padding:3px 7px}
   .pricing-card{padding:28px 24px}
   .pricing-amount{font-size:36px}
   .footer-cols{flex-direction:column;gap:24px}
@@ -816,7 +844,6 @@ footer{
       <a href="#faq">FAQ</a>
       <a href="#pricing">Prijzen</a>
     </div>
-    <a href="https://app.commentcenter.nl" class="nav-cta" style="background:none;color:var(--muted);margin-left:0;padding:8px 12px;">Log in</a>
     <a href="https://app.commentcenter.nl" class="nav-cta">Scan gratis je eerste post</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu openen">&#9776;</button>
   </div>
@@ -830,7 +857,6 @@ footer{
   <a href="#voorwie" onclick="closeMobile()">Voor wie</a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="#pricing" onclick="closeMobile()">Prijzen</a>
-  <a href="https://app.commentcenter.nl" onclick="closeMobile()" style="color:var(--muted);margin-top:8px">Log in</a>
   <a href="https://app.commentcenter.nl" style="background:var(--accent);color:#fff;padding:12px 32px;border-radius:12px;font-weight:600;margin-top:8px;letter-spacing:-0.02em">Scan gratis je eerste post</a>
 </div>
 
@@ -839,7 +865,7 @@ footer{
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-inner">
     <h1 class="hero-h1">Je betaalt voor elke klik.<br><em>Maar in de comments verlies je leads.</em></h1>
-    <p class="hero-sub">Scan je advertentie. Zie in één oogopslag wat hot leads zijn, wat spam is, en wat je nu meteen moet oppakken.</p>
+    <p class="hero-sub">Plak je advertentiepost-URL. Zie direct waar hot leads, vragen, klachten en spam zitten.</p>
     <div class="hero-ctas">
       <a href="https://app.commentcenter.nl" class="btn-primary">Scan gratis je eerste post &rarr;</a>
       <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
@@ -871,51 +897,55 @@ footer{
         <div class="stat-label">SPAM</div>
       </div>
     </div>
-    <div class="comment-rows">
-      <div class="c-row">
+    <div class="comment-rows" id="demoRows">
+      <div class="c-row" data-demo="hot" data-reply="Ja, we installeren door heel Zeeland. All-in vanaf €7.900. Zal ik je een offerte sturen?">
         <div class="c-bar" style="background:var(--hot)"></div>
         <div class="c-avatar" style="background:rgba(74,222,128,.1);color:var(--hot)">MV</div>
         <div class="c-meta"><span class="c-chip" style="background:var(--hot)">HOT LEAD</span><span class="c-conf" style="color:var(--hot)">97%</span></div>
         <span class="c-text">Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?</span>
-        <span class="c-name">Mark Visser</span>
-        <button class="c-btn">Reageren</button>
-        <button class="c-btn">Verbergen</button>
+        <div class="c-actions">
+          <button class="c-btn demo-reply-btn">Reageren</button>
+          <button class="c-btn demo-hide-btn">Verbergen</button>
+        </div>
       </div>
-      <div class="c-row">
+      <div class="c-row" data-demo="interested" data-reply="Goed idee! Ik stuur jullie even een DM met meer info.">
         <div class="c-bar" style="background:var(--interested)"></div>
         <div class="c-avatar" style="background:rgba(250,204,21,.1);color:var(--interested)">SB</div>
         <div class="c-meta"><span class="c-chip" style="background:var(--interested)">INTERESSE</span><span class="c-conf" style="color:var(--interested)">82%</span></div>
         <span class="c-text">Interessant, ga dit bespreken met mijn partner</span>
-        <span class="c-name">Sandra de Boer</span>
-        <button class="c-btn">Reageren</button>
-        <button class="c-btn">Verbergen</button>
+        <div class="c-actions">
+          <button class="c-btn demo-reply-btn">Reageren</button>
+          <button class="c-btn demo-hide-btn">Verbergen</button>
+        </div>
       </div>
-      <div class="c-row">
+      <div class="c-row" data-demo="question" data-reply="Jazeker! Onze showroom in Breda is ma-vr open van 9-17u.">
         <div class="c-bar" style="background:var(--quest)"></div>
         <div class="c-avatar" style="background:rgba(96,165,250,.1);color:var(--quest)">RJ</div>
         <div class="c-meta"><span class="c-chip" style="background:var(--quest)">VRAAG</span><span class="c-conf" style="color:var(--quest)">88%</span></div>
         <span class="c-text">Is er ook een showroom waar ik dit kan bekijken?</span>
-        <span class="c-name">Roel Janssen</span>
-        <button class="c-btn">Reageren</button>
-        <button class="c-btn">Verbergen</button>
+        <div class="c-actions">
+          <button class="c-btn demo-reply-btn">Reageren</button>
+          <button class="c-btn demo-hide-btn">Verbergen</button>
+        </div>
       </div>
-      <div class="c-row">
+      <div class="c-row" data-demo="complaint" data-reply="Vervelend om te horen. We gebruiken inmiddels een nieuw type paneel met 25 jaar garantie.">
         <div class="c-bar" style="background:var(--comp)"></div>
         <div class="c-avatar" style="background:rgba(251,113,133,.1);color:var(--comp)">TD</div>
         <div class="c-meta"><span class="c-chip" style="background:var(--comp)">KLACHT</span><span class="c-conf" style="color:var(--comp)">91%</span></div>
         <span class="c-text">Bij de buren na 2 jaar al kapot, bespaar je geld</span>
-        <span class="c-name">Tom D.</span>
-        <button class="c-btn">Reageren</button>
-        <button class="c-btn">Verbergen</button>
+        <div class="c-actions">
+          <button class="c-btn demo-reply-btn">Reageren</button>
+          <button class="c-btn demo-hide-btn">Verbergen</button>
+        </div>
       </div>
-      <div class="c-row spam-row">
+      <div class="c-row spam-row" data-demo="spam">
         <div class="c-bar" style="background:var(--spam)"></div>
         <div class="c-avatar" style="background:rgba(82,82,91,.2);color:var(--spam)">JK</div>
         <div class="c-meta"><span class="c-chip" style="background:var(--spam);color:var(--soft)">SPAM</span><span class="c-conf" style="color:var(--spam)">94%</span></div>
         <span class="c-text">Petra van Dam moet je dit zien &#x1F602;&#x1F447;</span>
-        <span class="c-name">Jan K.</span>
-        <button class="c-btn">Reageren</button>
-        <button class="c-btn">Verbergen</button>
+        <div class="c-actions">
+          <button class="c-btn demo-hide-btn">Verbergen</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1029,7 +1059,7 @@ footer{
 <section id="kernfunctie" style="background:var(--s1)">
   <div class="inner">
     <span class="label hot">KERNFUNCTIE</span>
-    <h2 class="section-head">Intentclassificatie die <em style="color:#fafafa">echt</em> werkt.</h2>
+    <h2 class="section-head">Zie direct wat <em style="color:#fafafa">aandacht</em> vraagt.</h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Geen trefwoordmatching. Echte AI-redenering. Begrijpt context, toon en taal — en geeft je direct de acties die er toe doen.</p>
     <div class="feature-grid">
       <div class="classif-box">
@@ -1097,7 +1127,6 @@ footer{
 <!-- SIGNAAL UIT RUIS -->
 <section id="signaal" style="background:var(--bg);padding-top:120px;padding-bottom:120px">
   <div class="inner">
-    <span class="label">ZIEN WAT AANDACHT VRAAGT</span>
     <h2 class="section-head">Niet alle comments zijn even <em style="color:#fafafa">belangrijk.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">CommentCenter laat direct zien welke reacties aandacht vragen en welke je kunt negeren, verbergen of later oppakken.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
@@ -1226,7 +1255,6 @@ footer{
 <!-- DIRECTE OPBRENGST -->
 <section id="proof" style="background:var(--s1);padding-top:120px;padding-bottom:120px">
   <div class="inner">
-    <span class="label">DIRECTE OPBRENGST</span>
     <h2 class="section-head">Wat teams er direct uit <em style="color:#fafafa">halen.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Geen vaag sentiment. Gewoon sneller zien wat belangrijk is.</p>
     <div class="trust-grid">
@@ -1415,7 +1443,6 @@ footer{
       <div class="footer-col">
         <a href="#pricing">Prijzen</a>
         <a href="#faq">FAQ</a>
-        <a href="https://app.commentcenter.nl">Inloggen</a>
       </div>
       <div class="footer-col">
         <a href="/privacy">Privacy</a>
@@ -1462,6 +1489,112 @@ const observer=new IntersectionObserver(entries=>{
   });
 },{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// Demo card interactivity
+(function(){
+  const rows=document.querySelectorAll('#demoRows .c-row');
+  let activeRow=null;
+
+  function resetRow(row){
+    row.classList.remove('demo-hidden','demo-replied');
+    if(row.dataset.demo==='spam')row.classList.add('spam-row');
+    // Remove composer/preview
+    row.querySelectorAll('.demo-composer,.demo-reply-preview').forEach(el=>el.remove());
+    // Restore chip text
+    const chip=row.querySelector('.c-chip');
+    if(chip&&chip.dataset.orig){chip.textContent=chip.dataset.orig;chip.style.background=chip.dataset.origBg;chip.style.color=chip.dataset.origColor||''}
+    // Restore buttons
+    const actions=row.querySelector('.c-actions');
+    if(actions)actions.style.display='';
+  }
+
+  function resetAll(){
+    rows.forEach(r=>resetRow(r));
+    activeRow=null;
+  }
+
+  rows.forEach(row=>{
+    const chip=row.querySelector('.c-chip');
+    // Store original chip state
+    chip.dataset.orig=chip.textContent;
+    chip.dataset.origBg=chip.style.background;
+    chip.dataset.origColor=chip.style.color||'';
+
+    // Reply button
+    const replyBtn=row.querySelector('.demo-reply-btn');
+    if(replyBtn){
+      replyBtn.addEventListener('click',function(e){
+        e.stopPropagation();
+        if(row.classList.contains('demo-replied'))return;
+
+        // If another row is active, reset it
+        if(activeRow&&activeRow!==row)resetRow(activeRow);
+
+        // If composer is already open, complete the reply
+        if(row.querySelector('.demo-composer')){
+          row.querySelector('.demo-composer').remove();
+          row.classList.add('demo-replied');
+          row.classList.remove('spam-row');
+          chip.textContent='\u2713 BEANTWOORD';
+          chip.style.background='#16a34a';
+          chip.style.color='';
+          // Show reply preview
+          const preview=document.createElement('div');
+          preview.className='demo-reply-preview';
+          preview.innerHTML='\u21A9 Jij: \u201C'+(row.dataset.reply||'Bedankt voor je reactie!')+'\u201D';
+          row.appendChild(preview);
+          activeRow=row;
+          return;
+        }
+
+        // Open composer
+        const composer=document.createElement('div');
+        composer.className='demo-composer';
+        composer.innerHTML='<span class="demo-composer-text">\u270E '+(row.dataset.reply||'Typ je reactie...')+'</span>';
+        row.appendChild(composer);
+        activeRow=row;
+
+        // Auto-complete after 800ms
+        setTimeout(function(){
+          if(!row.querySelector('.demo-composer'))return;
+          row.querySelector('.demo-composer').remove();
+          row.classList.add('demo-replied');
+          row.classList.remove('spam-row');
+          chip.textContent='\u2713 BEANTWOORD';
+          chip.style.background='#16a34a';
+          chip.style.color='';
+          const preview=document.createElement('div');
+          preview.className='demo-reply-preview';
+          preview.innerHTML='\u21A9 Jij: \u201C'+(row.dataset.reply||'Bedankt voor je reactie!')+'\u201D';
+          row.appendChild(preview);
+        },800);
+      });
+    }
+
+    // Hide button
+    const hideBtn=row.querySelector('.demo-hide-btn');
+    if(hideBtn){
+      hideBtn.addEventListener('click',function(e){
+        e.stopPropagation();
+        if(row.classList.contains('demo-hidden'))return;
+        if(activeRow&&activeRow!==row)resetRow(activeRow);
+        row.classList.add('demo-hidden');
+        row.classList.remove('spam-row');
+        chip.textContent='VERBORGEN';
+        chip.style.background='var(--s3)';
+        chip.style.color='var(--muted)';
+        activeRow=row;
+      });
+    }
+  });
+
+  // Reset on clicking outside the demo
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('#demoRows')&&activeRow){
+      resetAll();
+    }
+  });
+})();
 </script>
 </body>
 </html>
