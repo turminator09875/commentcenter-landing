@@ -427,6 +427,7 @@ section{padding:100px 24px}
   grid-template-columns:1fr 1fr;
   gap:16px;
   margin-top:0;
+  align-items:start;
 }
 .classif-box{
   background:var(--bg);
@@ -435,7 +436,6 @@ section{padding:100px 24px}
   box-shadow:var(--shadow-md);
 }
 .classif-header{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:20px}
-.classif-rows{display:flex;flex-direction:column}
 .classif-row{
   display:flex;
   align-items:center;
@@ -1100,24 +1100,22 @@ footer{
     <span class="label hot">ZIEN WAT AANDACHT VRAAGT</span>
     <h2 class="section-head">Niet alle comments zijn even <em>belangrijk.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">CommentCenter laat direct zien welke reacties aandacht vragen en welke je kunt negeren, verbergen of later oppakken.</p>
-    <div class="feature-grid" style="grid-template-columns:1fr 1fr">
-      <div class="feature-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div class="feature-card">
-          <div class="feature-card-title">Hot Leads</div>
-          <div class="feature-card-desc">Mensen met duidelijke koopintentie die je snel wilt opvolgen.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card-title">Vragen</div>
-          <div class="feature-card-desc">Reacties waar interesse zit, maar nog net een antwoord nodig is.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card-title">Klachten</div>
-          <div class="feature-card-desc">Publieke frictie die vertrouwen kost als je die laat staan.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card-title">Spam</div>
-          <div class="feature-card-desc">Troep die niets oplevert en je commentsectie vervuilt.</div>
-        </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="feature-card">
+        <div class="feature-card-title">Hot Leads</div>
+        <div class="feature-card-desc">Mensen met duidelijke koopintentie die je snel wilt opvolgen.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-title">Vragen</div>
+        <div class="feature-card-desc">Reacties waar interesse zit, maar nog net een antwoord nodig is.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-title">Klachten</div>
+        <div class="feature-card-desc">Publieke frictie die vertrouwen kost als je die laat staan.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-title">Spam</div>
+        <div class="feature-card-desc">Troep die niets oplevert en je commentsectie vervuilt.</div>
       </div>
     </div>
   </div>
