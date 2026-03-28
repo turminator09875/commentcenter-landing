@@ -291,7 +291,8 @@ section{padding:100px 24px}
   color:var(--dim);
   line-height:1.3;
 }
-.comment-rows{overflow:hidden}
+.demo-viewport{overflow:hidden;height:275px}
+.demo-track{display:flex;flex-direction:column}
 .c-row{
   display:grid;
   grid-template-columns:3px 48px 130px 64px 1fr auto;
@@ -299,11 +300,14 @@ section{padding:100px 24px}
   gap:8px;
   padding:9px 16px;
   border-bottom:1px solid var(--bg);
-  transition:opacity .3s ease;
   position:relative;
+  height:55px;
+  box-sizing:border-box;
+  flex-shrink:0;
 }
 .c-row:last-child{border-bottom:none}
 .c-row.spam-row{opacity:.45}
+.c-row.demo-new{background:rgba(255,255,255,.03);transition:background .6s ease}
 .c-row.demo-hidden{opacity:.4}
 .c-row.demo-hidden .c-chip{background:var(--s3)!important;color:var(--muted)!important}
 .c-row.demo-replied .c-chip{background:#16a34a!important}
@@ -382,9 +386,6 @@ section{padding:100px 24px}
   margin-top:2px;
   animation:demo-slide .25s ease;
 }
-@keyframes demo-slide{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-@keyframes demo-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes demo-out{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-6px)}}
 @keyframes num-pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
 .stat-num.pop{animation:num-pop .25s ease}
 
@@ -823,7 +824,8 @@ footer{
   .stat-bar{gap:6px}
   .stat-block{min-width:100px;padding:8px 10px}
   .stat-num{font-size:16px}
-  .c-row{padding:8px 10px;gap:4px;grid-template-columns:3px 28px 80px 40px 1fr auto}
+  .c-row{padding:8px 10px;gap:4px;grid-template-columns:3px 28px 80px 40px 1fr auto;height:44px}
+  .demo-viewport{height:220px}
   .c-name{display:none}
   .c-actions{gap:4px}
   .c-btn{font-size:9px;padding:3px 7px}
@@ -901,7 +903,9 @@ footer{
         <div class="stat-label">SPAM</div>
       </div>
     </div>
-    <div class="comment-rows" id="demoRows"></div>
+    <div class="demo-viewport" id="demoViewport">
+      <div class="demo-track" id="demoTrack"></div>
+    </div>
   </div>
 </section>
 
@@ -1415,36 +1419,54 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-// ── Live comment feed loop ──
+// ── Live comment feed — viewport + track model ──
 (function(){
-  var container=document.getElementById('demoRows');
+  var track=document.getElementById('demoTrack');
+  var viewport=document.getElementById('demoViewport');
   var nums=document.querySelectorAll('.stat-num');
-  if(!container||!nums.length)return;
+  if(!track||!viewport||!nums.length)return;
 
-  // Hardcoded demo comments: [initials, cls, chipLabel, chipColor, avatarBg, conf, text, counterIdx]
-  // counterIdx: 0=hot, 1=interesse, 2=vraag, 3=klacht, 4=spam
+  var ROW_H=55;
+  var MAX=5;
+  var SLIDE_MS=380;
+  var INTERVAL=3000;
+  var EASE='cubic-bezier(0.25,0.46,0.45,0.94)';
+
+  // Pool: [initials, cls, chipLabel, chipColor, avatarBg, conf, text, counterIdx]
+  // counterIdx: 0=hot 1=interesse 2=vraag 3=klacht 4=spam
+  // Counter targets per pool item — defines what each counter should show when this item is the newest
   var pool=[
     ['MV','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','97%','Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?',0],
     ['RJ','question','VRAAG','var(--quest)','rgba(96,165,250,.1)','88%','Is er ook een showroom waar ik dit kan bekijken?',2],
-    ['SB','interested','INTERESSE','var(--interested)','rgba(250,204,21,.1)','82%','Interessant, ga dit bespreken met mijn partner',1],
     ['AK','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','94%','Wat is de levertijd als ik nu bestel?',0],
+    ['SB','interested','INTERESSE','var(--interested)','rgba(250,204,21,.1)','82%','Interessant, ga dit bespreken met mijn partner',1],
     ['LP','question','VRAAG','var(--quest)','rgba(96,165,250,.1)','91%','Doen jullie ook installaties in Noord-Holland?',2],
     ['TD','complaint','KLACHT','var(--comp)','rgba(251,113,133,.1)','91%','Bij de buren na 2 jaar al kapot, bespaar je geld',3],
     ['NB','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','96%','Prijs voor 12 panelen op een plat dak?',0],
     ['JK','spam','SPAM','var(--spam)','rgba(82,82,91,.2)','94%','Petra van Dam moet je dit zien \uD83D\uDE02\uD83D\uDC47',4],
   ];
 
-  var MAX_VISIBLE=5;
+  // Bounded counter targets: for each pool position as "newest", what should each counter read
+  // This prevents endless upward counting — counters oscillate in a small range
+  var counterTargets=[
+    [6,3,4,6,12], // pool 0 (hot)   → hot goes 5→6
+    [6,3,5,6,12], // pool 1 (vraag) → vraag goes 4→5
+    [7,3,5,6,12], // pool 2 (hot)   → hot goes 6→7
+    [7,4,5,6,12], // pool 3 (inter) → interesse 3→4
+    [7,4,6,6,12], // pool 4 (vraag) → vraag goes 5→6
+    [7,4,6,7,12], // pool 5 (klacht)→ klacht 6→7
+    [8,4,6,7,12], // pool 6 (hot)   → hot goes 7→8
+    [8,4,6,7,13], // pool 7 (spam)  → spam 12→13
+  ];
+  // Base values (shown on seed — matches pool items 0-4 visible)
   var baseCounters=[5,3,4,6,12];
-  var counters=baseCounters.slice();
-  var cursor=0; // next item from pool to add
-  var visible=[]; // indices currently shown
+
+  var cursor=0; // ring buffer position
 
   function makeRow(d){
     var isSpam=d[1]==='spam';
     var el=document.createElement('div');
     el.className='c-row'+(isSpam?' spam-row':'');
-    el.style.animation='demo-in .3s ease-out both';
     el.innerHTML=
       '<div class="c-bar" style="background:'+d[3]+'"></div>'+
       '<div class="c-avatar" style="background:'+d[4]+';color:'+d[3]+'">'+d[0]+'</div>'+
@@ -1455,79 +1477,77 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     return el;
   }
 
-  function popCounter(idx){
-    counters[idx]++;
-    nums[idx].textContent=counters[idx];
-    nums[idx].classList.remove('pop');
-    void nums[idx].offsetWidth; // force reflow
-    nums[idx].classList.add('pop');
+  function setCounters(targets){
+    for(var i=0;i<nums.length;i++){
+      var prev=parseInt(nums[i].textContent)||0;
+      if(targets[i]!==prev){
+        nums[i].textContent=targets[i];
+        nums[i].classList.remove('pop');
+        void nums[i].offsetWidth;
+        nums[i].classList.add('pop');
+      }
+    }
   }
 
-  function resetCounters(){
-    counters=baseCounters.slice();
-    for(var i=0;i<nums.length;i++) nums[i].textContent=counters[i];
-  }
-
-  // Seed initial rows (first 3)
+  // Seed: fill track with first 5 rows, no animation
   function seed(){
-    container.innerHTML='';
-    visible=[];
-    cursor=0;
-    resetCounters();
-    for(var i=0;i<3;i++){
-      var d=pool[cursor%pool.length];
-      var row=makeRow(d);
-      row.style.animation='none'; // no entrance anim for seed
-      container.appendChild(row);
-      visible.push(cursor%pool.length);
-      cursor++;
+    track.innerHTML='';
+    track.style.transition='none';
+    track.style.transform='translateY(0)';
+    for(var i=0;i<MAX;i++){
+      var d=pool[i%pool.length];
+      track.appendChild(makeRow(d));
     }
+    cursor=MAX%pool.length;
+    // Set counters to base
+    for(var j=0;j<nums.length;j++) nums[j].textContent=baseCounters[j];
   }
 
-  function addOne(){
-    var d=pool[cursor%pool.length];
-    // If full, fade out the top row first
-    if(container.children.length>=MAX_VISIBLE){
-      var top=container.children[0];
-      top.style.animation='demo-out .2s ease forwards';
-      setTimeout(function(){if(top.parentNode)top.remove()},220);
-    }
-    // Slight delay so removal and addition don't collide visually
+  function pushRow(){
+    var d=pool[cursor];
+    var row=makeRow(d);
+
+    // 1. New row starts invisible, prepend to track
+    row.style.opacity='0';
+    track.insertBefore(row,track.firstChild);
+
+    // 2. Offset track up by one row height instantly (no transition)
+    track.style.transition='none';
+    track.style.transform='translateY(-'+ROW_H+'px)';
+    void track.offsetWidth; // force layout
+
+    // 3. Make new row visible
+    row.style.transition='opacity 200ms ease';
+    row.style.opacity='1';
+
+    // 4. Faint highlight on new row
+    row.classList.add('demo-new');
+    setTimeout(function(){row.classList.remove('demo-new');row.style.background=''},600);
+
+    // 5. Animate track sliding down to translateY(0)
+    track.style.transition='transform '+SLIDE_MS+'ms '+EASE;
+    track.style.transform='translateY(0)';
+
+    // 6. Increment counter at the moment the row becomes visible
+    var poolIdx=cursor;
+    setCounters(counterTargets[poolIdx]);
+
+    // 7. After slide completes: remove bottom row, clean up
     setTimeout(function(){
-      var row=makeRow(d);
-      container.appendChild(row);
-      popCounter(d[7]);
-      visible.push(cursor%pool.length);
-      cursor++;
-    }, container.children.length>=MAX_VISIBLE?250:0);
+      if(track.children.length>MAX){
+        track.removeChild(track.lastChild);
+      }
+      track.style.transition='none';
+      track.style.transform='translateY(0)';
+    },SLIDE_MS+20);
+
+    // Advance ring buffer
+    cursor=(cursor+1)%pool.length;
   }
 
-  // Run one cycle: add rows until we've shown all 8, then reset
-  var cycleStep=0;
-  var totalAdds=pool.length-3; // 3 are seeded, add the remaining 5
-
-  function tick(){
-    if(cycleStep<totalAdds){
-      addOne();
-      cycleStep++;
-      setTimeout(tick,2500);
-    } else {
-      // End of cycle — pause, then gracefully fade all and restart
-      setTimeout(function(){
-        var rows=container.children;
-        for(var i=0;i<rows.length;i++) rows[i].style.animation='demo-out .3s ease forwards';
-        setTimeout(function(){
-          seed();
-          cycleStep=0;
-          setTimeout(tick,2500);
-        },400);
-      },3000);
-    }
-  }
-
-  // Start
+  // Init and loop
   seed();
-  setTimeout(tick,2000);
+  setInterval(pushRow,INTERVAL);
 })();
 </script>
 </body>
