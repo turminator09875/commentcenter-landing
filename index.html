@@ -297,6 +297,7 @@ section{padding:100px 24px}
   display:grid;
   grid-template-columns:3px 48px 130px 64px 1fr auto;
   align-items:center;
+  justify-items:start;
   gap:8px;
   padding:9px 16px;
   border-bottom:1px solid var(--bg);
@@ -314,6 +315,7 @@ section{padding:100px 24px}
 .c-bar{
   width:3px;
   align-self:stretch;
+  justify-self:stretch;
   min-height:32px;
   border-radius:2px;
 }
@@ -367,7 +369,7 @@ section{padding:100px 24px}
   transition:background .15s,color .15s,opacity .15s;
 }
 .c-btn:hover{background:var(--s3);color:var(--soft)}
-.c-actions{display:flex;gap:6px;align-items:center}
+.c-actions{display:flex;gap:6px;align-items:center;justify-self:end}
 /* Reply composer (inline demo) */
 .demo-composer{
   grid-column:1/-1;
