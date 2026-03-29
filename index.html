@@ -172,6 +172,7 @@ section{padding:100px 24px}
   margin-bottom:12px;
 }
 .section-head em{font-style:italic;color:var(--accent)}
+.section-head .em-white{color:var(--tx)}
 .section-sub{
   font-size:16px;
   color:var(--soft);
@@ -858,6 +859,78 @@ footer{
   padding-top:20px;
 }
 
+/* ── THEME TOGGLE ── */
+.theme-toggle{
+  background:none;
+  border:none;
+  color:var(--muted);
+  cursor:pointer;
+  padding:6px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:color .15s,background .15s;
+  flex-shrink:0;
+}
+.theme-toggle:hover{color:var(--soft);background:rgba(255,255,255,.06)}
+.theme-icon-light{display:none}
+[data-theme=light] .theme-icon-dark{display:none}
+[data-theme=light] .theme-icon-light{display:block}
+
+/* ── FEATURE CARD HEAD ── */
+.feature-card-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.feature-card-head .feature-card-title{margin-bottom:0}
+.feature-icon{color:var(--muted);flex-shrink:0}
+
+/* ── LIGHT THEME ── */
+[data-theme=light]{
+  --bg:#ffffff;
+  --s1:#f4f4f5;
+  --s2:#e4e4e7;
+  --s3:#d4d4d8;
+  --s4:#a1a1aa;
+  --tx:#18181b;
+  --soft:#3f3f46;
+  --muted:#71717a;
+  --dim:#a1a1aa;
+}
+[data-theme=light] .nav-pill{background:rgba(255,255,255,.9);box-shadow:0 2px 12px rgba(0,0,0,.08),inset 0 0 0 1px rgba(0,0,0,.06)}
+[data-theme=light] .nav-logo{color:#18181b}
+[data-theme=light] .mock-wrap{background:#f4f4f5;box-shadow:0 8px 30px rgba(0,0,0,.08),inset 0 0 0 1px rgba(0,0,0,.06)}
+[data-theme=light] .stat-block{background:#fff}
+[data-theme=light] .c-row{border-bottom-color:#e4e4e7}
+[data-theme=light] .c-chip{color:#fff}
+[data-theme=light] .c-text{color:#3f3f46}
+[data-theme=light] .c-btn{color:#71717a}
+[data-theme=light] .c-btn:hover{background:#e4e4e7;color:#18181b}
+[data-theme=light] .hero-glow{background:radial-gradient(ellipse,rgba(59,130,246,.06) 0%,transparent 70%)}
+[data-theme=light] .classif-box{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+[data-theme=light] .classif-row{border-bottom-color:#e4e4e7}
+[data-theme=light] .classif-comment{color:#3f3f46}
+[data-theme=light] .feature-card{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+[data-theme=light] .trust-card{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+[data-theme=light] .proof-card{background:#fff;border-color:#e4e4e7}
+[data-theme=light] .pain-bar{opacity:.8}
+[data-theme=light] .chaos-box{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+[data-theme=light] .table-wrap{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+[data-theme=light] thead tr{border-bottom-color:#e4e4e7}
+[data-theme=light] tbody tr{border-bottom-color:#e4e4e7}
+[data-theme=light] .pricing-card{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.06),inset 0 0 0 1px rgba(0,0,0,.06)}
+[data-theme=light] .cta-glow{background:radial-gradient(ellipse,rgba(59,130,246,.04) 0%,transparent 70%)}
+[data-theme=light] footer{border-top-color:#e4e4e7}
+[data-theme=light] .footer-bottom{border-top-color:#e4e4e7}
+[data-theme=light] .nav-mobile-menu{background:rgba(255,255,255,.97)}
+[data-theme=light] .nav-mobile-menu a{color:#18181b}
+[data-theme=light] .compare-card{background:#fff}
+[data-theme=light] .compare-list li{color:#3f3f46}
+[data-theme=light] .theme-toggle:hover{background:rgba(0,0,0,.06)}
+
+[data-theme=light] .faq-item{border-bottom-color:#e4e4e7}
+[data-theme=light] .faq-item:first-child{border-top-color:#e4e4e7}
+[data-theme=light] .step-item{border-bottom-color:#e4e4e7}
+[data-theme=light] .for-item{border-bottom-color:#e4e4e7}
+
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   section{padding:56px 20px}
@@ -882,6 +955,7 @@ footer{
   .footer-bottom{color:#71717a}
   .footer-tagline{color:#71717a}
   .nav-links,.nav-cta{display:none}
+  .theme-toggle{order:1}
   .nav-hamburger{display:block}
   .nav-pill{padding:8px 8px 8px 16px}
   #proof{padding-top:56px;padding-bottom:56px}
@@ -923,12 +997,13 @@ footer{
   <div class="nav-pill">
     <a class="nav-logo" href="/"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="1" y="1" width="18" height="14" rx="4" fill="#3b82f6"/><polygon points="4,15 7,18.5 9,15" fill="#3b82f6"/><rect x="4" y="4" width="11" height="1.5" rx="0.7" fill="white" opacity="0.3"/><rect x="4" y="7" width="8" height="2" rx="1" fill="white"/><rect x="4" y="11" width="10" height="1.5" rx="0.7" fill="white" opacity="0.3"/></svg><span class="wm">Comment</span></a>
     <div class="nav-links">
-      <a href="#hoe">Hoe het werkt</a>
-      <a href="#vergelijk">Vergelijking</a>
-      <a href="#voorwie">Voor wie</a>
-      <a href="#faq">FAQ</a>
-      <a href="#pricing">Prijzen</a>
+      <a href="#hoe">Zo werkt het</a>
+      <a href="#vergelijk">Waarom CommentCenter</a>
+      <a href="#voorwie">Voor teams</a>
+      <a href="#faq">Vragen</a>
+      <a href="#pricing">Tarieven</a>
     </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Wissel thema"><svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     <a href="https://app.commentcenter.nl" class="nav-cta">Scan gratis je eerste post</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu openen">&#9776;</button>
   </div>
@@ -937,11 +1012,11 @@ footer{
 <!-- MOBILE MENU -->
 <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
   <button class="nav-mobile-close" id="mobileClose" aria-label="Menu sluiten">&times;</button>
-  <a href="#hoe" onclick="closeMobile()">Hoe het werkt</a>
-  <a href="#vergelijk" onclick="closeMobile()">Vergelijking</a>
-  <a href="#voorwie" onclick="closeMobile()">Voor wie</a>
-  <a href="#faq" onclick="closeMobile()">FAQ</a>
-  <a href="#pricing" onclick="closeMobile()">Prijzen</a>
+  <a href="#hoe" onclick="closeMobile()">Zo werkt het</a>
+  <a href="#vergelijk" onclick="closeMobile()">Waarom CommentCenter</a>
+  <a href="#voorwie" onclick="closeMobile()">Voor teams</a>
+  <a href="#faq" onclick="closeMobile()">Vragen</a>
+  <a href="#pricing" onclick="closeMobile()">Tarieven</a>
   <a href="https://app.commentcenter.nl" style="background:var(--accent);color:#fff;padding:12px 32px;border-radius:12px;font-weight:600;margin-top:8px;letter-spacing:-0.02em">Scan gratis je eerste post</a>
 </div>
 
@@ -955,7 +1030,6 @@ footer{
       <a href="https://app.commentcenter.nl" class="btn-primary">Scan gratis je eerste post &rarr;</a>
       <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
     </div>
-    <p class="hero-note">Geen creditcard nodig</p>
   </div>
 
   <!-- HERO MOCK -->
@@ -993,7 +1067,7 @@ footer{
   <div class="inner">
     <span class="label">WAAR HET GELD WEGLEKT</span>
     <h2 class="section-head">Elke dag blijft betaalde intentie in je comments liggen.</h2>
-    <p class="section-sub" style="max-width:600px;margin-bottom:0">Je advertentie werkt. Maar niemand kijkt naar de reacties. Vragen blijven onbeantwoord. Bezwaren staan publiek. En de mensen die wilden kopen, zijn al weg.</p>
+    <p class="section-sub" style="max-width:600px;margin-bottom:0">Je advertentie werkt. Maar niemand kijkt naar de reacties. Vragen blijven onbeantwoord. Bezwaren staan publiek. Potenti&#235;le kopers zijn al weg.</p>
     <div class="pain-grid">
       <div class="pain-list">
         <div class="pain-item">
@@ -1064,7 +1138,7 @@ footer{
 <section id="hoe">
   <div class="inner-sm">
     <span class="label">ZO WERKT HET</span>
-    <h2 class="section-head">Van advertentie naar <em style="color:#fafafa">actie</em> in 30 seconden.</h2>
+    <h2 class="section-head">Van advertentie naar <em class="em-white">actie</em> in 30 seconden.</h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Geen handmatig doorspitten meer. Je ziet direct wat aandacht vraagt en wat weg kan.</p>
     <div class="steps-list">
       <div class="step-item">
@@ -1095,42 +1169,42 @@ footer{
 <!-- KERNFUNCTIE -->
 <section id="kernfunctie" style="background:var(--s1)">
   <div class="inner">
-    <h2 class="section-head">Zie direct wat <em style="color:#fafafa">aandacht</em> vraagt.</h2>
+    <h2 class="section-head">Zie direct wat <em class="em-white">aandacht</em> vraagt.</h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Geen trefwoordmatching. Echte AI-redenering. Begrijpt context, toon en taal — en geeft je direct de acties die er toe doen.</p>
     <div class="feature-grid">
       <div class="classif-box">
         <div class="classif-header">Live classificatie: zonnepanelen campagne</div>
         <div class="classif-rows">
           <div class="classif-row">
-            <span class="classif-comment">Kan ik dit ook laten plaatsen in Zeeland?</span>
+            <span class="classif-comment">Kan ik dit ook laten plaatsen in Zeeland, inclusief montage en all-in prijs?</span>
             <div class="classif-right">
               <span class="classif-chip" style="background:var(--hot)">HOT LEAD</span>
               <span class="classif-conf" style="color:var(--hot)">97%</span>
             </div>
           </div>
           <div class="classif-row">
-            <span class="classif-comment">Interessant, ga dit bespreken met mijn partner</span>
+            <span class="classif-comment">Interessant, ik wil dit eerst met mijn partner bespreken. Hebben jullie ook voorbeelden?</span>
             <div class="classif-right">
               <span class="classif-chip" style="background:var(--interested)">INTERESSE</span>
               <span class="classif-conf" style="color:var(--interested)">82%</span>
             </div>
           </div>
           <div class="classif-row">
-            <span class="classif-comment">Is er subsidie mogelijk?</span>
+            <span class="classif-comment">Is er ook een showroom of voorbeeldproject in de buurt dat ik kan bekijken?</span>
             <div class="classif-right">
               <span class="classif-chip" style="background:var(--quest)">VRAAG</span>
               <span class="classif-conf" style="color:var(--quest)">88%</span>
             </div>
           </div>
           <div class="classif-row">
-            <span class="classif-comment">Bij de buren kapot na 2 jaar</span>
+            <span class="classif-comment">Bij de buren na 2 jaar al kapot, hoe zit het dan met garantie en service?</span>
             <div class="classif-right">
               <span class="classif-chip" style="background:var(--comp)">KLACHT</span>
               <span class="classif-conf" style="color:var(--comp)">91%</span>
             </div>
           </div>
           <div class="classif-row">
-            <span class="classif-comment">Petra moet je dit zien &#x1F602;&#x1F447;</span>
+            <span class="classif-comment">Petra van Dam dit moet je zien &#x1F602;&#x1F447;</span>
             <div class="classif-right">
               <span class="classif-chip" style="background:var(--spam);color:var(--soft)">SPAM</span>
               <span class="classif-conf" style="color:var(--spam)">94%</span>
@@ -1140,19 +1214,19 @@ footer{
       </div>
       <div class="feature-cards">
         <div class="feature-card">
-          <div class="feature-card-title">Reageer als je pagina</div>
+          <div class="feature-card-head"><svg class="feature-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><polyline points="17 11 12 11 12 6"/></svg><div class="feature-card-title">Reageer als je pagina</div></div>
           <div class="feature-card-desc">Stuur een reactie direct als je Facebook-pagina, met een AI-gegenereerde suggestie in de juiste taal en toon.</div>
         </div>
         <div class="feature-card">
-          <div class="feature-card-title">Spam verbergen in bulk</div>
+          <div class="feature-card-head"><svg class="feature-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19M1 1l22 22"/></svg><div class="feature-card-title">Spam verbergen in bulk</div></div>
           <div class="feature-card-desc">Selecteer alle spam-reacties en verberg ze tegelijk. Met bevestiging zodat je nooit per ongeluk een vraag verwijdert.</div>
         </div>
         <div class="feature-card">
-          <div class="feature-card-title">Exporteer hot leads als CSV</div>
+          <div class="feature-card-head"><svg class="feature-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><div class="feature-card-title">Exporteer hot leads als CSV</div></div>
           <div class="feature-card-desc">Download waardevolle reacties rechtstreeks naar je CRM, Slack of rapportage. Klaar voor follow-up.</div>
         </div>
         <div class="feature-card">
-          <div class="feature-card-title">Meerdere posts tegelijk</div>
+          <div class="feature-card-head"><svg class="feature-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 0 10h-3M9 17H6a5 5 0 0 1 0-10h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg><div class="feature-card-title">Meerdere posts tegelijk</div></div>
           <div class="feature-card-desc">Plak meerdere post-URL's en scan ze tegelijk. Geen handmatig post voor post door Meta klikken.</div>
         </div>
       </div>
@@ -1163,7 +1237,7 @@ footer{
 <!-- VERGELIJKING -->
 <section id="vergelijk">
   <div class="inner">
-    <h2 class="section-head">Geen social inbox. Wel grip op je <em style="color:#fafafa">advertentiecomments.</em></h2>
+    <h2 class="section-head">Geen social inbox. Wel grip op je <em class="em-white">advertentiecomments.</em></h2>
     <p class="section-sub" style="max-width:540px;margin-bottom:0">CommentCenter is gebouwd voor paid comments onder Facebook-advertenties. Niet om je hele social workflow te vervangen, maar om direct te zien waar leads, risico en ruis zitten.</p>
     <div class="table-wrap">
       <table>
@@ -1233,7 +1307,7 @@ footer{
 <section id="voorwie" style="background:var(--s1)">
   <div class="inner">
     <span class="label">VOOR WIE</span>
-    <h2 class="section-head">Gebouwd voor teams die uit comments <em style="color:#fafafa">resultaat</em> halen.</h2>
+    <h2 class="section-head">Gebouwd voor teams die uit comments <em class="em-white">resultaat</em> halen.</h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:28px">Voor agencies, lead gen teams en performance marketeers die niet willen gokken waar intentie zit.</p>
     <div class="for-list" style="margin-top:0">
       <div class="for-item">
@@ -1265,7 +1339,7 @@ footer{
 <section id="acties">
   <div class="inner">
     <span class="label">WAT JE DIRECT KUNT DOEN</span>
-    <h2 class="section-head">Minder ruis. Meer <em style="color:#fafafa">grip.</em></h2>
+    <h2 class="section-head">Minder ruis. Meer <em class="em-white">grip.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Pak sneller wat aandacht nodig heeft en laat de rest je tijd niet opvreten.</p>
     <div class="trust-grid">
       <div class="trust-card fade-up">
@@ -1287,7 +1361,7 @@ footer{
 <!-- DIRECTE OPBRENGST -->
 <section id="proof" style="background:var(--s1);padding-top:80px;padding-bottom:80px">
   <div class="inner">
-    <h2 class="section-head">Wat teams er direct uit <em style="color:#fafafa">halen.</em></h2>
+    <h2 class="section-head">Wat teams er direct uit <em class="em-white">halen.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:36px">Geen vaag sentiment. Gewoon sneller zien wat belangrijk is.</p>
     <div class="trust-grid">
       <div class="trust-card proof-card fade-up">
@@ -1310,7 +1384,7 @@ footer{
 <section id="faq">
   <div class="inner-sm">
     <span class="label">FAQ</span>
-    <h2 class="section-head">Alles wat je wilt <em style="color:#fafafa">weten.</em></h2>
+    <h2 class="section-head">Alles wat je wilt <em class="em-white">weten.</em></h2>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
@@ -1369,7 +1443,7 @@ footer{
 <section id="pricing">
   <div class="inner">
     <span class="label">PRIJZEN</span>
-    <h2 class="section-head">Simpel. <em style="color:#fafafa">Transparant.</em></h2>
+    <h2 class="section-head">Simpel. <em class="em-white">Transparant.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Begin gratis. Upgrade pas als je structureel meer comments wilt scannen of meerdere pagina's beheert.</p>
     <div class="pricing-grid">
       <div class="pricing-card">
@@ -1518,13 +1592,13 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     'woman-with-skeptical':'data:image/jpeg;base64,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',
   };
   var pool=[
-    [A['person-with-joyful'],'hot','HOT LEAD','var(--hot)','97%','Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?',0],
-    [A['man-asking-practical'],'question','VRAAG','var(--quest)','88%','Is er ook een showroom waar ik dit kan bekijken?',2],
-    [A['woman-with-curious'],'interested','INTERESSE','var(--interested)','82%','Interessant, ga dit bespreken met mijn partner',1],
-    [A['man-with-grandson'],'hot','HOT LEAD','var(--hot)','94%','Wat is de levertijd als ik nu bestel?',0],
-    [A['asian-man-in'],'question','VRAAG','var(--quest)','91%','Doen jullie ook installaties in Noord-Holland?',2],
-    [A['woman-with-skeptical'],'complaint','KLACHT','var(--comp)','91%','Bij de buren na 2 jaar al kapot, bespaar je geld',3],
-    [A['mother-with-daughter'],'spam','SPAM','var(--spam)','94%','Petra van Dam moet je dit zien \uD83D\uDE02\uD83D\uDC47',4],
+    [A['asian-man-in'],'question','VRAAG','var(--quest)','91%','Doen jullie ook installaties in Noord-Holland en hoe snel kunnen jullie starten?',2],
+    [A['man-with-grandson'],'hot','HOT LEAD','var(--hot)','94%','Wat is de levertijd als ik vandaag bestel en wanneer kunnen jullie langskomen?',0],
+    [A['woman-with-curious'],'interested','INTERESSE','var(--interested)','82%','Interessant, ik wil dit eerst met mijn partner bespreken. Hebben jullie ook voorbeelden?',1],
+    [A['man-asking-practical'],'question','VRAAG','var(--quest)','88%','Is er ook een showroom of voorbeeldproject in de buurt dat ik kan bekijken?',2],
+    [A['person-with-joyful'],'hot','HOT LEAD','var(--hot)','97%','Kan ik dit ook laten plaatsen in Zeeland, inclusief montage en all-in prijs?',0],
+    [A['woman-with-skeptical'],'complaint','KLACHT','var(--comp)','91%','Bij de buren na 2 jaar al kapot, hoe zit het dan met garantie en service?',3],
+    [A['mother-with-daughter'],'spam','SPAM','var(--spam)','94%','Petra van Dam dit moet je zien \uD83D\uDE02\uD83D\uDC47',4],
   ];
 
   // Bounded counter targets per pool position
@@ -1630,6 +1704,25 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
   // Init and loop
   seed();
   setInterval(pushRow,INTERVAL);
+})();
+
+// Theme toggle
+(function(){
+  var toggle=document.getElementById('themeToggle');
+  if(!toggle)return;
+  var stored=localStorage.getItem('cc-theme');
+  if(stored) document.documentElement.setAttribute('data-theme',stored);
+  toggle.addEventListener('click',function(){
+    var current=document.documentElement.getAttribute('data-theme');
+    var next=current==='light'?'dark':'light';
+    if(next==='dark'){
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.removeItem('cc-theme');
+    }else{
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem('cc-theme',next);
+    }
+  });
 })();
 </script>
 </body>
