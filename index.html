@@ -14,6 +14,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://commentcenter.nl/og-image.svg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 14' fill='none'%3E%3Crect x='0' y='0' width='14' height='10' rx='3' fill='%233b82f6'/%3E%3Cpolygon points='3,10 5,13 7,10' fill='%233b82f6'/%3E%3Crect x='3' y='3' width='8' height='1.5' rx='.7' fill='white' opacity='.3'/%3E%3Crect x='3' y='6' width='6' height='1.5' rx='.7' fill='white'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="avatars/person_with_joyful.jpg">
+<link rel="preload" as="image" href="avatars/woman_with_curious.jpg">
+<link rel="preload" as="image" href="avatars/asian_man_in.jpg">
+<link rel="preload" as="image" href="avatars/man_asking_practical.jpg">
+<link rel="preload" as="image" href="avatars/woman_with_skeptical.jpg">
+<link rel="preload" as="image" href="avatars/mother_with_daughter.jpg">
+<link rel="preload" as="image" href="avatars/man_with_grandson.jpg">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -321,10 +328,15 @@ section{padding:100px 24px}
 }
 .c-avatar{
   width:36px;height:36px;
-  border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;
-  font-weight:700;
+  border-radius:50%;
+  overflow:hidden;
+  flex-shrink:0;
+  border:1px solid rgba(255,255,255,.06);
+}
+.c-avatar img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
 }
 .c-chip{
   font-size:9px;
@@ -1434,31 +1446,28 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
   var INTERVAL=3000;
   var EASE='cubic-bezier(0.25,0.46,0.45,0.94)';
 
-  // Pool: [initials, cls, chipLabel, chipColor, avatarBg, conf, text, counterIdx]
+  // Pool: [avatar, cls, chipLabel, chipColor, conf, text, counterIdx]
   // counterIdx: 0=hot 1=interesse 2=vraag 3=klacht 4=spam
-  // Counter targets per pool item — defines what each counter should show when this item is the newest
+  // 7 unique faces — no duplicates ever visible (window=5, ring=7)
   var pool=[
-    ['MV','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','97%','Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?',0],
-    ['RJ','question','VRAAG','var(--quest)','rgba(96,165,250,.1)','88%','Is er ook een showroom waar ik dit kan bekijken?',2],
-    ['AK','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','94%','Wat is de levertijd als ik nu bestel?',0],
-    ['SB','interested','INTERESSE','var(--interested)','rgba(250,204,21,.1)','82%','Interessant, ga dit bespreken met mijn partner',1],
-    ['LP','question','VRAAG','var(--quest)','rgba(96,165,250,.1)','91%','Doen jullie ook installaties in Noord-Holland?',2],
-    ['TD','complaint','KLACHT','var(--comp)','rgba(251,113,133,.1)','91%','Bij de buren na 2 jaar al kapot, bespaar je geld',3],
-    ['NB','hot','HOT LEAD','var(--hot)','rgba(74,222,128,.1)','96%','Prijs voor 12 panelen op een plat dak?',0],
-    ['JK','spam','SPAM','var(--spam)','rgba(82,82,91,.2)','94%','Petra van Dam moet je dit zien \uD83D\uDE02\uD83D\uDC47',4],
+    ['avatars/person_with_joyful.jpg','hot','HOT LEAD','var(--hot)','97%','Kan ik dit ook laten plaatsen in Zeeland? Kosten all-in?',0],
+    ['avatars/man_asking_practical.jpg','question','VRAAG','var(--quest)','88%','Is er ook een showroom waar ik dit kan bekijken?',2],
+    ['avatars/woman_with_curious.jpg','interested','INTERESSE','var(--interested)','82%','Interessant, ga dit bespreken met mijn partner',1],
+    ['avatars/man_with_grandson.jpg','hot','HOT LEAD','var(--hot)','94%','Wat is de levertijd als ik nu bestel?',0],
+    ['avatars/asian_man_in.jpg','question','VRAAG','var(--quest)','91%','Doen jullie ook installaties in Noord-Holland?',2],
+    ['avatars/woman_with_skeptical.jpg','complaint','KLACHT','var(--comp)','91%','Bij de buren na 2 jaar al kapot, bespaar je geld',3],
+    ['avatars/mother_with_daughter.jpg','spam','SPAM','var(--spam)','94%','Petra van Dam moet je dit zien \uD83D\uDE02\uD83D\uDC47',4],
   ];
 
-  // Bounded counter targets: for each pool position as "newest", what should each counter read
-  // This prevents endless upward counting — counters oscillate in a small range
+  // Bounded counter targets per pool position
   var counterTargets=[
-    [6,3,4,6,12], // pool 0 (hot)   → hot goes 5→6
-    [6,3,5,6,12], // pool 1 (vraag) → vraag goes 4→5
-    [7,3,5,6,12], // pool 2 (hot)   → hot goes 6→7
-    [7,4,5,6,12], // pool 3 (inter) → interesse 3→4
-    [7,4,6,6,12], // pool 4 (vraag) → vraag goes 5→6
-    [7,4,6,7,12], // pool 5 (klacht)→ klacht 6→7
-    [8,4,6,7,12], // pool 6 (hot)   → hot goes 7→8
-    [8,4,6,7,13], // pool 7 (spam)  → spam 12→13
+    [6,3,4,6,12], // pool 0 (hot)    → hot 5→6
+    [6,3,5,6,12], // pool 1 (vraag)  → vraag 4→5
+    [6,4,5,6,12], // pool 2 (inter)  → interesse 3→4
+    [7,4,5,6,12], // pool 3 (hot)    → hot 6→7
+    [7,4,6,6,12], // pool 4 (vraag)  → vraag 5→6
+    [7,4,6,7,12], // pool 5 (klacht) → klacht 6→7
+    [7,4,6,7,13], // pool 6 (spam)   → spam 12→13
   ];
   // Base values (shown on seed — matches pool items 0-4 visible)
   var baseCounters=[5,3,4,6,12];
@@ -1471,10 +1480,10 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     el.className='c-row'+(isSpam?' spam-row':'');
     el.innerHTML=
       '<div class="c-bar" style="background:'+d[3]+'"></div>'+
-      '<div class="c-avatar" style="background:'+d[4]+';color:'+d[3]+'">'+d[0]+'</div>'+
+      '<div class="c-avatar"><img src="'+d[0]+'" alt="" loading="eager"></div>'+
       '<span class="c-chip" style="background:'+d[3]+(isSpam?';color:var(--soft)':'')+'">'+ d[2]+'</span>'+
-      '<span class="c-conf" style="color:'+d[3]+'">'+d[5]+'</span>'+
-      '<span class="c-text">'+d[6]+'</span>'+
+      '<span class="c-conf" style="color:'+d[3]+'">'+d[4]+'</span>'+
+      '<span class="c-text">'+d[5]+'</span>'+
       '<div class="c-actions">'+(isSpam?'':'<button class="c-btn">Reageren</button>')+'<button class="c-btn">Verbergen</button></div>';
     return el;
   }
