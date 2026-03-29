@@ -512,16 +512,34 @@ section{padding:100px 24px}
 .feature-card-title{font-size:15px;font-weight:600;margin-bottom:6px}
 .feature-card-desc{font-size:13px;color:var(--soft);line-height:1.6}
 
-/* ── SIGNAAL GRID ── */
-.signal-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
+/* ── SIGNAAL LIST ── */
+.signal-list{
+  display:flex;
+  flex-direction:column;
+  max-width:560px;
 }
-.signal-grid .signal-card:nth-child(4),
-.signal-grid .signal-card:nth-child(5){
-  /* center the bottom 2 cards under 3-col grid */
+.signal-row{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:14px 0;
+  border-bottom:1px solid var(--s2);
 }
+.signal-row:last-child{border-bottom:none}
+.signal-badge{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  padding:2px 8px;
+  border-radius:4px;
+  white-space:nowrap;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.signal-body{display:flex;flex-direction:column;gap:2px}
+.signal-title{font-size:15px;font-weight:600;color:var(--tx)}
+.signal-desc{font-size:13px;color:var(--soft);line-height:1.5}
 
 /* ── VERGELIJKING ── */
 #vergelijk{background:var(--bg)}
@@ -849,7 +867,7 @@ footer{
   .pain-grid{grid-template-columns:1fr;gap:32px}
   .chaos-box{transform:none}
   .feature-grid{grid-template-columns:1fr}
-  .signal-grid{grid-template-columns:1fr 1fr;gap:8px}
+
   .trust-grid{grid-template-columns:1fr;gap:12px}
   .trust-card{padding:20px}
   .pricing-grid{grid-template-columns:1fr;max-width:400px;gap:12px;margin-top:32px}
@@ -887,7 +905,7 @@ footer{
   .c-actions{gap:4px}
   .c-btn{font-size:9px;padding:3px 7px}
   .c-conf{font-size:9px}
-  .signal-grid{grid-template-columns:1fr;gap:8px}
+
   .pricing-card{padding:24px 20px}
   .pricing-amount{font-size:36px}
   .pricing-grid{margin-top:24px}
@@ -1147,26 +1165,41 @@ footer{
   <div class="inner">
     <h2 class="section-head" style="margin-bottom:8px">Niet alle comments zijn even <em style="color:#fafafa">belangrijk.</em></h2>
     <p class="section-sub" style="max-width:500px;margin-bottom:24px">CommentCenter laat direct zien welke reacties aandacht vragen en welke je kunt negeren, verbergen of later oppakken.</p>
-    <div class="signal-grid">
-      <div class="feature-card signal-card" style="border-left:3px solid var(--hot);padding:16px 16px 16px 18px">
-        <div class="feature-card-title">Hot Leads</div>
-        <div class="feature-card-desc">Mensen met duidelijke koopintentie die je snel wilt opvolgen.</div>
+    <div class="signal-list">
+      <div class="signal-row">
+        <span class="signal-badge" style="background:rgba(74,222,128,.15);color:#4ade80">HOT LEAD</span>
+        <div class="signal-body">
+          <div class="signal-title">Hot Leads</div>
+          <div class="signal-desc">Duidelijke koopintentie. Eerst opvolgen.</div>
+        </div>
       </div>
-      <div class="feature-card signal-card" style="border-left:3px solid var(--interested);padding:16px 16px 16px 18px">
-        <div class="feature-card-title">Interesse</div>
-        <div class="feature-card-desc">Mensen die betrokken zijn maar nog geen directe koopvraag stellen.</div>
+      <div class="signal-row">
+        <span class="signal-badge" style="background:rgba(250,204,21,.15);color:#facc15">INTERESSE</span>
+        <div class="signal-body">
+          <div class="signal-title">Interesse</div>
+          <div class="signal-desc">Betrokken, maar nog niet koopklaar.</div>
+        </div>
       </div>
-      <div class="feature-card signal-card" style="border-left:3px solid var(--quest);padding:16px 16px 16px 18px">
-        <div class="feature-card-title">Vragen</div>
-        <div class="feature-card-desc">Reacties waar interesse zit, maar nog net een antwoord nodig is.</div>
+      <div class="signal-row">
+        <span class="signal-badge" style="background:rgba(96,165,250,.15);color:#60a5fa">VRAAG</span>
+        <div class="signal-body">
+          <div class="signal-title">Vragen</div>
+          <div class="signal-desc">Antwoord nodig voor de volgende stap.</div>
+        </div>
       </div>
-      <div class="feature-card signal-card" style="border-left:3px solid var(--comp);padding:16px 16px 16px 18px">
-        <div class="feature-card-title">Klachten</div>
-        <div class="feature-card-desc">Publieke frictie die vertrouwen kost als je die laat staan.</div>
+      <div class="signal-row">
+        <span class="signal-badge" style="background:rgba(251,113,133,.15);color:#fb7185">KLACHT</span>
+        <div class="signal-body">
+          <div class="signal-title">Klachten</div>
+          <div class="signal-desc">Publiek risico. Snel beoordelen.</div>
+        </div>
       </div>
-      <div class="feature-card signal-card" style="border-left:3px solid var(--spam);padding:16px 16px 16px 18px">
-        <div class="feature-card-title">Spam</div>
-        <div class="feature-card-desc">Troep die niets oplevert en je commentsectie vervuilt.</div>
+      <div class="signal-row">
+        <span class="signal-badge" style="background:rgba(82,82,91,.15);color:#71717a">SPAM</span>
+        <div class="signal-body">
+          <div class="signal-title">Spam</div>
+          <div class="signal-desc">Geen waarde. Direct opruimen.</div>
+        </div>
       </div>
     </div>
   </div>
