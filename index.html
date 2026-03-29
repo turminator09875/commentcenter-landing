@@ -295,11 +295,10 @@ section{padding:100px 24px}
 .demo-track{display:flex;flex-direction:column}
 .c-row{
   display:grid;
-  grid-template-columns:3px 28px 130px 64px 1fr auto;
+  grid-template-columns:3px 28px 1fr auto;
   align-items:center;
-  justify-items:start;
-  gap:8px;
-  padding:9px 16px;
+  gap:10px;
+  padding:10px 16px;
   border-bottom:1px solid var(--bg);
   position:relative;
   height:55px;
@@ -315,12 +314,11 @@ section{padding:100px 24px}
 .c-bar{
   width:3px;
   align-self:stretch;
-  justify-self:stretch;
   min-height:32px;
   border-radius:2px;
 }
 .c-avatar{
-  width:24px;height:24px;
+  width:26px;height:26px;
   border-radius:50%;
   overflow:hidden;
   flex-shrink:0;
@@ -331,39 +329,50 @@ section{padding:100px 24px}
   object-fit:cover;
   display:block;
 }
-.c-chip{
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:.12em;
-  padding:3px 7px;
-  border-radius:5px;
-  flex-shrink:0;
-  color:var(--bg);
-  transition:background .3s ease, color .3s ease;
+.c-content{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
 }
-.c-conf{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;
-  flex-shrink:0;
-}
-.c-chip{align-self:center}
-.c-conf{align-self:center}
 .c-text{
   font-size:12.5px;
   color:var(--soft);
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  min-width:0;
+  line-height:1.3;
+}
+.c-meta{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.c-chip{
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.1em;
+  padding:2px 6px;
+  border-radius:4px;
+  flex-shrink:0;
+  color:var(--bg);
+  transition:background .3s ease, color .3s ease;
+}
+.c-conf{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  flex-shrink:0;
+  opacity:.7;
 }
 .c-name{
-  font-size:10.5px;
+  font-size:10px;
   color:var(--dim);
   flex-shrink:0;
 }
+.c-actions{display:flex;gap:6px;align-items:center;justify-self:end}
 .c-btn{
   font-size:10px;
-  background:var(--s2);
+  background:transparent;
   color:var(--muted);
   border:none;
   border-radius:6px;
@@ -374,7 +383,8 @@ section{padding:100px 24px}
   transition:background .15s,color .15s,opacity .15s;
 }
 .c-btn:hover{background:var(--s3);color:var(--soft)}
-.c-actions{display:flex;gap:6px;align-items:center;justify-self:end}
+.c-btn-reply{color:var(--soft);font-weight:500}
+.c-btn-hide{opacity:.5;font-size:9px}
 /* Reply composer (inline demo) */
 .demo-composer{
   grid-column:1/-1;
@@ -831,13 +841,15 @@ footer{
   .stat-bar{gap:6px}
   .stat-block{min-width:100px;padding:8px 10px}
   .stat-num{font-size:16px}
-  .c-row{padding:8px 10px;gap:4px;grid-template-columns:3px 28px 80px 40px 1fr auto;height:44px}
+  .c-row{padding:8px 10px;gap:6px;grid-template-columns:3px 22px 1fr auto;height:44px}
   .demo-viewport{height:220px}
   .c-name{display:none}
+  .c-avatar{width:22px;height:22px}
+  .c-text{font-size:11px}
   .c-actions{gap:4px}
   .c-btn{font-size:9px;padding:3px 7px}
-  .c-chip{font-size:8px;padding:2px 5px}
-  .c-conf{font-size:9px}
+  .c-chip{font-size:7px;padding:2px 5px}
+  .c-conf{font-size:8px}
   .pricing-card{padding:28px 24px}
   .pricing-amount{font-size:36px}
   .footer-cols{flex-direction:column;gap:24px}
@@ -1480,10 +1492,17 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     el.innerHTML=
       '<div class="c-bar" style="background:'+d[3]+'"></div>'+
       '<div class="c-avatar"><img src="'+d[0]+'" alt="" loading="eager"></div>'+
-      '<span class="c-chip" style="background:'+d[3]+(isSpam?';color:var(--soft)':'')+'">'+ d[2]+'</span>'+
-      '<span class="c-conf" style="color:'+d[3]+'">'+d[4]+'</span>'+
-      '<span class="c-text">'+d[5]+'</span>'+
-      '<div class="c-actions">'+(isSpam?'':'<button class="c-btn">Reageren</button>')+'<button class="c-btn">Verbergen</button></div>';
+      '<div class="c-content">'+
+        '<span class="c-text">'+d[5]+'</span>'+
+        '<div class="c-meta">'+
+          '<span class="c-chip" style="background:'+d[3]+(isSpam?';color:var(--soft)':'')+'">'+ d[2]+'</span>'+
+          '<span class="c-conf" style="color:'+d[3]+'">'+d[4]+'</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="c-actions">'+
+        (isSpam?'':'<button class="c-btn c-btn-reply">Reageren</button>')+
+        '<button class="c-btn c-btn-hide">Verbergen</button>'+
+      '</div>';
     return el;
   }
 
