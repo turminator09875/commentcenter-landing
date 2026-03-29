@@ -45,6 +45,7 @@ body{
   font-size:16px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 @keyframes up{
   from{opacity:0;transform:translateY(12px)}
@@ -511,6 +512,17 @@ section{padding:100px 24px}
 .feature-card-title{font-size:15px;font-weight:600;margin-bottom:6px}
 .feature-card-desc{font-size:13px;color:var(--soft);line-height:1.6}
 
+/* ── SIGNAAL GRID ── */
+.signal-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.signal-grid .signal-card:nth-child(4),
+.signal-grid .signal-card:nth-child(5){
+  /* center the bottom 2 cards under 3-col grid */
+}
+
 /* ── VERGELIJKING ── */
 #vergelijk{background:var(--bg)}
 .table-wrap{
@@ -529,17 +541,29 @@ table{
 th,td{padding:11px 18px;text-align:left;font-size:13px}
 thead tr{border-bottom:1px solid var(--s3)}
 th{font-weight:600;color:var(--dim)}
-th.cc{color:var(--accent)}
+th.cc{color:#fff;font-weight:600}
 tbody tr{border-bottom:1px solid var(--s2)}
 tbody tr:last-child{border-bottom:none}
-td.label-cell{color:var(--tx);font-weight:500}
-td.cc-cell{color:var(--hot);font-weight:700;font-size:14px}
+td.label-cell{color:#d4d4d8;font-weight:500}
+td.cc-cell{color:var(--hot);font-weight:600;font-size:14px}
 td.mod-cell{color:var(--muted)}
 td.meta-cell{color:var(--dim)}
+.compare-stacked{display:none}
+.compare-card{
+  background:var(--s1);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:10px;
+}
+.compare-card-title{font-size:15px;font-weight:600;margin-bottom:12px;color:var(--tx)}
+.compare-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.compare-list li{font-size:13px;color:#d4d4d8;display:flex;align-items:center;gap:8px}
+.compare-check{color:var(--hot);font-weight:700;flex-shrink:0}
+.compare-dim{color:var(--dim);flex-shrink:0}
 
 /* ── VOOR WIE ── */
 #voorwie{background:var(--s1)}
-.for-list{display:flex;flex-direction:column;margin-top:48px}
+.for-list{display:flex;flex-direction:column;margin-top:28px}
 .for-item{
   display:flex;
   gap:24px;
@@ -572,10 +596,11 @@ td.meta-cell{color:var(--dim)}
 }
 .trust-title{font-size:16px;font-weight:600;margin-bottom:10px}
 .trust-desc{font-size:14px;color:var(--soft);line-height:1.7}
+.proof-card{background:var(--s1);box-shadow:none;border:1px solid var(--s3)}
 
 /* ── FAQ ── */
-#faq{background:var(--s1);padding-top:72px;padding-bottom:72px}
-#faq .section-head{margin-bottom:36px}
+#faq{background:var(--s1);padding-top:56px;padding-bottom:64px}
+#faq .section-head{margin-bottom:28px}
 .faq-list{display:flex;flex-direction:column;gap:0;margin-top:0}
 .faq-item{border-bottom:1px solid var(--s3)}
 .faq-item:first-child{border-top:1px solid var(--s3)}
@@ -590,7 +615,7 @@ td.meta-cell{color:var(--dim)}
   border:none;
   width:100%;
   text-align:left;
-  color:var(--tx);
+  color:#e4e4e7;
   font-family:'DM Sans',sans-serif;
   font-size:15px;
   font-weight:500;
@@ -783,7 +808,7 @@ footer{
   white-space:nowrap;
   margin-bottom:10px;
 }
-.footer-tagline{font-size:12px;color:var(--muted);line-height:1.6}
+.footer-tagline{font-size:12px;color:#71717a;line-height:1.6}
 .footer-cols{
   display:flex;
   gap:48px;
@@ -810,33 +835,50 @@ footer{
   max-width:960px;
   margin:32px auto 0;
   font-size:11px;
-  color:var(--muted);
+  color:#71717a;
   border-top:1px solid var(--s2);
   padding-top:20px;
 }
 
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
-  section{padding:72px 20px}
-  .pain-grid{grid-template-columns:1fr;gap:40px}
+  section{padding:56px 20px}
+  #hero{padding-top:72px;padding-bottom:40px}
+  .hero-inner{margin-bottom:0}
+  .mock-wrap{margin-top:24px}
+  .pain-grid{grid-template-columns:1fr;gap:32px}
+  .chaos-box{transform:none}
   .feature-grid{grid-template-columns:1fr}
-  .trust-grid{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr;max-width:400px}
+  .signal-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .trust-grid{grid-template-columns:1fr;gap:12px}
+  .trust-card{padding:20px}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px;gap:12px;margin-top:32px}
   .pricing-plan{font-size:16px}
-  .table-wrap{margin-top:32px}
-  .footer-inner{flex-direction:column;gap:32px}
-  .footer-cols{gap:32px}
+  .table-wrap{display:none}
+  .compare-stacked{display:block;margin-top:24px}
+  .for-list{margin-top:0}
+  .for-item{padding:20px 0;gap:16px}
+  .footer-inner{flex-direction:column;gap:24px}
+  .footer-cols{gap:24px}
+  .footer-col a{color:#71717a}
+  .footer-bottom{color:#71717a}
+  .footer-tagline{color:#71717a}
   .nav-links,.nav-cta{display:none}
   .nav-hamburger{display:block}
   .nav-pill{padding:8px 8px 8px 16px}
+  #proof{padding-top:56px;padding-bottom:56px}
+  #cta{padding:48px 20px}
+  #acties .trust-card{padding:18px}
 }
 @media(max-width:480px){
+  section{padding:48px 16px}
   .nav-wrap{padding:12px 16px}
   .hero-h1{font-size:clamp(32px,9vw,48px)}
   .hero-sub{font-size:16px}
   .stat-bar{gap:6px}
-  .stat-block{min-width:100px;padding:8px 10px}
+  .stat-block{min-width:80px;padding:8px 10px}
   .stat-num{font-size:16px}
+  .stat-label{font-size:9px}
   .c-row{padding:8px 10px;gap:4px;grid-template-columns:3px 22px 70px 34px 1fr auto;height:44px}
   .c-chip{width:70px;height:20px;font-size:8px}
   .demo-viewport{height:220px}
@@ -844,11 +886,15 @@ footer{
   .c-avatar{width:22px;height:22px}
   .c-actions{gap:4px}
   .c-btn{font-size:9px;padding:3px 7px}
-  .c-chip{font-size:8px;padding:2px 5px}
   .c-conf{font-size:9px}
-  .pricing-card{padding:28px 24px}
+  .signal-grid{grid-template-columns:1fr;gap:8px}
+  .pricing-card{padding:24px 20px}
   .pricing-amount{font-size:36px}
-  .footer-cols{flex-direction:column;gap:24px}
+  .pricing-grid{margin-top:24px}
+  .footer-cols{flex-direction:column;gap:20px}
+  #proof{padding-top:48px;padding-bottom:48px}
+  #cta{padding:40px 16px}
+  .for-item{padding:16px 0}
 }
 </style>
 </head>
@@ -1097,24 +1143,28 @@ footer{
 </section>
 
 <!-- SIGNAAL UIT RUIS -->
-<section id="signaal" style="background:var(--bg);padding-top:80px;padding-bottom:80px">
+<section id="signaal" style="background:var(--bg);padding-top:72px;padding-bottom:72px">
   <div class="inner">
     <h2 class="section-head" style="margin-bottom:8px">Niet alle comments zijn even <em style="color:#fafafa">belangrijk.</em></h2>
-    <p class="section-sub" style="max-width:500px;margin-bottom:32px">CommentCenter laat direct zien welke reacties aandacht vragen en welke je kunt negeren, verbergen of later oppakken.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div class="feature-card" style="padding:16px">
+    <p class="section-sub" style="max-width:500px;margin-bottom:24px">CommentCenter laat direct zien welke reacties aandacht vragen en welke je kunt negeren, verbergen of later oppakken.</p>
+    <div class="signal-grid">
+      <div class="feature-card signal-card" style="border-left:3px solid var(--hot);padding:16px 16px 16px 18px">
         <div class="feature-card-title">Hot Leads</div>
         <div class="feature-card-desc">Mensen met duidelijke koopintentie die je snel wilt opvolgen.</div>
       </div>
-      <div class="feature-card" style="padding:16px">
+      <div class="feature-card signal-card" style="border-left:3px solid var(--interested);padding:16px 16px 16px 18px">
+        <div class="feature-card-title">Interesse</div>
+        <div class="feature-card-desc">Mensen die betrokken zijn maar nog geen directe koopvraag stellen.</div>
+      </div>
+      <div class="feature-card signal-card" style="border-left:3px solid var(--quest);padding:16px 16px 16px 18px">
         <div class="feature-card-title">Vragen</div>
         <div class="feature-card-desc">Reacties waar interesse zit, maar nog net een antwoord nodig is.</div>
       </div>
-      <div class="feature-card" style="padding:16px">
+      <div class="feature-card signal-card" style="border-left:3px solid var(--comp);padding:16px 16px 16px 18px">
         <div class="feature-card-title">Klachten</div>
         <div class="feature-card-desc">Publieke frictie die vertrouwen kost als je die laat staan.</div>
       </div>
-      <div class="feature-card" style="padding:16px">
+      <div class="feature-card signal-card" style="border-left:3px solid var(--spam);padding:16px 16px 16px 18px">
         <div class="feature-card-title">Spam</div>
         <div class="feature-card-desc">Troep die niets oplevert en je commentsectie vervuilt.</div>
       </div>
@@ -1165,6 +1215,29 @@ footer{
         </tbody>
       </table>
     </div>
+    <!-- Mobile stacked comparison -->
+    <div class="compare-stacked">
+      <div class="compare-card compare-card--cc">
+        <div class="compare-card-title">CommentCenter</div>
+        <ul class="compare-list">
+          <li><span class="compare-check">&#10003;</span> Focus op advertentiecomments</li>
+          <li><span class="compare-check">&#10003;</span> Hot leads direct zichtbaar</li>
+          <li><span class="compare-check">&#10003;</span> Klachten en spam gescheiden</li>
+          <li><span class="compare-check">&#10003;</span> Gebouwd voor paid teams</li>
+          <li><span class="compare-check">&#10003;</span> Bulk spam opruimen</li>
+        </ul>
+      </div>
+      <div class="compare-card compare-card--other">
+        <div class="compare-card-title" style="color:var(--muted)">Algemene social tools</div>
+        <ul class="compare-list">
+          <li><span class="compare-dim">&#8211;</span> Focus op advertentiecomments: <span style="color:var(--muted)">Meestal niet</span></li>
+          <li><span class="compare-dim">&#8211;</span> Hot leads direct zichtbaar: <span style="color:var(--muted)">Vaak handmatig</span></li>
+          <li><span class="compare-dim">&#8211;</span> Klachten en spam gescheiden: <span style="color:var(--muted)">Vaak &eacute;&eacute;n inbox</span></li>
+          <li><span class="compare-dim">&#8211;</span> Gebouwd voor paid teams: <span style="color:var(--muted)">Nee</span></li>
+          <li><span class="compare-dim">&#8211;</span> Bulk spam opruimen: <span style="color:var(--muted)">Wisselt</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1173,27 +1246,27 @@ footer{
   <div class="inner">
     <span class="label">VOOR WIE</span>
     <h2 class="section-head">Gebouwd voor teams die uit comments <em style="color:#fafafa">resultaat</em> halen.</h2>
-    <p class="section-sub" style="max-width:600px;margin-bottom:48px">Voor agencies, lead gen teams en performance marketeers die niet willen gokken waar intentie zit.</p>
-    <div class="for-list">
+    <p class="section-sub" style="max-width:600px;margin-bottom:28px">Voor agencies, lead gen teams en performance marketeers die niet willen gokken waar intentie zit.</p>
+    <div class="for-list" style="margin-top:0">
       <div class="for-item">
         <div class="for-bar" style="background:var(--accent)"></div>
         <div>
           <div class="for-title">Agency teams</div>
-          <p class="for-desc">Zie direct waar koopintentie en risico zitten zonder handmatig door lange threads te gaan.</p>
+          <p class="for-desc">E&#769;e&#769;n overzicht voor al je klantcampagnes. Zie per ad welke comments hot leads zijn en welke reputatierisico vormen &#8212; zonder Meta handmatig te hoeven doorklikken.</p>
         </div>
       </div>
       <div class="for-item">
         <div class="for-bar" style="background:var(--hot)"></div>
         <div>
           <div class="for-title">Lead gen teams</div>
-          <p class="for-desc">Pak hot leads sneller op en houd je commentsectie schoon tijdens actieve campagnes.</p>
+          <p class="for-desc">Je betaalt per lead. Laat ze niet weglekken in de comments. Zie direct wie interesse toont en reageer voordat je concurrent dat doet.</p>
         </div>
       </div>
       <div class="for-item">
         <div class="for-bar" style="background:var(--interested)"></div>
         <div>
           <div class="for-title">Performance marketeers</div>
-          <p class="for-desc">Gebruik comments niet als bijzaak, maar als extra signaallaag naast CTR, CPL en leadvolume.</p>
+          <p class="for-desc">Slechte comments verhogen je CPC. Goede comments worden gemiste leads. Beide kosten je ROAS. Nu zie je het direct.</p>
         </div>
       </div>
     </div>
@@ -1224,22 +1297,22 @@ footer{
 </section>
 
 <!-- DIRECTE OPBRENGST -->
-<section id="proof" style="background:var(--s1);padding-top:120px;padding-bottom:120px">
+<section id="proof" style="background:var(--s1);padding-top:80px;padding-bottom:80px">
   <div class="inner">
     <h2 class="section-head">Wat teams er direct uit <em style="color:#fafafa">halen.</em></h2>
-    <p class="section-sub" style="max-width:600px;margin-bottom:48px">Geen vaag sentiment. Gewoon sneller zien wat belangrijk is.</p>
+    <p class="section-sub" style="max-width:600px;margin-bottom:36px">Geen vaag sentiment. Gewoon sneller zien wat belangrijk is.</p>
     <div class="trust-grid">
-      <div class="trust-card fade-up">
-        <div class="trust-title">Minder handmatig doorlezen</div>
-        <p class="trust-desc">Je hoeft niet meer elke comment zelf te scannen om te zien wat belangrijk is.</p>
+      <div class="trust-card proof-card fade-up">
+        <div class="trust-title">Geen handmatig doorklikken meer</div>
+        <p class="trust-desc">Je ziet direct wat hot is, wat spam is en wat kan wachten. Niet elke comment &#8212; alleen de comments die tellen.</p>
       </div>
-      <div class="trust-card fade-up" style="animation-delay:.1s">
-        <div class="trust-title">Sneller zicht op koopintentie</div>
-        <p class="trust-desc">Hot leads komen sneller boven tafel in plaats van te verdwijnen in de massa.</p>
+      <div class="trust-card proof-card fade-up" style="animation-delay:.1s">
+        <div class="trust-title">Hot leads v&#243;&#243;rdat ze afhaken</div>
+        <p class="trust-desc">Iemand die &#8216;wat kost dit?&#8217; vraagt is klaar om te kopen. CommentCenter markeert ze direct. Jij reageert als eerste.</p>
       </div>
-      <div class="trust-card fade-up" style="animation-delay:.2s">
-        <div class="trust-title">Meer grip op publieke frictie</div>
-        <p class="trust-desc">Klachten en spam blijven niet onnodig zichtbaar tussen reacties met echte waarde.</p>
+      <div class="trust-card proof-card fade-up" style="animation-delay:.2s">
+        <div class="trust-title">Spam weg v&#243;&#243;rdat het schade doet</div>
+        <p class="trust-desc">Negatieve comments en spam verlagen je conversie. Verberg ze in bulk, houd je commentsectie schoon, bescherm je social proof.</p>
       </div>
     </div>
   </div>
@@ -1256,49 +1329,49 @@ footer{
           Werkt dit op mijn actieve advertenties?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Ja. CommentCenter werkt op reacties onder Facebook-posts en advertentieposts.</div>
+        <div class="faq-a">Ja. CommentCenter werkt op reacties onder Facebook-advertentieposts en gewone Facebook-posts, zolang de reacties zichtbaar zijn onder de post die je scant.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           Is mijn Facebook-account veilig?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Ja. Zo haalt CommentCenter reacties op en kun je acties uitvoeren vanuit de juiste pagina.</div>
+        <div class="faq-a">Ja. Je koppelt je Facebook-pagina zodat CommentCenter reacties kan ophalen en, als jij dat wilt, acties kan uitvoeren vanuit de juiste pagina. Je houdt zelf controle over wat er gebeurt.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           Kan ik ook direct reageren vanuit de tool?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Je kunt reacties analyseren en sneller bepalen wat je wilt opvolgen, verbergen of exporteren.</div>
+        <div class="faq-a">Ja. Je kunt reacties direct vanuit CommentCenter beantwoorden als je gekoppelde pagina, met AI-hulp voor snellere en passendere replies.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          Hoe weet de AI of iets écht een hot lead is?
+          Hoe weet de AI of iets &#233;cht een hot lead is?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">CommentCenter helpt je sneller zien wat belangrijk is. Jij houdt altijd zelf de controle.</div>
+        <div class="faq-a">CommentCenter kijkt naar intentie, context en formulering om reacties te classificeren. Je ziet direct de inschatting en houdt altijd zelf de controle over wat je opvolgt.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           Kan ik meerdere spam-reacties tegelijk verwijderen?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Ja. Spam kun je sneller selecteren en in bulk opruimen.</div>
+        <div class="faq-a">Ja. Je kunt spam sneller selecteren en in bulk verbergen, zodat irrelevante reacties je commentsectie niet vervuilen.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           Kan ik het eerst gratis uitproberen?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Ja. Je kunt gratis starten en later upgraden als je meer volume of pagina's nodig hebt.</div>
+        <div class="faq-a">Ja. Je kunt gratis starten en later upgraden als je meer volume of extra pagina&#8217;s nodig hebt.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           Wat heb ik nodig om te beginnen?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Nee. Je kunt gratis starten zonder creditcard.</div>
+        <div class="faq-a">Alleen een Facebook-post of advertentiepost en een gekoppelde pagina. Je kunt gratis starten zonder creditcard.</div>
       </div>
     </div>
   </div>
