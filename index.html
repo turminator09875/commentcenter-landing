@@ -475,10 +475,10 @@ section{padding:100px 24px}
 .s1-lines{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4.5px;position:absolute}
 .s1-ln{height:2.5px;border-radius:2px}
 
-.s2-viewport{width:214px;height:114px;overflow:hidden;position:relative}
+.s2-viewport{width:214px;height:76px;overflow:hidden;position:relative}
 .s2-track{position:absolute;width:100%;display:flex;flex-direction:column}
-.s2-row{display:flex;align-items:center;gap:9px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);flex-shrink:0;height:38px;box-sizing:border-box}
-.s2-row:last-child{border-bottom:none}
+.s2-row{display:flex;align-items:center;gap:9px;padding:10px 0;flex-shrink:0;height:38px;box-sizing:border-box}
+.s2-row-divider{border-bottom:1px solid rgba(255,255,255,.05)}
 .s2-badge{font-size:9px;font-weight:700;padding:2px 0;border-radius:4px;letter-spacing:.05em;width:58px;text-align:center;flex-shrink:0}
 .s2-ctext{font-size:11px;color:#52525b;font-family:system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
 
@@ -1790,7 +1790,7 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 (function(){
   var track=document.getElementById('s2track');
   if(!track)return;
-  var ROW_H=38,MAX=3;
+  var ROW_H=38,MAX=2;
   var pool=[
     {text:'Wat kost dit all-in?',badge:'HOT LEAD',bg:'rgba(74,222,128,0.15)',color:'#4ade80'},
     {text:'Is er subsidie mogelijk?',badge:'VRAAG',bg:'rgba(96,165,250,0.15)',color:'#60a5fa'},
@@ -1798,16 +1798,18 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     {text:'Bij de buren kapot na 2 jaar',badge:'KLACHT',bg:'rgba(251,113,133,0.15)',color:'#fb7185'},
     {text:'Graag meer informatie!',badge:'HOT LEAD',bg:'rgba(74,222,128,0.15)',color:'#4ade80'},
     {text:'Wat is de levertijd?',badge:'VRAAG',bg:'rgba(96,165,250,0.15)',color:'#60a5fa'},
+    {text:'Petra moet je dit zien \u{1F921}',badge:'SPAM',bg:'rgba(82,82,91,0.25)',color:'#71717a'},
     {text:'Interessant, vraag partner',badge:'HOT LEAD',bg:'rgba(74,222,128,0.15)',color:'#4ade80'}
   ];
-  var lastB='';
-  function next(){var f=pool.filter(function(p){return p.badge!==lastB});var it=f[Math.floor(Math.random()*f.length)];lastB=it.badge;return it}
+  function getVisibleBadges(){return Array.from(track.querySelectorAll('.s2-badge')).map(function(b){return b.textContent})}
+  function next(){var vis=getVisibleBadges();var f=pool.filter(function(p){return!vis.includes(p.badge)});if(!f.length)return pool[Math.floor(Math.random()*pool.length)];return f[Math.floor(Math.random()*f.length)]}
   function easeOut(t){return 1-Math.pow(1-t,3)}
   function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
   function tw(dur,fn){return new Promise(function(res){var s=performance.now();function f(now){var p=Math.min((now-s)/dur,1);fn(p);if(p<1)requestAnimationFrame(f);else res()}requestAnimationFrame(f)})}
   function makeR(it){var r=document.createElement('div');r.className='s2-row';var b=document.createElement('span');b.className='s2-badge';b.textContent=it.badge;b.style.background=it.bg;b.style.color=it.color;var t=document.createElement('span');t.className='s2-ctext';t.textContent=it.text;r.appendChild(b);r.appendChild(t);return r}
-  function seed(){track.innerHTML='';lastB='';for(var i=0;i<MAX;i++){var it,tries=0;do{it=pool[Math.floor(Math.random()*pool.length)];tries++}while(it.badge===lastB&&tries<20);lastB=it.badge;track.appendChild(makeR(it))}track.style.transform='translateY(0)'}
-  async function addOne(){var it=next();var nr=makeR(it);nr.style.opacity='0';track.prepend(nr);track.style.transform='translateY(-'+ROW_H+'px)';await tw(400,function(p){track.style.transform='translateY('+(-ROW_H+ROW_H*easeOut(p))+'px)';nr.style.opacity=easeOut(p)});track.style.transform='translateY(0)';var rows=track.querySelectorAll('.s2-row');if(rows.length>MAX)rows[rows.length-1].remove()}
+  function updateDividers(){var rows=track.querySelectorAll('.s2-row');rows.forEach(function(r,i){if(i<rows.length-1)r.classList.add('s2-row-divider');else r.classList.remove('s2-row-divider')})}
+  function seed(){track.innerHTML='';var used=new Set();for(var i=0;i<MAX;i++){var avail=pool.filter(function(p){return!used.has(p.badge)});var it=avail[Math.floor(Math.random()*avail.length)];used.add(it.badge);track.appendChild(makeR(it))}track.style.transform='translateY(0)';updateDividers()}
+  async function addOne(){var it=next();var nr=makeR(it);nr.style.opacity='0';track.prepend(nr);track.style.transform='translateY(-'+ROW_H+'px)';updateDividers();await tw(400,function(p){track.style.transform='translateY('+(-ROW_H+ROW_H*easeOut(p))+'px)';nr.style.opacity=easeOut(p)});track.style.transform='translateY(0)';var rows=track.querySelectorAll('.s2-row');if(rows.length>MAX)rows[rows.length-1].remove();updateDividers()}
   async function loop(){seed();while(true){await wait(1800);await addOne()}}
   loop();
 })();
