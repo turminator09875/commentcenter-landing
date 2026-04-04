@@ -494,13 +494,16 @@ section{padding:100px 24px}
   grid-template-columns:1fr 1fr;
   gap:16px;
   margin-top:0;
-  align-items:start;
+  align-items:stretch;
 }
 .classif-box{
   background:var(--bg);
   border-radius:16px;
   padding:28px 24px;
   box-shadow:var(--shadow-md);
+  height:100%;
+  display:flex;
+  flex-direction:column;
 }
 .classif-header{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:20px}
 .classif-row{
@@ -512,7 +515,7 @@ section{padding:100px 24px}
   border-bottom:1px solid var(--s2);
 }
 .classif-row:last-child{border-bottom:none}
-.classif-comment{font-size:14px;color:var(--soft);flex:1}
+.classif-comment{font-size:14px;color:var(--soft);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .classif-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .classif-chip{
   font-size:9px;
@@ -964,6 +967,7 @@ footer{
   .pain-grid{grid-template-columns:1fr;gap:32px}
   .chaos-box{transform:none}
   .feature-grid{grid-template-columns:1fr}
+  .classif-row{min-height:52px;align-items:center}
 
   .trust-grid{grid-template-columns:1fr;gap:12px}
   .trust-card{padding:20px}
@@ -1392,14 +1396,17 @@ footer{
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Sommige reacties kosten tijd, trust of gemiste intentie zodra ze blijven staan.</p>
     <div class="trust-grid">
       <div class="trust-card fade-up" style="background:#18181b;border-radius:20px;padding:28px 24px;box-shadow:var(--shadow-lg),inset 0 0 0 1px rgba(255,255,255,.04)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         <div class="trust-title">Koopvragen zonder reactie</div>
         <p class="trust-desc">Mensen tonen intentie, maar verdwijnen terwijl jij al voor hun klik hebt betaald.</p>
       </div>
       <div class="trust-card fade-up" style="background:#18181b;border-radius:20px;padding:28px 24px;box-shadow:var(--shadow-lg),inset 0 0 0 1px rgba(255,255,255,.04);animation-delay:.1s">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         <div class="trust-title">Publieke twijfel onder actieve ads</div>
         <p class="trust-desc">Vragen en bezwaren blijven zichtbaar voor iedereen die daarna nog moet beslissen.</p>
       </div>
       <div class="trust-card fade-up" style="background:#18181b;border-radius:20px;padding:28px 24px;box-shadow:var(--shadow-lg),inset 0 0 0 1px rgba(255,255,255,.04);animation-delay:.2s">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         <div class="trust-title">Spam en concurrerende links tussen echte reacties</div>
         <p class="trust-desc">Ruis trekt je comments omlaag en maakt opvolging op waardevolle reacties trager.</p>
       </div>
@@ -1470,9 +1477,8 @@ footer{
 <section id="pricing">
   <div class="inner">
     <span class="label">PRIJZEN</span>
-    <h2 class="section-head">Begin met &#233;&#233;n scan. Gebruik het verder zodra volume echt gaat <em class="em-white">tellen.</em></h2>
-    <p class="section-sub" style="max-width:600px;margin-bottom:12px">Voor losse validatie is gratis vaak genoeg. Voor actieve campagnes wil je sneller blijven zien wat aandacht vraagt.</p>
-    <p style="text-align:center;font-size:14px;color:var(--dim);margin-bottom:48px">Gebruikt door agencies in solar, vastgoed en leadgeneratie.</p>
+    <h2 class="section-head">Simpel. <em class="em-white">Transparant.</em></h2>
+    <p class="section-sub" style="max-width:600px;margin-bottom:48px">Begin gratis. Upgrade pas als je structureel meer comments wilt scannen of meerdere pagina's beheert.</p>
     <div class="pricing-grid">
       <div class="pricing-card">
         <div class="pricing-plan">Free</div>
