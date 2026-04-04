@@ -361,6 +361,7 @@ section{padding:100px 24px}
   overflow:hidden;
   text-overflow:ellipsis;
   min-width:0;
+  max-width:100%;
 }
 .c-name{
   font-size:10.5px;
@@ -993,11 +994,11 @@ footer{
   .nav-wrap{padding:12px 16px}
   .hero-h1{font-size:clamp(32px,9vw,48px)}
   .hero-sub{font-size:16px}
-  .stat-bar{gap:6px}
-  .stat-block{min-width:80px;padding:8px 10px}
-  .stat-num{font-size:16px}
-  .stat-label{font-size:9px}
-  .c-row{padding:8px 10px;gap:4px;grid-template-columns:3px 22px 70px 34px 1fr auto;height:44px}
+  .stat-bar{gap:4px;flex-wrap:nowrap}
+  .stat-block{min-width:0;padding:8px 6px;flex:1}
+  .stat-num{font-size:14px}
+  .stat-label{font-size:8px}
+  .c-row{padding:8px 10px;gap:4px;grid-template-columns:3px 22px 70px 34px 1fr auto;height:44px;overflow:hidden}
   .c-chip{width:70px;height:20px;font-size:8px}
   .demo-viewport{height:220px}
   .c-name{display:none}
