@@ -27,6 +27,7 @@ h1{font-size:30px;font-weight:700;letter-spacing:-0.03em;margin-bottom:6px}
 .meta{font-size:13px;color:var(--t3);margin-bottom:44px}
 section{margin-bottom:36px}
 h2{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:10px}
+h3{font-size:14px;font-weight:600;color:var(--t1);margin:16px 0 8px}
 p{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:8px}
 .divider{border:none;border-top:1px solid var(--border);margin:40px 0 24px}
 .footer-link{font-size:13px;color:var(--t3);text-decoration:none;transition:color .15s}
@@ -39,10 +40,7 @@ p{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:8px}
 <nav>
   <a class="nav-brand" href="/">
     <div class="nav-logo">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M7 1.5L12.5 11.5H1.5L7 1.5Z" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
-        <path d="M7 5.5L9.5 9.5H4.5L7 5.5Z" fill="white" opacity="0.4"/>
-      </svg>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="1" width="18" height="14" rx="4" fill="white"/><polygon points="4,15 7,18.5 9,15" fill="white"/><rect x="4" y="4" width="11" height="1.5" rx="0.7" fill="#2563eb" opacity="0.3"/><rect x="4" y="7" width="8" height="2" rx="1" fill="#2563eb"/><rect x="4" y="11" width="10" height="1.5" rx="0.7" fill="#2563eb" opacity="0.3"/></svg>
     </div>
     <span class="nav-name">CommentCenter</span>
   </a>
@@ -50,60 +48,148 @@ p{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:8px}
 
 <main>
   <h1>Privacybeleid</h1>
-  <p class="meta">Laatst bijgewerkt: maart 2026</p>
+  <p class="meta">Laatst bijgewerkt: april 2026</p>
 
   <section>
     <h2>1. Wie zijn wij</h2>
-    <p>CommentCenter is een tool waarmee beheerders van Facebook-pagina's reacties kunnen bekijken, classificeren en beantwoorden. CommentCenter is ontwikkeld en beheerd als zelfstandige SaaS-applicatie.</p>
+    <p>CommentCenter is een online dienst voor het bekijken, classificeren en opvolgen van reacties onder Facebook-advertentieposts.</p>
+    <p>CommentCenter is bereikbaar via:</p>
+    <p>• Website: commentcenter.nl<br/>• App: app.commentcenter.nl<br/>• E-mail: <a href="mailto:info@commentcenter.nl" style="color:var(--blue);text-decoration:none">info@commentcenter.nl</a><br/>• KVK: 91657539<br/>• BTW-id: NL004906621B25</p>
   </section>
 
   <section>
-    <h2>2. Welke gegevens verzamelen wij</h2>
-    <p>CommentCenter verzamelt en verwerkt de volgende gegevens:</p>
-    <p>• Facebook access tokens — uitsluitend lokaal opgeslagen in uw browser (localStorage/sessionStorage). Tokens worden niet naar onze servers verzonden of opgeslagen.</p>
-    <p>• Paginanamen en pagina-ID's — opgehaald via de Facebook Graph API om het paginabeheer mogelijk te maken.</p>
-    <p>• Facebook-reacties — tijdelijk geladen in uw browsersessie voor classificatie en weergave. Reacties worden niet persistent opgeslagen op onze servers.</p>
-    <p>• AI-classificatieresultaten — verwerkt via onze serverless functies, niet gekoppeld aan uw identiteit.</p>
+    <h2>2. Voor wie is CommentCenter bedoeld</h2>
+    <p>CommentCenter is primair bedoeld voor zakelijke gebruikers, zoals agencies, lead gen teams en andere professionele beheerders van Facebook-pagina's en advertentieaccounts.</p>
+    <p>Door CommentCenter te gebruiken verklaart u dat u gerechtigd bent om de betreffende Facebook-pagina('s) te beheren en reacties daarop te bekijken, modereren en beantwoorden.</p>
   </section>
 
   <section>
-    <h2>3. Hoe gebruiken wij uw gegevens</h2>
-    <p>Uw gegevens worden uitsluitend gebruikt voor:</p>
-    <p>• Het weergeven en beheren van Facebook-reacties in de CommentCenter-interface.</p>
-    <p>• Het classificeren van reacties met AI (intentie: hot lead, interesse, klacht, vraag, spam).</p>
-    <p>• Het versturen van replies en het verbergen van reacties namens uw Facebook-pagina via de Graph API.</p>
+    <h2>3. Welke persoonsgegevens wij verwerken</h2>
+    <p>Wij verwerken de volgende categorieën persoonsgegevens en gerelateerde gegevens.</p>
+
+    <h3>a. Account- en abonnementsgegevens</h3>
+    <p>Bij het gebruik van CommentCenter kunnen wij account- en abonnementsgegevens verwerken, zoals:</p>
+    <p>• Facebook user ID<br/>• gekozen plan<br/>• abonnementsstatus<br/>• Stripe customer ID<br/>• Stripe subscription ID<br/>• gebruiksgegevens, zoals commentverbruik binnen uw plan</p>
+    <p>Deze gegevens worden gebruikt om de dienst te leveren, toegang te beheren en abonnementen te administreren.</p>
+
+    <h3>b. Facebook-toegangstokens</h3>
+    <p>Wanneer u inlogt met Facebook kan CommentCenter toegangstokens verwerken die nodig zijn om pagina's op te halen en bepaalde functies mogelijk te maken.</p>
+    <p>Deze tokens kunnen:</p>
+    <p>• lokaal in uw browser worden opgeslagen, waaronder in localStorage en sessionStorage<br/>• tijdens verzoeken aan onze server worden meegestuurd om pagina's op te halen of acties namens uw pagina uit te voeren</p>
+    <p>Wij slaan deze tokens niet op in onze database als vaste accountgegevens op, maar zij kunnen tijdens technisch verkeer via onze infrastructuur worden verwerkt.</p>
+
+    <h3>c. Facebook-pagina- en reactiedata</h3>
+    <p>Wanneer u een post scant of reacties ophaalt, kan CommentCenter gegevens verwerken zoals:</p>
+    <p>• post-URL<br/>• comment ID<br/>• reactietekst<br/>• naam van de reageerder<br/>• profiel-ID of profielafbeeldings-URL<br/>• tijdstip en andere commentmetadata</p>
+    <p>Niet alle bovenstaande gegevens worden persistent opgeslagen.</p>
+
+    <h3>d. AI-uitvoer</h3>
+    <p>CommentCenter kan AI-gegenereerde classificaties en replysuggesties verwerken, zoals:</p>
+    <p>• labels als hot lead, interesse, vraag, klacht of spam<br/>• confidence scores<br/>• voorgestelde replytekst</p>
+    <p>Deze gegevens worden gebruikt om de interface en workflow van de dienst mogelijk te maken.</p>
   </section>
 
   <section>
-    <h2>4. Facebook-permissies</h2>
-    <p>CommentCenter vraagt de volgende Facebook-permissies:</p>
-    <p>• <strong style="color:var(--t1)">pages_show_list</strong> — het ophalen van de lijst met pagina's waarover u beheerderstoegang heeft.</p>
-    <p>• <strong style="color:var(--t1)">pages_read_engagement</strong> — het lezen van reacties op uw pagina's.</p>
-    <p>• <strong style="color:var(--t1)">pages_manage_engagement</strong> — het plaatsen van replies en het verbergen van reacties.</p>
-    <p>Deze permissies worden alleen gebruikt voor de functies die hierboven beschreven zijn.</p>
+    <h2>4. Hoe wij gegevens gebruiken</h2>
+    <p>Wij gebruiken persoonsgegevens uitsluitend voor zover nodig om CommentCenter te leveren en te beheren, waaronder voor:</p>
+    <p>• inloggen en gebruikersherkenning<br/>• ophalen van Facebook-pagina's en reacties<br/>• classificatie van reacties<br/>• tonen van resultaten in de interface<br/>• reply- en moderatieacties namens de gekoppelde Facebook-pagina<br/>• abonnementsbeheer, facturatie en fraude-/misbruikpreventie<br/>• technische logging, beveiliging en foutopsporing</p>
+    <p>Wij verkopen geen persoonsgegevens aan derden en gebruiken persoonsgegevens niet voor advertentiedoeleinden van derden.</p>
   </section>
 
   <section>
-    <h2>5. Delen met derden</h2>
-    <p>Wij delen uw gegevens niet met derden, met uitzondering van:</p>
-    <p>• <strong style="color:var(--t1)">Meta / Facebook</strong> — API-aanroepen verlopen via de officiële Graph API.</p>
-    <p>• <strong style="color:var(--t1)">Apify</strong> — voor het scrapen van openbare Facebook-reacties. Apify ontvangt alleen de URL van de post, geen persoonsgegevens.</p>
-    <p>• <strong style="color:var(--t1)">Anthropic Claude</strong> — voor AI-classificatie van reactieteksten. Er worden geen persoonsgegevens zoals namen of profielafbeeldingen meegestuurd.</p>
+    <h2>5. Rechtsgrondslagen</h2>
+    <p>Afhankelijk van de situatie verwerken wij persoonsgegevens op basis van een of meer van de volgende grondslagen:</p>
+    <p>• <strong style="color:var(--t1)">Uitvoering van de overeenkomst</strong>: voor het leveren van CommentCenter aan u.<br/>• <strong style="color:var(--t1)">Gerechtvaardigd belang</strong>: voor beveiliging, misbruikpreventie, technische werking en het faciliteren van moderatie- en opvolgingsfuncties voor beheerders van pagina's.<br/>• <strong style="color:var(--t1)">Toestemming</strong>, voor zover dat nodig is, bijvoorbeeld wanneer u via Facebook autorisatie verleent.</p>
+    <p>Indien verwerking plaatsvindt op basis van toestemming, heeft u het recht die toestemming op elk moment in te trekken, zonder dat dit afbreuk doet aan de rechtmatigheid van de verwerking vóór de intrekking.</p>
   </section>
 
   <section>
-    <h2>6. Bewaartermijn</h2>
-    <p>CommentCenter slaat geen gebruikersgegevens op buiten uw eigen browsersessie. Uw access token blijft bewaard in localStorage totdat u klikt op "Verbinding verbreken" of uw browsercache leegt.</p>
+    <h2>6. Welke gegevens waar terechtkomen</h2>
+    <p>Op basis van de huidige technische implementatie geldt in hoofdlijnen het volgende.</p>
+
+    <h3>Lokaal in de browser</h3>
+    <p>Bepaalde tokens en sessiegegevens kunnen lokaal in uw browser worden opgeslagen, waaronder in localStorage en sessionStorage.</p>
+
+    <h3>In onze database</h3>
+    <p>Wij slaan momenteel onder meer op:</p>
+    <p>• Facebook user ID<br/>• plan- en abonnementsgegevens<br/>• Stripe-gerelateerde identifiers<br/>• gebruiks- en tellergegevens<br/>• bepaalde technische records zoals comment ID en post-URL in verband met analyse, deduplicatie en dienstwerking</p>
+    <p>Wij slaan op dit moment geen volledige reactieteksten, geen namen van reageerders en geen profielfoto's persistent op in onze database.</p>
+
+    <h3>In geheugen / tijdelijke verwerking</h3>
+    <p>Commentteksten, AI-classificaties en suggested replies worden in de huidige implementatie in beginsel tijdelijk verwerkt en niet als volledige inhoud permanent in onze database opgeslagen.</p>
   </section>
 
   <section>
-    <h2>7. Uw rechten</h2>
-    <p>U heeft het recht om uw verbinding op elk moment te verbreken via de "Verbinding verbreken"-knop in de app. Hiermee worden uw lokaal opgeslagen tokens verwijderd. Voor vragen over uw gegevens kunt u contact opnemen via de gegevens onderaan deze pagina.</p>
+    <h2>7. Derde partijen</h2>
+    <p>Voor het leveren van CommentCenter maken wij gebruik van derde partijen.</p>
+
+    <h3>Meta / Facebook</h3>
+    <p>Wij gebruiken Meta-gerelateerde diensten om login, pagina-ophaling en reply-/moderatieacties mogelijk te maken.</p>
+
+    <h3>Apify</h3>
+    <p>Wij gebruiken Apify structureel voor het ophalen van reacties van Facebook-posts. Daarbij wordt in elk geval de post-URL naar Apify gestuurd. De response van Apify kan commentdata bevatten, waaronder commenttekst, auteurnaam, profiel-ID, likes, timestamps en comment ID.</p>
+
+    <h3>Anthropic</h3>
+    <p>Wij gebruiken Anthropic voor AI-classificatie en replylogica. In de huidige implementatie worden comment ID en commenttekst naar Anthropic gestuurd. Namen en profielfoto's worden daarbij niet meegestuurd.</p>
+
+    <h3>Vercel</h3>
+    <p>Wij gebruiken Vercel voor hosting en serverless functies.</p>
+
+    <h3>Vercel Postgres / Neon</h3>
+    <p>Wij gebruiken Vercel Postgres / Neon voor databaseopslag.</p>
+
+    <h3>Stripe</h3>
+    <p>Wij gebruiken Stripe voor betaalverwerking, abonnementen en gerelateerde administratieve processen.</p>
   </section>
 
   <section>
-    <h2>8. Contact</h2>
-    <p>Heeft u vragen over dit privacybeleid? Neem contact op via: <a href="mailto:info@commentcenter.nl" style="color:var(--blue);text-decoration:none">info@commentcenter.nl</a></p>
+    <h2>8. Internationale doorgifte</h2>
+    <p>Sommige van onze dienstverleners kunnen gegevens verwerken buiten de Europese Economische Ruimte, waaronder in de Verenigde Staten. Dit kan onder meer relevant zijn voor hosting en AI-verwerking. Waar wettelijk vereist worden passende waarborgen gebruikt voor dergelijke doorgiften, waaronder Standard Contractual Clauses (SCC's) conform Art. 46 AVG.</p>
+  </section>
+
+  <section>
+    <h2>9. Bewaartermijnen</h2>
+    <p>Wij bewaren persoonsgegevens niet langer dan nodig is voor de doeleinden waarvoor zij zijn verzameld, tenzij een langere bewaartermijn wettelijk verplicht is of noodzakelijk is voor administratie, beveiliging of geschillen.</p>
+    <p>In de huidige situatie geldt in elk geval:</p>
+    <p>• Browseropslag blijft bestaan totdat u uitlogt, de verbinding verbreekt, opslag wist of de browserdata verwijdert.<br/>• Account- en abonnementsgegevens bewaren wij zolang uw account actief is en zolang dat nodig is voor administratie en ondersteuning.<br/>• Factuur- en betaalgegevens bewaren wij zolang dat fiscaal of administratief vereist is (minimaal 7 jaar).<br/>• Bepaalde technische gegevens, zoals post-URL's en comment-ID's, kunnen worden bewaard zolang nodig voor de werking, analyse, deduplicatie en beveiliging van de dienst.</p>
+  </section>
+
+  <section>
+    <h2>10. Cookies en lokale opslag</h2>
+    <p>CommentCenter gebruikt op dit moment geen tracking-cookies van advertentienetwerken of externe marketingplatformen.</p>
+    <p>Wel gebruikt CommentCenter functionele browseropslag, waaronder localStorage en sessionStorage, om de dienst technisch te laten werken.</p>
+  </section>
+
+  <section>
+    <h2>11. Beveiliging</h2>
+    <p>Wij nemen passende technische en organisatorische maatregelen om persoonsgegevens te beveiligen. Daaronder vallen onder meer:</p>
+    <p>• versleutelde verbindingen (HTTPS)<br/>• toegangsbeperking<br/>• scheiding tussen client- en serververwerking waar mogelijk<br/>• beperking van persistente opslag van inhoudelijke commentdata</p>
+    <p>Geen enkele online dienst kan echter absolute beveiliging garanderen.</p>
+  </section>
+
+  <section>
+    <h2>12. Uw rechten (AVG Art. 15–22)</h2>
+    <p>Voor zover de AVG van toepassing is, kunt u ons verzoeken om:</p>
+    <p>• Inzage in uw persoonsgegevens (Art. 15)<br/>• Correctie van onjuiste gegevens (Art. 16)<br/>• Verwijdering van gegevens (Art. 17)<br/>• Beperking van verwerking (Art. 18)<br/>• Bezwaar tegen verwerking (Art. 21)<br/>• Overdracht van gegevens, voor zover van toepassing (Art. 20)</p>
+    <p>Indien verwerking plaatsvindt op basis van toestemming, heeft u het recht die toestemming op elk moment in te trekken, zonder dat dit afbreuk doet aan de rechtmatigheid van de verwerking vóór de intrekking.</p>
+    <p>U kunt dergelijke verzoeken richten aan: <a href="mailto:info@commentcenter.nl" style="color:var(--blue);text-decoration:none">info@commentcenter.nl</a>. Wij reageren binnen 30 dagen.</p>
+    <p>Wij kunnen om aanvullende verificatie vragen voordat wij een verzoek uitvoeren.</p>
+  </section>
+
+  <section>
+    <h2>13. Verbreken van verbinding en verwijderen</h2>
+    <p>Binnen de app kunt u een Facebook-verbinding verbreken. Daardoor worden lokaal opgeslagen tokens verwijderd uit de browser, voor zover de disconnect-functie daarop ziet. Dit betekent niet automatisch dat alle administratieve of technische gegevens in onze systemen direct worden verwijderd.</p>
+    <p>Voor een verzoek tot verwijdering van account- of andere persoonsgegevens kunt u contact opnemen via <a href="mailto:info@commentcenter.nl" style="color:var(--blue);text-decoration:none">info@commentcenter.nl</a>.</p>
+  </section>
+
+  <section>
+    <h2>14. Klachten</h2>
+    <p>Als u van mening bent dat wij persoonsgegevens onjuist verwerken, kunt u contact opnemen via <a href="mailto:info@commentcenter.nl" style="color:var(--blue);text-decoration:none">info@commentcenter.nl</a>. U hebt daarnaast het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens (www.autoriteitpersoonsgegevens.nl).</p>
+  </section>
+
+  <section>
+    <h2>15. Wijzigingen</h2>
+    <p>Wij kunnen dit privacybeleid van tijd tot tijd wijzigen. De meest actuele versie is steeds beschikbaar via onze website. Bij wezenlijke wijzigingen kunnen wij u daarover informeren via de app of per e-mail.</p>
   </section>
 
   <hr class="divider"/>
