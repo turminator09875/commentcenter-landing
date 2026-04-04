@@ -297,10 +297,10 @@ section{padding:100px 24px}
 .demo-track{display:flex;flex-direction:column}
 .c-row{
   display:grid;
-  grid-template-columns:3px 24px 80px 44px 1fr auto;
+  grid-template-columns:90px 40px 24px 1fr auto;
   align-items:center;
   justify-items:start;
-  gap:8px;
+  gap:10px;
   padding:9px 16px;
   border-bottom:1px solid var(--bg);
   position:relative;
@@ -314,13 +314,7 @@ section{padding:100px 24px}
 .c-row.demo-hidden{opacity:.4}
 .c-row.demo-hidden .c-chip{background:var(--s3)!important;color:var(--muted)!important}
 .c-row.demo-replied .c-chip{background:#16a34a!important}
-.c-bar{
-  width:3px;
-  align-self:stretch;
-  justify-self:stretch;
-  min-height:32px;
-  border-radius:2px;
-}
+.c-bar{display:none}
 .c-avatar{
   width:24px;height:24px;
   border-radius:50%;
@@ -337,7 +331,7 @@ section{padding:100px 24px}
   font-size:9px;
   font-weight:700;
   letter-spacing:.12em;
-  width:80px;
+  width:90px;
   height:22px;
   display:inline-flex;
   align-items:center;
@@ -1024,7 +1018,7 @@ footer{
   .stat-block{min-width:0;padding:8px 6px;flex:1}
   .stat-num{font-size:14px}
   .stat-label{font-size:8px}
-  .c-row{padding:8px 10px;gap:4px;grid-template-columns:3px 22px 70px 34px 1fr auto;height:44px;overflow:hidden}
+  .c-row{padding:8px 10px;gap:4px;grid-template-columns:70px 34px 22px 1fr auto;height:44px;overflow:hidden}
   .c-chip{width:70px;height:20px;font-size:8px}
   .demo-viewport{height:220px}
   .c-name{display:none}
@@ -1680,10 +1674,9 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     var el=document.createElement('div');
     el.className='c-row'+(isSpam?' spam-row':'');
     el.innerHTML=
-      '<div class="c-bar" style="background:'+d[3]+'"></div>'+
-      '<div class="c-avatar"><img src="'+d[0]+'" alt="" loading="eager"></div>'+
       '<span class="c-chip" style="background:'+d[3]+(isSpam?';color:var(--soft)':'')+'">'+ d[2]+'</span>'+
       '<span class="c-conf" style="color:'+d[3]+'">'+d[4]+'</span>'+
+      '<div class="c-avatar"><img src="'+d[0]+'" alt="" loading="eager"></div>'+
       '<span class="c-text">'+d[5]+'</span>'+
       '<div class="c-actions">'+
         (isSpam?'':'<button class="c-btn c-btn-reply">Reageren</button>')+
