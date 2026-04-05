@@ -123,11 +123,8 @@ p{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:8px}
     <h2>7. Derde partijen</h2>
     <p>Voor het leveren van CommentCenter maken wij gebruik van derde partijen.</p>
 
-    <h3>Meta / Facebook</h3>
-    <p>Wij gebruiken Meta-gerelateerde diensten om login, pagina-ophaling en reply-/moderatieacties mogelijk te maken.</p>
-
-    <h3>Apify</h3>
-    <p>Wij gebruiken Apify structureel voor het ophalen van reacties van Facebook-posts. Daarbij wordt in elk geval de post-URL naar Apify gestuurd. De response van Apify kan commentdata bevatten, waaronder commenttekst, auteurnaam, profiel-ID, likes, timestamps en comment ID.</p>
+    <h3>Meta / Facebook (Graph API)</h3>
+    <p>Wij halen reacties op via de officiële Meta Graph API, op basis van de permissions die u bij het inloggen verleent. Daarbij worden uitsluitend gegevens opgehaald van pagina's waarvoor u beheerderstoegang heeft. De opgehaalde data kan commenttekst, auteurnaam, profiel-ID, likes, timestamps en comment ID bevatten. Daarnaast gebruiken wij Meta-gerelateerde diensten om login, pagina-ophaling en reply-/moderatieacties mogelijk te maken.</p>
 
     <h3>Anthropic</h3>
     <p>Wij gebruiken Anthropic voor AI-classificatie en replylogica. In de huidige implementatie worden comment ID en commenttekst naar Anthropic gestuurd. Namen en profielfoto's worden daarbij niet meegestuurd.</p>
