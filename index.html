@@ -190,10 +190,10 @@ section{padding:128px 24px}
 }
 .hero-glow{
   position:absolute;
-  top:-20%;left:50%;
+  top:0;left:50%;
   transform:translateX(-50%);
   width:900px;height:600px;
-  background:radial-gradient(ellipse at 50% -20%,rgba(59,130,246,0.10) 0%,transparent 65%);
+  background:radial-gradient(ellipse at 50% 20%,rgba(59,130,246,0.10) 0%,transparent 60%);
   pointer-events:none;
 }
 .hero-inner{
@@ -531,6 +531,11 @@ section{padding:128px 24px}
   border-radius:12px;
   padding:20px;
   box-shadow:none;
+  transition:background .2s ease,transform .2s ease;
+}
+@media(hover:hover){
+  .feature-card:hover{background:#18181b;transform:translateY(-2px)}
+  .feature-card:hover svg{opacity:1}
 }
 .feature-card-title{font-size:15px;font-weight:600;margin-bottom:6px}
 .feature-card-desc{font-size:13px;color:var(--soft);line-height:1.6}
@@ -621,6 +626,11 @@ td.meta-cell{color:var(--dim)}
 }
 .for-title{font-size:17px;font-weight:600;margin-bottom:8px}
 .for-desc{font-size:14px;color:var(--soft);max-width:600px;line-height:1.7}
+.persona-card{transition:background .2s ease,transform .2s ease}
+@media(hover:hover){
+  .persona-card:hover{background:#18181b!important;transform:translateY(-2px)}
+  .persona-card:hover svg{opacity:1}
+}
 
 /* ── TRUST ── */
 #trust{background:var(--bg)}
@@ -635,6 +645,11 @@ td.meta-cell{color:var(--dim)}
   border-radius:16px;
   padding:28px 24px;
   box-shadow:var(--shadow-md);
+}
+.trust-card{transition:background .2s ease,transform .2s ease}
+@media(hover:hover){
+  .trust-card:hover{background:#18181b!important;transform:translateY(-2px)}
+  .trust-card:hover svg{opacity:1}
 }
 .trust-title{font-size:16px;font-weight:600;margin-bottom:10px}
 .trust-desc{font-size:14px;color:var(--soft);line-height:1.7}
@@ -1006,13 +1021,13 @@ footer{
   .compare-stacked{display:block;margin-top:24px}
   .for-list{margin-top:0}
   .for-item{padding:20px 0;gap:16px}
+  #voorwie .inner>div:last-child{grid-template-columns:1fr!important}
   .footer-inner{flex-direction:column;gap:24px}
   .footer-cols{gap:24px}
   .footer-col a{color:#71717a}
   .footer-bottom{color:#71717a}
   .footer-tagline{color:#71717a}
   .nav-links,.nav-cta{display:none}
-  .theme-toggle{order:1}
   .nav-hamburger{display:block}
   .nav-pill{padding:8px 8px 8px 16px}
   #proof{padding-top:56px;padding-bottom:56px}
@@ -1060,7 +1075,6 @@ footer{
       <a href="#faq">Vragen</a>
       <a href="#pricing">Tarieven</a>
     </div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Wissel thema"><svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     <a href="https://app.commentcenter.nl" class="nav-cta">Scan gratis</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu openen">&#9776;</button>
   </div>
@@ -1091,7 +1105,6 @@ footer{
       <a href="https://app.commentcenter.nl" class="btn-primary">Scan gratis je eerste post &rarr;</a>
       <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
     </div>
-    <p style="font-size:12px;color:#71717a;text-align:center;margin-top:16px">Gebouwd voor agencies en performance teams in Nederland</p>
   </div>
 
   <!-- HERO MOCK -->
@@ -1396,18 +1409,18 @@ footer{
     <span class="label">VOOR WIE</span>
     <h2 class="section-head">Gebouwd voor teams die uit comments <em class="em-white">resultaat</em> halen.</h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:28px">Voor agencies, lead gen teams en performance marketeers die niet willen gokken waar intentie zit.</p>
-    <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px">
-      <div style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px">
+      <div class="persona-card" style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M6 8h4"/><path d="M6 12h4"/><path d="M6 16h4"/><path d="M14 8h4"/><path d="M14 12h4"/><path d="M14 16h4"/></svg>
         <div class="for-title">Je runt 8 klantaccounts.</div>
         <p class="for-desc">Eén gemiste hot lead en de klant belt jou.</p>
       </div>
-      <div style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
+      <div class="persona-card" style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         <div class="for-title">Je CPL is €40. De lead reageert in comments.</div>
         <p class="for-desc">Niemand ziet het. Jij wel, met CommentCenter.</p>
       </div>
-      <div style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
+      <div class="persona-card" style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         <div class="for-title">Je ROAS klopt. Je comments niet.</div>
         <p class="for-desc">Spam en klachten eten je social proof op terwijl jij in Ads Manager zit.</p>
@@ -1867,24 +1880,6 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
   loop();
 })();
 
-// Theme toggle
-(function(){
-  var toggle=document.getElementById('themeToggle');
-  if(!toggle)return;
-  var stored=localStorage.getItem('cc-theme');
-  if(stored) document.documentElement.setAttribute('data-theme',stored);
-  toggle.addEventListener('click',function(){
-    var current=document.documentElement.getAttribute('data-theme');
-    var next=current==='light'?'dark':'light';
-    if(next==='dark'){
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.removeItem('cc-theme');
-    }else{
-      document.documentElement.setAttribute('data-theme',next);
-      localStorage.setItem('cc-theme',next);
-    }
-  });
-})();
 </script>
 </body>
 </html>
