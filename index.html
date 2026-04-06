@@ -63,6 +63,9 @@ body{
   display:flex;
   justify-content:center;
   padding:16px 24px;
+  background:rgba(9,9,11,0.98);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 }
 .nav-pill{
   display:flex;
@@ -571,66 +574,85 @@ section{padding:128px 24px}
 
 /* ── VERGELIJKING ── */
 #vergelijk{background:var(--bg)}
-.table-wrap{
-  background:#111113;
-  border:1px solid rgba(255,255,255,0.06);
+.vs-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:32px;
+}
+.vs-col{
   border-radius:12px;
-  overflow:hidden;
-  box-shadow:none;
-  overflow-x:auto;
-  margin-top:28px;
+  padding:32px;
 }
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:600px;
+.vs-col--without{
+  background:#0f0f0f;
+  border:1px solid rgba(39,39,42,0.4);
 }
-th,td{padding:16px 24px;text-align:left;font-size:13px}
-thead tr{border-bottom:1px solid var(--s3)}
-th{font-weight:500;color:#71717a;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
-th.cc{color:#60a5fa;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
-tbody tr{border-bottom:1px solid var(--s2)}
-tbody tr:last-child{border-bottom:none}
-td.label-cell{color:#d4d4d8;font-weight:500}
-td.cc-cell{color:#4ade80;font-weight:500;font-size:14px}
-td.mod-cell{color:#71717a}
-td.meta-cell{color:var(--dim)}
-.compare-stacked{display:none}
-.compare-card{
-  background:var(--s1);
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:10px;
+.vs-col--with{
+  background:#111113;
+  border:1px solid rgba(59,130,246,0.2);
 }
-.compare-card-title{font-size:15px;font-weight:600;margin-bottom:12px;color:var(--tx)}
-.compare-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.compare-list li{font-size:13px;color:#d4d4d8;display:flex;align-items:center;gap:8px}
-.compare-check{color:var(--hot);font-weight:700;flex-shrink:0}
-.compare-dim{color:var(--dim);flex-shrink:0}
+.vs-header{
+  font-size:12px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:24px;
+}
+.vs-header--without{color:#71717a}
+.vs-header--with{color:#60a5fa}
+.vs-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.vs-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.6}
+.vs-x{color:#3f3f46;font-weight:700;flex-shrink:0;font-size:15px}
+.vs-check{color:#4ade80;font-weight:700;flex-shrink:0;font-size:15px}
+.vs-list--without li{color:#71717a}
+.vs-list--with li{color:#e4e4e7}
 
 /* ── VOOR WIE ── */
 #voorwie{background:var(--s1)}
-.for-list{display:flex;flex-direction:column;margin-top:28px}
-.for-item{
-  display:flex;
-  gap:24px;
-  padding:28px 0;
-  border-bottom:1px solid var(--s3);
-}
-.for-item:last-child{border-bottom:none}
-.for-bar{
-  width:3px;height:36px;
-  border-radius:2px;
-  flex-shrink:0;
-  margin-top:4px;
-}
-.for-title{font-size:17px;font-weight:600;margin-bottom:8px}
+.for-title{font-size:18px;font-weight:600;margin-bottom:8px}
 .for-desc{font-size:14px;color:var(--soft);max-width:600px;line-height:1.7}
-.persona-card{transition:background .2s ease,transform .2s ease}
+.persona-card{
+  background:#111113;
+  border:1px solid rgba(39,39,42,0.6);
+  border-radius:12px;
+  padding:32px;
+  transition:background .2s ease,transform .2s ease;
+}
+.persona-icon-wrap{
+  width:40px;height:40px;
+  border-radius:8px;
+  background:rgba(59,130,246,0.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:24px;
+}
+.persona-icon-wrap svg{stroke:#60a5fa}
 @media(hover:hover){
   .persona-card:hover{background:#18181b!important;transform:translateY(-2px)}
   .persona-card:hover svg{opacity:1}
 }
+
+/* ── NUMBERED PAIN ── */
+.pain-numbered-row{
+  display:grid;
+  grid-template-columns:80px 1fr 2fr;
+  gap:32px;
+  align-items:start;
+  padding:32px 0;
+  border-bottom:1px solid rgba(39,39,42,0.5);
+}
+.pain-numbered-row:last-child{border-bottom:none}
+.pain-num{
+  font-size:48px;
+  font-weight:700;
+  color:#27272a;
+  line-height:1;
+  font-family:'DM Sans',sans-serif;
+}
+.pain-row-title{font-size:20px;font-weight:600;color:#fafafa;padding-top:4px}
+.pain-row-desc{font-size:16px;color:#a1a1aa;line-height:1.7;max-width:480px;padding-top:6px}
 
 /* ── TRUST ── */
 #trust{background:var(--bg)}
@@ -954,9 +976,6 @@ footer{
 [data-theme=light] .faq-a{color:#3f3f46}
 [data-theme=light] .faq-icon{color:#52525b}
 [data-theme=light] #faq{background:#f9fafb}
-[data-theme=light] td.label-cell{color:#18181b}
-[data-theme=light] .compare-list li{color:#3f3f46}
-[data-theme=light] th.cc{color:#18181b}
 [data-theme=light] .hero-sub{color:#52525b}
 [data-theme=light] .step-num{opacity:.8}
 [data-theme=light] .step-title{color:#18181b}
@@ -979,20 +998,13 @@ footer{
 [data-theme=light] .proof-card{background:#fff;border-color:#e4e4e7}
 [data-theme=light] .pain-bar{opacity:.8}
 [data-theme=light] #watblijftliggen{background:#f4f4f5!important}
-[data-theme=light] #watblijftliggen .trust-card{background:#fff!important;box-shadow:0 2px 12px rgba(0,0,0,.06),inset 0 0 0 1px rgba(0,0,0,.06)!important}
-[data-theme=light] #watblijftliggen .trust-card svg{stroke:#6b7280!important}
 [data-theme=light] .chaos-box{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-[data-theme=light] .table-wrap{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-[data-theme=light] thead tr{border-bottom-color:#e4e4e7}
-[data-theme=light] tbody tr{border-bottom-color:#e4e4e7}
 [data-theme=light] .pricing-card{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.06),inset 0 0 0 1px rgba(0,0,0,.06)}
 [data-theme=light] .cta-glow{background:radial-gradient(ellipse,rgba(59,130,246,.04) 0%,transparent 70%)}
 [data-theme=light] footer{border-top-color:#e4e4e7}
 [data-theme=light] .footer-bottom{border-top-color:#e4e4e7}
 [data-theme=light] .nav-mobile-menu{background:rgba(255,255,255,.97)}
 [data-theme=light] .nav-mobile-menu a{color:#18181b}
-[data-theme=light] .compare-card{background:#fff}
-[data-theme=light] .compare-list li{color:#3f3f46}
 [data-theme=light] .theme-toggle:hover{background:rgba(0,0,0,.06)}
 
 [data-theme=light] .faq-item{background:#fff;border-color:rgba(0,0,0,0.06)}
@@ -1017,10 +1029,10 @@ footer{
   .trust-card{padding:20px}
   .pricing-grid{grid-template-columns:1fr;max-width:400px;gap:12px;margin-top:32px}
   .pricing-plan{font-size:16px}
-  .table-wrap{display:none}
-  .compare-stacked{display:block;margin-top:24px}
-  .for-list{margin-top:0}
-  .for-item{padding:20px 0;gap:16px}
+  .vs-grid{grid-template-columns:1fr}
+  .pain-numbered-row{grid-template-columns:1fr;gap:8px;padding:24px 0}
+  .pain-num{font-size:36px;margin-bottom:4px}
+  .pain-row-desc{max-width:100%}
   #voorwie .inner>div:last-child{grid-template-columns:1fr!important}
   .footer-inner{flex-direction:column;gap:24px}
   .footer-cols{gap:24px}
@@ -1339,64 +1351,25 @@ footer{
   <div class="inner">
     <h2 class="section-head">Geen social inbox. Wel grip op je <em class="em-white">advertentiecomments.</em></h2>
     <p class="section-sub" style="max-width:540px;margin-bottom:0">CommentCenter is gebouwd voor paid comments onder Facebook-advertenties. Niet om je hele social workflow te vervangen, maar om direct te zien waar leads, risico en ruis zitten.</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th style="width:40%"></th>
-            <th class="cc">CommentCenter</th>
-            <th style="color:var(--dim)">Algemene social tools</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="label-cell">Focus op advertentiecomments</td>
-            <td class="cc-cell">Ja</td>
-            <td class="mod-cell">Meestal niet</td>
-          </tr>
-          <tr>
-            <td class="label-cell">Hot leads direct zichtbaar</td>
-            <td class="cc-cell">Ja</td>
-            <td class="mod-cell">Vaak handmatig</td>
-          </tr>
-          <tr>
-            <td class="label-cell">Klachten en spam gescheiden</td>
-            <td class="cc-cell">Ja</td>
-            <td class="mod-cell">Vaak &eacute;&eacute;n inbox</td>
-          </tr>
-          <tr>
-            <td class="label-cell">Gebouwd voor paid teams</td>
-            <td class="cc-cell">Ja</td>
-            <td class="mod-cell">Nee</td>
-          </tr>
-          <tr>
-            <td class="label-cell">Bulk spam opruimen</td>
-            <td class="cc-cell">Ja</td>
-            <td class="mod-cell">Wisselt</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- Mobile stacked comparison -->
-    <div class="compare-stacked">
-      <div class="compare-card compare-card--cc">
-        <div class="compare-card-title">CommentCenter</div>
-        <ul class="compare-list">
-          <li><span class="compare-check">&#10003;</span> Focus op advertentiecomments</li>
-          <li><span class="compare-check">&#10003;</span> Hot leads direct zichtbaar</li>
-          <li><span class="compare-check">&#10003;</span> Klachten en spam gescheiden</li>
-          <li><span class="compare-check">&#10003;</span> Gebouwd voor paid teams</li>
-          <li><span class="compare-check">&#10003;</span> Bulk spam opruimen</li>
+    <div class="vs-grid">
+      <div class="vs-col vs-col--without">
+        <div class="vs-header vs-header--without">Zonder CommentCenter</div>
+        <ul class="vs-list vs-list--without">
+          <li><span class="vs-x">&#10005;</span> Koopvragen blijven onbeantwoord</li>
+          <li><span class="vs-x">&#10005;</span> Spam blijft zichtbaar voor nieuwe bezoekers</li>
+          <li><span class="vs-x">&#10005;</span> Leads verdwijnen zonder follow-up</li>
+          <li><span class="vs-x">&#10005;</span> Handmatig door comments scrollen</li>
+          <li><span class="vs-x">&#10005;</span> Geen overzicht per pagina of klant</li>
         </ul>
       </div>
-      <div class="compare-card compare-card--other">
-        <div class="compare-card-title" style="color:var(--muted)">Algemene social tools</div>
-        <ul class="compare-list">
-          <li><span class="compare-dim">&#8211;</span> Focus op advertentiecomments: <span style="color:var(--muted)">Meestal niet</span></li>
-          <li><span class="compare-dim">&#8211;</span> Hot leads direct zichtbaar: <span style="color:var(--muted)">Vaak handmatig</span></li>
-          <li><span class="compare-dim">&#8211;</span> Klachten en spam gescheiden: <span style="color:var(--muted)">Vaak &eacute;&eacute;n inbox</span></li>
-          <li><span class="compare-dim">&#8211;</span> Gebouwd voor paid teams: <span style="color:var(--muted)">Nee</span></li>
-          <li><span class="compare-dim">&#8211;</span> Bulk spam opruimen: <span style="color:var(--muted)">Wisselt</span></li>
+      <div class="vs-col vs-col--with">
+        <div class="vs-header vs-header--with">Met CommentCenter</div>
+        <ul class="vs-list vs-list--with">
+          <li><span class="vs-check">&#10003;</span> Hot leads direct zichtbaar en gemarkeerd</li>
+          <li><span class="vs-check">&#10003;</span> Spam automatisch gefilterd voor je het ziet</li>
+          <li><span class="vs-check">&#10003;</span> Leads exporteerbaar naar je CRM of team</li>
+          <li><span class="vs-check">&#10003;</span> AI classificeert alles in seconden</li>
+          <li><span class="vs-check">&#10003;</span> Volledig overzicht per pagina en klant</li>
         </ul>
       </div>
     </div>
@@ -1410,20 +1383,26 @@ footer{
     <h2 class="section-head">Gebouwd voor teams die uit comments <em class="em-white">resultaat</em> halen.</h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:28px">Voor agencies, lead gen teams en performance marketeers die niet willen gokken waar intentie zit.</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px">
-      <div class="persona-card" style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M6 8h4"/><path d="M6 12h4"/><path d="M6 16h4"/><path d="M14 8h4"/><path d="M14 12h4"/><path d="M14 16h4"/></svg>
-        <div class="for-title">Je runt 8 klantaccounts.</div>
-        <p class="for-desc">Eén gemiste hot lead en de klant belt jou.</p>
+      <div class="persona-card">
+        <div class="persona-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M6 8h4"/><path d="M6 12h4"/><path d="M6 16h4"/><path d="M14 8h4"/><path d="M14 12h4"/><path d="M14 16h4"/></svg>
+        </div>
+        <div class="for-title" style="font-size:18px;margin-bottom:8px">Je runt 8 klantaccounts.</div>
+        <p class="for-desc" style="font-size:14px;color:#a1a1aa;line-height:1.7">Eén gemiste hot lead en de klant belt jou.</p>
       </div>
-      <div class="persona-card" style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-        <div class="for-title">Je CPL is €40. De lead reageert in comments.</div>
-        <p class="for-desc">Niemand ziet het. Jij wel, met CommentCenter.</p>
+      <div class="persona-card">
+        <div class="persona-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div class="for-title" style="font-size:18px;margin-bottom:8px">Je CPL is €40. De lead reageert in comments.</div>
+        <p class="for-desc" style="font-size:14px;color:#a1a1aa;line-height:1.7">Niemand ziet het. Jij wel, met CommentCenter.</p>
       </div>
-      <div class="persona-card" style="background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        <div class="for-title">Je ROAS klopt. Je comments niet.</div>
-        <p class="for-desc">Spam en klachten eten je social proof op terwijl jij in Ads Manager zit.</p>
+      <div class="persona-card">
+        <div class="persona-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="for-title" style="font-size:18px;margin-bottom:8px">Je ROAS klopt. Je comments niet.</div>
+        <p class="for-desc" style="font-size:14px;color:#a1a1aa;line-height:1.7">Spam en klachten eten je social proof op terwijl jij in Ads Manager zit.</p>
       </div>
     </div>
   </div>
@@ -1435,21 +1414,21 @@ footer{
     <span class="label">WAT BLIJFT LIGGEN</span>
     <h2 class="section-head">Wat onder je ads blijft <em class="em-white">hangen.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Sommige reacties kosten tijd, trust of gemiste intentie zodra ze blijven staan.</p>
-    <div class="trust-grid">
-      <div class="trust-card fade-up" style="background:#18181b;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px 24px">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <div class="trust-title">Koopvragen zonder reactie</div>
-        <p class="trust-desc">Mensen tonen intentie, maar verdwijnen terwijl jij al voor hun klik hebt betaald.</p>
+    <div>
+      <div class="pain-numbered-row fade-up">
+        <div class="pain-num">01</div>
+        <div class="pain-row-title">Koopvragen zonder reactie</div>
+        <div class="pain-row-desc">Mensen tonen intentie, maar verdwijnen terwijl jij al voor hun klik hebt betaald.</div>
       </div>
-      <div class="trust-card fade-up" style="background:#18181b;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px 24px">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        <div class="trust-title">Publieke twijfel onder actieve ads</div>
-        <p class="trust-desc">Vragen en bezwaren blijven zichtbaar voor iedereen die daarna nog moet beslissen.</p>
+      <div class="pain-numbered-row fade-up">
+        <div class="pain-num">02</div>
+        <div class="pain-row-title">Publieke twijfel onder actieve ads</div>
+        <div class="pain-row-desc">Vragen en bezwaren blijven zichtbaar voor iedereen die daarna nog moet beslissen.</div>
       </div>
-      <div class="trust-card fade-up" style="background:#18181b;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px 24px">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <div class="trust-title">Spam en concurrerende links tussen echte reacties</div>
-        <p class="trust-desc">Ruis trekt je comments omlaag en maakt opvolging op waardevolle reacties trager.</p>
+      <div class="pain-numbered-row fade-up">
+        <div class="pain-num">03</div>
+        <div class="pain-row-title">Spam en concurrerende links tussen echte reacties</div>
+        <div class="pain-row-desc">Ruis trekt je comments omlaag en maakt opvolging op waardevolle reacties trager.</div>
       </div>
     </div>
   </div>
