@@ -63,9 +63,9 @@ body{
   display:flex;
   justify-content:center;
   padding:16px 24px;
-  background:rgba(9,9,11,0.75);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  background:rgba(9,9,11,0.60);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
 }
 .nav-pill{
   display:flex;
@@ -155,7 +155,7 @@ body{
 }
 
 /* ── SECTION BASE ── */
-section{padding:128px 24px}
+section{padding:128px 24px;position:relative;z-index:1}
 .inner{max-width:960px;margin:0 auto}
 .inner-sm{max-width:680px;margin:0 auto}
 .label{
@@ -189,13 +189,12 @@ section{padding:128px 24px}
   padding-bottom:80px;
   text-align:center;
   position:relative;
-  overflow:hidden;
+  z-index:1;
 }
 .hero-glow{
   position:fixed;
-  top:0;left:50%;
-  transform:translateX(-50%);
-  width:900px;height:600px;
+  top:0;left:0;right:0;
+  height:600px;
   background:radial-gradient(ellipse at 50% 20%,rgba(59,130,246,0.10) 0%,transparent 60%);
   pointer-events:none;
   z-index:0;
@@ -1077,6 +1076,9 @@ footer{
 </head>
 <body>
 
+<!-- GLOBAL GLOW -->
+<div class="hero-glow" aria-hidden="true"></div>
+
 <!-- NAV -->
 <nav class="nav-wrap" aria-label="Navigatie">
   <div class="nav-pill">
@@ -1106,7 +1108,6 @@ footer{
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-inner">
     <span style="display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#60a5fa;border:1px solid rgba(59,130,246,0.3);border-radius:100px;padding:4px 14px 4px 10px;margin-bottom:24px">
       <span style="width:6px;height:6px;border-radius:50%;background:#60a5fa;flex-shrink:0"></span>
