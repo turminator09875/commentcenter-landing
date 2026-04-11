@@ -153,7 +153,7 @@ body{
 }
 
 /* ── SECTION BASE ── */
-section{padding:128px 24px;position:relative;z-index:1}
+section{padding:96px 24px;position:relative;z-index:1}
 .inner{max-width:960px;margin:0 auto}
 .inner-sm{max-width:680px;margin:0 auto}
 .label{
@@ -219,6 +219,14 @@ section{padding:128px 24px;position:relative;z-index:1}
   max-width:520px;
   margin:0 auto 24px;
   line-height:1.7;
+}
+.hero-pill{
+  font-size:12px;
+  padding:6px 14px;
+  border-radius:100px;
+  border:1px solid rgba(63,63,70,0.6);
+  color:#a1a1aa;
+  background:rgba(24,24,27,0.5);
 }
 .hero-ctas{
   display:flex;
@@ -675,19 +683,78 @@ section{padding:128px 24px;position:relative;z-index:1}
 .trust-desc{font-size:14px;color:var(--soft);line-height:1.7}
 .proof-card{background:var(--s1);box-shadow:none;border:1px solid var(--s3)}
 
+/* ── FEATURE CARDS ── */
+#features{background:var(--bg)}
+.feat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:32px;
+}
+.feat-card{
+  background:#111113;
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px;
+  padding:20px;
+  transition:background .2s ease,transform .2s ease;
+}
+@media(hover:hover){
+  .feat-card:hover{background:#18181b;transform:translateY(-2px)}
+}
+.feat-card-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px}
+.feat-card-desc{font-size:12px;color:#71717a;line-height:1.5}
+.feat-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#18181b;
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:6px;
+  padding:7px 10px;
+  margin-bottom:6px;
+}
+.feat-badge{
+  display:inline-flex;
+  align-items:center;
+  padding:2px 8px;
+  border-radius:4px;
+  font-size:9px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  width:60px;
+  text-align:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.feat-stat{
+  flex:1;
+  background:#18181b;
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:6px;
+  padding:8px 0;
+  text-align:center;
+}
+
 /* ── FAQ ── */
 #faq{background:var(--s1);padding-top:128px;padding-bottom:128px}
 #faq .section-head{margin-bottom:32px}
 .faq-list{display:flex;flex-direction:column;gap:8px;margin-top:0}
-.faq-item{background:#111113;border:1px solid rgba(255,255,255,0.06);border-radius:12px;transition:border-color .2s}
-.faq-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
+.faq-list{
+  background:#111113;
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:14px;
+  overflow:hidden;
+}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.06);transition:border-color .2s}
+.faq-item:last-child{border-bottom:none}
 .faq-item.open{border-color:rgba(59,130,246,0.2)}
 .faq-q{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  padding:20px 24px;
+  padding:22px 28px;
   cursor:pointer;
   background:none;
   border:none;
@@ -713,25 +780,47 @@ section{padding:128px 24px;position:relative;z-index:1}
   font-size:14px;
   color:var(--soft);
   line-height:1.8;
-  padding:0 24px 20px;
+  padding:0 28px 22px;
 }
 .faq-item.open .faq-a{display:block}
 
 /* ── PRICING ── */
 #pricing{background:var(--bg);text-align:center;padding-top:128px;padding-bottom:128px}
 #pricing .label,#pricing .section-head,#pricing .section-sub{text-align:center;margin-left:auto;margin-right:auto}
+.pricing-toggle-wrap{display:flex;justify-content:center;margin-bottom:32px}
+.pricing-toggle{
+  display:inline-flex;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px;
+  padding:3px;
+  gap:2px;
+  align-items:center;
+}
+.pricing-toggle-btn{
+  padding:6px 16px;
+  font-size:12px;
+  font-weight:500;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background:transparent;
+  color:#71717a;
+  transition:all .15s;
+}
+.pricing-toggle-btn.active{background:#3b82f6;color:#fff}
+.pricing-toggle-badge{font-size:10px;color:#4ade80;margin-left:4px}
 .pricing-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:32px;
+  gap:16px;
   max-width:1000px;
-  margin:48px auto 0;
+  margin:0 auto;
+  align-items:end;
 }
-.pricing-plan{font-size:18px;font-weight:700;margin-bottom:16px}
-.pricing-desc{font-size:13px;color:var(--muted);margin-bottom:24px}
 .pricing-card{
   background:#111113;
-  border:1px solid rgba(255,255,255,0.06);
+  border:1px solid rgba(39,39,42,0.5);
   border-radius:20px;
   padding:28px 24px;
   box-shadow:none;
@@ -740,36 +829,40 @@ section{padding:128px 24px;position:relative;z-index:1}
   position:relative;
   text-align:left;
 }
-.pricing-card.pro-card{border-color:rgba(59,130,246,0.30)}
+.pricing-card.pro-card{
+  border-color:rgba(59,130,246,0.30);
+  margin-top:-24px;
+}
 .pricing-badge{
-  display:inline-block;
+  position:absolute;
+  top:-11px;
+  left:50%;
+  transform:translateX(-50%);
   font-size:10px;
   font-weight:700;
   letter-spacing:.1em;
   color:#fff;
   background:#3b82f6;
-  padding:4px 12px;
+  padding:4px 14px;
   border-radius:100px;
-  margin-bottom:12px;
-  text-align:center;
+  white-space:nowrap;
 }
-.pricing-name{font-size:18px;font-weight:700;margin-bottom:12px}
+.pricing-plan{font-size:13px;color:#71717a;margin-bottom:4px}
+.pricing-desc{font-size:11px;color:#52525b;margin-bottom:14px;min-height:28px}
 .pricing-price{
   display:flex;
   align-items:baseline;
-  gap:6px;
-  margin-bottom:6px;
+  gap:4px;
+  margin-bottom:4px;
 }
 .pricing-amount{
   font-family:'JetBrains Mono',monospace;
-  font-size:44px;
+  font-size:40px;
   font-weight:700;
   line-height:1;
 }
-.pricing-per{font-size:14px;color:var(--muted)}
-.pricing-trial{font-size:12px;color:var(--accent);margin-bottom:8px}
-.pricing-trial.alt{color:var(--muted)}
-.pricing-tagline{font-size:13px;color:var(--muted);margin-bottom:16px}
+.pricing-per{font-size:12px;color:#52525b}
+.pricing-billed{font-size:11px;color:#52525b;min-height:16px;margin-bottom:14px}
 .pricing-features{
   list-style:none;
   display:flex;
@@ -777,13 +870,16 @@ section{padding:128px 24px;position:relative;z-index:1}
   gap:6px;
   flex:1;
   margin-bottom:20px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:14px;
+  margin-top:14px;
 }
 .pricing-features li{
   display:flex;
   align-items:center;
   gap:8px;
-  font-size:13px;
-  color:var(--soft);
+  font-size:12px;
+  color:#a1a1aa;
 }
 .pricing-features li::before{
   content:'✓';
@@ -798,9 +894,9 @@ section{padding:128px 24px;position:relative;z-index:1}
   color:#fff;
   text-decoration:none;
   font-weight:600;
-  font-size:15px;
-  padding:14px;
-  border-radius:12px;
+  font-size:13px;
+  padding:10px;
+  border-radius:8px;
   box-shadow:0 4px 16px rgba(59,130,246,.3);
   margin-top:auto;
   transition:opacity .15s;
@@ -809,23 +905,23 @@ section{padding:128px 24px;position:relative;z-index:1}
 .pricing-cta-secondary{
   display:block;
   text-align:center;
-  background:var(--s2);
+  background:transparent;
   color:var(--tx);
   text-decoration:none;
-  font-size:15px;
-  padding:14px;
-  border-radius:12px;
+  font-size:13px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.08);
   margin-top:auto;
   transition:background .15s;
 }
 .pricing-cta-secondary:hover{background:var(--s3)}
-.trust-strip{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;opacity:.35}
-.trust-sep{width:1px;height:16px;background:#27272a;flex-shrink:0}
-.pricing-footnote{font-size:13px;color:var(--dim);margin-top:16px;text-align:center}
+.pricing-sub-text{font-size:11px;color:#52525b;text-align:center;margin-top:6px;margin-bottom:14px}
+.pricing-footnote{font-size:12px;color:var(--dim);margin-top:16px;text-align:center}
 
 /* ── FINAL CTA ── */
 #cta{
-  padding:72px 24px;
+  padding:128px 24px;
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -1022,11 +1118,12 @@ footer{
   .chaos-box{transform:none}
   .feature-grid{grid-template-columns:1fr}
   .classif-row{min-height:52px;align-items:center}
+  .feat-grid{grid-template-columns:1fr;gap:10px}
 
   .trust-grid{grid-template-columns:1fr;gap:12px}
   .trust-card{padding:20px}
   .pricing-grid{grid-template-columns:1fr;max-width:400px;gap:12px;margin-top:32px}
-  .pricing-plan{font-size:16px}
+  .pricing-card.pro-card{margin-top:0}
   .vs-grid{grid-template-columns:1fr}
   .pain-numbered-row{grid-template-columns:1fr;gap:8px;padding:24px 0}
   .pain-num{font-size:36px;margin-bottom:4px}
@@ -1113,6 +1210,13 @@ footer{
     </span><br>
     <h1 class="hero-h1">Je betaalt voor elke klik.<br><em>Maar in de comments verlies je leads.</em></h1>
     <p class="hero-sub">CommentCenter haalt hot leads, vragen, klachten en spam uit je comments, zodat je direct ziet waar leads weglekken.</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:24px;margin-bottom:32px">
+      <span class="hero-pill">Facebook Ads</span>
+      <span class="hero-pill">AI Classificatie</span>
+      <span class="hero-pill">Hot Leads</span>
+      <span class="hero-pill">Bulk Moderatie</span>
+      <span class="hero-pill">CSV Export</span>
+    </div>
     <div class="hero-ctas">
       <a href="https://app.commentcenter.nl" class="btn-primary">Scan gratis je eerste post &rarr;</a>
       <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
@@ -1346,6 +1450,138 @@ footer{
   </div>
 </section>
 
+<!-- FEATURES -->
+<section id="features">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:32px">
+      <span class="label">FEATURES</span>
+      <h2 class="section-head">Alles wat je nodig hebt. <em class="em-white">Niets meer.</em></h2>
+      <p class="section-sub" style="max-width:540px;margin:0 auto">Gebouwd voor performance teams die geen tijd hebben voor ruis.</p>
+    </div>
+    <div class="feat-grid">
+      <!-- Card 1: AI classificatie -->
+      <div class="feat-card fade-up">
+        <div class="feat-row">
+          <span class="feat-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
+          <span style="font-size:11px;color:#d4d4d8;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Wat kost installatie?"</span>
+        </div>
+        <div class="feat-row">
+          <span class="feat-badge" style="background:rgba(250,204,21,0.15);color:#facc15">INTERESSE</span>
+          <span style="font-size:11px;color:#d4d4d8;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Ik bespreek het eerst"</span>
+        </div>
+        <div class="feat-row">
+          <span class="feat-badge" style="background:rgba(82,82,91,0.2);color:#71717a">SPAM</span>
+          <span style="font-size:11px;color:#52525b;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Check onze website!"</span>
+        </div>
+        <div style="margin-top:12px">
+          <div class="feat-card-title">AI classificatie</div>
+          <div class="feat-card-desc">Elke comment direct gecategoriseerd op intentie.</div>
+        </div>
+      </div>
+      <!-- Card 2: AI reply suggesties -->
+      <div class="feat-card fade-up">
+        <div style="background:#18181b;border:1px solid rgba(255,255,255,0.05);border-radius:6px;padding:8px 10px;margin-bottom:6px">
+          <span style="font-size:11px;color:#d4d4d8">"Wat is de levertijd vandaag?"</span>
+        </div>
+        <div style="background:#18181b;border:1px solid rgba(59,130,246,0.2);border-radius:6px;padding:8px 10px;margin-bottom:8px">
+          <span style="font-size:11px;color:#a1a1aa">"Bij bestelling voor 15:00 leveren wij morgen."</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span style="background:#3b82f6;color:#fff;font-size:10px;padding:4px 8px;border-radius:4px">Plaats reactie</span>
+          <span style="font-size:10px;color:#52525b">Korter</span>
+          <span style="font-size:10px;color:#52525b">Warmer</span>
+        </div>
+        <div style="margin-top:12px">
+          <div class="feat-card-title">AI reply suggesties</div>
+          <div class="feat-card-desc">Reageer met &#233;&#233;n klik. Pas toon aan voor je verstuurt.</div>
+        </div>
+      </div>
+      <!-- Card 3: Bulk moderatie -->
+      <div class="feat-card fade-up">
+        <div class="feat-row" style="border:1px solid rgba(74,222,128,0.15);justify-content:space-between">
+          <span style="font-size:11px;color:#4ade80">Exporteer 3 hot leads</span>
+          <span style="color:#4ade80">&#8595;</span>
+        </div>
+        <div class="feat-row" style="justify-content:space-between">
+          <span style="font-size:11px;color:#71717a">Verberg 4 spam</span>
+          <span style="color:#52525b">&#128465;</span>
+        </div>
+        <div class="feat-row" style="justify-content:space-between">
+          <span style="font-size:11px;color:#71717a">Selecteer alles</span>
+          <span style="width:12px;height:12px;border:1px solid rgba(255,255,255,0.15);border-radius:2px;background:rgba(59,130,246,0.3);display:inline-block"></span>
+        </div>
+        <div style="margin-top:12px">
+          <div class="feat-card-title">Bulk moderatie</div>
+          <div class="feat-card-desc">Exporteer leads en verberg spam in &#233;&#233;n klik.</div>
+        </div>
+      </div>
+      <!-- Card 4: Direct overzicht -->
+      <div class="feat-card fade-up">
+        <div style="display:flex;gap:6px;margin-bottom:6px">
+          <div class="feat-stat">
+            <div style="font-size:18px;font-weight:700;color:#4ade80;line-height:1">3</div>
+            <div style="font-size:9px;color:#52525b;margin-top:2px">Hot Leads</div>
+          </div>
+          <div class="feat-stat">
+            <div style="font-size:18px;font-weight:700;color:#facc15;line-height:1">2</div>
+            <div style="font-size:9px;color:#52525b;margin-top:2px">Interesse</div>
+          </div>
+          <div class="feat-stat">
+            <div style="font-size:18px;font-weight:700;color:#fb7185;line-height:1">1</div>
+            <div style="font-size:9px;color:#52525b;margin-top:2px">Klacht</div>
+          </div>
+        </div>
+        <div class="feat-row" style="justify-content:space-between">
+          <span style="font-size:11px;color:#71717a">Totaal gescand</span>
+          <span style="font-size:11px;color:#a1a1aa">10 reacties</span>
+        </div>
+        <div style="margin-top:12px">
+          <div class="feat-card-title">Direct overzicht</div>
+          <div class="feat-card-desc">Zie per scan wat er ligt en wat aandacht vraagt.</div>
+        </div>
+      </div>
+      <!-- Card 5: Meerdere pagina's -->
+      <div class="feat-card fade-up">
+        <div class="feat-row" style="justify-content:space-between">
+          <span style="font-size:11px;color:#a1a1aa">Zonnepanelen NL</span>
+          <span style="font-size:10px;color:#4ade80">4 leads</span>
+        </div>
+        <div class="feat-row" style="justify-content:space-between">
+          <span style="font-size:11px;color:#a1a1aa">Isolatie Utrecht</span>
+          <span style="font-size:10px;color:#4ade80">2 leads</span>
+        </div>
+        <div class="feat-row" style="justify-content:space-between">
+          <span style="font-size:11px;color:#a1a1aa">Warmtepomp Actie</span>
+          <span style="font-size:10px;color:#facc15">1 interesse</span>
+        </div>
+        <div style="margin-top:12px">
+          <div class="feat-card-title">Meerdere pagina's</div>
+          <div class="feat-card-desc">Beheer al je pagina's vanuit &#233;&#233;n dashboard.</div>
+        </div>
+      </div>
+      <!-- Card 6: CSV export -->
+      <div class="feat-card fade-up">
+        <div class="feat-row" style="justify-content:space-between">
+          <span style="font-size:11px;color:#a1a1aa">hot_leads_april.csv</span>
+          <span style="color:#3b82f6;font-size:12px">&#8595;</span>
+        </div>
+        <div class="feat-row" style="gap:6px">
+          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:11px;color:#71717a">3 hot leads ge&#235;xporteerd</span>
+        </div>
+        <div class="feat-row" style="gap:6px">
+          <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:11px;color:#71717a">Klaar voor CRM import</span>
+        </div>
+        <div style="margin-top:12px">
+          <div class="feat-card-title">CSV export</div>
+          <div class="feat-card-desc">Exporteer leads direct naar je CRM of team.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- VERGELIJKING -->
 <section id="vergelijk">
   <div class="inner">
@@ -1441,53 +1677,52 @@ footer{
     <h2 class="section-head">Alles wat je wilt <em class="em-white">weten.</em></h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Werkt dit op mijn actieve advertenties?
-          <span class="faq-icon">&#9662;</span>
-        </button>
-        <div class="faq-a">Ja. CommentCenter werkt op reacties onder Facebook-advertentieposts en gewone Facebook-posts, zolang de reacties zichtbaar zijn onder de post die je scant.</div>
+        <button class="faq-q" aria-expanded="false">Is mijn Facebook-account veilig?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. We gebruiken de offici&#235;le Meta Graph API via OAuth. We slaan je wachtwoord nooit op.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Is mijn Facebook-account veilig?
-          <span class="faq-icon">&#9662;</span>
-        </button>
-        <div class="faq-a">Ja. Je koppelt je Facebook-pagina zodat CommentCenter reacties kan ophalen en, als jij dat wilt, acties kan uitvoeren vanuit de juiste pagina. Je houdt zelf controle over wat er gebeurt.</div>
+        <button class="faq-q" aria-expanded="false">Hoe weet de AI of iets &#233;cht een hot lead is?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">CommentCenter analyseert toon, intentie en context — niet alleen keywords. Je ziet direct de inschatting en houdt altijd zelf de controle over wat je opvolgt.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Kan ik ook direct reageren vanuit de tool?
-          <span class="faq-icon">&#9662;</span>
-        </button>
-        <div class="faq-a">Ja. Je kunt reacties direct vanuit CommentCenter beantwoorden als je gekoppelde pagina, met AI-hulp voor snellere en passendere replies.</div>
+        <button class="faq-q" aria-expanded="false">Kan ik ook direct reageren vanuit de tool?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. AI stelt een reactie voor, jij past aan en verstuurt met &#233;&#233;n klik als je gekoppelde pagina.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Hoe weet de AI of iets &#233;cht een hot lead is?
-          <span class="faq-icon">&#9662;</span>
-        </button>
-        <div class="faq-a">CommentCenter kijkt naar intentie, context en formulering om reacties te classificeren. Je ziet direct de inschatting en houdt altijd zelf de controle over wat je opvolgt.</div>
+        <button class="faq-q" aria-expanded="false">Werkt dit op mijn actieve advertenties?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. Alle posts van pagina&#8217;s waarvan jij admin bent — advertenties en organische posts.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Kan ik meerdere spam-reacties tegelijk verwijderen?
-          <span class="faq-icon">&#9662;</span>
-        </button>
-        <div class="faq-a">Ja. Je kunt spam sneller selecteren en in bulk verbergen, zodat irrelevante reacties je commentsectie niet vervuilen.</div>
+        <button class="faq-q" aria-expanded="false">Kan ik meerdere spam-reacties tegelijk verwijderen?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. Selecteer alles, verberg in bulk. Zo houd je je commentsectie schoon zonder handmatig werk.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Kan ik het eerst gratis uitproberen?
-          <span class="faq-icon">&#9662;</span>
-        </button>
-        <div class="faq-a">Ja. Je kunt gratis starten en later upgraden als je meer volume of extra pagina&#8217;s nodig hebt.</div>
+        <button class="faq-q" aria-expanded="false">Werkt CommentCenter ook voor Instagram?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Nu alleen Facebook. Instagram staat op de roadmap.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Wat heb ik nodig om te beginnen?
-          <span class="faq-icon">&#9662;</span>
-        </button>
-        <div class="faq-a">Alleen een Facebook-post of advertentiepost en een gekoppelde pagina. Je kunt gratis starten zonder creditcard.</div>
+        <button class="faq-q" aria-expanded="false">Hoe verschilt dit van een social media inbox tool?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">CommentCenter is specifiek gebouwd voor betaalde advertentiecomments — niet voor je hele organische social workflow.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Kan ik de AI-suggesties aanpassen voor ik ze verstuur?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. Volledig bewerkbaar. Jij bepaalt altijd wat er geplaatst wordt.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Kan ik leads doorsturen naar mijn CRM?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Je kunt leads exporteren als CSV. HubSpot en Zapier integraties staan op de roadmap.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Kan ik het eerst gratis uitproberen?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. Free plan, geen creditcard nodig.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Werkt het ook voor organische posts?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja, als je admin bent van de pagina.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wat heb ik nodig om te beginnen?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Een Facebook-account en admin-rechten op minimaal &#233;&#233;n pagina. Dat is alles.</div>
       </div>
     </div>
   </div>
@@ -1499,55 +1734,70 @@ footer{
     <span class="label">PRIJZEN</span>
     <h2 class="section-head">Simpel. <em class="em-white">Transparant.</em></h2>
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Begin gratis. Upgrade pas als je structureel meer comments wilt scannen of meerdere pagina's beheert.</p>
-    <div class="pricing-grid">
-      <div class="pricing-card">
+    <div class="pricing-toggle-wrap">
+      <div class="pricing-toggle">
+        <button class="pricing-toggle-btn active" data-period="monthly" onclick="setPricingPeriod('monthly')">Maandelijks</button>
+        <button class="pricing-toggle-btn" data-period="yearly" onclick="setPricingPeriod('yearly')">Jaarlijks <span class="pricing-toggle-badge">2 maanden gratis</span></button>
+      </div>
+    </div>
+    <div class="pricing-grid" id="pricingGrid">
+      <!-- FREE -->
+      <div class="pricing-card" data-card="free">
         <div class="pricing-plan">Free</div>
+        <div class="pricing-desc">Je hebt &eacute;&eacute;n campagne en wil zien wat er ligt.</div>
         <div class="pricing-price">
           <span class="pricing-amount">&euro;0</span>
           <span class="pricing-per">/maand</span>
         </div>
-        <div class="pricing-tagline">Je hebt één campagne en wil zien wat er ligt.</div>
+        <div class="pricing-billed"></div>
+        <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Begin gratis &rarr;</a>
+        <div class="pricing-sub-text">Geen creditcard nodig</div>
         <ul class="pricing-features">
-          <li>Beperkt aantal scans per maand</li>
+          <li>Beperkt scans per maand</li>
           <li>1 gekoppelde pagina</li>
           <li>Basisclassificatie van comments</li>
           <li>CSV-export</li>
           <li>Geen creditcard nodig</li>
         </ul>
-        <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Begin gratis &rarr;</a>
       </div>
-      <div class="pricing-card pro-card">
+      <!-- PRO -->
+      <div class="pricing-card pro-card" data-card="pro">
         <span class="pricing-badge">MEEST GEKOZEN</span>
-        <div class="pricing-name">Pro</div>
+        <div class="pricing-plan">Pro</div>
+        <div class="pricing-desc">Je draait continu ads en mist nu leads in de comments.</div>
         <div class="pricing-price">
-          <span class="pricing-amount">&euro;29</span>
+          <span class="pricing-amount" data-monthly="&euro;29" data-yearly="&euro;24">&euro;29</span>
           <span class="pricing-per">/maand</span>
         </div>
-        <div class="pricing-tagline">Je draait continu ads en mist nu leads in de comments.</div>
+        <div class="pricing-billed" data-monthly="" data-yearly="&euro;290/jaar"></div>
+        <a href="https://app.commentcenter.nl?plan=pro" class="pricing-cta-primary">Verder met Pro &rarr;</a>
+        <div class="pricing-sub-text" data-monthly="7 dagen gratis proberen &middot; Daarna &euro;29/maand" data-yearly="7 dagen gratis &middot; Daarna &euro;290/jaar">7 dagen gratis proberen &middot; Daarna &euro;29/maand</div>
         <ul class="pricing-features">
           <li>Meer scans per maand</li>
-          <li>Meerdere gekoppelde pagina's</li>
+          <li>Meerdere pagina's</li>
           <li>Hot leads sneller zichtbaar</li>
           <li>Spam sneller opruimen</li>
-          <li>CSV-export van waardevolle reacties</li>
+          <li>CSV-export waardevolle reacties</li>
         </ul>
-        <a href="https://app.commentcenter.nl?plan=pro" class="pricing-cta-primary">Verder met Pro &rarr;</a>
       </div>
-      <div class="pricing-card">
-        <div class="pricing-name">Agency</div>
+      <!-- AGENCY -->
+      <div class="pricing-card" data-card="agency">
+        <div class="pricing-plan">Agency</div>
+        <div class="pricing-desc">Je beheert meerdere accounts en wil per klant overzicht.</div>
         <div class="pricing-price">
-          <span class="pricing-amount">&euro;99</span>
+          <span class="pricing-amount" data-monthly="&euro;99" data-yearly="&euro;82">&euro;99</span>
           <span class="pricing-per">/maand</span>
         </div>
-        <div class="pricing-tagline">Je beheert meerdere accounts en wil per klant overzicht.</div>
+        <div class="pricing-billed" data-monthly="" data-yearly="&euro;990/jaar"></div>
+        <a href="https://app.commentcenter.nl?plan=agency" class="pricing-cta-secondary">Contact sales &rarr;</a>
+        <div class="pricing-sub-text">We nemen binnen 24u contact op</div>
         <ul class="pricing-features">
           <li>Hoger scanvolume</li>
           <li>Meerdere pagina's en klanten</li>
-          <li>Gedeeld overzicht voor je team</li>
+          <li>Teamoverzicht</li>
           <li>Sneller zicht op leads en risico</li>
-          <li>Gebouwd voor actieve paid accounts</li>
+          <li>Gebouwd voor paid accounts</li>
         </ul>
-        <a href="https://app.commentcenter.nl?plan=agency" class="pricing-cta-secondary">Voor meerdere accounts &rarr;</a>
       </div>
     </div>
     <p class="pricing-footnote">Maandelijks opzegbaar</p>
@@ -1594,6 +1844,36 @@ const mobileClose = document.getElementById('mobileClose');
 function closeMobile(){mobileMenu.classList.remove('open')}
 hamburger.addEventListener('click',()=>mobileMenu.classList.add('open'));
 mobileClose.addEventListener('click',closeMobile);
+
+// Pricing toggle + equal heights
+function setPricingPeriod(period){
+  document.querySelectorAll('.pricing-toggle-btn').forEach(b=>{
+    b.classList.toggle('active',b.dataset.period===period);
+  });
+  document.querySelectorAll('.pricing-amount[data-monthly]').forEach(el=>{
+    el.innerHTML=el.dataset[period];
+  });
+  document.querySelectorAll('.pricing-billed[data-monthly]').forEach(el=>{
+    el.innerHTML=el.dataset[period];
+  });
+  document.querySelectorAll('.pricing-sub-text[data-monthly]').forEach(el=>{
+    el.innerHTML=el.dataset[period];
+  });
+  equalizePricingCards();
+}
+function equalizePricingCards(){
+  var cards=document.querySelectorAll('#pricingGrid .pricing-card');
+  cards.forEach(c=>{c.style.minHeight=''});
+  var freeCard=document.querySelector('[data-card="free"]');
+  var agencyCard=document.querySelector('[data-card="agency"]');
+  if(freeCard&&agencyCard){
+    var max=Math.max(freeCard.offsetHeight,agencyCard.offsetHeight);
+    freeCard.style.minHeight=max+'px';
+    agencyCard.style.minHeight=max+'px';
+  }
+}
+window.addEventListener('load',equalizePricingCards);
+window.addEventListener('resize',equalizePricingCards);
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn=>{
