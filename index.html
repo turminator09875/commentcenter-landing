@@ -614,6 +614,21 @@ section{padding:96px 24px;position:relative;z-index:1}
 .vs-list--without li{color:#71717a}
 .vs-list--with li{color:#e4e4e7}
 
+/* ── FALSE POSITIVE SECTION ── */
+.fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.fp-col{background:var(--s1);border-radius:12px;padding:28px;box-shadow:var(--shadow-sm)}
+.fp-col--other{color:var(--muted)}
+.fp-col--cc{color:var(--tx)}
+.fp-header{font-size:14px;font-weight:600;margin-bottom:16px;letter-spacing:-0.01em}
+.fp-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.fp-row:last-child{border-bottom:none}
+.fp-comment{font-size:13px;font-style:italic}
+.fp-result{font-size:12px;display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:12px}
+.fp-badge{border-radius:4px;font-size:11px;font-weight:600;padding:2px 8px;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap}
+.fp-x{color:#fb7185;font-weight:600;font-size:14px}
+.fp-check{color:#4ade80;font-weight:600;font-size:14px}
+@media(max-width:700px){.fp-grid{grid-template-columns:1fr}}
+
 /* ── VOOR WIE ── */
 #voorwie{background:var(--s1)}
 .for-title{font-size:18px;font-weight:600;margin-bottom:8px}
@@ -1210,17 +1225,17 @@ footer{
     </span><br>
     <h1 class="hero-h1">Je betaalt voor elke klik.<br><em>Maar in de comments verlies je leads.</em></h1>
     <p class="hero-sub">CommentCenter haalt hot leads, vragen, klachten en spam uit je comments, zodat je direct ziet waar leads weglekken.</p>
+    <p style="font-size:14px;color:var(--soft);margin-top:16px;font-family:'DM Sans',sans-serif"><span style="font-family:'JetBrains Mono',monospace;color:#fb7185;font-weight:600">37%</span> van je clicks gaat verloren door ongemodeerde comments</p>
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:24px;margin-bottom:32px">
-      <span class="hero-pill">Facebook Ads</span>
-      <span class="hero-pill">AI Classificatie</span>
-      <span class="hero-pill">Hot Leads</span>
-      <span class="hero-pill">Bulk Moderatie</span>
-      <span class="hero-pill">CSV Export</span>
+      <span class="hero-pill">Koopsignalen herkennen</span>
+      <span class="hero-pill">Spam auto-verbergen</span>
+      <span class="hero-pill">Reply als je pagina</span>
     </div>
     <div class="hero-ctas">
       <a href="https://app.commentcenter.nl" class="btn-primary">Scan gratis je eerste post &rarr;</a>
       <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
     </div>
+    <p class="trust-strip" style="font-size:13px;color:var(--muted);margin-top:24px;text-align:center">&#10003; Offici&euml;le Meta Graph API &nbsp;&middot;&nbsp; &#10003; Geen scraping &nbsp;&middot;&nbsp; &#10003; Dark post support</p>
   </div>
 
   <!-- HERO MOCK -->
@@ -1515,48 +1530,42 @@ footer{
           <div class="feat-card-desc">Exporteer leads en verberg spam in &#233;&#233;n klik.</div>
         </div>
       </div>
-      <!-- Card 4: Direct overzicht -->
+      <!-- Card 4: Koopsignalen herkennen -->
       <div class="feat-card fade-up">
-        <div style="display:flex;gap:6px;margin-bottom:6px">
-          <div class="feat-stat">
-            <div style="font-size:18px;font-weight:700;color:#4ade80;line-height:1">3</div>
-            <div style="font-size:9px;color:#52525b;margin-top:2px">Hot Leads</div>
-          </div>
-          <div class="feat-stat">
-            <div style="font-size:18px;font-weight:700;color:#facc15;line-height:1">2</div>
-            <div style="font-size:9px;color:#52525b;margin-top:2px">Interesse</div>
-          </div>
-          <div class="feat-stat">
-            <div style="font-size:18px;font-weight:700;color:#fb7185;line-height:1">1</div>
-            <div style="font-size:9px;color:#52525b;margin-top:2px">Klacht</div>
-          </div>
+        <div class="feat-row" style="gap:8px">
+          <span class="fp-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
+          <span style="font-size:11px;color:#a1a1aa">&ldquo;Prijs?&rdquo;</span>
         </div>
-        <div class="feat-row" style="justify-content:space-between">
-          <span style="font-size:11px;color:#71717a">Totaal gescand</span>
-          <span style="font-size:11px;color:#a1a1aa">10 reacties</span>
+        <div class="feat-row" style="gap:8px">
+          <span class="fp-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
+          <span style="font-size:11px;color:#a1a1aa">&ldquo;Beschikbaar?&rdquo;</span>
+        </div>
+        <div class="feat-row" style="gap:8px">
+          <span class="fp-badge" style="background:rgba(250,204,21,0.15);color:#facc15">INTERESSE</span>
+          <span style="font-size:11px;color:#a1a1aa">&ldquo;Waar te koop?&rdquo;</span>
         </div>
         <div style="margin-top:12px">
-          <div class="feat-card-title">Direct overzicht</div>
-          <div class="feat-card-desc">Zie per scan wat er ligt en wat aandacht vraagt.</div>
+          <div class="feat-card-title">Koopsignalen herkennen</div>
+          <div class="feat-card-desc">Weet welke comment je volgende klant is. CC labelt ze als Hot Lead voordat je ze zelf moet zoeken.</div>
         </div>
       </div>
-      <!-- Card 5: Meerdere pagina's -->
+      <!-- Card 5: Dark posts -->
       <div class="feat-card fade-up">
-        <div class="feat-row" style="justify-content:space-between">
-          <span style="font-size:11px;color:#a1a1aa">Zonnepanelen NL</span>
-          <span style="font-size:10px;color:#4ade80">4 leads</span>
+        <div class="feat-row" style="gap:8px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          <span style="font-size:11px;color:#a1a1aa">Dark post gedetecteerd</span>
         </div>
-        <div class="feat-row" style="justify-content:space-between">
-          <span style="font-size:11px;color:#a1a1aa">Isolatie Utrecht</span>
-          <span style="font-size:10px;color:#4ade80">2 leads</span>
+        <div class="feat-row" style="gap:8px">
+          <span style="font-size:11px;color:#4ade80">&#10003;</span>
+          <span style="font-size:11px;color:#a1a1aa">12 comments gescand</span>
         </div>
-        <div class="feat-row" style="justify-content:space-between">
-          <span style="font-size:11px;color:#a1a1aa">Warmtepomp Actie</span>
-          <span style="font-size:10px;color:#facc15">1 interesse</span>
+        <div class="feat-row" style="gap:8px">
+          <span class="fp-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
+          <span style="font-size:11px;color:#a1a1aa">2 koopsignalen gevonden</span>
         </div>
         <div style="margin-top:12px">
-          <div class="feat-card-title">Meerdere pagina's</div>
-          <div class="feat-card-desc">Beheer al je pagina's vanuit &#233;&#233;n dashboard.</div>
+          <div class="feat-card-title">Dark posts, gewoon mee</div>
+          <div class="feat-card-desc">Advertenties die niet op je timeline staan? CC scant ze gewoon mee. Plak de URL, klaar.</div>
         </div>
       </div>
       <!-- Card 6: CSV export -->
@@ -1607,6 +1616,47 @@ footer{
           <li><span class="vs-check">&#10003;</span> AI classificeert alles in seconden</li>
           <li><span class="vs-check">&#10003;</span> Volledig overzicht per pagina en klant</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOOIT MEER EEN KOOPSIGNAAL MISSEN -->
+<section class="section fade-up" style="padding:96px 24px">
+  <div class="inner">
+    <span class="label">KOOPSIGNALEN</span>
+    <h2 class="section-head" style="text-align:left">Nooit meer een koopsignaal <em class="em-white">missen.</em></h2>
+    <p class="section-sub" style="text-align:left;max-width:600px;margin-bottom:0">Andere tools verbergen alles wat negatief klinkt &mdash; inclusief echte kopers. CommentCenter classificeert eerst, handelt daarna. Geen lead gaat verloren.</p>
+    <div class="fp-grid">
+      <div class="fp-col fp-col--other">
+        <div class="fp-header" style="color:var(--muted)">Standaard moderatietool</div>
+        <div class="fp-row">
+          <span class="fp-comment">&ldquo;Prijs?&rdquo;</span>
+          <span class="fp-result"><span style="font-size:12px;color:var(--muted)">Verborgen als spam</span> <span class="fp-x">&times;</span></span>
+        </div>
+        <div class="fp-row">
+          <span class="fp-comment">&ldquo;Is this legit?&rdquo;</span>
+          <span class="fp-result"><span style="font-size:12px;color:var(--muted)">Verborgen als negatief</span> <span class="fp-x">&times;</span></span>
+        </div>
+        <div class="fp-row">
+          <span class="fp-comment">&ldquo;Beschikbaar in blauw?&rdquo;</span>
+          <span class="fp-result"><span style="font-size:12px;color:var(--muted)">Verborgen als vraag</span> <span class="fp-x">&times;</span></span>
+        </div>
+      </div>
+      <div class="fp-col fp-col--cc">
+        <div class="fp-header" style="color:var(--tx)">CommentCenter</div>
+        <div class="fp-row">
+          <span class="fp-comment" style="color:var(--soft)">&ldquo;Prijs?&rdquo;</span>
+          <span class="fp-result"><span class="fp-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span> <span style="font-size:11px;color:var(--soft)">Reply gesuggereerd</span> <span class="fp-check">&#10003;</span></span>
+        </div>
+        <div class="fp-row">
+          <span class="fp-comment" style="color:var(--soft)">&ldquo;Is this legit?&rdquo;</span>
+          <span class="fp-result"><span class="fp-badge" style="background:rgba(250,204,21,0.15);color:#facc15">INTERESSE</span> <span style="font-size:11px;color:var(--soft)">Reply gesuggereerd</span> <span class="fp-check">&#10003;</span></span>
+        </div>
+        <div class="fp-row">
+          <span class="fp-comment" style="color:var(--soft)">&ldquo;Beschikbaar in blauw?&rdquo;</span>
+          <span class="fp-result"><span class="fp-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span> <span style="font-size:11px;color:var(--soft)">Reply gesuggereerd</span> <span class="fp-check">&#10003;</span></span>
+        </div>
       </div>
     </div>
   </div>
@@ -1681,8 +1731,16 @@ footer{
         <div class="faq-a">Ja. We gebruiken de offici&#235;le Meta Graph API via OAuth. We slaan je wachtwoord nooit op.</div>
       </div>
       <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Gebruikt CommentCenter de offici&#235;le Meta API?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. CommentCenter gebruikt uitsluitend de offici&#235;le Facebook Graph API. Geen scraping, geen onoffici&#235;le methodes. Je pagina loopt geen risico op beperkingen of bans.</div>
+      </div>
+      <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Hoe weet de AI of iets &#233;cht een hot lead is?<span class="faq-icon">&#9662;</span></button>
         <div class="faq-a">CommentCenter analyseert toon, intentie en context — niet alleen keywords. Je ziet direct de inschatting en houdt altijd zelf de controle over wat je opvolgt.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Worden koopsignalen nooit per ongeluk verborgen?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Nee. CommentCenter classificeert elke comment in 5 categorie&#235;n v&oacute;&oacute;rdat er actie wordt ondernomen. Koopsignalen zoals &ldquo;prijs?&rdquo;, &ldquo;beschikbaar?&rdquo; of &ldquo;waar te koop?&rdquo; worden gelabeld als Hot Lead of Interesse &mdash; nooit als spam. Je behoudt altijd de controle: niets wordt verborgen zonder dat jij het ziet.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Kan ik ook direct reageren vanuit de tool?<span class="faq-icon">&#9662;</span></button>
@@ -1691,6 +1749,10 @@ footer{
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Werkt dit op mijn actieve advertenties?<span class="faq-icon">&#9662;</span></button>
         <div class="faq-a">Ja. Alle posts van pagina&#8217;s waarvan jij admin bent — advertenties en organische posts.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Werkt CommentCenter ook met dark posts?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. Dark posts (advertenties die niet op je pagina-timeline verschijnen) worden standaard meegenomen. Plak de post-URL en CC scant alle comments &mdash; ongeacht of de post publiek zichtbaar is op je pagina.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Kan ik meerdere spam-reacties tegelijk verwijderen?<span class="faq-icon">&#9662;</span></button>
@@ -1772,6 +1834,7 @@ footer{
         <div class="pricing-billed" data-monthly="" data-yearly="&euro;290/jaar"></div>
         <a href="https://app.commentcenter.nl?plan=pro" class="pricing-cta-primary">Verder met Pro &rarr;</a>
         <div class="pricing-sub-text" data-monthly="7 dagen gratis proberen &middot; Daarna &euro;29/maand" data-yearly="7 dagen gratis &middot; Daarna &euro;290/jaar">7 dagen gratis proberen &middot; Daarna &euro;29/maand</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:8px;margin-bottom:4px">Marktstandaard prijs, meer dan standaard functionaliteit</div>
         <ul class="pricing-features">
           <li>Meer scans per maand</li>
           <li>Meerdere pagina's</li>
@@ -1791,6 +1854,7 @@ footer{
         <div class="pricing-billed" data-monthly="" data-yearly="&euro;990/jaar"></div>
         <a href="https://app.commentcenter.nl?plan=agency" class="pricing-cta-secondary">Contact sales &rarr;</a>
         <div class="pricing-sub-text">We nemen binnen 24u contact op</div>
+        <div style="font-weight:600;color:#fff;font-size:14px;margin-top:12px;margin-bottom:4px">Unlimited pagina's &amp; gebruikers</div>
         <ul class="pricing-features">
           <li>Hoger scanvolume</li>
           <li>Meerdere pagina's en klanten</li>
