@@ -54,6 +54,13 @@ body{
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .fade-up{opacity:0}
 .fade-up.visible{animation:up .6s ease both}
+@media(prefers-reduced-motion:reduce){
+  .fade-up{opacity:1}
+  .fade-up.visible{animation:none}
+  .hero-inner{animation:none!important}
+  .mock-wrap{animation:none!important}
+  .stat-num.pop{animation:none}
+}
 
 /* ── NAV ── */
 .nav-wrap{
@@ -163,7 +170,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   letter-spacing:.15em;
   text-transform:uppercase;
   color:var(--accent);
-  margin-bottom:16px;
+  margin-bottom:12px;
 }
 .label.hot{color:var(--hot)}
 .section-head{
@@ -171,20 +178,22 @@ section{padding:96px 24px;position:relative;z-index:1}
   font-size:clamp(28px,4vw,40px);
   font-weight:400;
   line-height:1.2;
-  margin-bottom:12px;
+  margin-bottom:14px;
+  letter-spacing:-0.02em;
 }
 .section-head em{font-style:italic;color:var(--accent)}
 .section-head .em-white{color:var(--tx)}
 .section-sub{
   font-size:16px;
   color:var(--soft);
-  line-height:1.7;
+  line-height:1.65;
+  letter-spacing:-0.005em;
 }
 
 /* ── HERO ── */
 #hero{
-  padding-top:120px;
-  padding-bottom:80px;
+  padding-top:96px;
+  padding-bottom:64px;
   text-align:center;
   position:relative;
   z-index:1;
@@ -208,17 +217,18 @@ section{padding:96px 24px;position:relative;z-index:1}
   font-size:clamp(36px,5.8vw,58px);
   font-weight:400;
   line-height:1.15;
-  margin-bottom:24px;
+  margin-bottom:20px;
   text-align:center;
+  letter-spacing:-0.02em;
 }
 .hero-h1 em{font-style:italic;color:var(--accent);white-space:nowrap}
 @media(max-width:640px){.hero-h1 em{white-space:normal}}
 .hero-sub{
-  font-size:18px;
+  font-size:17px;
   color:var(--soft);
-  max-width:520px;
-  margin:0 auto 24px;
-  line-height:1.7;
+  max-width:540px;
+  margin:0 auto;
+  line-height:1.65;
 }
 .hero-pill{
   font-size:12px;
@@ -270,12 +280,13 @@ section{padding:96px 24px;position:relative;z-index:1}
 /* ── HERO MOCK ── */
 .mock-wrap{
   max-width:840px;
-  margin:32px auto 0;
+  margin:40px auto 0;
   background:var(--s1);
   border-radius:20px;
   padding:24px;
-  box-shadow:0 20px 60px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.03);
+  box-shadow:0 20px 60px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.05);
   animation:up .6s .2s ease both;
+  overflow:hidden;
 }
 .stat-bar{
   display:flex;
@@ -508,6 +519,8 @@ section{padding:96px 24px;position:relative;z-index:1}
   border-radius:16px;
   padding:28px 24px;
   box-shadow:var(--shadow-md);
+  min-width:0;
+  max-width:100%;
 }
 .classif-header{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:20px}
 .classif-row{
@@ -579,7 +592,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 .signal-desc{font-size:13px;color:var(--soft);line-height:1.5}
 
 /* ── VERGELIJKING ── */
-#vergelijk{background:var(--bg)}
+#vergelijk{background:var(--s1)}
 .vs-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -596,7 +609,8 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .vs-col--with{
   background:#111113;
-  border:1px solid rgba(59,130,246,0.2);
+  border:1px solid rgba(59,130,246,0.15);
+  box-shadow:0 4px 20px rgba(59,130,246,.06);
 }
 .vs-header{
   font-size:12px;
@@ -638,6 +652,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   border:1px solid rgba(39,39,42,0.6);
   border-radius:12px;
   padding:32px;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
   transition:background .2s ease,transform .2s ease;
 }
 .persona-icon-wrap{
@@ -711,6 +726,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   border:1px solid rgba(255,255,255,0.06);
   border-radius:12px;
   padding:20px;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
   transition:background .2s ease,transform .2s ease;
 }
 @media(hover:hover){
@@ -752,7 +768,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 
 /* ── FAQ ── */
-#faq{background:var(--s1);padding-top:128px;padding-bottom:128px}
+#faq{background:var(--bg);padding-top:128px;padding-bottom:128px}
 #faq .section-head{margin-bottom:32px}
 .faq-list{display:flex;flex-direction:column;gap:8px;margin-top:0}
 .faq-list{
@@ -800,7 +816,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 .faq-item.open .faq-a{display:block}
 
 /* ── PRICING ── */
-#pricing{background:var(--bg);text-align:center;padding-top:128px;padding-bottom:128px}
+#pricing{background:var(--s1);text-align:center;padding-top:128px;padding-bottom:128px}
 #pricing .label,#pricing .section-head,#pricing .section-sub{text-align:center;margin-left:auto;margin-right:auto}
 .pricing-toggle-wrap{display:flex;justify-content:center;margin-bottom:32px}
 .pricing-toggle{
@@ -1084,7 +1100,7 @@ footer{
 [data-theme=light] .faq-q{color:#18181b}
 [data-theme=light] .faq-a{color:#3f3f46}
 [data-theme=light] .faq-icon{color:#52525b}
-[data-theme=light] #faq{background:#f9fafb}
+[data-theme=light] #faq{background:#fff}
 [data-theme=light] .hero-sub{color:#52525b}
 [data-theme=light] .step-num{opacity:.8}
 [data-theme=light] .step-title{color:#18181b}
@@ -1224,18 +1240,11 @@ footer{
       Gebouwd voor Meta advertentiecomments
     </span><br>
     <h1 class="hero-h1">Je betaalt voor elke klik.<br><em>Maar in de comments verlies je leads.</em></h1>
-    <p class="hero-sub">CommentCenter haalt hot leads, vragen, klachten en spam uit je comments, zodat je direct ziet waar leads weglekken.</p>
-    <p style="font-size:14px;color:var(--soft);margin-top:16px;font-family:'DM Sans',sans-serif"><span style="font-family:'JetBrains Mono',monospace;color:#fb7185;font-weight:600">37%</span> van je clicks gaat verloren door ongemodeerde comments</p>
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:24px;margin-bottom:32px">
-      <span class="hero-pill">Koopsignalen herkennen</span>
-      <span class="hero-pill">Spam auto-verbergen</span>
-      <span class="hero-pill">Reply als je pagina</span>
-    </div>
-    <div class="hero-ctas">
+    <p class="hero-sub">CommentCenter haalt hot leads, vragen, klachten en spam uit reacties onder je Facebook-advertenties, zodat je direct ziet waar je moet reageren en waar geld weglekt.</p>
+    <div class="hero-ctas" style="margin-top:32px">
       <a href="https://app.commentcenter.nl" class="btn-primary">Scan gratis je eerste post &rarr;</a>
-      <a href="#hoe" class="btn-secondary">Bekijk hoe het werkt</a>
     </div>
-    <p class="trust-strip" style="font-size:13px;color:var(--muted);margin-top:24px;text-align:center">&#10003; Offici&euml;le Meta Graph API &nbsp;&middot;&nbsp; &#10003; Geen scraping &nbsp;&middot;&nbsp; &#10003; Dark post support</p>
+    <p class="hero-trust" style="font-size:13px;color:var(--dim);margin-top:14px;text-align:center">Alleen voor pagina's die jij beheert</p>
   </div>
 
   <!-- HERO MOCK -->
@@ -1594,6 +1603,7 @@ footer{
 <!-- VERGELIJKING -->
 <section id="vergelijk">
   <div class="inner">
+    <span class="label">HET VERSCHIL</span>
     <h2 class="section-head">Geen social inbox. Wel grip op je <em class="em-white">advertentiecomments.</em></h2>
     <p class="section-sub" style="max-width:540px;margin-bottom:0">CommentCenter is gebouwd voor paid comments onder Facebook-advertenties. Niet om je hele social workflow te vervangen, maar om direct te zien waar leads, risico en ruis zitten.</p>
     <div class="vs-grid">
@@ -1624,7 +1634,7 @@ footer{
 <!-- NOOIT MEER EEN KOOPSIGNAAL MISSEN -->
 <section class="section fade-up" style="padding:96px 24px">
   <div class="inner">
-    <span class="label">KOOPSIGNALEN</span>
+    <span class="label">WAT ANDERE TOOLS MISSEN</span>
     <h2 class="section-head" style="text-align:left">Nooit meer een koopsignaal <em class="em-white">missen.</em></h2>
     <p class="section-sub" style="text-align:left;max-width:600px;margin-bottom:0">Andere tools verbergen alles wat negatief klinkt &mdash; inclusief echte kopers. CommentCenter classificeert eerst, handelt daarna. Geen lead gaat verloren.</p>
     <div class="fp-grid">
@@ -1643,7 +1653,7 @@ footer{
           <span class="fp-result"><span style="font-size:12px;color:var(--muted)">Verborgen als vraag</span> <span class="fp-x">&times;</span></span>
         </div>
       </div>
-      <div class="fp-col fp-col--cc">
+      <div class="fp-col fp-col--cc" style="background:rgba(59,130,246,0.04);border-radius:12px;padding:12px;">
         <div class="fp-header" style="color:var(--tx)">CommentCenter</div>
         <div class="fp-row">
           <span class="fp-comment" style="color:var(--soft)">&ldquo;Prijs?&rdquo;</span>
@@ -1689,32 +1699,6 @@ footer{
         </div>
         <div class="for-title" style="font-size:18px;margin-bottom:8px">Je ROAS klopt. Je comments niet.</div>
         <p class="for-desc" style="font-size:14px;color:#a1a1aa;line-height:1.7">Spam en klachten eten je social proof op terwijl jij in Ads Manager zit.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WAT BLIJFT LIGGEN -->
-<section id="watblijftliggen" style="background:#111113">
-  <div class="inner">
-    <span class="label">WAT BLIJFT LIGGEN</span>
-    <h2 class="section-head">Wat onder je ads blijft <em class="em-white">hangen.</em></h2>
-    <p class="section-sub" style="max-width:600px;margin-bottom:48px">Sommige reacties kosten tijd, trust of gemiste intentie zodra ze blijven staan.</p>
-    <div>
-      <div class="pain-numbered-row fade-up">
-        <div class="pain-num">01</div>
-        <div class="pain-row-title">Koopvragen zonder reactie</div>
-        <div class="pain-row-desc">Mensen tonen intentie, maar verdwijnen terwijl jij al voor hun klik hebt betaald.</div>
-      </div>
-      <div class="pain-numbered-row fade-up">
-        <div class="pain-num">02</div>
-        <div class="pain-row-title">Publieke twijfel onder actieve ads</div>
-        <div class="pain-row-desc">Vragen en bezwaren blijven zichtbaar voor iedereen die daarna nog moet beslissen.</div>
-      </div>
-      <div class="pain-numbered-row fade-up">
-        <div class="pain-num">03</div>
-        <div class="pain-row-title">Spam en concurrerende links tussen echte reacties</div>
-        <div class="pain-row-desc">Ruis trekt je comments omlaag en maakt opvolging op waardevolle reacties trager.</div>
       </div>
     </div>
   </div>
@@ -1806,7 +1790,7 @@ footer{
       <!-- FREE -->
       <div class="pricing-card" data-card="free">
         <div class="pricing-plan">Free</div>
-        <div class="pricing-desc">Je hebt &eacute;&eacute;n campagne en wil zien wat er ligt.</div>
+        <div class="pricing-desc">Voor je eerste scan en validatie</div>
         <div class="pricing-price">
           <span class="pricing-amount">&euro;0</span>
           <span class="pricing-per">/maand</span>
@@ -1815,7 +1799,7 @@ footer{
         <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Begin gratis &rarr;</a>
         <div class="pricing-sub-text">Geen creditcard nodig</div>
         <ul class="pricing-features">
-          <li>Beperkt scans per maand</li>
+          <li>5 scans per maand</li>
           <li>1 gekoppelde pagina</li>
           <li>Basisclassificatie van comments</li>
           <li>CSV-export</li>
@@ -1826,7 +1810,7 @@ footer{
       <div class="pricing-card pro-card" data-card="pro">
         <span class="pricing-badge">MEEST GEKOZEN</span>
         <div class="pricing-plan">Pro</div>
-        <div class="pricing-desc">Je draait continu ads en mist nu leads in de comments.</div>
+        <div class="pricing-desc">Voor 1 actieve pagina met structurele advertentiecomments</div>
         <div class="pricing-price">
           <span class="pricing-amount" data-monthly="&euro;29" data-yearly="&euro;24">&euro;29</span>
           <span class="pricing-per">/maand</span>
@@ -1836,7 +1820,7 @@ footer{
         <div class="pricing-sub-text" data-monthly="7 dagen gratis proberen &middot; Daarna &euro;29/maand" data-yearly="7 dagen gratis &middot; Daarna &euro;290/jaar">7 dagen gratis proberen &middot; Daarna &euro;29/maand</div>
         <div style="font-size:13px;color:var(--muted);margin-top:8px;margin-bottom:4px">Marktstandaard prijs, meer dan standaard functionaliteit</div>
         <ul class="pricing-features">
-          <li>Meer scans per maand</li>
+          <li>100 scans per maand</li>
           <li>Meerdere pagina's</li>
           <li>Hot leads sneller zichtbaar</li>
           <li>Spam sneller opruimen</li>
@@ -1846,7 +1830,7 @@ footer{
       <!-- AGENCY -->
       <div class="pricing-card" data-card="agency">
         <div class="pricing-plan">Agency</div>
-        <div class="pricing-desc">Je beheert meerdere accounts en wil per klant overzicht.</div>
+        <div class="pricing-desc">Voor meerdere pagina's of klantaccounts</div>
         <div class="pricing-price">
           <span class="pricing-amount" data-monthly="&euro;99" data-yearly="&euro;82">&euro;99</span>
           <span class="pricing-per">/maand</span>
@@ -1856,7 +1840,7 @@ footer{
         <div class="pricing-sub-text">We nemen binnen 24u contact op</div>
         <div style="font-weight:600;color:#fff;font-size:14px;margin-top:12px;margin-bottom:4px">Unlimited pagina's &amp; gebruikers</div>
         <ul class="pricing-features">
-          <li>Hoger scanvolume</li>
+          <li>Onbeperkt scannen</li>
           <li>Meerdere pagina's en klanten</li>
           <li>Teamoverzicht</li>
           <li>Sneller zicht op leads en risico</li>
@@ -1872,10 +1856,10 @@ footer{
 <section id="cta">
   <div class="cta-glow" aria-hidden="true"></div>
   <div class="cta-inner inner" style="text-align:center">
-    <h2 class="section-head" style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Elke dag dat je niet kijkt, blijven leads <em>liggen.</em></h2>
-    <p class="section-sub" style="max-width:480px;margin:0 auto 36px">Scan gratis je eerste post en zie direct waar hot leads, vragen, klachten en spam zitten.</p>
-    <a href="https://app.commentcenter.nl" class="btn-cta">Scan gratis je eerste post &rarr;</a>
-    <p class="cta-note">Geen creditcard nodig &middot; Annuleer wanneer je wilt</p>
+    <h2 class="section-head" style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Zie direct welke advertentiecomments je geld <em>waard zijn.</em></h2>
+    <div style="margin-top:32px">
+      <a href="https://app.commentcenter.nl" class="btn-cta">Scan gratis je eerste post &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -1997,6 +1981,7 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     [A['person-with-joyful'],'hot','HOT LEAD','var(--hot)','97%','Kan ik dit ook laten plaatsen in Zeeland, all-in prijs?',0],
     [A['woman-with-skeptical'],'complaint','KLACHT','var(--comp)','91%','Bij de buren na 2 jaar kapot, hoe zit het met garantie?',3],
     [A['mother-with-daughter'],'spam','SPAM','var(--spam)','94%','Petra van Dam dit moet je zien \uD83D\uDE02\uD83D\uDC47',4],
+    [A['man-with-friendly'],'hot','HOT LEAD','var(--hot)','96%','Prijs voor 6 panelen inclusief montage?',0],
   ];
 
   // Bounded counter targets per pool position
@@ -2008,6 +1993,7 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     [7,4,6,6,12], // pool 4 (vraag)  → vraag 5→6
     [7,4,6,7,12], // pool 5 (klacht) → klacht 6→7
     [7,4,6,7,13], // pool 6 (spam)   → spam 12→13
+    [8,4,6,7,13], // pool 7 (hot)    → hot 7→8
   ];
   // Base values (shown on seed — matches pool items 0-4 visible)
   var baseCounters=[5,3,4,6,12];
@@ -2100,7 +2086,8 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
   // Init and loop
   seed();
-  setInterval(pushRow,INTERVAL);
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!prefersReduced) setInterval(pushRow,INTERVAL);
 })();
 
 // ── Step 01 animation — URL bar ──
