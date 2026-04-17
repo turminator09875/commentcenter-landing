@@ -1074,15 +1074,18 @@ footer{
 
 /* ── LIGHT THEME ── */
 [data-theme=light]{
-  --bg:#ffffff;
-  --s1:#f4f4f5;
-  --s2:#e4e4e7;
+  --bg:#f8f8f9;
+  --s1:#eeeef0;
+  --s2:#e2e2e5;
   --s3:#d4d4d8;
   --s4:#a1a1aa;
   --tx:#18181b;
-  --soft:#3f3f46;
+  --soft:#52525b;
   --muted:#71717a;
   --dim:#a1a1aa;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.14);
 }
 [data-theme=light] .nav-pill{background:rgba(255,255,255,.9);box-shadow:0 2px 12px rgba(0,0,0,.08),inset 0 0 0 1px rgba(0,0,0,.06)}
 [data-theme=light] .nav-logo{color:#18181b}
@@ -1126,11 +1129,41 @@ footer{
 [data-theme=light] .chaos-box{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 [data-theme=light] .pricing-card{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.06),inset 0 0 0 1px rgba(0,0,0,.06)}
 [data-theme=light] .cta-glow{background:radial-gradient(ellipse,rgba(59,130,246,.04) 0%,transparent 70%)}
-[data-theme=light] footer{border-top-color:#e4e4e7}
-[data-theme=light] .footer-bottom{border-top-color:#e4e4e7}
-[data-theme=light] .nav-mobile-menu{background:rgba(255,255,255,.97)}
+[data-theme=light] footer{border-top-color:#e2e2e5}
+[data-theme=light] .footer-bottom{border-top-color:#e2e2e5;color:#71717a}
+[data-theme=light] .nav-mobile-menu{background:rgba(248,248,249,.97);backdrop-filter:blur(12px)}
 [data-theme=light] .nav-mobile-menu a{color:#18181b}
 [data-theme=light] .theme-toggle:hover{background:rgba(0,0,0,.06)}
+[data-theme=light] .theme-toggle{color:#52525b}
+/* Pricing light */
+[data-theme=light] #pricing{background:#eeeef0}
+[data-theme=light] .pricing-card{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.06),inset 0 0 0 1px rgba(0,0,0,.06)}
+[data-theme=light] .pricing-per{color:#71717a}
+[data-theme=light] .pricing-sub-text{color:#71717a}
+[data-theme=light] .pricing-billed{color:#71717a}
+[data-theme=light] .pricing-footnote{color:#71717a}
+[data-theme=light] .pricing-cta-secondary{border-color:rgba(0,0,0,.12);color:#18181b;background:#f8f8f9}
+[data-theme=light] .pricing-cta-secondary:hover{background:#eeeef0}
+[data-theme=light] .pricing-toggle{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.08)}
+[data-theme=light] .pricing-toggle-btn{color:#52525b}
+[data-theme=light] .pricing-toggle-btn.active{background:#3b82f6;color:#fff}
+/* Comparison light */
+[data-theme=light] .fp-col{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+[data-theme=light] .fp-row{border-bottom-color:rgba(0,0,0,.06)}
+[data-theme=light] .fp-comment{color:#52525b}
+[data-theme=light] .fp-x{color:#ef4444}
+/* Feature / trust light */
+[data-theme=light] .feat-row{background:#e8e8eb}
+[data-theme=light] .feat-card-desc{color:#52525b}
+[data-theme=light] .pain-title{color:#18181b}
+[data-theme=light] .pain-desc{color:#52525b}
+[data-theme=light] .pain-row-title{color:#18181b}
+[data-theme=light] .pain-row-desc{color:#52525b}
+/* Nav links */
+[data-theme=light] .nav-links a{color:#52525b}
+[data-theme=light] .nav-links a:hover{color:#18181b}
+/* Hero */
+[data-theme=light] .hero-h1 em{color:#3b82f6}
 
 [data-theme=light] .faq-item{background:#fff;border-color:rgba(0,0,0,0.06)}
 [data-theme=light] .faq-item:first-child{border-color:rgba(0,0,0,0.06)}
@@ -1217,6 +1250,10 @@ footer{
       <a href="#pricing">Tarieven</a>
     </div>
     <a href="https://app.commentcenter.nl" class="nav-cta">Scan gratis</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Schakel kleurthema">
+      <span class="theme-icon-dark"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+      <span class="theme-icon-light"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+    </button>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu openen">&#9776;</button>
   </div>
 </nav>
@@ -1230,6 +1267,12 @@ footer{
   <a href="#faq" onclick="closeMobile()">Vragen</a>
   <a href="#pricing" onclick="closeMobile()">Tarieven</a>
   <a href="https://app.commentcenter.nl" style="background:var(--accent);color:#fff;padding:12px 32px;border-radius:12px;font-weight:600;margin-top:8px;letter-spacing:-0.02em">Scan gratis je eerste post</a>
+  <button id="mobileThemeToggle" style="display:flex;align-items:center;gap:10px;background:none;border:none;color:var(--soft);font-size:13px;font-family:inherit;cursor:pointer;padding:12px 0;margin-top:4px;width:100%;text-align:left">
+    <span class="theme-icon-dark"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+    <span class="theme-icon-light"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+    <span class="theme-icon-dark">Licht thema</span>
+    <span class="theme-icon-light">Donker thema</span>
+  </button>
 </div>
 
 <!-- HERO -->
@@ -1799,11 +1842,11 @@ footer{
         <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Begin gratis &rarr;</a>
         <div class="pricing-sub-text">Geen creditcard nodig</div>
         <ul class="pricing-features">
-          <li>5 scans per maand</li>
+          <li>100 comments totaal (one-time)</li>
           <li>1 gekoppelde pagina</li>
-          <li>Basisclassificatie van comments</li>
-          <li>CSV-export</li>
-          <li>Geen creditcard nodig</li>
+          <li>AI classificatie</li>
+          <li>5 replies</li>
+          <li>5 spam hides</li>
         </ul>
       </div>
       <!-- PRO -->
@@ -1817,14 +1860,14 @@ footer{
         </div>
         <div class="pricing-billed" data-monthly="" data-yearly="&euro;290/jaar"></div>
         <a href="https://app.commentcenter.nl?plan=pro" class="pricing-cta-primary">Verder met Pro &rarr;</a>
-        <div class="pricing-sub-text" data-monthly="7 dagen gratis proberen &middot; Daarna &euro;29/maand" data-yearly="7 dagen gratis &middot; Daarna &euro;290/jaar">7 dagen gratis proberen &middot; Daarna &euro;29/maand</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:8px;margin-bottom:4px">Marktstandaard prijs, meer dan standaard functionaliteit</div>
+        <div class="pricing-sub-text" data-monthly="&euro;29/maand &middot; Maandelijks opzegbaar" data-yearly="&euro;290/jaar &middot; Jaarlijks gefactureerd">&euro;29/maand &middot; Maandelijks opzegbaar</div>
         <ul class="pricing-features">
-          <li>100 scans per maand</li>
-          <li>Meerdere pagina's</li>
+          <li>5.000 comments per maand</li>
+          <li>5 pagina's</li>
           <li>Hot leads sneller zichtbaar</li>
-          <li>Spam sneller opruimen</li>
-          <li>CSV-export waardevolle reacties</li>
+          <li>Alle reply-suggesties</li>
+          <li>Bulk spam hide</li>
+          <li>CSV-export</li>
         </ul>
       </div>
       <!-- AGENCY -->
@@ -1836,19 +1879,19 @@ footer{
           <span class="pricing-per">/maand</span>
         </div>
         <div class="pricing-billed" data-monthly="" data-yearly="&euro;990/jaar"></div>
-        <a href="https://app.commentcenter.nl?plan=agency" class="pricing-cta-secondary">Contact sales &rarr;</a>
-        <div class="pricing-sub-text">We nemen binnen 24u contact op</div>
-        <div style="font-weight:600;color:#fff;font-size:14px;margin-top:12px;margin-bottom:4px">Unlimited pagina's &amp; gebruikers</div>
+        <a href="https://app.commentcenter.nl?plan=agency" class="pricing-cta-secondary">Start met Agency &rarr;</a>
+        <div class="pricing-sub-text" data-monthly="&euro;99/maand &middot; Maandelijks opzegbaar" data-yearly="&euro;990/jaar &middot; Jaarlijks gefactureerd">&euro;99/maand &middot; Maandelijks opzegbaar</div>
+        <div style="font-weight:600;color:var(--tx);font-size:14px;margin-top:16px;margin-bottom:6px">Onbeperkt pagina's &amp; gebruikers</div>
         <ul class="pricing-features">
-          <li>Onbeperkt scannen</li>
-          <li>Meerdere pagina's en klanten</li>
+          <li>Onbeperkt comments per maand</li>
+          <li>Onbeperkt pagina's en klanten</li>
           <li>Teamoverzicht</li>
           <li>Sneller zicht op leads en risico</li>
           <li>Gebouwd voor paid accounts</li>
         </ul>
       </div>
     </div>
-    <p class="pricing-footnote">Maandelijks opzegbaar</p>
+    <p class="pricing-footnote">Alle plannen maandelijks opzegbaar &middot; iDEAL &amp; creditcard</p>
   </div>
 </section>
 
@@ -1879,9 +1922,15 @@ footer{
         <a href="/privacy">Privacy</a>
         <a href="/terms">Voorwaarden</a>
       </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <span style="display:block;font-size:13px;color:var(--muted);margin-bottom:8px">info@commentcenter.nl</span>
+        <span style="display:block;font-size:12px;color:var(--dim);margin-bottom:4px">KvK: —</span>
+        <span style="display:block;font-size:12px;color:var(--dim)">BTW: —</span>
+      </div>
     </div>
   </div>
-  <div class="footer-bottom">&copy; CommentCenter</div>
+  <div class="footer-bottom">&copy; 2026 CommentCenter</div>
 </footer>
 
 <script>
@@ -1922,6 +1971,41 @@ function equalizePricingCards(){
 }
 window.addEventListener('load',equalizePricingCards);
 window.addEventListener('resize',equalizePricingCards);
+
+// ── THEME TOGGLE ────────────────────────────────────────────────────────────
+(function(){
+  var root=document.documentElement;
+  var toggle=document.getElementById('themeToggle');
+  var mobileToggle=document.getElementById('mobileThemeToggle');
+
+  function applyTheme(t){
+    root.setAttribute('data-theme',t);
+    try{localStorage.setItem('cc-theme',t)}catch(e){}
+  }
+
+  // Init: localStorage > prefers-color-scheme > default dark
+  var saved;
+  try{saved=localStorage.getItem('cc-theme')}catch(e){}
+  if(saved==='light'||saved==='dark'){
+    applyTheme(saved);
+  } else if(window.matchMedia('(prefers-color-scheme:light)').matches){
+    applyTheme('light');
+  }
+
+  function handleToggle(){
+    var cur=root.getAttribute('data-theme');
+    applyTheme(cur==='light'?'dark':'light');
+  }
+
+  if(toggle) toggle.addEventListener('click',handleToggle);
+  if(mobileToggle) mobileToggle.addEventListener('click',function(){handleToggle();closeMobile();});
+
+  // Sync with OS changes if no user preference saved
+  window.matchMedia('(prefers-color-scheme:light)').addEventListener('change',function(e){
+    var saved;try{saved=localStorage.getItem('cc-theme')}catch(err){}
+    if(!saved) applyTheme(e.matches?'light':'dark');
+  });
+})();
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn=>{
