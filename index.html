@@ -861,7 +861,8 @@ section{padding:96px 24px;position:relative;z-index:1}
   text-align:left;
 }
 .pricing-card.pro-card{
-  border-color:rgba(59,130,246,0.30);
+  border-color:rgba(39,39,42,0.5);
+  border-top:2px solid #3b82f6;
   margin-top:-16px;
 }
 .pricing-badge{
@@ -869,11 +870,12 @@ section{padding:96px 24px;position:relative;z-index:1}
   top:-13px;
   left:50%;
   transform:translateX(-50%);
+  font-family:'JetBrains Mono',monospace;
   font-size:10px;
   font-weight:700;
   letter-spacing:.1em;
-  color:#fff;
-  background:#3b82f6;
+  color:#3b82f6;
+  background:rgba(59,130,246,0.12);
   padding:6px 16px;
   border-radius:100px;
   white-space:nowrap;
@@ -1009,7 +1011,7 @@ footer{
   align-items:center;
   gap:7px;
   text-decoration:none;
-  color:var(--tx);
+  color:#71717a;
   font-size:14px;
   font-weight:700;
   letter-spacing:-0.02em;
@@ -1034,8 +1036,11 @@ footer{
   display:block;
   color:var(--muted);
   text-decoration:none;
-  font-size:13px;
-  margin-bottom:8px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:32px;
   transition:color .15s;
 }
 .footer-col a:hover{color:var(--tx)}
