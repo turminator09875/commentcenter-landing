@@ -718,53 +718,55 @@ section{padding:96px 24px;position:relative;z-index:1}
 #features{background:var(--bg)}
 .feat-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  margin-top:36px;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:48px;
 }
 .feat-card{
-  background:#111113;
-  box-shadow:0 2px 12px rgba(0,0,0,.25),inset 0 0 0 1px rgba(255,255,255,.05);
-  border-radius:14px;
-  padding:24px;
+  background:var(--s1);
+  box-shadow:0 2px 12px rgba(0,0,0,.2),inset 0 0 0 1px rgba(255,255,255,.04);
+  border-radius:20px;
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
   transition:background .2s cubic-bezier(0.2,0,0,1),transform .2s cubic-bezier(0.2,0,0,1),box-shadow .2s cubic-bezier(0.2,0,0,1);
 }
 @media(hover:hover){
-  .feat-card:hover{background:#18181b;transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.07)}
+  .feat-card:hover{background:var(--s2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.25),inset 0 0 0 1px rgba(255,255,255,.07)}
 }
-.feat-card-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:8px}
-.feat-card-desc{font-size:12px;color:#71717a;line-height:1.6}
+.feat-icon{
+  width:44px;height:44px;border-radius:14px;
+  background:rgba(59,130,246,0.1);
+  display:flex;align-items:center;justify-content:center;
+  color:#3b82f6;flex-shrink:0;
+}
+.feat-body{display:flex;flex-direction:column;gap:6px}
+.feat-card-title{font-size:16px;font-weight:600;color:var(--tx);letter-spacing:-.01em}
+.feat-card-desc{font-size:14px;color:var(--soft);line-height:1.7}
+.feat-visual{
+  display:flex;flex-direction:column;gap:8px;
+  margin-top:4px;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.04);
+}
 .feat-row{
   display:flex;
   align-items:center;
   gap:10px;
-  background:#18181b;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.05);
-  border-radius:8px;
-  padding:10px 12px;
-  margin-bottom:8px;
+  background:var(--s2);
+  border-radius:10px;
+  padding:10px 14px;
 }
 .feat-badge{
   display:inline-flex;
   align-items:center;
-  padding:4px 10px;
+  padding:3px 8px;
   border-radius:4px;
-  font-size:9px;
-  font-weight:600;
+  font-size:10px;
+  font-weight:700;
   text-transform:uppercase;
-  letter-spacing:.05em;
-  width:60px;
-  text-align:center;
-  justify-content:center;
+  letter-spacing:.06em;
   flex-shrink:0;
-}
-.feat-stat{
-  flex:1;
-  background:#18181b;
-  border:1px solid rgba(255,255,255,0.05);
-  border-radius:6px;
-  padding:8px 0;
-  text-align:center;
 }
 
 /* ── FAQ ── */
@@ -868,26 +870,28 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .pricing-card:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08), 0 8px 32px rgba(0,0,0,.3)}
 .pricing-card.pro-card{
-  box-shadow:inset 0 2px 0 #3b82f6, inset 0 0 0 1px rgba(59,130,246,.2), 0 4px 24px rgba(0,0,0,.3);
-  margin-top:-16px;
+  box-shadow:inset 0 2px 0 #3b82f6, inset 0 0 0 1px rgba(59,130,246,.18), 0 4px 24px rgba(0,0,0,.3);
 }
 .pricing-card.pro-card:hover{box-shadow:inset 0 2px 0 #3b82f6, inset 0 0 0 1px rgba(59,130,246,.25), 0 10px 36px rgba(0,0,0,.35)}
+.pricing-plan-row{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:6px;
+}
 .pricing-badge{
-  position:absolute;
-  top:-13px;
-  left:50%;
-  transform:translateX(-50%);
+  display:inline-flex;align-items:center;
   font-family:'JetBrains Mono',monospace;
   font-size:10px;
   font-weight:700;
-  letter-spacing:.1em;
+  letter-spacing:.08em;
   color:#3b82f6;
   background:rgba(59,130,246,0.12);
-  padding:6px 16px;
-  border-radius:100px;
+  padding:4px 10px;
+  border-radius:6px;
   white-space:nowrap;
+  flex-shrink:0;
 }
 .pricing-plan{font-size:13px;color:#71717a;margin-bottom:6px}
+.pricing-plan-row .pricing-plan{margin-bottom:0}
 .pricing-desc{font-size:12px;color:#52525b;margin-bottom:20px;min-height:32px;line-height:1.5}
 .pricing-price{
   display:flex;
@@ -1001,8 +1005,10 @@ section{padding:96px 24px;position:relative;z-index:1}
 
 /* ── FOOTER ── */
 footer{
-  border-top:1px solid var(--s2);
-  padding:48px 24px;
+  border-top:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+  padding:56px 24px 40px;
+  margin-top:0;
 }
 .footer-inner{
   max-width:960px;
@@ -1018,13 +1024,16 @@ footer{
   align-items:center;
   gap:7px;
   text-decoration:none;
-  color:#71717a;
+  color:var(--tx);
   font-size:14px;
   font-weight:700;
   letter-spacing:-0.02em;
   white-space:nowrap;
-  margin-bottom:10px;
+  margin-bottom:12px;
+  opacity:.7;
+  transition:opacity .15s;
 }
+.footer-logo:hover{opacity:1}
 .footer-tagline{font-size:12px;color:#71717a;line-height:1.6}
 .footer-cols{
   display:flex;
@@ -1043,21 +1052,23 @@ footer{
   display:block;
   color:var(--muted);
   text-decoration:none;
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  margin-bottom:32px;
-  transition:color .15s;
+  font-size:13px;
+  margin-bottom:10px;
+  transition:color .15s cubic-bezier(0.2,0,0,1);
 }
 .footer-col a:hover{color:var(--tx)}
 .footer-bottom{
   max-width:960px;
   margin:32px auto 0;
-  font-size:11px;
-  color:#71717a;
-  border-top:1px solid var(--s2);
+  font-size:12px;
+  color:var(--dim);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
   padding-top:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
 }
 
 /* ── THEME TOGGLE ── */
@@ -1142,8 +1153,10 @@ footer{
 [data-theme=light] .pricing-card{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.06),inset 0 0 0 1px rgba(0,0,0,.07)}
 [data-theme=light] .pricing-card.pro-card{box-shadow:inset 0 2px 0 #3b82f6, inset 0 0 0 1px rgba(59,130,246,.2), 0 4px 24px rgba(0,0,0,.08)}
 [data-theme=light] .cta-glow{background:radial-gradient(ellipse,rgba(59,130,246,.04) 0%,transparent 70%)}
-[data-theme=light] footer{border-top-color:#e2e2e5}
-[data-theme=light] .footer-bottom{border-top-color:#e2e2e5;color:#71717a}
+[data-theme=light] footer{box-shadow:inset 0 1px 0 #e2e2e5}
+[data-theme=light] .footer-bottom{box-shadow:inset 0 1px 0 #e2e2e5;color:#71717a}
+[data-theme=light] .footer-logo{color:#18181b}
+[data-theme=light] .pricing-badge{background:rgba(59,130,246,0.1);color:#2563eb}
 [data-theme=light] .nav-mobile-menu{background:rgba(248,248,249,.97);backdrop-filter:blur(12px)}
 [data-theme=light] .nav-mobile-menu a{color:#18181b}
 [data-theme=light] .theme-toggle:hover{background:rgba(0,0,0,.06)}
@@ -1263,11 +1276,11 @@ footer{
       <a href="#faq">Vragen</a>
       <a href="#pricing">Tarieven</a>
     </div>
-    <a href="https://app.commentcenter.nl" class="nav-cta">Scan gratis</a>
     <button class="theme-toggle" id="themeToggle" aria-label="Schakel kleurthema">
       <span class="theme-icon-dark"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
       <span class="theme-icon-light"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
     </button>
+    <a href="https://app.commentcenter.nl" class="nav-cta">Scan gratis</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu openen">&#9776;</button>
   </div>
 </nav>
@@ -1542,115 +1555,105 @@ footer{
     <div class="feat-grid">
       <!-- Card 1: AI classificatie -->
       <div class="feat-card fade-up">
-        <div class="feat-row">
-          <span class="feat-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
-          <span style="font-size:11px;color:#d4d4d8;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Wat kost installatie?"</span>
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
         </div>
-        <div class="feat-row">
-          <span class="feat-badge" style="background:rgba(250,204,21,0.15);color:#facc15">INTERESSE</span>
-          <span style="font-size:11px;color:#d4d4d8;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Ik bespreek het eerst"</span>
-        </div>
-        <div class="feat-row">
-          <span class="feat-badge" style="background:rgba(82,82,91,0.2);color:#71717a">SPAM</span>
-          <span style="font-size:11px;color:#52525b;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Check onze website!"</span>
-        </div>
-        <div style="margin-top:12px">
+        <div class="feat-body">
           <div class="feat-card-title">AI classificatie</div>
-          <div class="feat-card-desc">Elke comment direct gecategoriseerd op intentie.</div>
+          <div class="feat-card-desc">Elke comment wordt direct gecategoriseerd op koopintentie — automatisch, zonder handmatig sorteren.</div>
+        </div>
+        <div class="feat-visual">
+          <div class="feat-row">
+            <span class="feat-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
+            <span style="font-size:12px;color:var(--soft);overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Wat kost installatie?"</span>
+          </div>
+          <div class="feat-row">
+            <span class="feat-badge" style="background:rgba(82,82,91,0.2);color:#71717a">SPAM</span>
+            <span style="font-size:12px;color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Check onze website!"</span>
+          </div>
         </div>
       </div>
       <!-- Card 2: AI reply suggesties -->
       <div class="feat-card fade-up">
-        <div style="background:#18181b;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06);border-radius:8px;padding:8px 10px;margin-bottom:6px">
-          <span style="font-size:11px;color:#d4d4d8">"Wat is de levertijd vandaag?"</span>
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <div style="background:rgba(59,130,246,0.07);box-shadow:inset 0 0 0 1px rgba(59,130,246,0.15);border-radius:8px;padding:8px 10px;margin-bottom:8px">
-          <span style="font-size:11px;color:#a1a1aa">"Bij bestelling voor 15:00 leveren wij morgen."</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px">
-          <span style="background:#3b82f6;color:#fff;font-size:10px;padding:4px 8px;border-radius:4px">Plaats reactie</span>
-          <span style="font-size:10px;color:#52525b">Korter</span>
-          <span style="font-size:10px;color:#52525b">Warmer</span>
-        </div>
-        <div style="margin-top:12px">
+        <div class="feat-body">
           <div class="feat-card-title">AI reply suggesties</div>
-          <div class="feat-card-desc">Reageer met &#233;&#233;n klik. Pas toon aan voor je verstuurt.</div>
+          <div class="feat-card-desc">Reageer met één klik op vragen en leads. Kies toon — zakelijk, warm of kort — vóór je verstuurt.</div>
+        </div>
+        <div class="feat-visual">
+          <div class="feat-row" style="justify-content:space-between">
+            <span style="font-size:12px;color:var(--soft)">"Wat is de levertijd?"</span>
+            <div style="display:flex;gap:6px;flex-shrink:0">
+              <span style="font-size:10px;color:var(--muted)">Korter</span>
+              <span style="font-size:10px;color:var(--muted)">Warmer</span>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Card 3: Bulk moderatie -->
       <div class="feat-card fade-up">
-        <div class="feat-row" style="box-shadow:inset 0 0 0 1px rgba(74,222,128,0.18);background:rgba(74,222,128,0.05);justify-content:space-between">
-          <span style="font-size:11px;color:#4ade80">Exporteer 3 hot leads</span>
-          <span style="color:#4ade80">&#8595;</span>
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/><rect x="17" y="4" width="4" height="4" rx="1" fill="currentColor" opacity=".3"/></svg>
         </div>
-        <div class="feat-row" style="justify-content:space-between">
-          <span style="font-size:11px;color:#71717a">Verberg 4 spam</span>
-          <span style="color:#52525b">&#128465;</span>
-        </div>
-        <div class="feat-row" style="justify-content:space-between">
-          <span style="font-size:11px;color:#71717a">Selecteer alles</span>
-          <span style="width:12px;height:12px;border:1px solid rgba(255,255,255,0.15);border-radius:2px;background:rgba(59,130,246,0.3);display:inline-block"></span>
-        </div>
-        <div style="margin-top:12px">
+        <div class="feat-body">
           <div class="feat-card-title">Bulk moderatie</div>
-          <div class="feat-card-desc">Exporteer leads en verberg spam in &#233;&#233;n klik.</div>
+          <div class="feat-card-desc">Selecteer meerdere comments tegelijk. Exporteer leads of verberg spam in één actie.</div>
+        </div>
+        <div class="feat-visual">
+          <div class="feat-row" style="justify-content:space-between">
+            <span style="font-size:12px;color:#4ade80">3 hot leads geselecteerd</span>
+            <span style="font-size:11px;font-weight:600;color:#4ade80;background:rgba(74,222,128,.12);padding:3px 8px;border-radius:5px">Export ↓</span>
+          </div>
         </div>
       </div>
       <!-- Card 4: Koopsignalen herkennen -->
       <div class="feat-card fade-up">
-        <div class="feat-row" style="gap:8px">
-          <span class="fp-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
-          <span style="font-size:11px;color:#a1a1aa">&ldquo;Prijs?&rdquo;</span>
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </div>
-        <div class="feat-row" style="gap:8px">
-          <span class="fp-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
-          <span style="font-size:11px;color:#a1a1aa">&ldquo;Beschikbaar?&rdquo;</span>
-        </div>
-        <div class="feat-row" style="gap:8px">
-          <span class="fp-badge" style="background:rgba(250,204,21,0.15);color:#facc15">INTERESSE</span>
-          <span style="font-size:11px;color:#a1a1aa">&ldquo;Waar te koop?&rdquo;</span>
-        </div>
-        <div style="margin-top:12px">
+        <div class="feat-body">
           <div class="feat-card-title">Koopsignalen herkennen</div>
-          <div class="feat-card-desc">Weet welke comment je volgende klant is. CC labelt ze als Hot Lead voordat je ze zelf moet zoeken.</div>
+          <div class="feat-card-desc">CC herkent koopintentie in tekst die jij mist. Prijs, beschikbaarheid, levertijd — dat zijn signalen.</div>
+        </div>
+        <div class="feat-visual">
+          <div class="feat-row">
+            <span class="feat-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
+            <span style="font-size:12px;color:var(--soft)">"Hebben jullie dit op voorraad?"</span>
+          </div>
         </div>
       </div>
       <!-- Card 5: Dark posts -->
       <div class="feat-card fade-up">
-        <div class="feat-row" style="gap:8px">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-          <span style="font-size:11px;color:#a1a1aa">Dark post gedetecteerd</span>
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <div class="feat-row" style="gap:8px">
-          <span style="font-size:11px;color:#4ade80">&#10003;</span>
-          <span style="font-size:11px;color:#a1a1aa">12 comments gescand</span>
-        </div>
-        <div class="feat-row" style="gap:8px">
-          <span class="fp-badge" style="background:rgba(74,222,128,0.15);color:#4ade80">HOT LEAD</span>
-          <span style="font-size:11px;color:#a1a1aa">2 koopsignalen gevonden</span>
-        </div>
-        <div style="margin-top:12px">
+        <div class="feat-body">
           <div class="feat-card-title">Dark posts, gewoon mee</div>
-          <div class="feat-card-desc">Advertenties die niet op je timeline staan? CC scant ze gewoon mee. Plak de URL, klaar.</div>
+          <div class="feat-card-desc">Advertenties die niet op je timeline staan? Plak de URL — CC scant comments gewoon mee.</div>
+        </div>
+        <div class="feat-visual">
+          <div class="feat-row" style="justify-content:space-between">
+            <span style="font-size:12px;color:var(--muted)">facebook.com/ads/…</span>
+            <span style="font-size:11px;color:#4ade80;font-weight:600">✓ 12 gescand</span>
+          </div>
         </div>
       </div>
       <!-- Card 6: CSV export -->
       <div class="feat-card fade-up">
-        <div class="feat-row" style="justify-content:space-between">
-          <span style="font-size:11px;color:#a1a1aa">hot_leads_april.csv</span>
-          <span style="color:#3b82f6;font-size:12px">&#8595;</span>
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
-        <div class="feat-row" style="gap:6px">
-          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0;display:inline-block"></span>
-          <span style="font-size:11px;color:#71717a">3 hot leads ge&#235;xporteerd</span>
+        <div class="feat-body">
+          <div class="feat-card-title">CSV-export</div>
+          <div class="feat-card-desc">Exporteer hot leads direct naar je CRM, spreadsheet of sales team — één klik, klaar.</div>
         </div>
-        <div class="feat-row" style="gap:6px">
-          <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;flex-shrink:0;display:inline-block"></span>
-          <span style="font-size:11px;color:#71717a">Klaar voor CRM import</span>
-        </div>
-        <div style="margin-top:12px">
-          <div class="feat-card-title">CSV export</div>
-          <div class="feat-card-desc">Exporteer leads direct naar je CRM of team.</div>
+        <div class="feat-visual">
+          <div class="feat-row" style="justify-content:space-between">
+            <span style="font-size:12px;color:var(--muted)">hot_leads_april.csv</span>
+            <span style="font-size:11px;color:var(--accent);font-weight:600">Download ↓</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1865,8 +1868,10 @@ footer{
       </div>
       <!-- PRO -->
       <div class="pricing-card pro-card" data-card="pro">
-        <span class="pricing-badge">MEEST GEKOZEN</span>
-        <div class="pricing-plan">Pro</div>
+        <div class="pricing-plan-row">
+          <div class="pricing-plan">Pro</div>
+          <span class="pricing-badge">MEEST GEKOZEN</span>
+        </div>
         <div class="pricing-desc">Voor 1 actieve pagina met structurele advertentiecomments</div>
         <div class="pricing-price">
           <span class="pricing-amount" data-monthly="&euro;29" data-yearly="&euro;24">&euro;29</span>
@@ -1944,7 +1949,13 @@ footer{
       </div>
     </div>
   </div>
-  <div class="footer-bottom">&copy; 2026 CommentCenter</div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 CommentCenter</span>
+    <div style="display:flex;gap:20px">
+      <a href="/privacy" style="color:inherit;text-decoration:none;transition:color .15s" onmouseover="this.style.color='var(--soft)'" onmouseout="this.style.color=''">Privacy</a>
+      <a href="/terms" style="color:inherit;text-decoration:none;transition:color .15s" onmouseover="this.style.color='var(--soft)'" onmouseout="this.style.color=''">Voorwaarden</a>
+    </div>
+  </div>
 </footer>
 
 <script>
