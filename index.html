@@ -429,16 +429,15 @@ section{padding:96px 24px;position:relative;z-index:1}
   font-weight:400;
   line-height:1.1;
   margin-bottom:24px;
+  max-width:18em;
+  text-wrap:balance;
   letter-spacing:-0.02em;
   color:var(--tx-1);
 }
-/* Signature: serif italic for rhythmic emphasis — NEVER combined with accent color.
-   The italic IS the emphasis; adding color would be double-emphasis. */
+/* Signature: serif italic for rhythmic emphasis — no inline-block/nowrap, so it wraps with the flow */
 .section-head em{
   font-style:italic;
   color:var(--tx-2);
-  display:inline-block;
-  margin-inline-start:-0.04em;
 }
 .section-head .em-white{color:var(--tx-1);font-style:normal}
 .section-sub{
@@ -475,21 +474,18 @@ section{padding:96px 24px;position:relative;z-index:1}
   font-size:clamp(44px,7vw,80px);
   font-weight:400;
   line-height:1.05;
-  margin-bottom:24px;
+  margin:0 auto 24px;
+  max-width:14em;              /* cap so italic wraps inside visual field, not viewport-wide */
   text-align:center;
+  text-wrap:balance;           /* browser balances line widths for headline aesthetics */
   letter-spacing:-0.02em;
   color:var(--tx-1);
 }
-/* Signature move: serif italic stays (it's the Instrument Serif handwriting)
-   — but no color double-emphasis. Optical centering compensation for italic slant. */
+/* Signature move: serif italic — no nowrap, let it flow so wrap stays centered */
 .hero-h1 em{
   font-style:italic;
-  color:var(--tx-2);           /* softer tone, not competing with CTA */
-  display:inline-block;
-  margin-inline-start:-0.04em; /* compensate italic lean (optical centering) */
-  white-space:nowrap;
+  color:var(--tx-2);
 }
-@media(max-width:640px){.hero-h1 em{white-space:normal;margin-inline-start:0}}
 .hero-sub{
   font-size:18px;
   color:var(--soft);
