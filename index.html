@@ -155,39 +155,82 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* ── Surfaces ── */
-  --bg:#09090b;
-  --s1:#111113;
-  --s2:#18181b;
-  --s3:#1f1f23;
+  /* ══════════════════════════════════════════════════════════════
+     CommentCenter Design DNA v1
+     Thesis: "Signal over noise."
+     ══════════════════════════════════════════════════════════════ */
+
+  /* ── Ink (the silence — 85% of every screen) ── */
+  --ink-0:#0A0A0B;          /* base canvas — ALL sections share this */
+  --ink-1:#111114;          /* surface raised (card) */
+  --ink-2:#17171B;          /* elevated card */
+  --ink-3:#1E1E24;          /* dialog / topmost */
+  --line:rgba(255,255,255,0.06);  /* hairline border, always inset */
+
+  /* ── Text scale (WCAG AA on --ink-0) ── */
+  --tx-1:#F4F4F5;           /* headline — 17.8:1 ✅ */
+  --tx-2:#C7C7CE;           /* body — 10.4:1 ✅ */
+  --tx-3:#8A8A96;           /* muted — 4.6:1 ✅ */
+  --tx-4:#5A5A63;           /* disabled / meta */
+
+  /* ── Brand (exactly ONE accent) ── */
+  --brand:#3D5AFE;          /* electric indigo — NOT Facebook blue */
+  --brand-glow:rgba(61,90,254,0.25);
+  --brand-bg:rgba(61,90,254,0.08);
+
+  /* ── Signal colors (reserved for comment categories — NEVER decorative) ── */
+  --sig-hot:#00E08A;        /* hot lead — our gold */
+  --sig-hot-bg:rgba(0,224,138,0.12);
+  --sig-hot-glow:rgba(0,224,138,0.25);
+  --sig-quest:#FFB547;      /* vraag — amber */
+  --sig-quest-bg:rgba(255,181,71,0.12);
+  --sig-comp:#FF5A5A;       /* klacht — red */
+  --sig-comp-bg:rgba(255,90,90,0.12);
+  --sig-spam:#6A6A73;       /* spam — intentionally quiet */
+
+  /* ── Elevation (hairline border, not shadow — 2026 pattern) ── */
+  --elev-0:none;
+  --elev-1:inset 0 0 0 1px var(--line);
+  --elev-2:inset 0 0 0 1px var(--line), 0 1px 2px rgba(0,0,0,.4);
+  --elev-3:inset 0 0 0 1px rgba(255,255,255,0.1), 0 8px 24px rgba(0,0,0,.5);
+  --elev-brand:inset 0 0 0 1px rgba(61,90,254,0.4), 0 0 40px var(--brand-glow);
+
+  /* ── Motion (snap, not bounce) ── */
+  --dur-instant:80ms;
+  --dur-quick:150ms;
+  --dur-normal:220ms;
+  --dur-slow:400ms;
+  --ease-out:cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasize:cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-spring:cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ══════════════════════════════════════════════════════════════
+     Legacy aliases — existing selectors keep working.
+     New code should use DNA tokens above.
+     ══════════════════════════════════════════════════════════════ */
+  --bg:var(--ink-0);
+  --s1:var(--ink-1);
+  --s2:var(--ink-2);
+  --s3:var(--ink-3);
   --s4:#2a2a2e;
-
-  /* ── Text (all WCAG AA on --bg) ── */
-  --tx:#fafafa;
-  --soft:#a1a1aa;    /* 5.7:1 ✅ */
-  --muted:#8a8a96;   /* 4.6:1 ✅ (was #71717a = 3.6 ❌) */
-  --dim:#52525b;
-
-  /* ── Brand ── */
-  --accent:#3b82f6;
-  --accent-glow:rgba(59,130,246,.35);
-
-  /* ── Semantic ── */
-  --hot:#4ade80;
-  --hot-bg:rgba(74,222,128,0.12);
-  --hot-glow:rgba(74,222,128,.25);
-  --interested:#facc15;
-  --quest:#60a5fa;
-  --comp:#fb7185;
-  --comp-bg:rgba(251,113,133,0.12);
-  --spam:#52525b;
-
-  /* ── Elevation (shadow tokens) ── */
-  --sh-sm:0 1px 3px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.04);
-  --sh-md:0 4px 16px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.05);
-  --sh-lg:0 12px 40px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.06);
-  --sh-xl:0 24px 60px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.07);
-  /* Legacy aliases */
+  --tx:var(--tx-1);
+  --soft:var(--tx-2);
+  --muted:var(--tx-3);
+  --dim:var(--tx-4);
+  --accent:var(--brand);
+  --accent-glow:var(--brand-glow);
+  --hot:var(--sig-hot);
+  --hot-bg:var(--sig-hot-bg);
+  --hot-glow:var(--sig-hot-glow);
+  --interested:var(--sig-quest);
+  --quest:var(--sig-quest);
+  --comp:var(--sig-comp);
+  --comp-bg:var(--sig-comp-bg);
+  --spam:var(--sig-spam);
+  --sh-sm:var(--elev-2);
+  --sh-md:var(--elev-2), 0 4px 16px rgba(0,0,0,.3);
+  --sh-lg:var(--elev-3);
+  --sh-xl:inset 0 0 0 1px rgba(255,255,255,.07), 0 24px 60px rgba(0,0,0,.5);
   --shadow-sm:var(--sh-sm);
   --shadow-md:var(--sh-md);
   --shadow-lg:var(--sh-lg);
@@ -332,17 +375,72 @@ section{padding:96px 24px;position:relative;z-index:1}
   color:var(--accent);
   margin-bottom:16px;
 }
-.label.hot{color:var(--hot)}
+.label.hot{color:var(--sig-hot)}
+
+/* ══════════════════════════════════════════════════════════════
+   SIGNATURE MOVE #1 — Signal Dot
+   One dot = one comment/event. Our proprietary visual motif.
+   Reserved exclusively for semantic meaning (category/status).
+   NEVER decorative. NEVER as a divider/stripe.
+   ══════════════════════════════════════════════════════════════ */
+.sig-dot{
+  display:inline-block;
+  border-radius:50%;
+  flex-shrink:0;
+  vertical-align:middle;
+}
+.sig-dot--xs{width:6px;height:6px}
+.sig-dot--sm{width:8px;height:8px}
+.sig-dot--md{width:10px;height:10px}
+.sig-dot--lg{width:12px;height:12px}
+.sig-dot--hot{background:var(--sig-hot);box-shadow:0 0 0 4px var(--sig-hot-bg)}
+.sig-dot--quest{background:var(--sig-quest);box-shadow:0 0 0 4px var(--sig-quest-bg)}
+.sig-dot--comp{background:var(--sig-comp);box-shadow:0 0 0 4px var(--sig-comp-bg)}
+.sig-dot--spam{background:var(--sig-spam)}
+.sig-dot--brand{background:var(--brand);box-shadow:0 0 0 4px var(--brand-bg)}
+.sig-dot--pulse{animation:sig-pulse 2s var(--ease-spring) infinite}
+@keyframes sig-pulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.15);opacity:.85}
+}
+@media(prefers-reduced-motion:reduce){.sig-dot--pulse{animation:none}}
+/* Eyebrow pill — small badge above heading, often paired with a sig-dot.
+   Default variant = brand. Use signal variants to classify context. */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.02em;
+  padding:4px 12px 4px 10px;
+  border-radius:100px;
+  color:var(--brand);
+  background:var(--brand-bg);
+  box-shadow:inset 0 0 0 1px rgba(61,90,254,0.25);
+}
+.eyebrow--sm{font-size:11px;padding:3px 10px 3px 8px}
+.eyebrow--hot{color:var(--sig-hot);background:var(--sig-hot-bg);box-shadow:inset 0 0 0 1px rgba(0,224,138,0.25)}
+.eyebrow--quest{color:var(--sig-quest);background:var(--sig-quest-bg);box-shadow:inset 0 0 0 1px rgba(255,181,71,0.25)}
+.eyebrow--comp{color:var(--sig-comp);background:var(--sig-comp-bg);box-shadow:inset 0 0 0 1px rgba(255,90,90,0.25)}
 .section-head{
   font-family:'Instrument Serif',serif;
   font-size:clamp(32px,5vw,52px);
   font-weight:400;
-  line-height:1.15;
+  line-height:1.1;
   margin-bottom:24px;
-  letter-spacing:-0.025em;
+  letter-spacing:-0.02em;
+  color:var(--tx-1);
 }
-.section-head em{font-style:italic;color:var(--accent)}
-.section-head .em-white{color:var(--tx)}
+/* Signature: serif italic for rhythmic emphasis — NEVER combined with accent color.
+   The italic IS the emphasis; adding color would be double-emphasis. */
+.section-head em{
+  font-style:italic;
+  color:var(--tx-2);
+  display:inline-block;
+  margin-inline-start:-0.04em;
+}
+.section-head .em-white{color:var(--tx-1);font-style:normal}
 .section-sub{
   font-size:17px;
   color:var(--soft);
@@ -376,13 +474,22 @@ section{padding:96px 24px;position:relative;z-index:1}
   font-family:'Instrument Serif',serif;
   font-size:clamp(44px,7vw,80px);
   font-weight:400;
-  line-height:1.1;
+  line-height:1.05;
   margin-bottom:24px;
   text-align:center;
-  letter-spacing:-0.03em;
+  letter-spacing:-0.02em;
+  color:var(--tx-1);
 }
-.hero-h1 em{font-style:italic;color:var(--accent);white-space:nowrap}
-@media(max-width:640px){.hero-h1 em{white-space:normal}}
+/* Signature move: serif italic stays (it's the Instrument Serif handwriting)
+   — but no color double-emphasis. Optical centering compensation for italic slant. */
+.hero-h1 em{
+  font-style:italic;
+  color:var(--tx-2);           /* softer tone, not competing with CTA */
+  display:inline-block;
+  margin-inline-start:-0.04em; /* compensate italic lean (optical centering) */
+  white-space:nowrap;
+}
+@media(max-width:640px){.hero-h1 em{white-space:normal;margin-inline-start:0}}
 .hero-sub{
   font-size:18px;
   color:var(--soft);
@@ -591,7 +698,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 .stat-num.pop{animation:num-pop .25s ease}
 
 /* ── PROBLEEM ── */
-#probleem{background:var(--s1)}
+/* #probleem uses body --bg (DNA rule: all sections share one canvas; rhythm via typography, not bg shifts) */
 .pain-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -601,13 +708,8 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .pain-list{display:flex;flex-direction:column;gap:24px}
 .pain-item{display:flex;gap:16px;align-items:flex-start}
-.pain-bar{
-  width:3px;height:40px;
-  border-radius:2px;
-  flex-shrink:0;
-  margin-top:6px;
-}
-.pain-title{font-size:16px;font-weight:600;margin-bottom:8px}
+.pain-item > .sig-dot{margin-top:9px}
+.pain-title{font-size:16px;font-weight:600;margin-bottom:8px;color:var(--tx-1)}
 .pain-desc{font-size:14px;color:var(--soft);line-height:1.7}
 .chaos-box{
   background:var(--bg);
@@ -759,7 +861,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 .signal-desc{font-size:13px;color:var(--soft);line-height:1.5}
 
 /* ── VERGELIJKING ── */
-#vergelijk{background:var(--s1)}
+/* #vergelijk uses body --bg */
 .vs-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -810,7 +912,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 @media(max-width:700px){.fp-grid{grid-template-columns:1fr}}
 
 /* ── VOOR WIE ── */
-#voorwie{background:var(--s1)}
+/* #voorwie uses body --bg */
 .for-title{font-size:18px;font-weight:600;margin-bottom:8px}
 .for-desc{font-size:14px;color:var(--soft);max-width:600px;line-height:1.7}
 .persona-card{
@@ -988,7 +1090,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 .faq-item.open .faq-a{max-height:400px;padding:0 28px 22px;opacity:1}
 
 /* ── PRICING ── */
-#pricing{background:var(--s1);text-align:center;padding-top:128px;padding-bottom:128px}
+#pricing{text-align:center;padding-top:128px;padding-bottom:128px}
 #pricing .label,#pricing .section-head,#pricing .section-sub{text-align:center;margin-left:auto;margin-right:auto}
 .pricing-toggle-wrap{display:flex;justify-content:center;margin-bottom:48px}
 .pricing-toggle{
@@ -1321,7 +1423,7 @@ footer{
 [data-theme=light] .for-name{color:#18181b}
 [data-theme=light] .pricing-plan{color:#18181b}
 [data-theme=light] .pricing-features li{color:#3f3f46}
-[data-theme=light] #voorwie{background:#f9fafb}
+/* [data-theme=light] #voorwie inherits body bg — single canvas in light too */
 [data-theme=light] .s1-url{color:#6b7280}
 [data-theme=light] .c-text{color:#3f3f46}
 [data-theme=light] .c-btn{color:#71717a}
@@ -1350,7 +1452,7 @@ footer{
 [data-theme=light] .theme-toggle:hover{background:rgba(0,0,0,.06)}
 [data-theme=light] .theme-toggle{color:#52525b}
 /* Pricing light */
-[data-theme=light] #pricing{background:#eeeef0}
+/* [data-theme=light] #pricing inherits body bg */
 [data-theme=light] .pricing-card{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.06),inset 0 0 0 1px rgba(0,0,0,.07)}
 [data-theme=light] .pricing-card.pro-card{box-shadow:inset 0 2px 0 #3b82f6, inset 0 0 0 1px rgba(59,130,246,.2), 0 4px 24px rgba(0,0,0,.08)}
 [data-theme=light] .pricing-per{color:#71717a}
@@ -1378,7 +1480,8 @@ footer{
 [data-theme=light] .nav-links a{color:#52525b}
 [data-theme=light] .nav-links a:hover{color:#18181b}
 /* Hero */
-[data-theme=light] .hero-h1 em{color:#3b82f6}
+[data-theme=light] .hero-h1 em{color:#52525b}
+[data-theme=light] .section-head em{color:#52525b}
 
 [data-theme=light] .faq-item{background:#fff;border-color:rgba(0,0,0,0.06)}
 [data-theme=light] .faq-item:first-child{border-color:rgba(0,0,0,0.06)}
@@ -1495,8 +1598,8 @@ footer{
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <span style="display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#60a5fa;box-shadow:inset 0 0 0 1px rgba(59,130,246,0.25);background:rgba(59,130,246,0.07);border-radius:100px;padding:4px 14px 4px 10px;margin-bottom:24px">
-      <span style="width:6px;height:6px;border-radius:50%;background:#60a5fa;flex-shrink:0"></span>
+    <span class="eyebrow" style="margin-bottom:24px">
+      <span class="sig-dot sig-dot--xs sig-dot--brand" aria-hidden="true"></span>
       Gebouwd voor Meta advertentiecomments
     </span><br>
     <h1 class="hero-h1">Je advertentie werkt.<br><em>Maar hot leads verdwijnen in je comments.</em></h1>
@@ -1546,21 +1649,21 @@ footer{
     <div class="pain-grid">
       <div class="pain-list">
         <div class="pain-item">
-          <div class="pain-bar" style="background:var(--hot)"></div>
+          <span class="sig-dot sig-dot--lg sig-dot--hot" aria-hidden="true"></span>
           <div>
             <div class="pain-title">Hot leads wachten op reactie</div>
             <p class="pain-desc">Mensen tonen koopintentie, maar krijgen geen antwoord terwijl jij al voor hun klik hebt betaald.</p>
           </div>
         </div>
         <div class="pain-item">
-          <div class="pain-bar" style="background:var(--comp)"></div>
+          <span class="sig-dot sig-dot--lg sig-dot--comp" aria-hidden="true"></span>
           <div>
             <div class="pain-title">Bezwaren blijven publiek staan</div>
             <p class="pain-desc">Twijfel en negatieve reacties blijven zichtbaar voor iedereen die je advertentie ziet.</p>
           </div>
         </div>
         <div class="pain-item">
-          <div class="pain-bar" style="background:var(--spam)"></div>
+          <span class="sig-dot sig-dot--lg sig-dot--spam" aria-hidden="true"></span>
           <div>
             <div class="pain-title">Spam vervuilt je social proof</div>
             <p class="pain-desc">Irrelevante troep trekt je commentsectie omlaag en maakt echte intentie lastiger om te zien.</p>
@@ -1670,7 +1773,7 @@ footer{
     <p class="section-sub" style="max-width:600px;margin-bottom:48px">Geen trefwoordmatching. Echte AI-redenering. Begrijpt context, toon en taal — en geeft je direct de acties die er toe doen.</p>
     <div class="feature-grid">
       <div class="classif-box">
-        <div class="classif-header"><span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;color:#60a5fa;box-shadow:inset 0 0 0 1px rgba(59,130,246,0.2);background:rgba(59,130,246,0.06);border-radius:100px;padding:4px 12px"><span style="width:6px;height:6px;border-radius:50%;background:#60a5fa;animation:pulse 2s ease infinite"></span>LIVE DEMO · ZONNEPANELEN CAMPAGNE</span></div>
+        <div class="classif-header"><span class="eyebrow eyebrow--sm"><span class="sig-dot sig-dot--xs sig-dot--brand sig-dot--pulse" aria-hidden="true"></span>LIVE DEMO &middot; ZONNEPANELEN CAMPAGNE</span></div>
         <div class="classif-rows">
           <div class="classif-row">
             <span class="classif-comment">Kan ik dit ook laten plaatsen in Zeeland, all-in prijs?</span>
