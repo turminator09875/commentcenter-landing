@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI-commentbeheer voor Facebook-advertenties | CommentCenter</title>
-<meta name="description" content="Weet direct wie wil kopen, wie twijfelt en wat weg kan. CommentCenter sorteert Facebook-advertentiecomments automatisch in hot leads, vragen, klachten en spam.">
+<meta name="description" content="AI sorteert je Facebook-advertentiecomments in hot leads, vragen, klachten en spam. Mis nooit meer een koper. Start gratis, geen creditcard.">
 <link rel="canonical" href="https://commentcenter.nl/">
 <link rel="alternate" hreflang="nl" href="https://commentcenter.nl/">
 <link rel="alternate" hreflang="x-default" href="https://commentcenter.nl/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AI-commentbeheer voor Facebook-advertenties | CommentCenter">
-<meta property="og:description" content="Weet direct wie wil kopen, wie twijfelt en wat weg kan. CommentCenter sorteert Facebook-advertentiecomments automatisch in hot leads, vragen, klachten en spam.">
+<meta property="og:description" content="AI sorteert je Facebook-advertentiecomments in hot leads, vragen, klachten en spam. Mis nooit meer een koper. Start gratis, geen creditcard.">
 <meta property="og:image" content="https://commentcenter.nl/og-image.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -19,12 +19,12 @@
 <meta property="og:site_name" content="CommentCenter">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI-commentbeheer voor Facebook-advertenties | CommentCenter">
-<meta name="twitter:description" content="Weet direct wie wil kopen, wie twijfelt en wat weg kan. CommentCenter sorteert Facebook-advertentiecomments automatisch in hot leads, vragen, klachten en spam.">
+<meta name="twitter:description" content="AI sorteert je Facebook-advertentiecomments in hot leads, vragen, klachten en spam. Mis nooit meer een koper. Start gratis, geen creditcard.">
 <meta name="twitter:image" content="https://commentcenter.nl/og-image.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 14' fill='none'%3E%3Crect x='0' y='0' width='14' height='10' rx='3' fill='%233b82f6'/%3E%3Cpolygon points='3,10 5,13 7,10' fill='%233b82f6'/%3E%3Crect x='3' y='3' width='8' height='1.5' rx='.7' fill='white' opacity='.3'/%3E%3Crect x='3' y='6' width='6' height='1.5' rx='.7' fill='white'/%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 [
   {
@@ -97,15 +97,15 @@
         "name": "Werkt het ook voor Instagram?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nu alleen Facebook — inclusief dark posts en organische posts van pagina's waarvan je admin bent. Instagram staat op de roadmap."
+          "text": "Nu alleen Facebook — incl. dark posts en organische posts van pagina's waarvan je admin bent. Instagram staat op de roadmap."
         }
       },
       {
         "@type": "Question",
-        "name": "Kan ik het gratis proberen?",
+        "name": "Wat als de AI het fout heeft?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ja. Free plan, geen creditcard nodig. 100 comments en één pagina — genoeg om te zien of het werkt voor jouw campagnes."
+          "text": "Elke classificatie komt met een confidence-score. Bij twijfel (onder 80%) zie je het comment in een aparte 'check dit even'-rij — je beslist zelf. De AI leert continu bij van jouw correcties."
         }
       }
     ]
@@ -139,12 +139,10 @@
   /* ── Ink (actionable dark — primary button, footer) ── */
   --ink-100:#141414;
   --ink-90:#1F1F1F;
-  --ink-70:#404040;
 
   /* ── Brand (exactly ONE accent — matches logo SVG #3b82f6) ── */
   --brand:#3b82f6;                  /* Tailwind blue-500 (logo) */
-  --brand-hover:#2563eb;            /* blue-600 (hover) */
-  --brand-fg:#FFFFFF;               /* text on brand */
+  --brand-hover:#2563eb;            /* blue-600 (hover state) */
   --brand-bg:rgba(59,130,246,0.08); /* faint tint */
   --brand-line:rgba(59,130,246,0.24);
 
@@ -409,24 +407,22 @@ section{padding:96px 24px;position:relative;z-index:1}
 .eyebrow--comp{color:var(--sig-comp);background:var(--sig-comp-bg);box-shadow:inset 0 0 0 1px var(--sig-comp-line)}
 .section-head{
   font-family:'DM Sans',sans-serif;
-  font-size:clamp(36px,5.4vw,60px);
-  font-weight:700;
-  line-height:1.02;
+  font-size:clamp(34px,5vw,54px);
+  font-weight:600;
+  line-height:1.05;
   margin:0 0 14px;
   max-width:18em;
   text-wrap:balance;
-  letter-spacing:-0.035em;
+  letter-spacing:-0.03em;
   color:var(--tx-1);
 }
-/* Signature: serif italic for rhythmic emphasis */
+/* Emphasis system: single brand-blue keyword per heading.
+   DM Sans is the sole typeface — including pricing numerals — for one voice across the page. */
 .section-head em{
-  font-family:'Instrument Serif',serif;
-  font-style:italic;
-  font-weight:400;
-  color:var(--tx-1);
-  letter-spacing:-0.015em;
+  font-style:normal;
+  font-weight:600;
+  color:var(--brand);
 }
-.section-head .em-white{color:var(--tx-1);font-style:italic}
 .section-head .accent{color:var(--brand)}
 .section-sub{
   font-size:18px;
@@ -465,22 +461,21 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .hero-h1{
   font-family:'DM Sans',sans-serif;
-  font-size:clamp(44px,7.2vw,84px);
+  font-size:clamp(44px,7vw,80px);
   font-weight:700;
-  line-height:1.01;
+  line-height:1.02;
   margin:0 auto 18px;
   max-width:13em;
   text-align:center;
   text-wrap:balance;
-  letter-spacing:-0.04em;
+  letter-spacing:-0.035em;
   color:var(--tx-1);
 }
+/* Hero emphasis = brand-blue keyword. Single emphasis system across page. */
 .hero-h1 em{
-  font-family:'Instrument Serif',serif;
-  font-style:italic;
-  font-weight:400;
-  color:var(--tx-1);
-  letter-spacing:-0.02em;
+  font-style:normal;
+  font-weight:700;
+  color:var(--brand);
 }
 .hero-h1 .accent{color:var(--brand)}
 .hero-sub{
@@ -490,15 +485,6 @@ section{padding:96px 24px;position:relative;z-index:1}
   margin:0 auto;
   line-height:1.5;
   letter-spacing:-0.01em;
-}
-.hero-pill{
-  font-size:12px;
-  font-weight:500;
-  padding:6px 14px;
-  border-radius:9999px;
-  color:var(--tx-2);
-  background:var(--surface-2);
-  box-shadow:inset 0 0 0 1px var(--line);
 }
 .hero-ctas{
   display:flex;
@@ -542,11 +528,6 @@ section{padding:96px 24px;position:relative;z-index:1}
   transition:background var(--dur-quick) var(--ease-out),box-shadow var(--dur-quick) var(--ease-out);
 }
 .btn-secondary:hover{background:rgba(0,0,0,.03);box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
-.hero-note{
-  font-size:13px;
-  color:var(--tx-3);
-  margin-top:14px;
-}
 .hero-ctas{margin-top:28px}
 .hero-trust{
   font-size:13px;
@@ -627,7 +608,6 @@ section{padding:96px 24px;position:relative;z-index:1}
 .c-row.demo-hidden{opacity:.45}
 .c-row.demo-hidden .c-chip{background:var(--surface-3)!important;color:var(--tx-3)!important}
 .c-row.demo-replied .c-chip{background:var(--sig-hot)!important}
-.c-bar{display:none}
 .c-avatar{
   width:24px;height:24px;
   border-radius:50%;
@@ -692,24 +672,6 @@ section{padding:96px 24px;position:relative;z-index:1}
 .c-btn:hover{background:var(--surface-3);color:var(--tx-1)}
 .c-btn-reply{color:var(--tx-2)}
 .c-btn-hide{opacity:.5;font-size:9px}
-/* Reply composer (inline demo) */
-.demo-composer{
-  grid-column:1/-1;
-  background:var(--surface-3);
-  border-radius:10px;
-  padding:10px 14px;
-  margin-top:4px;
-  animation:demo-slide .2s ease;
-}
-.demo-composer-text{
-  font-size:11.5px;color:var(--tx-3);font-style:italic;
-}
-.demo-reply-preview{
-  grid-column:4/-1;
-  font-size:11px;color:var(--tx-3);
-  margin-top:2px;
-  animation:demo-slide .25s ease;
-}
 @keyframes num-pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
 .stat-num.pop{animation:num-pop .25s ease}
 
@@ -858,85 +820,6 @@ section{padding:96px 24px;position:relative;z-index:1}
   font-size:11px;
   color:var(--tx-3);
 }
-.feature-cards{display:flex;flex-direction:column;gap:16px}
-.feature-card{
-  background:#fff;
-  box-shadow:inset 0 0 0 1px var(--line);
-  border-radius:14px;
-  padding:24px;
-  transition:background .2s cubic-bezier(0.2,0,0,1),transform .2s cubic-bezier(0.2,0,0,1),box-shadow .2s cubic-bezier(0.2,0,0,1);
-}
-@media(hover:hover){
-  .feature-card:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--line-strong), 0 6px 18px rgba(0,0,0,.05)}
-  .feature-card:hover svg{opacity:1}
-}
-.feature-card-title{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--tx-1);letter-spacing:-0.005em}
-.feature-card-desc{font-size:13px;color:var(--tx-2);line-height:1.6}
-
-/* ── SIGNAAL LIST ── */
-.signal-list{
-  display:flex;
-  flex-direction:column;
-  max-width:560px;
-}
-.signal-row{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
-  padding:14px 0;
-  border-bottom:1px solid var(--line);
-}
-.signal-row:last-child{border-bottom:none}
-.signal-badge{
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:.05em;
-  text-transform:uppercase;
-  padding:2px 8px;
-  border-radius:var(--radius-chip-rect);
-  white-space:nowrap;
-  flex-shrink:0;
-  margin-top:2px;
-}
-.signal-body{display:flex;flex-direction:column;gap:2px}
-.signal-title{font-size:15px;font-weight:600;color:var(--tx-1);letter-spacing:-0.005em}
-.signal-desc{font-size:13px;color:var(--tx-2);line-height:1.55}
-
-/* ── VERGELIJKING ── */
-.vs-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-  margin-top:36px;
-}
-.vs-col{
-  border-radius:16px;
-  padding:32px;
-}
-.vs-col--without{
-  background:var(--surface);
-  box-shadow:inset 0 0 0 1px var(--line);
-}
-.vs-col--with{
-  background:#fff;
-  box-shadow:inset 0 0 0 1px var(--brand-line), 0 8px 28px rgba(59,130,246,0.06);
-}
-.vs-header{
-  font-size:12px;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  margin-bottom:24px;
-}
-.vs-header--without{color:var(--tx-3)}
-.vs-header--with{color:var(--brand)}
-.vs-list{list-style:none;display:flex;flex-direction:column;gap:14px}
-.vs-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.6}
-.vs-x{color:var(--tx-4);font-weight:700;flex-shrink:0;font-size:15px}
-.vs-check{color:var(--sig-hot);font-weight:700;flex-shrink:0;font-size:15px}
-.vs-list--without li{color:var(--tx-3)}
-.vs-list--with li{color:var(--tx-1)}
-
 /* ── FALSE POSITIVE SECTION ── */
 .fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;text-align:left}
 .fp-col{background:#fff;border-radius:16px;padding:32px;box-shadow:inset 0 0 0 1px var(--line)}
@@ -976,8 +859,6 @@ section{padding:96px 24px;position:relative;z-index:1}
   color:var(--tx-2);
   line-height:1.65;
 }
-.for-title{font-size:18px;font-weight:600;margin-bottom:8px;color:var(--tx-1);letter-spacing:-0.01em}
-.for-desc{font-size:14px;color:var(--tx-2);max-width:600px;line-height:1.65}
 .persona-card{
   background:#fff;
   box-shadow:inset 0 0 0 1px var(--line);
@@ -1042,7 +923,6 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .trust-title{font-size:16px;font-weight:600;margin-bottom:10px;color:var(--tx-1);letter-spacing:-0.005em}
 .trust-desc{font-size:14px;color:var(--tx-2);line-height:1.65}
-.proof-card{background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
 
 /* ── FEATURE CARDS ── */
 #features{background:var(--bg)}
@@ -1169,6 +1049,9 @@ section{padding:96px 24px;position:relative;z-index:1}
   font-weight:600;
 }
 
+/* ── DIFFERENTIATOR (single surface band — breaks middle-third plateau) ── */
+#differentiator{background:var(--surface);padding-top:96px;padding-bottom:96px;margin-top:0}
+
 /* ── FAQ ── */
 #faq{background:var(--bg);padding-top:128px;padding-bottom:128px}
 #faq .section-head{text-align:center;margin-left:auto;margin-right:auto}
@@ -1225,10 +1108,11 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .faq-item.open .faq-a{max-height:400px;padding:0 28px 22px;opacity:1}
 
-/* ── PRICING (Mobbin discipline) ── */
-#pricing{text-align:center;padding-top:128px;padding-bottom:128px}
+/* ── PRICING (Mobbin discipline: dense, decisive, CTA close to price) ── */
+#pricing{text-align:center;padding-top:96px;padding-bottom:96px}
 #pricing .section-label,#pricing .section-head,#pricing .section-sub{text-align:center;margin-left:auto;margin-right:auto}
-.pricing-toggle-wrap{display:flex;justify-content:center;margin-bottom:48px}
+#pricing .section-sub{margin-bottom:32px}
+.pricing-toggle-wrap{display:flex;justify-content:center;margin-bottom:32px}
 .pricing-toggle{
   display:inline-flex;
   background:var(--surface-2);
@@ -1255,16 +1139,16 @@ section{padding:96px 24px;position:relative;z-index:1}
 .pricing-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:24px;
+  gap:20px;
   max-width:760px;
   margin:0 auto;
-  align-items:stretch;
+  align-items:start; /* natural height — Free sits tight, Pro gets the real estate */
 }
 .pricing-card{
   background:#fff;
   box-shadow:inset 0 0 0 1px var(--line);
   border-radius:20px;
-  padding:40px 36px;
+  padding:28px 28px 24px;
   display:flex;
   flex-direction:column;
   position:relative;
@@ -1281,7 +1165,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .pricing-plan-row{
   display:flex;align-items:center;justify-content:space-between;gap:8px;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 .pricing-badge{
   display:inline-flex;align-items:center;
@@ -1297,88 +1181,92 @@ section{padding:96px 24px;position:relative;z-index:1}
   flex-shrink:0;
   box-shadow:inset 0 0 0 1px var(--brand-line);
 }
-.pricing-plan{font-size:13px;font-weight:500;color:var(--tx-3);margin-bottom:8px}
-.pricing-plan-row .pricing-plan{margin-bottom:0;font-weight:600;color:var(--tx-1);font-size:14px;letter-spacing:-0.005em}
-.pricing-desc{font-size:13px;color:var(--tx-3);margin-bottom:24px;min-height:36px;line-height:1.6}
+.pricing-plan{
+  font-size:14px;
+  font-weight:600;
+  color:var(--tx-1);
+  letter-spacing:-0.005em;
+  margin:0;
+}
+.pricing-desc{
+  font-size:13px;
+  color:var(--tx-3);
+  line-height:1.5;
+  margin:0 0 16px;
+}
 .pricing-price{
   display:flex;
   align-items:baseline;
-  gap:8px;
-  margin-bottom:8px;
+  gap:4px;
+  margin-bottom:4px;
 }
 .pricing-amount{
-  font-family:'Instrument Serif',serif;
-  font-size:64px;
-  font-weight:400;
+  font-family:'DM Sans',sans-serif;
+  font-size:52px;
+  font-weight:600;
   line-height:1;
-  letter-spacing:-0.03em;
+  letter-spacing:-0.04em;
   color:var(--tx-1);
 }
 .pricing-per{font-size:13px;color:var(--tx-3);margin-left:2px}
-.pricing-billed{font-size:12px;color:var(--tx-3);min-height:18px;margin-bottom:24px}
+.pricing-billed{font-size:12px;color:var(--tx-3);margin-bottom:16px;min-height:16px}
+/* CTA sits right under the price — conversion anchor */
+.pricing-cta-primary,.pricing-cta-secondary{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  text-decoration:none;
+  font-weight:600;
+  font-size:15px;
+  padding:0 20px;
+  min-height:46px;
+  border-radius:9999px;
+  letter-spacing:-0.005em;
+  transition:background var(--dur-quick) var(--ease-out),transform var(--dur-quick) var(--ease-out),box-shadow var(--dur-quick) var(--ease-out);
+}
+.pricing-cta-primary{
+  background:var(--ink-100);
+  color:#fff;
+}
+.pricing-cta-primary:hover{background:var(--ink-90);transform:translateY(-1px)}
+.pricing-cta-secondary{
+  background:transparent;
+  color:var(--tx-1);
+  font-weight:500;
+  box-shadow:inset 0 0 0 1px var(--line-strong);
+}
+.pricing-cta-secondary:hover{background:rgba(0,0,0,.03);box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+.pricing-sub-text{
+  font-size:12px;
+  color:var(--tx-3);
+  text-align:center;
+  margin:10px 0 20px;
+}
 .pricing-features{
   list-style:none;
   display:flex;
   flex-direction:column;
-  gap:12px;
-  flex:1;
-  margin-bottom:28px;
-  border-top:1px solid var(--line);
-  padding-top:20px;
-  margin-top:20px;
+  gap:9px;
+  margin:0;
+  padding-top:18px;
+  border-top:1px solid var(--line-faint);
 }
 .pricing-features li{
   display:flex;
   align-items:center;
   gap:10px;
-  font-size:13px;
+  font-size:13.5px;
   color:var(--tx-2);
+  letter-spacing:-0.005em;
 }
 .pricing-features li::before{
-  content:'✓';
+  content:'\2713';
   color:var(--sig-hot);
   font-weight:700;
   font-size:12px;
   flex-shrink:0;
 }
-.pricing-cta-primary{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:var(--ink-100);
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  font-size:15px;
-  padding:0 24px;
-  min-height:48px;
-  border-radius:9999px;
-  letter-spacing:-0.005em;
-  margin-top:auto;
-  transition:background var(--dur-quick) var(--ease-out),transform var(--dur-quick) var(--ease-out);
-}
-.pricing-cta-primary:hover{background:var(--ink-90);transform:translateY(-1px)}
-.pricing-cta-secondary{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:transparent;
-  color:var(--tx-1);
-  text-decoration:none;
-  font-size:15px;
-  font-weight:500;
-  padding:0 24px;
-  min-height:48px;
-  border-radius:9999px;
-  box-shadow:inset 0 0 0 1px var(--line-strong);
-  letter-spacing:-0.005em;
-  margin-top:auto;
-  transition:background var(--dur-quick) var(--ease-out),box-shadow var(--dur-quick) var(--ease-out);
-}
-.pricing-cta-secondary:hover{background:rgba(0,0,0,.03);box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
-.pricing-sub-text{font-size:12px;color:var(--tx-3);text-align:center;margin-top:12px;margin-bottom:20px}
 .pricing-footnote{font-size:12px;color:var(--tx-3);margin-top:20px;text-align:center}
 
 /* ── FINAL CTA ── */
@@ -1406,7 +1294,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:var(--ink-100);
+  background:var(--brand);
   color:#fff;
   text-decoration:none;
   font-weight:600;
@@ -1415,9 +1303,10 @@ section{padding:96px 24px;position:relative;z-index:1}
   min-height:56px;
   border-radius:9999px;
   letter-spacing:-0.01em;
-  transition:background var(--dur-quick) var(--ease-out),transform var(--dur-quick) var(--ease-out);
+  box-shadow:0 1px 2px rgba(59,130,246,.12), 0 8px 24px rgba(59,130,246,.18);
+  transition:background var(--dur-quick) var(--ease-out),transform var(--dur-quick) var(--ease-out),box-shadow var(--dur-quick) var(--ease-out);
 }
-.btn-cta:hover{background:var(--ink-90);transform:translateY(-2px)}
+.btn-cta:hover{background:var(--brand-hover);transform:translateY(-2px);box-shadow:0 2px 4px rgba(59,130,246,.16), 0 12px 32px rgba(59,130,246,.26)}
 
 /* ── FOOTER ── */
 footer{
@@ -1492,24 +1381,8 @@ footer{
   transition:color .15s var(--ease-out);
 }
 .footer-legal a:hover{color:var(--tx-1)}
-.footer-contact-main{
-  display:block;
-  font-size:13px;
-  color:var(--tx-3);
-  margin-bottom:8px;
-}
-.footer-contact-meta{
-  display:block;
-  font-size:12px;
-  color:var(--tx-4);
-  margin-bottom:4px;
-}
 
 /* ── FEATURE CARD HEAD ── */
-.feature-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.feature-card-head .feature-card-title{margin-bottom:0}
-.feature-icon{color:var(--tx-3);flex-shrink:0}
-
 /* DNA v2: single clean canvas — no theme toggle, no dark mode */
 
 /* ── RESPONSIVE ── */
@@ -1534,7 +1407,6 @@ footer{
   .trust-card{padding:24px}
   .pricing-grid{grid-template-columns:1fr;max-width:400px;gap:16px;margin-top:32px}
   .pricing-card.pro-card{margin-top:0}
-  .vs-grid{grid-template-columns:1fr}
   .pain-numbered-row{grid-template-columns:1fr;gap:12px;padding:24px 0}
   .pain-num{font-size:36px;margin-bottom:8px}
   .pain-row-desc{max-width:100%}
@@ -1583,7 +1455,6 @@ footer{
   .footer-cols{flex-direction:column;gap:20px}
   #proof{padding-top:48px;padding-bottom:48px}
   #cta{padding:40px 16px}
-  .for-item{padding:16px 0}
 }
 </style>
 </head>
@@ -1592,9 +1463,9 @@ footer{
 <!-- NAV -->
 <nav class="nav-wrap" aria-label="Navigatie">
   <div class="nav-pill">
-    <a class="nav-logo" href="/"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="1" y="1" width="18" height="14" rx="4" fill="#3b82f6"/><polygon points="4,15 7,18.5 9,15" fill="#3b82f6"/><rect x="4" y="4" width="11" height="1.5" rx="0.7" fill="white" opacity="0.3"/><rect x="4" y="7" width="8" height="2" rx="1" fill="white"/><rect x="4" y="11" width="10" height="1.5" rx="0.7" fill="white" opacity="0.3"/></svg><span class="wm">Comment</span></a>
+    <a class="nav-logo" href="/" aria-label="CommentCenter &mdash; home"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="1" y="1" width="18" height="14" rx="4" fill="#3b82f6"/><polygon points="4,15 7,18.5 9,15" fill="#3b82f6"/><rect x="4" y="4" width="11" height="1.5" rx="0.7" fill="white" opacity="0.3"/><rect x="4" y="7" width="8" height="2" rx="1" fill="white"/><rect x="4" y="11" width="10" height="1.5" rx="0.7" fill="white" opacity="0.3"/></svg><span class="wm">Comment</span></a>
     <div class="nav-links">
-      <a href="#hoe">Werkwijze</a>
+      <a href="#hoe">Zo werkt het</a>
       <a href="#pricing">Prijzen</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -1606,7 +1477,7 @@ footer{
 <!-- MOBILE MENU -->
 <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
   <button class="nav-mobile-close" id="mobileClose" aria-label="Menu sluiten">&times;</button>
-  <a href="#hoe" onclick="closeMobile()">Werkwijze</a>
+  <a href="#hoe" onclick="closeMobile()">Zo werkt het</a>
   <a href="#pricing" onclick="closeMobile()">Prijzen</a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="https://app.commentcenter.nl" class="nav-mobile-cta">Scan gratis je eerste post</a>
@@ -1621,8 +1492,8 @@ footer{
       <span class="sig-dot sig-dot--xs sig-dot--brand sig-dot--pulse" aria-hidden="true"></span>
       Voor Facebook-advertentiecomments
     </span>
-    <h1 class="hero-h1"><span class="accent">Je beste leads</span> zitten in je <em>comments</em>.</h1>
-    <p class="hero-sub">AI sorteert elke reactie. Jij reageert alleen op de warme.</p>
+    <h1 class="hero-h1">Je beste leads zitten in je <em>comments</em>.</h1>
+    <p class="hero-sub">De AI scheidt kopers van ruis in je Facebook-ads. Jij reageert alleen op de kopers.</p>
     <div class="hero-ctas">
       <a href="https://app.commentcenter.nl" class="btn-primary">Scan gratis je eerste post &rarr;</a>
       <a href="#hoe" class="btn-secondary">Zo werkt het</a>
@@ -1671,21 +1542,21 @@ footer{
         <div class="pain-item">
           <span class="sig-dot sig-dot--lg sig-dot--hot" aria-hidden="true"></span>
           <div>
-            <div class="pain-title">Hot leads wachten op reactie</div>
+            <h3 class="pain-title">Hot leads wachten op reactie</h3>
             <p class="pain-desc">Mensen tonen koopintentie, maar krijgen geen antwoord terwijl jij al voor hun klik hebt betaald.</p>
           </div>
         </div>
         <div class="pain-item">
           <span class="sig-dot sig-dot--lg sig-dot--comp" aria-hidden="true"></span>
           <div>
-            <div class="pain-title">Bezwaren blijven publiek staan</div>
+            <h3 class="pain-title">Bezwaren blijven publiek staan</h3>
             <p class="pain-desc">Twijfel en negatieve reacties blijven zichtbaar voor iedereen die je advertentie ziet.</p>
           </div>
         </div>
         <div class="pain-item">
           <span class="sig-dot sig-dot--lg sig-dot--spam" aria-hidden="true"></span>
           <div>
-            <div class="pain-title">Spam vervuilt je social proof</div>
+            <h3 class="pain-title">Spam vervuilt je social proof</h3>
             <p class="pain-desc">Irrelevante troep trekt je commentsectie omlaag en maakt echte intentie lastiger om te zien.</p>
           </div>
         </div>
@@ -1743,7 +1614,7 @@ footer{
         <div class="step-left">
           <div class="step-num">01</div>
           <div>
-            <div class="step-title">Plak je post-URL</div>
+            <h3 class="step-title">Plak je post-URL</h3>
             <p class="step-desc">We halen elke reactie onder je Facebook-advertentie op. Werkt ook met dark posts.</p>
           </div>
         </div>
@@ -1755,7 +1626,7 @@ footer{
         <div class="step-left">
           <div class="step-num">02</div>
           <div>
-            <div class="step-title">AI sorteert in 5 categorie&euml;n</div>
+            <h3 class="step-title">AI sorteert in 5 categorie&euml;n</h3>
             <p class="step-desc">Hot Lead, Interesse, Vraag, Klacht of Spam &mdash; met context, niet met keywords.</p>
           </div>
         </div>
@@ -1767,7 +1638,7 @@ footer{
         <div class="step-left">
           <div class="step-num">03</div>
           <div>
-            <div class="step-title">Reageer, verberg of exporteer</div>
+            <h3 class="step-title">Reageer, verberg of exporteer</h3>
             <p class="step-desc">Pak eerst de hot leads. Verberg spam in bulk. Stuur alles door naar je CRM.</p>
           </div>
         </div>
@@ -1790,7 +1661,7 @@ footer{
 <section id="kernfunctie">
   <div class="inner" style="text-align:center">
     <span class="section-label">DE AI</span>
-    <h2 class="section-head section-head--center">Begrijpt <em>wat</em> er staat. Niet alleen <em>welke</em> woorden.</h2>
+    <h2 class="section-head section-head--center">Leest <em>intentie</em>. Niet alleen woorden.</h2>
     <p class="section-sub section-sub--center">Geen trefwoordmatching. Echte context-analyse &mdash; toon, intentie en taal.</p>
     <div class="classif-box" style="max-width:720px;margin:0 auto;text-align:left">
       <div class="classif-header"><span class="eyebrow eyebrow--sm"><span class="sig-dot sig-dot--xs sig-dot--brand sig-dot--pulse" aria-hidden="true"></span>LIVE DEMO &middot; ZONNEPANELEN CAMPAGNE</span></div>
@@ -1840,7 +1711,7 @@ footer{
   <div class="inner">
     <div style="text-align:center">
       <span class="section-label">WAT JE KRIJGT</span>
-      <h2 class="section-head section-head--center">Alles om je comments te <em>beheersen</em>.</h2>
+      <h2 class="section-head section-head--center">Alles om leads uit je comments te <em>halen</em>.</h2>
       <p class="section-sub section-sub--center">Zes functies. Gebouwd voor teams die geen tijd hebben voor ruis.</p>
     </div>
     <div class="feat-grid">
@@ -1850,7 +1721,7 @@ footer{
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
         </div>
         <div class="feat-body">
-          <div class="feat-card-title">Elke comment direct gesorteerd</div>
+          <h3 class="feat-card-title">Elke comment direct gesorteerd</h3>
           <div class="feat-card-desc">Hot Lead, Interesse, Vraag, Klacht of Spam. Automatisch, zonder tags of regels.</div>
         </div>
         <div class="feat-visual">
@@ -1874,7 +1745,7 @@ footer{
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <div class="feat-body">
-          <div class="feat-card-title">Reageer in &eacute;&eacute;n klik</div>
+          <h3 class="feat-card-title">Reageer in &eacute;&eacute;n klik</h3>
           <div class="feat-card-desc">AI stelt een reactie voor. Kies zakelijk of warm &mdash; verstuur als jouw pagina.</div>
         </div>
         <div class="feat-visual">
@@ -1899,7 +1770,7 @@ footer{
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/><rect x="17" y="4" width="4" height="4" rx="1" fill="currentColor" opacity=".3"/></svg>
         </div>
         <div class="feat-body">
-          <div class="feat-card-title">Spam weg in seconden</div>
+          <h3 class="feat-card-title">Spam weg in seconden</h3>
           <div class="feat-card-desc">Selecteer alle spam tegelijk. Verberg of verwijder in bulk &mdash; &eacute;&eacute;n klik.</div>
         </div>
         <div class="feat-visual">
@@ -1919,7 +1790,7 @@ footer{
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </div>
         <div class="feat-body">
-          <div class="feat-card-title">Mis geen enkele koper</div>
+          <h3 class="feat-card-title">Mis geen enkele koper</h3>
           <div class="feat-card-desc">Zinnen als &ldquo;prijs?&rdquo;, &ldquo;beschikbaar?&rdquo; of &ldquo;leveren jullie hier?&rdquo; zijn koopsignalen. Wij herkennen ze &mdash; jij ziet ze bovenaan.</div>
         </div>
         <div class="feat-visual">
@@ -1943,7 +1814,7 @@ footer{
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
         <div class="feat-body">
-          <div class="feat-card-title">Ook verborgen posts</div>
+          <h3 class="feat-card-title">Ook verborgen posts</h3>
           <div class="feat-card-desc">Dark posts, niet-gepubliceerde ads of organische posts &mdash; plak de URL en we halen alles op.</div>
         </div>
         <div class="feat-visual">
@@ -1963,7 +1834,7 @@ footer{
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
         <div class="feat-body">
-          <div class="feat-card-title">Door naar je CRM</div>
+          <h3 class="feat-card-title">Door naar je CRM</h3>
           <div class="feat-card-desc">Export hot leads als CSV. Direct te importeren in HubSpot, Pipedrive of je eigen CRM.</div>
         </div>
         <div class="feat-visual">
@@ -2033,21 +1904,21 @@ footer{
         <div class="persona-icon-wrap">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M6 8h4"/><path d="M6 12h4"/><path d="M6 16h4"/><path d="M14 8h4"/><path d="M14 12h4"/><path d="M14 16h4"/></svg>
         </div>
-        <div class="persona-title">Agencies met 8+ klantaccounts</div>
+        <h3 class="persona-title">Agencies met 8+ klantaccounts</h3>
         <p class="persona-desc">&Eacute;&eacute;n gemiste hot lead en de klant belt jou. Jij ziet alle pagina&rsquo;s in &eacute;&eacute;n overzicht.</p>
       </div>
       <div class="persona-card">
         <div class="persona-icon-wrap">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
-        <div class="persona-title">Lead-gen met &euro;40 CPL</div>
+        <h3 class="persona-title">Lead-gen met &euro;40 CPL</h3>
         <p class="persona-desc">De lead staat in je comments. Niemand ziet het. CommentCenter wel &mdash; en markeert hem direct.</p>
       </div>
       <div class="persona-card">
         <div class="persona-icon-wrap">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
-        <div class="persona-title">Performance marketeers</div>
+        <h3 class="persona-title">Performance marketeers</h3>
         <p class="persona-desc">Je ROAS klopt, je comments niet. Spam eet je social proof op terwijl jij in Ads Manager zit.</p>
       </div>
     </div>
@@ -2069,14 +1940,14 @@ footer{
     <div class="pricing-grid" id="pricingGrid">
       <!-- FREE -->
       <div class="pricing-card" data-card="free">
-        <div class="pricing-plan">Free</div>
-        <div class="pricing-desc">Zien of het werkt — zonder creditcard</div>
+        <h3 class="pricing-plan">Free</h3>
+        <div class="pricing-desc">Test het op je eerste post &mdash; geen creditcard.</div>
         <div class="pricing-price">
           <span class="pricing-amount">&euro;0</span>
           <span class="pricing-per">/maand</span>
         </div>
         <div class="pricing-billed"></div>
-        <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Begin gratis &rarr;</a>
+        <a href="https://app.commentcenter.nl" class="pricing-cta-secondary">Scan je eerste post &rarr;</a>
         <div class="pricing-sub-text">Geen creditcard nodig</div>
         <ul class="pricing-features">
           <li>100 comments totaal (one-time)</li>
@@ -2089,10 +1960,10 @@ footer{
       <!-- PRO -->
       <div class="pricing-card pro-card" data-card="pro">
         <div class="pricing-plan-row">
-          <div class="pricing-plan">Pro</div>
+          <h3 class="pricing-plan">Pro</h3>
           <span class="pricing-badge">MEEST GEKOZEN</span>
         </div>
-        <div class="pricing-desc">Voor teams die dagelijks advertentiecomments modereren</div>
+        <div class="pricing-desc">Voor teams die elke dag leads uit comments vissen.</div>
         <div class="pricing-price">
           <span class="pricing-amount" data-monthly="&euro;29" data-yearly="&euro;24">&euro;29</span>
           <span class="pricing-per">/maand</span>
@@ -2119,8 +1990,8 @@ footer{
   <div class="inner-sm">
     <div style="text-align:center">
       <span class="section-label">FAQ</span>
-      <h2 class="section-head section-head--center">Nog even <em>nadenken</em>?</h2>
-      <p class="section-sub section-sub--center">De vijf vragen die we het vaakst krijgen.</p>
+      <h2 class="section-head section-head--center">Wat marketeers ons het <em>vaakst</em> vragen.</h2>
+      <p class="section-sub section-sub--center">Vijf eerlijke antwoorden &mdash; zonder marketingpraat.</p>
     </div>
     <div class="faq-list">
       <div class="faq-item">
@@ -2140,8 +2011,8 @@ footer{
         <div class="faq-a">Nu alleen Facebook &mdash; incl. dark posts en organische posts van pagina&rsquo;s waarvan je admin bent. Instagram staat op de roadmap.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Kan ik het gratis proberen?<span class="faq-icon">&#9662;</span></button>
-        <div class="faq-a">Ja. Free plan, geen creditcard nodig. 100 comments en &eacute;&eacute;n pagina &mdash; genoeg om te zien of het werkt voor jouw campagnes.</div>
+        <button class="faq-q" aria-expanded="false">Wat als de AI het fout heeft?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Elke classificatie komt met een confidence-score. Bij twijfel (onder 80%) zie je het comment in een aparte &ldquo;check dit even&rdquo;-rij &mdash; je beslist zelf. De AI leert continu bij van jouw correcties.</div>
       </div>
     </div>
   </div>
@@ -2163,8 +2034,8 @@ footer{
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <a class="footer-logo" href="/"><svg width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><rect x="0" y="0" width="14" height="10" rx="3" fill="#3b82f6"/><polygon points="3,10 5,13 7,10" fill="#3b82f6"/><rect x="3" y="3" width="8" height="1.5" rx=".7" fill="white" opacity=".3"/><rect x="3" y="6" width="6" height="1.5" rx=".7" fill="white"/></svg><span class="wm">Comment</span></a>
-      <p class="footer-tagline">AI-commentbeheer voor Facebook-advertenties. Mis nooit meer een hot lead.</p>
+      <a class="footer-logo" href="/" aria-label="CommentCenter &mdash; home"><svg width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><rect x="0" y="0" width="14" height="10" rx="3" fill="#3b82f6"/><polygon points="3,10 5,13 7,10" fill="#3b82f6"/><rect x="3" y="3" width="8" height="1.5" rx=".7" fill="white" opacity=".3"/><rect x="3" y="6" width="6" height="1.5" rx=".7" fill="white"/></svg><span class="wm">Comment</span></a>
+      <p class="footer-tagline">Geen hot lead meer verloren onder je Facebook-ads.</p>
     </div>
     <div class="footer-cols">
       <div class="footer-col">
@@ -2177,9 +2048,7 @@ footer{
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Contact</div>
-        <span class="footer-contact-main">info@commentcenter.nl</span>
-        <span class="footer-contact-meta">KvK: &mdash;</span>
-        <span class="footer-contact-meta">BTW: &mdash;</span>
+        <a href="mailto:info@commentcenter.nl">info@commentcenter.nl</a>
       </div>
     </div>
   </div>
@@ -2201,7 +2070,7 @@ function closeMobile(){mobileMenu.classList.remove('open')}
 hamburger.addEventListener('click',()=>mobileMenu.classList.add('open'));
 mobileClose.addEventListener('click',closeMobile);
 
-// Pricing toggle + equal heights
+// Pricing toggle — cards use natural heights (align-items:start in CSS)
 function setPricingPeriod(period){
   document.querySelectorAll('.pricing-toggle-btn').forEach(b=>{
     b.classList.toggle('active',b.dataset.period===period);
@@ -2215,18 +2084,7 @@ function setPricingPeriod(period){
   document.querySelectorAll('.pricing-sub-text[data-monthly]').forEach(el=>{
     el.innerHTML=el.dataset[period];
   });
-  equalizePricingCards();
 }
-function equalizePricingCards(){
-  var cards=document.querySelectorAll('#pricingGrid .pricing-card');
-  cards.forEach(c=>{c.style.minHeight=''});
-  if(cards.length===2){
-    var max=Math.max(cards[0].offsetHeight,cards[1].offsetHeight);
-    cards.forEach(c=>{c.style.minHeight=max+'px'});
-  }
-}
-window.addEventListener('load',equalizePricingCards);
-window.addEventListener('resize',equalizePricingCards);
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn=>{
