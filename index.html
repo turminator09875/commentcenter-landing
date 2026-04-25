@@ -790,6 +790,37 @@ section{padding:96px 24px;position:relative;z-index:1}
   margin-top:0;
   align-items:start;
 }
+/* ── DEMO VIDEO — P1-5 ── */
+#demo-vid{background:var(--bg)}
+.demo-vid-wrap{
+  position:relative;
+  max-width:800px;
+  margin:48px auto 0;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:inset 0 0 0 1px var(--line-strong),0 8px 32px rgba(0,0,0,.07);
+  aspect-ratio:16/9;
+  background:var(--surface-2);
+  display:flex;align-items:center;justify-content:center;
+}
+.demo-vid-wrap iframe,.demo-vid-wrap video{
+  position:absolute;inset:0;width:100%;height:100%;border:none;display:block;
+}
+.demo-vid-ph{
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  color:var(--tx-3);pointer-events:none;user-select:none;
+}
+.demo-vid-ph-btn{
+  width:60px;height:60px;border-radius:50%;
+  background:var(--brand);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 10px rgba(59,130,246,.10);
+}
+.demo-vid-ph span{font-size:11px;letter-spacing:.10em;text-transform:uppercase;font-weight:500;font-family:var(--mono)}
+@media(max-width:640px){
+  .demo-vid-wrap{border-radius:14px;margin-top:32px}
+}
+
 #kernfunctie{background:var(--surface)}
 .classif-box{
   background:#fff;
@@ -1604,7 +1635,7 @@ footer{
       <a href="https://app.commentcenter.nl" class="btn-primary">Scan gratis je eerste post &rarr;</a>
       <a href="#hoe" class="btn-secondary">Zo werkt het</a>
     </div>
-    <p class="hero-trust">Geen creditcard &middot; Werkt alleen op pagina's die jij beheert</p>
+    <p class="hero-trust">Geen creditcard &middot; Maandelijks opzegbaar &middot; Gebruikt door NL performance agencies</p>
   </div>
 
   <!-- HERO MOCK -->
@@ -1758,6 +1789,29 @@ footer{
             <svg class="s3-cur" id="s3cursor" style="position:absolute;top:0;left:0" width="14" height="16" viewBox="0 0 14 16"><path d="M1 1L1 12L4.5 9L6.5 14L8 13.5L6 8.5L10 8.5L1 1Z" fill="white" stroke="rgba(0,0,0,0.4)" stroke-width="0.6"/></svg>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO VIDEO — P1-5: 15s product walkthrough -->
+<section id="demo-vid" class="fade-up">
+  <div class="inner" style="text-align:center">
+    <span class="section-label">DEMO</span>
+    <h2 class="section-head section-head--center">Van URL naar leads in <em>15 seconden</em>.</h2>
+    <p class="section-sub section-sub--center">Plak een post-URL. Wacht. Zie precies welke comments geld opleveren.</p>
+    <div class="demo-vid-wrap">
+      <!-- Vervang dit blok zodra de opname klaar is:
+           <iframe src="https://www.loom.com/embed/JOUW_LOOM_ID" allowfullscreen allow="autoplay;fullscreen" loading="lazy" title="CommentCenter demo"></iframe>
+           Of: <video src="demo.mp4" autoplay loop muted playsinline></video>
+      -->
+      <div class="demo-vid-ph">
+        <div class="demo-vid-ph-btn">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <path d="M8 5.5L17 11L8 16.5V5.5Z" fill="white"/>
+          </svg>
+        </div>
+        <span>Demo video · binnenkort</span>
       </div>
     </div>
   </div>
@@ -2146,7 +2200,7 @@ footer{
     <div style="text-align:center">
       <span class="section-label">FAQ</span>
       <h2 class="section-head section-head--center">Wat marketeers ons het <em>vaakst</em> vragen.</h2>
-      <p class="section-sub section-sub--center">Vijf eerlijke antwoorden &mdash; zonder marketingpraat.</p>
+      <p class="section-sub section-sub--center">Eerlijke antwoorden &mdash; zonder marketingpraat.</p>
     </div>
     <div class="faq-list">
       <div class="faq-item">
@@ -2168,6 +2222,22 @@ footer{
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Wat als de AI het fout heeft?<span class="faq-icon">&#9662;</span></button>
         <div class="faq-a">Elke classificatie komt met een confidence-score. Bij twijfel (onder 80%) zie je het comment in een aparte &ldquo;check dit even&rdquo;-rij &mdash; je beslist zelf. De AI leert continu bij van jouw correcties.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Hoe werkt de facturering?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Het Free-plan geeft je eenmalig 100 comments &mdash; geen creditcard nodig. Pro wordt maandelijks vooraf gefactureerd via iDEAL of creditcard. Kies je voor jaarlijks, dan betaal je 10 maanden voor 12.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Kan ik maandelijks opzeggen?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Ja. Geen minimum-looptijd, geen opzegtermijn. Zeg op v&oacute;&oacute;r je verlengingsdatum en je betaalt niets meer. Je data blijft 30 dagen beschikbaar.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Waar worden mijn data opgeslagen?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Op servers binnen de EU. We slaan alleen op wat nodig is: de post-URL, geclassificeerde comments en je instellingen. We verkopen of delen nooit jouw data of die van je klanten.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Hoe lang duurt de setup?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Twee klikken. Verbind je pagina via de Facebook-login, plak een post-URL en druk op Analyseer. Geen technische kennis nodig, geen API-keys, geen integraties.</div>
       </div>
     </div>
   </div>
