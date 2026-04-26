@@ -807,20 +807,64 @@ section{padding:96px 24px;position:relative;z-index:1}
 .demo-vid-wrap iframe,.demo-vid-wrap video{
   position:absolute;inset:0;width:100%;height:100%;border:none;display:block;
 }
-.demo-vid-ph{
-  display:flex;flex-direction:column;align-items:center;gap:16px;
-  color:var(--tx-3);pointer-events:none;user-select:none;
-}
-.demo-vid-ph-btn{
-  width:60px;height:60px;border-radius:50%;
-  background:var(--brand);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 0 10px rgba(59,130,246,.10);
-}
-.demo-vid-ph span{font-size:11px;letter-spacing:.10em;text-transform:uppercase;font-weight:500;font-family:var(--mono)}
 @media(max-width:640px){
   .demo-vid-wrap{border-radius:14px;margin-top:32px}
 }
+/* ── ANIMATED PRODUCT DEMO ── */
+#ccd-anim{position:absolute;inset:0;overflow:hidden;background:#F4F4F5;font-family:'DM Sans',system-ui,sans-serif;color:#141414;display:flex;flex-direction:column}
+.ccd-chrome{background:#fff;border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;gap:8px;padding:0 12px;height:34px;flex-shrink:0}
+.ccd-dots{display:flex;gap:5px;flex-shrink:0}
+.ccd-dot{width:10px;height:10px;border-radius:50%}
+.ccd-dot:nth-child(1){background:#FC5F57}.ccd-dot:nth-child(2){background:#FEBC2E}.ccd-dot:nth-child(3){background:#28C840}
+.ccd-urlbar{flex:1;background:#F4F4F5;border-radius:6px;font-size:11px;color:#737373;text-align:center;padding:3px 10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.ccd-s{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.ccd-s.on{opacity:1;pointer-events:auto}
+/* Screen 1: input */
+.ccd-s1-body{flex:1;display:flex;align-items:center;justify-content:center;padding:16px}
+.ccd-card{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px 24px;width:100%;max-width:460px;box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.ccd-card-lbl{font-size:11px;font-weight:600;color:#737373;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.ccd-irow{display:flex;gap:8px;align-items:stretch}
+.ccd-inp{flex:1;background:#FAFAFA;border:1.5px solid rgba(0,0,0,.12);border-radius:8px;padding:8px 11px;font-size:12px;color:#141414;font-family:inherit;display:flex;align-items:center;min-height:36px;overflow:hidden}
+.ccd-typed{white-space:nowrap;overflow:hidden}
+.ccd-cur{display:inline-block;width:1.5px;height:13px;background:#141414;vertical-align:middle;margin-left:1px}
+@keyframes ccd-blink{0%,100%{opacity:1}50%{opacity:0}}
+.ccd-cur{animation:ccd-blink .7s steps(1) infinite}
+.ccd-go{background:#141414;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;flex-shrink:0;transition:background .15s,transform .1s}
+.ccd-go.active{background:#3b82f6;transform:scale(.96)}
+/* Screen 2: scanning */
+.ccd-s2-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px}
+@keyframes ccd-spin{to{transform:rotate(360deg)}}
+.ccd-ring{width:44px;height:44px;border:3px solid rgba(59,130,246,.2);border-top-color:#3b82f6;border-radius:50%;animation:ccd-spin .75s linear infinite}
+.ccd-stitle{font-size:14px;font-weight:600;color:#141414}
+.ccd-ssub{font-size:11px;color:#737373;font-family:'JetBrains Mono',monospace}
+.ccd-bar-wrap{width:220px;height:4px;background:rgba(0,0,0,.08);border-radius:2px;overflow:hidden}
+.ccd-bar{height:100%;background:#3b82f6;border-radius:2px;width:0%;transition:width .08s linear}
+/* Screen 3: results */
+.ccd-tabs{display:flex;border-bottom:1px solid rgba(0,0,0,.07);background:#fff;padding:0 12px;flex-shrink:0}
+.ccd-tab{font-size:11px;font-weight:600;color:#737373;padding:7px 10px;border-bottom:2px solid transparent;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.ccd-tab.on{color:#141414;border-bottom-color:#141414}
+.ccd-tbn{font-size:10px;background:rgba(0,0,0,.07);padding:1px 5px;border-radius:3px;color:#404040}
+.ccd-tab.on .ccd-tbn{background:rgba(59,130,246,.12);color:#3b82f6}
+.ccd-rows{flex:1;overflow:hidden;padding:8px 12px;display:flex;flex-direction:column;gap:5px}
+.ccd-row{background:#fff;border-radius:10px;border:1px solid rgba(0,0,0,.08);padding:9px 11px;display:flex;align-items:center;gap:9px;opacity:0;transform:translateY(5px);transition:opacity .3s ease,transform .3s ease;flex-shrink:0}
+.ccd-row.on{opacity:1;transform:none}
+.ccd-av{width:26px;height:26px;border-radius:50%;background:#E5E5E5;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#737373;flex-shrink:0}
+.ccd-rm{flex:1;min-width:0}
+.ccd-rname{font-size:10px;font-weight:600;color:#404040;margin-bottom:2px}
+.ccd-rtxt{font-size:12px;color:#141414;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ccd-rr{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
+.ccd-chip{font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:4px;white-space:nowrap}
+.ch-hot{background:rgba(5,150,105,.12);color:#059669}
+.ch-int{background:rgba(217,119,6,.12);color:#D97706}
+.ch-qa{background:rgba(59,130,246,.12);color:#3b82f6}
+.ch-kl{background:rgba(220,38,38,.12);color:#DC2626}
+.ch-sp{background:rgba(163,163,163,.12);color:#737373}
+.ccd-conf{font-size:9px;color:#A3A3A3;font-family:'JetBrains Mono',monospace}
+.ccd-rep{font-size:10px;font-weight:600;color:#3b82f6;background:rgba(59,130,246,.08);border:none;border-radius:5px;padding:2px 7px;cursor:pointer;font-family:inherit;opacity:0;transition:opacity .2s;margin-top:1px}
+.ccd-row.on .ccd-rep{opacity:1}
+.ccd-foot{padding:5px 12px;border-top:1px solid rgba(0,0,0,.06);display:flex;gap:10px;flex-shrink:0;background:#FAFAFA}
+.ccd-fstat{font-size:10px;color:#737373;font-family:'JetBrains Mono',monospace}
+.ccd-fstat b{color:#141414}
 
 #kernfunctie{background:var(--surface)}
 .classif-box{
@@ -1709,17 +1753,47 @@ footer{
     <h2 class="section-head section-head--center">Van URL naar leads in <em>15 seconden</em>.</h2>
     <p class="section-sub section-sub--center">Plak een post-URL. Wacht. Zie precies welke comments geld opleveren.</p>
     <div class="demo-vid-wrap">
-      <!-- Vervang dit blok zodra de opname klaar is:
-           <iframe src="https://www.loom.com/embed/JOUW_LOOM_ID" allowfullscreen allow="autoplay;fullscreen" loading="lazy" title="CommentCenter demo"></iframe>
-           Of: <video src="demo.mp4" autoplay loop muted playsinline></video>
-      -->
-      <div class="demo-vid-ph">
-        <div class="demo-vid-ph-btn">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-            <path d="M8 5.5L17 11L8 16.5V5.5Z" fill="white"/>
-          </svg>
+      <div id="ccd-anim" aria-hidden="true">
+        <!-- Screen 1: URL input -->
+        <div class="ccd-s on" id="ccd-s1">
+          <div class="ccd-chrome"><div class="ccd-dots"><div class="ccd-dot"></div><div class="ccd-dot"></div><div class="ccd-dot"></div></div><div class="ccd-urlbar">app.commentcenter.nl</div></div>
+          <div class="ccd-s1-body">
+            <div class="ccd-card">
+              <div class="ccd-card-lbl">Post-URL scannen</div>
+              <div class="ccd-irow">
+                <div class="ccd-inp"><span class="ccd-typed" id="ccd-typed"></span><span class="ccd-cur" id="ccd-cur"></span></div>
+                <button class="ccd-go" id="ccd-go">Analyseer →</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <span>Demo video · binnenkort</span>
+        <!-- Screen 2: scanning -->
+        <div class="ccd-s" id="ccd-s2">
+          <div class="ccd-chrome"><div class="ccd-dots"><div class="ccd-dot"></div><div class="ccd-dot"></div><div class="ccd-dot"></div></div><div class="ccd-urlbar">app.commentcenter.nl</div></div>
+          <div class="ccd-s2-body">
+            <div class="ccd-ring"></div>
+            <div class="ccd-stitle">Comments analyseren</div>
+            <div class="ccd-bar-wrap"><div class="ccd-bar" id="ccd-bar"></div></div>
+            <div class="ccd-ssub" id="ccd-cnt">0 / 75</div>
+          </div>
+        </div>
+        <!-- Screen 3: results -->
+        <div class="ccd-s" id="ccd-s3">
+          <div class="ccd-chrome"><div class="ccd-dots"><div class="ccd-dot"></div><div class="ccd-dot"></div><div class="ccd-dot"></div></div><div class="ccd-urlbar">app.commentcenter.nl</div></div>
+          <div class="ccd-tabs">
+            <span class="ccd-tab on">Alles <span class="ccd-tbn">75</span></span>
+            <span class="ccd-tab">Hot Leads <span class="ccd-tbn">12</span></span>
+            <span class="ccd-tab">Vragen <span class="ccd-tbn">18</span></span>
+            <span class="ccd-tab">Spam <span class="ccd-tbn">31</span></span>
+          </div>
+          <div class="ccd-rows" id="ccd-rows"></div>
+          <div class="ccd-foot">
+            <span class="ccd-fstat"><b>12</b> hot leads</span>
+            <span class="ccd-fstat"><b>18</b> vragen</span>
+            <span class="ccd-fstat"><b>6</b> klachten</span>
+            <span class="ccd-fstat"><b>31</b> spam verborgen</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2463,6 +2537,101 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     }
   }
   loop();
+})();
+
+// ─── PRODUCT DEMO ANIMATION ───────────────────────────────────────────────
+(function(){
+  var URL_STR = 'facebook.com/jouwbedrijf/posts/8234567891';
+  var COMMENTS = [
+    {av:'MV',name:'Marloes V.',text:'Wat kost dit? Wil graag vandaag bestellen!',chip:'HOT LEAD',cls:'ch-hot',conf:'97%',reply:true},
+    {av:'KS',name:'Kevin S.',text:'Ziet er interessant uit, hoe werkt het precies?',chip:'INTERESSE',cls:'ch-int',conf:'84%'},
+    {av:'AP',name:'Anna P.',text:'Zijn er ook andere maten beschikbaar?',chip:'VRAAG',cls:'ch-qa',conf:'91%'},
+    {av:'TB',name:'Tom B.',text:'Mijn bestelling is al 2 weken niet aangekomen 😤',chip:'KLACHT',cls:'ch-kl',conf:'88%'},
+    {av:'B',name:'Bot123',text:'Click here for free stuff!!!',chip:'SPAM',cls:'ch-sp',conf:'99%'},
+  ];
+
+  function sw(id){
+    ['ccd-s1','ccd-s2','ccd-s3'].forEach(function(s){
+      var el=document.getElementById(s);
+      if(el) el.classList.toggle('on',s===id);
+    });
+  }
+
+  function typeUrl(done){
+    var el=document.getElementById('ccd-typed');
+    var cur=document.getElementById('ccd-cur');
+    if(!el)return;
+    el.textContent=''; var i=0;
+    cur.style.display='inline-block';
+    var t=setInterval(function(){
+      el.textContent=URL_STR.slice(0,++i);
+      if(i>=URL_STR.length){clearInterval(t);done();}
+    },42);
+  }
+
+  function scanAnim(done){
+    var bar=document.getElementById('ccd-bar');
+    var cnt=document.getElementById('ccd-cnt');
+    if(!bar)return;
+    bar.style.width='0%'; var p=0;
+    var t=setInterval(function(){
+      p=Math.min(100,p+2.2);
+      bar.style.width=p+'%';
+      if(cnt) cnt.textContent=Math.round(p/100*75)+' / 75';
+      if(p>=100){clearInterval(t);setTimeout(done,250);}
+    },55);
+  }
+
+  function showResults(done){
+    var wrap=document.getElementById('ccd-rows');
+    if(!wrap)return;
+    wrap.innerHTML='';
+    COMMENTS.forEach(function(c,i){
+      var row=document.createElement('div');
+      row.className='ccd-row';
+      row.innerHTML='<div class="ccd-av">'+c.av+'</div>'
+        +'<div class="ccd-rm"><div class="ccd-rname">'+c.name+'</div><div class="ccd-rtxt">'+c.text+'</div></div>'
+        +'<div class="ccd-rr"><span class="ccd-chip '+c.cls+'">'+c.chip+'</span>'
+        +'<span class="ccd-conf">'+c.conf+'</span>'
+        +(c.reply?'<button class="ccd-rep">Reageer</button>':'')+'</div>';
+      wrap.appendChild(row);
+      setTimeout(function(){row.classList.add('on');},i*380+80);
+    });
+    setTimeout(done, COMMENTS.length*380+1800);
+  }
+
+  function run(){
+    sw('ccd-s1');
+    var typed=document.getElementById('ccd-typed');
+    var go=document.getElementById('ccd-go');
+    if(typed) typed.textContent='';
+    if(go) go.classList.remove('active');
+
+    setTimeout(function(){
+      typeUrl(function(){
+        setTimeout(function(){
+          if(go) go.classList.add('active');
+          setTimeout(function(){
+            sw('ccd-s2');
+            scanAnim(function(){
+              sw('ccd-s3');
+              showResults(function(){
+                setTimeout(run,1500);
+              });
+            });
+          },320);
+        },500);
+      });
+    },400);
+  }
+
+  var section=document.getElementById('demo-vid');
+  if(!section){run();return;}
+  var started=false;
+  var obs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting&&!started){started=true;run();obs.disconnect();}
+  },{threshold:0.25});
+  obs.observe(section);
 })();
 
 </script>
