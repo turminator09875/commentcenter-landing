@@ -1,9 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "privacy.html", "use": "@vercel/static" },
-    { "src": "terms.html", "use": "@vercel/static" }
+    { "src": "index.html", "use": "@vercel/static" }
   ],
   "headers": [
     {
@@ -16,8 +14,11 @@
     }
   ],
   "routes": [
-    { "src": "/privacy", "dest": "/privacy.html" },
-    { "src": "/terms", "dest": "/terms.html" },
+    { "src": "/privacy", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/privacy" } },
+    { "src": "/privacy.html", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/privacy" } },
+    { "src": "/terms", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/terms" } },
+    { "src": "/terms.html", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/terms" } },
+    { "src": "/data-deletion", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/data-deletion" } },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
