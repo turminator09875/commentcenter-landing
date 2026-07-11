@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI-commentbeheer voor Facebook-advertenties | CommentCenter</title>
-<meta name="description" content="AI sorteert je Facebook-advertentiecomments in hot leads, vragen, klachten en spam. Mis nooit meer een koper. Start gratis, geen creditcard.">
+<meta name="description" content="AI sorteert je Facebook-comments in hot leads, vragen, klachten en spam. Zie sneller welke reacties aandacht verdienen. Start gratis, geen creditcard.">
 <link rel="canonical" href="https://commentcenter.nl/">
 <link rel="alternate" hreflang="nl" href="https://commentcenter.nl/">
 <link rel="alternate" hreflang="x-default" href="https://commentcenter.nl/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AI-commentbeheer voor Facebook-advertenties | CommentCenter">
-<meta property="og:description" content="AI sorteert je Facebook-advertentiecomments in hot leads, vragen, klachten en spam. Mis nooit meer een koper. Start gratis, geen creditcard.">
+<meta property="og:description" content="AI sorteert je Facebook-comments in hot leads, vragen, klachten en spam. Zie sneller welke reacties aandacht verdienen. Start gratis, geen creditcard.">
 <meta property="og:image" content="https://commentcenter.nl/og-image.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="CommentCenter">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI-commentbeheer voor Facebook-advertenties | CommentCenter">
-<meta name="twitter:description" content="AI sorteert je Facebook-advertentiecomments in hot leads, vragen, klachten en spam. Mis nooit meer een koper. Start gratis, geen creditcard.">
+<meta name="twitter:description" content="AI sorteert je Facebook-comments in hot leads, vragen, klachten en spam. Zie sneller welke reacties aandacht verdienen. Start gratis, geen creditcard.">
 <meta name="twitter:image" content="https://commentcenter.nl/og-image.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,10 +87,10 @@
       },
       {
         "@type": "Question",
-        "name": "Worden koopsignalen nooit per ongeluk verborgen?",
+        "name": "Hoe voorkom ik dat koopsignalen als spam worden behandeld?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nee. Elke comment wordt eerst geclassificeerd, dan behandeld. Zinnen als 'prijs?', 'beschikbaar?' of 'waar te koop?' worden altijd als Hot Lead of Interesse gelabeld — nooit als spam."
+          "text": "CommentCenter classificeert eerst en toont confidence per label. Jij ziet de AI-inschatting en kiest zelf welke comments je opvolgt of verbergt."
         }
       }
     ]
@@ -1414,7 +1414,6 @@ footer{
   .nav-links,.nav-cta{display:none}
   .nav-hamburger{display:block}
   .nav-pill{padding:8px 8px 8px 16px}
-  #proof{padding-top:56px;padding-bottom:56px}
   #cta{padding:80px 20px}
   #faq{padding-top:80px;padding-bottom:80px}
   #pricing{padding-top:80px;padding-bottom:80px}
@@ -1447,7 +1446,6 @@ footer{
   .pricing-amount{font-size:36px}
   .pricing-grid{margin-top:24px}
   .footer-cols{flex-direction:column;gap:20px}
-  #proof{padding-top:48px;padding-bottom:48px}
   #cta{padding:40px 16px}
 }
 </style>
@@ -1609,7 +1607,7 @@ footer{
           <div class="step-num">01</div>
           <div>
             <h3 class="step-title">Plak je post-URL</h3>
-            <p class="step-desc">We halen elke reactie onder je Facebook-advertentie op. Werkt ook met dark posts.</p>
+            <p class="step-desc">We halen reacties op via de offici&euml;le Meta Graph API voor pagina-posts waar jij beheerrechten op hebt.</p>
           </div>
         </div>
         <div class="step-anim" id="stepAnim1">
@@ -1803,18 +1801,18 @@ footer{
           </div>
         </div>
       </div>
-      <!-- Card 5: Dark posts -->
+      <!-- Card 5: Page posts -->
       <div class="feat-card fade-up">
         <div class="feat-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
         <div class="feat-body">
-          <h3 class="feat-card-title">Ook verborgen posts</h3>
-          <div class="feat-card-desc">Dark posts, niet-gepubliceerde ads of organische posts &mdash; plak de URL en we halen alles op.</div>
+          <h3 class="feat-card-title">Ook pagina-posts met veel reacties</h3>
+          <div class="feat-card-desc">Plak een Facebook-post-URL van een pagina die jij beheert. CommentCenter haalt de reacties op via de offici&euml;le Graph API.</div>
         </div>
         <div class="feat-visual">
           <div class="feat-row" style="justify-content:space-between">
-            <span class="feat-quote feat-quote--mono">facebook.com/ads/1045827...</span>
+            <span class="feat-quote feat-quote--mono">facebook.com/jouwpagina/posts/...</span>
             <span class="feat-action feat-action--success">&check; 12 gescand</span>
           </div>
           <div class="feat-row" style="justify-content:space-between">
@@ -1914,7 +1912,7 @@ footer{
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
         <h3 class="persona-title">Performance marketeers</h3>
-        <p class="persona-desc">Je ROAS klopt, je comments niet. Spam eet je social proof op terwijl jij in Ads Manager zit.</p>
+        <p class="persona-desc">Je campagnes lopen, maar de comments vragen aandacht. CommentCenter zet hot leads, vragen en spam direct op volgorde.</p>
       </div>
     </div>
   </div>
@@ -1999,8 +1997,8 @@ footer{
         <div class="faq-a">De AI leest toon, intentie en context &mdash; niet alleen keywords. Je ziet bij elke label een confidence-score, en jij beslist altijd zelf wat je opvolgt.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Worden koopsignalen nooit per ongeluk verborgen?<span class="faq-icon">&#9662;</span></button>
-        <div class="faq-a">Nee. Elke comment wordt eerst geclassificeerd, dan behandeld. Zinnen als &ldquo;prijs?&rdquo;, &ldquo;beschikbaar?&rdquo; of &ldquo;waar te koop?&rdquo; worden altijd als Hot Lead of Interesse gelabeld &mdash; nooit als spam.</div>
+        <button class="faq-q" aria-expanded="false">Hoe voorkom ik dat koopsignalen als spam worden behandeld?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">CommentCenter classificeert eerst en toont confidence per label. Jij ziet de AI-inschatting en kiest zelf welke comments je opvolgt of verbergt.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Hoe werkt de facturering?<span class="faq-icon">&#9662;</span></button>
@@ -2012,15 +2010,15 @@ footer{
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Hoe lang duurt de setup?<span class="faq-icon">&#9662;</span></button>
-        <div class="faq-a">Twee klikken. Verbind je pagina via de Facebook-login, plak een post-URL en druk op Analyseer. Geen technische kennis nodig, geen API-keys, geen integraties.</div>
+        <div class="faq-a">Log in via Facebook, kies je pagina, plak de post-URL en klik op Analyseer. Geen technische kennis nodig, geen API-keys, geen integraties.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Wat heb ik nodig om te beginnen?<span class="faq-icon">&#9662;</span></button>
-        <div class="faq-a">Een Facebook-pagina waarvan je admin of editor bent. Geen Business Manager, geen API-keys, geen technische kennis. Verbind via &eacute;&eacute;n klik en plak een post-URL.</div>
+        <div class="faq-a">Een Facebook-pagina waarvan je admin of editor bent. Geen Business Manager, geen API-keys, geen technische kennis. Verbind via Facebook, kies je pagina en plak een post-URL.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Werkt dit ook voor dark posts en niet-gepubliceerde advertenties?<span class="faq-icon">&#9662;</span></button>
-        <div class="faq-a">Ja. Plak de post-URL &mdash; ook van dark posts of ads zonder organisch bereik. CommentCenter haalt de reacties op via de offici&euml;le Meta Graph API.</div>
+        <button class="faq-q" aria-expanded="false">Welke posts kan ik scannen?<span class="faq-icon">&#9662;</span></button>
+        <div class="faq-a">Facebook-posts van pagina&rsquo;s waarvan jij admin of editor bent. Plak de post-URL en CommentCenter haalt de reacties op via de offici&euml;le Meta Graph API.</div>
       </div>
     </div>
   </div>
@@ -2071,6 +2069,20 @@ footer{
 </footer>
 
 <script>
+// Legacy proof anchors were removed until there is verifiable customer proof.
+// Keep old shared links useful without reintroducing a dead section.
+(function(){
+  if(location.hash !== '#bewijs' && location.hash !== '#proof') return;
+  function go(){
+    var target=document.getElementById('pricing');
+    if(!target) return;
+    history.replaceState(null,'',location.pathname + '#pricing');
+    target.scrollIntoView({block:'start'});
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded',go,{once:true});
+  else go();
+})();
+
 // Mobile menu
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');

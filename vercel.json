@@ -20,6 +20,7 @@
     { "src": "/terms", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/terms" } },
     { "src": "/terms.html", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/terms" } },
     { "src": "/data-deletion", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/data-deletion" } },
+    { "src": "/bewijs", "status": 301, "headers": { "Location": "/#pricing" } },
     { "src": "/og-image.svg", "dest": "/og-image.svg" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
