@@ -62,6 +62,12 @@
         "name": "Pro",
         "price": "29",
         "priceCurrency": "EUR"
+      },
+      {
+        "@type": "Offer",
+        "name": "Agency",
+        "price": "249",
+        "priceCurrency": "EUR"
       }
     ]
   },
@@ -1129,9 +1135,9 @@ section{padding:96px 24px;position:relative;z-index:1}
 .pricing-toggle-badge{font-size:10px;color:var(--sig-hot);margin-left:4px;font-weight:600}
 .pricing-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:20px;
-  max-width:680px;
+  max-width:1020px;
   margin:0 auto;
   align-items:start;
 }
@@ -1377,6 +1383,10 @@ footer{
 /* DNA v2: single clean canvas — no theme toggle, no dark mode */
 
 /* ── RESPONSIVE ── */
+/* Three tiers only fit side by side on wide desktop; below that stack them. */
+@media(max-width:1040px){
+  .pricing-grid{grid-template-columns:1fr;max-width:420px;gap:16px}
+}
 @media(max-width:900px){
   .persona-grid{grid-template-columns:1fr}
   .feat-grid{grid-template-columns:repeat(2,1fr)}
@@ -1947,8 +1957,8 @@ footer{
           <li>100 comments totaal (one-time)</li>
           <li>1 gekoppelde pagina</li>
           <li>AI classificatie</li>
-          <li>5 replies</li>
-          <li>5 spam hides</li>
+          <li>25 replies</li>
+          <li>25 spam hides</li>
         </ul>
       </div>
       <!-- PRO -->
@@ -1972,6 +1982,24 @@ footer{
           <li>Alle reply-suggesties</li>
           <li>Bulk spam hide</li>
           <li>CSV-export</li>
+        </ul>
+      </div>
+      <!-- AGENCY -->
+      <div class="pricing-card" data-card="agency">
+        <h3 class="pricing-plan">Agency</h3>
+        <div class="pricing-desc">Voor bureaus die comments van meerdere klanten beheren.</div>
+        <div class="pricing-price">
+          <span class="pricing-amount" data-monthly="&euro;249" data-yearly="&euro;208">&euro;249</span>
+          <span class="pricing-per">/maand</span>
+        </div>
+        <div class="pricing-billed" data-monthly="" data-yearly="&euro;2.490/jaar"></div>
+        <a href="https://app.commentcenter.nl?plan=agency" class="pricing-cta-secondary">Start met Agency &rarr;</a>
+        <div class="pricing-sub-text" data-monthly="&euro;249/maand &middot; Maandelijks opzegbaar" data-yearly="&euro;2.490/jaar &middot; Jaarlijks gefactureerd">&euro;249/maand &middot; Maandelijks opzegbaar</div>
+        <ul class="pricing-features">
+          <li>Onbeperkt pagina's</li>
+          <li>Onbeperkt comments</li>
+          <li>Alles uit Pro</li>
+          <li>Voorrang op support</li>
         </ul>
       </div>
     </div>
@@ -2002,7 +2030,7 @@ footer{
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Hoe werkt de facturering?<span class="faq-icon">&#9662;</span></button>
-        <div class="faq-a">Het Free-plan geeft je eenmalig 100 comments &mdash; geen creditcard nodig. Pro wordt maandelijks vooraf gefactureerd via iDEAL of creditcard. Kies je voor jaarlijks, dan betaal je 10 maanden voor 12.</div>
+        <div class="faq-a">Het Free-plan geeft je eenmalig 100 comments &mdash; geen creditcard nodig. Pro en Agency worden maandelijks vooraf gefactureerd via iDEAL of creditcard. Kies je voor jaarlijks, dan betaal je 10 maanden voor 12.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Kan ik maandelijks opzeggen?<span class="faq-icon">&#9662;</span></button>
