@@ -29,6 +29,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 14' fill='none'%3E%3Crect x='0' y='0' width='14' height='10' rx='3' fill='%233b82f6'/%3E%3Cpolygon points='3,10 5,13 7,10' fill='%233b82f6'/%3E%3Crect x='3' y='3' width='8' height='1.5' rx='.7' fill='white' opacity='.3'/%3E%3Crect x='3' y='6' width='6' height='1.5' rx='.7' fill='white'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"/></noscript>
+<noscript><style>.fade-up{opacity:1 !important}</style></noscript>
 <script type="application/ld+json">
 [
   {
@@ -243,6 +244,8 @@ body{
 }
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .fade-up{opacity:0}
+/* Zonder JS blijft opacity:0 staan en is de pagina leeg — dat mag nooit. */
+
 .fade-up.visible{animation:up .5s cubic-bezier(0.05,0.7,0.1,1.0) both}
 .fade-up.visible:nth-child(2){animation-delay:.06s}
 .fade-up.visible:nth-child(3){animation-delay:.12s}
@@ -2239,13 +2242,30 @@ const observer=new IntersectionObserver(entries=>{
       // stagger siblings that come in together
       const siblings=Array.from(e.target.parentElement.querySelectorAll('.fade-up'));
       const idx=siblings.indexOf(e.target);
-      e.target.style.animationDelay=(idx*0.07)+'s';
+      // Cap de stagger: bij zes kaarten zou de laatste 0.35s wachten terwijl hij
+      // veel later in beeld komt — dat leest als traagheid, niet als ritme.
+      e.target.style.animationDelay=(Math.min(idx,3)*0.07)+'s';
       e.target.classList.add('visible');
       observer.unobserve(e.target);
     }
   });
-},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+// Positieve ondermarge: start de fade voordat het element in beeld komt, anders
+// scrol je naar een leeg vlak dat pas daarna invult (zichtbaar op mobiel).
+},{threshold:0.01,rootMargin:'0px 0px 220px 0px'});
 document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// Vangnet: .fade-up staat op opacity:0 in CSS, dus als de observer om welke reden
+// dan ook niet vuurt, blijft de pagina leeg. Na 2s alles alsnog tonen.
+setTimeout(function(){
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(function(el){
+    el.classList.add('visible');
+    // Niet alleen de class: een animatie met fill-mode both houdt opacity 0 vast
+    // als hij niet afspeelt, en wint van een inline style. Dus eerst uitzetten.
+    el.style.animation='none';
+    el.style.opacity='1';
+    el.style.transform='none';
+  });
+}, 2000);
 
 // ── Live comment feed — viewport + track model ──
 (function(){
