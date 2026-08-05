@@ -2,7 +2,10 @@
   "version": 2,
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
-    { "src": "og-image.svg", "use": "@vercel/static" }
+    { "src": "og-image.svg", "use": "@vercel/static" },
+    { "src": "og-image.png", "use": "@vercel/static" },
+    { "src": "logo.svg", "use": "@vercel/static" },
+    { "src": "logo.png", "use": "@vercel/static" }
   ],
   "headers": [
     {
@@ -22,6 +25,9 @@
     { "src": "/data-deletion", "status": 301, "headers": { "Location": "https://app.commentcenter.nl/data-deletion" } },
     { "src": "/bewijs", "status": 301, "headers": { "Location": "/#pricing" } },
     { "src": "/og-image.svg", "dest": "/og-image.svg" },
+    { "src": "/og-image.png", "dest": "/og-image.png" },
+    { "src": "/logo.svg", "dest": "/logo.svg" },
+    { "src": "/logo.png", "dest": "/logo.png" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
