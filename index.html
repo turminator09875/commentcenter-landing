@@ -141,6 +141,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline-offset:4px}
 
   /* ── Brand (exactly ONE accent — matches logo SVG #3b82f6) ── */
   --brand:#3b82f6;                  /* Tailwind blue-500 (logo) */
+  /* Knoppen met witte tekst: #3b82f6 geeft 3.68:1 en zakt door WCAG AA (4.5:1).
+     Iets donkerder, visueel bijna identiek, 4.72:1. Alleen voor knopvlakken —
+     accenten, em's en iconen blijven --brand. */
+  --brand-cta:#2b6fe0;
   --brand-hover:#2563eb;            /* blue-600 (hover state) */
   --brand-bg:rgba(59,130,246,0.08); /* faint tint */
   --brand-line:rgba(59,130,246,0.24);
@@ -502,7 +506,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:var(--brand);
+  background:var(--brand-cta);
   color:#fff;
   text-decoration:none;
   font-weight:600;
@@ -541,7 +545,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   text-align:center;
 }
 .nav-mobile-cta{
-  background:var(--brand);
+  background:var(--brand-cta);
   color:#fff;
   padding:14px 32px;
   border-radius:9999px;
@@ -558,7 +562,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   max-width:920px;
   margin:48px auto 0;
   background:#fff;
-  border-radius:20px;
+  border-radius:16px;
   padding:24px;
   box-shadow:inset 0 0 0 1px var(--line), 0 24px 60px rgba(0,0,0,.06);
   animation:up .65s .15s cubic-bezier(0.05,0.7,0.1,1.0) both;
@@ -670,7 +674,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   background:transparent;
   color:var(--tx-3);
   border:none;
-  border-radius:6px;
+  border-radius:8px;
   padding:4px 10px;
   cursor:pointer;
   flex-shrink:0;
@@ -729,7 +733,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .fbc-body{min-width:0;flex:1}
 .fbc-bubble{
-  background:#f2f3f5;border-radius:14px;padding:7px 12px;
+  background:#f2f3f5;border-radius:16px;padding:7px 12px;
   font-size:13px;line-height:1.45;letter-spacing:-0.005em;
   display:inline-block;max-width:100%;
 }
@@ -807,13 +811,13 @@ section{padding:96px 24px;position:relative;z-index:1}
 .s2-track{position:absolute;width:100%;display:flex;flex-direction:column}
 .s2-row{display:flex;align-items:center;gap:9px;padding:10px 0;flex-shrink:0;height:38px;box-sizing:border-box}
 .s2-row-divider{border-bottom:1px solid var(--line-faint)}
-.s2-badge{font-size:9px;font-weight:700;padding:2px 0;border-radius:6px;letter-spacing:.05em;width:58px;text-align:center;flex-shrink:0}
+.s2-badge{font-size:9px;font-weight:700;padding:2px 0;border-radius:8px;letter-spacing:.05em;width:58px;text-align:center;flex-shrink:0}
 .s2-ctext{font-size:11px;color:var(--tx-2);font-family:system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
 
 .s3-stage{position:relative;width:200px;height:70px}
 .s3-av{position:absolute;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;font-family:system-ui,sans-serif;border:1px solid var(--line);top:18px}
 .s3-dot{width:9px;height:9px;border-radius:50%;position:absolute;bottom:1px;right:1px;border:1.5px solid #fff}
-.s3-spam-label{position:absolute;top:0;left:84px;background:var(--sig-comp-bg);color:var(--sig-comp);font-size:8px;font-weight:700;letter-spacing:.05em;padding:2px 6px;border-radius:6px;opacity:0;white-space:nowrap}
+.s3-spam-label{position:absolute;top:0;left:84px;background:var(--sig-comp-bg);color:var(--sig-comp);font-size:8px;font-weight:700;letter-spacing:.05em;padding:2px 6px;border-radius:8px;opacity:0;white-space:nowrap}
 .s3-cur{position:absolute;pointer-events:none;opacity:0;z-index:99}
 
 /* ── KERNFUNCTIE ── */
@@ -907,7 +911,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 }
 .persona-icon-wrap{
   width:40px;height:40px;
-  border-radius:10px;
+  border-radius:12px;
   background:var(--brand-bg);
   display:flex;
   align-items:center;
@@ -978,7 +982,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 .feat-card{
   background:#fff;
   box-shadow:inset 0 0 0 1px var(--line);
-  border-radius:20px;
+  border-radius:16px;
   padding:32px;
   display:flex;
   flex-direction:column;
@@ -1008,7 +1012,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   align-items:center;
   gap:10px;
   background:var(--surface-2);
-  border-radius:10px;
+  border-radius:8px;
   padding:10px 14px;
 }
 .feat-badge{
@@ -1051,7 +1055,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   align-items:flex-start;
   gap:10px;
   background:var(--brand-bg);
-  border-radius:10px;
+  border-radius:8px;
   padding:10px 12px;
   box-shadow:inset 0 0 0 1px var(--brand-line);
 }
@@ -1189,7 +1193,7 @@ section{padding:96px 24px;position:relative;z-index:1}
 .pricing-card{
   background:#fff;
   box-shadow:inset 0 0 0 1px var(--line);
-  border-radius:20px;
+  border-radius:16px;
   padding:28px 28px 24px;
   display:flex;
   flex-direction:column;
@@ -1336,7 +1340,7 @@ section{padding:96px 24px;position:relative;z-index:1}
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:var(--brand);
+  background:var(--brand-cta);
   color:#fff;
   text-decoration:none;
   font-weight:600;
