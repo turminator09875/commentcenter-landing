@@ -699,14 +699,41 @@ section{padding:96px 24px;position:relative;z-index:1}
   color:var(--tx-3);
   margin-bottom:18px;
 }
-.chaos-lines{display:flex;flex-direction:column;gap:10px}
-.chaos-line{display:flex;align-items:center;gap:10px;min-width:0}
-.chaos-dot{
-  width:6px;height:6px;
-  border-radius:50%;
-  flex-shrink:0;
+/* Rauwe Facebook-commentsectie: bewust geen classificatiekleuren. Alles ziet er
+   hetzelfde uit — dat is precies de pijn die de footer benoemt. */
+.chaos-lines{
+  display:flex;flex-direction:column;gap:14px;
+  height:296px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 78%,transparent 100%);
 }
-.chaos-text{font-size:13px;color:var(--tx-2);letter-spacing:-0.005em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.fbc{display:flex;gap:8px;align-items:flex-start;min-width:0}
+.fbc-av{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  background:var(--line);color:var(--tx-3);
+  font-size:10px;font-weight:600;letter-spacing:.02em;
+  display:flex;align-items:center;justify-content:center;
+}
+.fbc-body{min-width:0;flex:1}
+.fbc-bubble{
+  background:#f2f3f5;border-radius:14px;padding:7px 12px;
+  font-size:13px;line-height:1.45;letter-spacing:-0.005em;
+  display:inline-block;max-width:100%;
+}
+.fbc-name{font-weight:600;color:var(--tx-1);margin-right:5px}
+.fbc-text{color:var(--tx-2);overflow-wrap:anywhere}
+.fbc-meta{
+  display:flex;gap:12px;margin:4px 0 0 12px;
+  font-size:11px;font-weight:600;color:var(--tx-3);
+}
+.fbc-enter{animation:fbcIn .42s cubic-bezier(.22,.9,.3,1) both}
+@keyframes fbcIn{
+  from{opacity:0;transform:translateY(-8px)}
+  to{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .fbc-enter{animation:none}
+}
 .chaos-footer{
   font-size:13px;
   color:var(--sig-comp);
@@ -925,11 +952,13 @@ section{padding:96px 24px;position:relative;z-index:1}
 #features{background:var(--bg)}
 .feat-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  /* minmax(0,1fr) i.p.v. 1fr: 1fr heeft een min-content ondergrens, waardoor
+     onkrimpbare kaartinhoud de kolom breder duwt dan de container (mobiele overflow). */
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:16px;
   margin-top:8px;
 }
-@media(max-width:1000px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1000px){.feat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .feat-card{
   background:#fff;
   box-shadow:inset 0 0 0 1px var(--line);
@@ -1389,7 +1418,7 @@ footer{
 }
 @media(max-width:900px){
   .persona-grid{grid-template-columns:1fr}
-  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:580px){
   .pricing-grid{grid-template-columns:1fr;max-width:420px;gap:16px}
@@ -1404,7 +1433,7 @@ footer{
   .chaos-box{transform:none}
   .feature-grid{grid-template-columns:1fr}
   .classif-row{min-height:52px;align-items:center}
-  .feat-grid{grid-template-columns:1fr;gap:14px}
+  .feat-grid{grid-template-columns:minmax(0,1fr);gap:14px}
   .section-head{font-size:clamp(32px,8vw,44px)}
   .section-sub{font-size:16px;margin-bottom:40px}
   .trust-grid{grid-template-columns:1fr;gap:16px}
@@ -1565,41 +1594,65 @@ footer{
       </div>
       <div class="chaos-box">
         <div class="chaos-header"><span class="sig-dot sig-dot--xs sig-dot--spam" aria-hidden="true"></span> Typische ad comment sectie</div>
-        <div class="chaos-lines">
-          <div class="chaos-line" style="opacity:.35">
-            <span class="sig-dot sig-dot--sm sig-dot--spam" aria-hidden="true"></span>
-            <span class="chaos-text">Petra kijk dit &#x1F602;&#x1F447;</span>
+        <div class="chaos-lines" id="chaosFeed">
+          <div class="fbc">
+            <span class="fbc-av" aria-hidden="true">PK</span>
+            <div class="fbc-body">
+              <div class="fbc-bubble"><span class="fbc-name">Petra Kessels</span><span class="fbc-text">kijk dit &#x1F602;&#x1F447;</span></div>
+              <div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>2 u</span></div>
+            </div>
           </div>
-          <div class="chaos-line">
-            <span class="sig-dot sig-dot--sm sig-dot--hot" aria-hidden="true"></span>
-            <span class="chaos-text">Wat kost dit all-in?</span>
+          <div class="fbc" data-lead="1">
+            <span class="fbc-av" aria-hidden="true">MA</span>
+            <div class="fbc-body">
+              <div class="fbc-bubble"><span class="fbc-name">Mo El Amrani</span><span class="fbc-text">Wat kost dit all-in?</span></div>
+              <div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>2 u</span></div>
+            </div>
           </div>
-          <div class="chaos-line" style="opacity:.65">
-            <span class="sig-dot sig-dot--sm sig-dot--comp" aria-hidden="true"></span>
-            <span class="chaos-text">SCAM!! Trap er niet in</span>
+          <div class="fbc">
+            <span class="fbc-av" aria-hidden="true">KW</span>
+            <div class="fbc-body">
+              <div class="fbc-bubble"><span class="fbc-name">Kevin de Wit</span><span class="fbc-text">SCAM!! Trap er niet in</span></div>
+              <div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>3 u</span></div>
+            </div>
           </div>
-          <div class="chaos-line" style="opacity:.35">
-            <span class="sig-dot sig-dot--sm sig-dot--spam" aria-hidden="true"></span>
-            <span class="chaos-text">Jan Bakker</span>
+          <div class="fbc">
+            <span class="fbc-av" aria-hidden="true">JB</span>
+            <div class="fbc-body">
+              <div class="fbc-bubble"><span class="fbc-name">Jan Bakker</span><span class="fbc-text">@Marloes</span></div>
+              <div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>3 u</span></div>
+            </div>
           </div>
-          <div class="chaos-line">
-            <span class="sig-dot sig-dot--sm sig-dot--hot" aria-hidden="true"></span>
-            <span class="chaos-text">Kan ik meer info, kan ik bellen?</span>
+          <div class="fbc" data-lead="1">
+            <span class="fbc-av" aria-hidden="true">SV</span>
+            <div class="fbc-body">
+              <div class="fbc-bubble"><span class="fbc-name">Sanne Vermeer</span><span class="fbc-text">Kan ik meer info, kan ik bellen?</span></div>
+              <div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>4 u</span></div>
+            </div>
           </div>
-          <div class="chaos-line" style="opacity:.35">
-            <span class="sig-dot sig-dot--sm sig-dot--spam" aria-hidden="true"></span>
-            <span class="chaos-text">&#x1F3E0;&#x1F525;&#x1F4B0; DM mij voor geld verdienen</span>
+          <div class="fbc">
+            <span class="fbc-av" aria-hidden="true">CW</span>
+            <div class="fbc-body">
+              <div class="fbc-bubble"><span class="fbc-name">Crypto Winst</span><span class="fbc-text">&#x1F3E0;&#x1F525;&#x1F4B0; DM mij voor geld verdienen</span></div>
+              <div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>4 u</span></div>
+            </div>
           </div>
-          <div class="chaos-line" style="opacity:.85">
-            <span class="sig-dot sig-dot--sm sig-dot--quest" aria-hidden="true"></span>
-            <span class="chaos-text">Is er subsidie mogelijk?</span>
+          <div class="fbc">
+            <span class="fbc-av" aria-hidden="true">RT</span>
+            <div class="fbc-body">
+              <div class="fbc-bubble"><span class="fbc-name">Ruud Timmermans</span><span class="fbc-text">Is er subsidie mogelijk?</span></div>
+              <div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>5 u</span></div>
+            </div>
           </div>
-          <div class="chaos-line" style="opacity:.6">
-            <span class="sig-dot sig-dot--sm sig-dot--comp" aria-hidden="true"></span>
-            <span class="chaos-text">Nep rotzooi dit</span>
+          <div class="fbc">
+            <span class="fbc-av" aria-hidden="true">DH</span>
+            <div class="fbc-body">
+              <div class="fbc-bubble"><span class="fbc-name">Debbie Hoekstra</span><span class="fbc-text">Nep rotzooi dit</span></div>
+              <div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>5 u</span></div>
+            </div>
           </div>
         </div>
-        <div class="chaos-footer">2 hot leads. Verloren in de ruis.</div>
+        <div class="chaos-footer"><span id="chaosCount">2</span> hot leads. Verloren in de ruis.</div>
       </div>
     </div>
   </div>
@@ -2306,6 +2359,47 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
   seed();
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!prefersReduced) setInterval(pushRow,INTERVAL);
+})();
+
+// ── Probleem-sectie: rauwe commentsectie die blijft binnenstromen ──
+(function(){
+  var feed=document.getElementById('chaosFeed'), countEl=document.getElementById('chaosCount');
+  if(!feed||!countEl) return;
+  var MAX=8, INTERVAL=3200, timer=null, cursor=0;
+  var pool=[
+    {av:'YB',name:'Youssef Bakkali',text:'Levertijd naar Belgi&euml; ook 3 dagen?',lead:1},
+    {av:'GI',name:'Gratis iPhone',text:'&#x1F381; Klik hier en win nu'},
+    {av:'AV',name:'Anouk Vos',text:'Hoeveel kost installatie erbij?',lead:1},
+    {av:'TS',name:'Tim Smit',text:'Weer zo&#39;n advertentie...'},
+    {av:'EP',name:'Erik Post',text:'Werkt dit ook voor kleine bedrijven?'},
+    {av:'LM',name:'Lisa Meijer',text:'&#x1F60D;&#x1F60D;&#x1F60D;'}
+  ];
+  function render(it){
+    var n=document.createElement('div');
+    n.className='fbc fbc-enter';
+    if(it.lead) n.setAttribute('data-lead','1');
+    n.innerHTML='<span class="fbc-av" aria-hidden="true">'+it.av+'</span>'+
+      '<div class="fbc-body"><div class="fbc-bubble"><span class="fbc-name">'+it.name+
+      '</span><span class="fbc-text">'+it.text+'</span></div>'+
+      '<div class="fbc-meta"><span>Vind ik leuk</span><span>Reageren</span><span>zojuist</span></div></div>';
+    return n;
+  }
+  function tick(){
+    feed.prepend(render(pool[cursor]));
+    cursor=(cursor+1)%pool.length;
+    var rows=feed.querySelectorAll('.fbc');
+    if(rows.length>MAX) rows[rows.length-1].remove();
+    countEl.textContent=feed.querySelectorAll('.fbc[data-lead]').length;
+  }
+  var prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduced) return;
+  // Alleen draaien terwijl de sectie in beeld is.
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting && !timer) timer=setInterval(tick,INTERVAL);
+      else if(!e.isIntersecting && timer){ clearInterval(timer); timer=null; }
+    });
+  },{threshold:.25}).observe(feed);
 })();
 
 // ── Step 01 animation — URL bar ──
