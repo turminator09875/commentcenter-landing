@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#FFFFFF"/>
+  <!-- CommentCenter mark: chat bubble, same geometry as the OG artwork, scaled 8.2x -->
+  <g transform="translate(76, 84) scale(8.18)">
+    <rect x="0" y="0" width="44" height="32" rx="8" fill="#3b82f6"/>
+    <polygon points="8,32 15,42 20,32" fill="#3b82f6"/>
+    <rect x="8" y="8" width="28" height="3.5" rx="1.75" fill="white" opacity="0.35"/>
+    <rect x="8" y="16" width="20" height="5" rx="2.5" fill="white"/>
+    <rect x="8" y="25" width="24" height="3.5" rx="1.75" fill="white" opacity="0.35"/>
+  </g>
+</svg>
