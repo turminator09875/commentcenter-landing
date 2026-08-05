@@ -1935,12 +1935,16 @@ footer{
     <span class="section-label">PRIJZEN</span>
     <h2 class="section-head section-head--center">Start gratis. Upgrade als het <em>loont</em>.</h2>
     <p class="section-sub section-sub--center">Geen creditcard. Maandelijks opzegbaar.</p>
+    <!-- Jaarlijks-toggle verborgen: Stripe kent alleen maandelijkse prijzen, dus een
+         jaarprijs tonen zou een bedrag beloven dat checkout niet afrekent. Terugzetten
+         zodra er jaarlijkse Stripe-prijzen zijn en checkout de periode meegeeft.
     <div class="pricing-toggle-wrap">
       <div class="pricing-toggle">
         <button class="pricing-toggle-btn active" data-period="monthly" onclick="setPricingPeriod('monthly')">Maandelijks</button>
         <button class="pricing-toggle-btn" data-period="yearly" onclick="setPricingPeriod('yearly')">Jaarlijks <span class="pricing-toggle-badge">2 maanden gratis</span></button>
       </div>
     </div>
+    -->
     <div class="pricing-grid" id="pricingGrid">
       <!-- FREE -->
       <div class="pricing-card" data-card="free">
@@ -2030,7 +2034,7 @@ footer{
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Hoe werkt de facturering?<span class="faq-icon">&#9662;</span></button>
-        <div class="faq-a">Het Free-plan geeft je eenmalig 100 comments &mdash; geen creditcard nodig. Pro en Agency worden maandelijks vooraf gefactureerd via iDEAL of creditcard. Kies je voor jaarlijks, dan betaal je 10 maanden voor 12.</div>
+        <div class="faq-a">Het Free-plan geeft je eenmalig 100 comments &mdash; geen creditcard nodig. Pro en Agency worden maandelijks vooraf gefactureerd via iDEAL of creditcard.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Kan ik maandelijks opzeggen?<span class="faq-icon">&#9662;</span></button>
